@@ -1,0 +1,1060 @@
+<title>Scuola San Vitale — Italiano Gratis Como</title>
+<meta name="description" content="Corsi gratuiti di italiano per stranieri a Como — Scuola San Vitale, Caritas Como. Livelli A1 e A2. Lun · Mer · Ven. Chiama Rosa: +39 346 211 0985.">
+<meta property="og:title" content="Scuola San Vitale — Italiano Gratis Como">
+<meta property="og:description" content="Corsi gratuiti di italiano per stranieri. Livelli A1 e A2. Completamente gratis — 0 €. Chiama +39 346 211 0985">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#111C38">
+<meta name="claude:viewport-fit-sides" content="cover">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600&display=swap">
+
+<style>
+:root {
+  --bg:#FFFFFF; --bg-subtle:#F4F6FA; --surface:#FFFFFF; --border:#E1E7F0;
+  --fg:#1A2540; --fg-mid:#4B5A78; --fg-muted:#7085A8;
+  --blue:#1A56DB; --blue-lt:#E8EFFF;
+  --orange:#D9511A; --orange-lt:#FFF0EA;
+  --green:#0A9450; --green-lt:#E6F7EE;
+  --gold:#E09A1A; --gold-lt:#FFF8E0; --gold-dk:#B87B10;
+  --a1-fg:#126B30; --a1-bg:#EDFAF3; --a1-br:#90D0A8;
+  --a2-fg:#1048B0; --a2-bg:#EBF2FF; --a2-br:#9AB8E8;
+  --sh:0 2px 12px rgba(26,37,64,.07),0 1px 3px rgba(26,37,64,.04);
+  --sh-hv:0 8px 28px rgba(26,37,64,.13),0 2px 6px rgba(26,37,64,.07);
+  --font-d:'Outfit',system-ui,sans-serif;
+  --font-b:'Plus Jakarta Sans',system-ui,sans-serif;
+  --r:14px; --rs:8px;
+  --hero-bg:#111C38;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:#0D1525; --bg-subtle:#152035; --surface:#192640; --border:#283A5C;
+    --fg:#EEF2FF; --fg-mid:#8EA4CC; --fg-muted:#5C78A8;
+    --blue:#5A8AFF; --blue-lt:#1A2845;
+    --orange:#FF7B4E; --orange-lt:#2A1208;
+    --green:#30C870; --green-lt:#0A2018;
+    --gold:#FFB830; --gold-lt:#261A00; --gold-dk:#FFB830;
+    --a1-fg:#3ADB7E; --a1-bg:#0A2018; --a1-br:#1A5C38;
+    --a2-fg:#7AAEFF; --a2-bg:#0D1E40; --a2-br:#1E3A6E;
+    --hero-bg:#080F1F;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:#0D1525; --bg-subtle:#152035; --surface:#192640; --border:#283A5C;
+  --fg:#EEF2FF; --fg-mid:#8EA4CC; --fg-muted:#5C78A8;
+  --blue:#5A8AFF; --blue-lt:#1A2845;
+  --orange:#FF7B4E; --orange-lt:#2A1208;
+  --green:#30C870; --green-lt:#0A2018;
+  --gold:#FFB830; --gold-lt:#261A00; --gold-dk:#FFB830;
+  --a1-fg:#3ADB7E; --a1-bg:#0A2018; --a1-br:#1A5C38;
+  --a2-fg:#7AAEFF; --a2-bg:#0D1E40; --a2-br:#1E3A6E;
+  --hero-bg:#080F1F;
+  color-scheme: dark;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body {
+  font-family: var(--font-b);
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+}
+
+/* ─── LANGUAGE BAR ─── */
+.lang-bar {
+  position: sticky; top: 0; z-index: 200;
+  background: var(--hero-bg);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  display: flex; align-items: center; flex-wrap: wrap; gap: 4px;
+  padding: 8px max(12px, env(safe-area-inset-left, 0px));
+  padding-right: max(12px, env(safe-area-inset-right, 0px));
+  padding-top: calc(8px + env(safe-area-inset-top, 0px));
+}
+.lb {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: var(--font-d); font-size: .78rem; font-weight: 600;
+  color: rgba(255,255,255,.6);
+  background: transparent; border: 1.5px solid rgba(255,255,255,.12);
+  border-radius: 20px; padding: 4px 10px; cursor: pointer;
+  transition: all .2s; white-space: nowrap; letter-spacing: .02em;
+}
+.lb:hover { color: #fff; border-color: rgba(255,255,255,.4); background: rgba(255,255,255,.08); }
+.lb.active { color: #fff; border-color: rgba(255,255,255,.7); background: rgba(255,255,255,.14); }
+
+/* ─── HERO ─── */
+.hero {
+  background: var(--hero-bg);
+  padding: 60px max(20px, env(safe-area-inset-left, 0px)) 70px;
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+  text-align: center;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
+  border-radius: 20px; padding: 6px 14px; margin-bottom: 22px;
+  font-family: var(--font-d); font-size: .82rem; font-weight: 600;
+  color: rgba(255,255,255,.75); letter-spacing: .06em; text-transform: uppercase;
+}
+.hero h1 {
+  font-family: var(--font-d); font-weight: 900;
+  font-size: clamp(2.1rem, 7vw, 4rem);
+  color: #fff; line-height: 1.12;
+  text-wrap: balance; margin-bottom: 18px;
+}
+.hero h1 em {
+  font-style: normal;
+  background: linear-gradient(135deg, #5A9AFF 0%, #9BEAFF 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-sub {
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  color: rgba(255,255,255,.7); max-width: 520px; margin: 0 auto 32px;
+}
+.hero-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--green); color: #fff;
+  font-family: var(--font-d); font-size: 1.05rem; font-weight: 700;
+  padding: 14px 32px; border-radius: 40px; text-decoration: none;
+  box-shadow: 0 4px 18px rgba(10,148,80,.4); transition: all .2s;
+}
+.hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(10,148,80,.5); }
+
+/* ─── IT FLAG STRIP ─── */
+.flag-strip { height: 5px; display: flex; }
+.flag-strip span:nth-child(1){ background:#009246; flex: 1; }
+.flag-strip span:nth-child(2){ background:#fff; flex: 1; }
+.flag-strip span:nth-child(3){ background:#CE2B37; flex: 1; }
+
+/* ─── WRAPPER ─── */
+.wrap {
+  max-width: 1060px; margin: 0 auto;
+  padding-left: max(0px, env(safe-area-inset-left, 0px));
+  padding-right: max(0px, env(safe-area-inset-right, 0px));
+}
+
+/* ─── SECTION HEADER ─── */
+.sh { text-align: center; margin-bottom: 36px; }
+.sh h2 {
+  font-family: var(--font-d); font-weight: 800;
+  font-size: clamp(1.4rem, 4vw, 2.1rem);
+  color: var(--fg); line-height: 1.2; text-wrap: balance;
+}
+.sh p { color: var(--fg-mid); font-size: 1rem; margin-top: 8px; }
+
+/* ─── FEATURED CARD ─── */
+.fc-section { padding: 56px 0 48px; }
+.fc {
+  background: var(--surface);
+  border: 2px solid var(--green);
+  border-radius: 20px;
+  box-shadow: var(--sh-hv);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+@media (max-width: 720px) { .fc { grid-template-columns: 1fr; } }
+.fc-info {
+  padding: 36px 32px;
+  background: var(--green-lt);
+  border-right: 2px solid var(--green);
+}
+@media (max-width: 720px) { .fc-info { border-right: none; border-bottom: 2px solid var(--green); } }
+.fc-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--green); color: #fff;
+  font-family: var(--font-d); font-size: .75rem; font-weight: 700;
+  border-radius: 20px; padding: 4px 12px; margin-bottom: 16px;
+  letter-spacing: .05em; text-transform: uppercase;
+}
+.fc-info h2 {
+  font-family: var(--font-d); font-weight: 900;
+  font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+  color: var(--fg); line-height: 1.2; margin-bottom: 6px;
+}
+.fc-info .subtitle {
+  font-size: .92rem; color: var(--fg-mid); margin-bottom: 20px;
+}
+.info-row {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 0; border-bottom: 1px solid rgba(10,148,80,.15);
+}
+.info-row:last-of-type { border-bottom: none; }
+.info-icon { font-size: 1.1rem; min-width: 22px; padding-top: 2px; }
+.info-label { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--green); margin-bottom: 2px; }
+.info-val { font-size: .92rem; color: var(--fg); }
+.info-val a { color: var(--blue); text-decoration: none; }
+.info-val a:hover { text-decoration: underline; }
+
+.level-pills { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+.pill-a1 {
+  display: inline-block; padding: 3px 10px; border-radius: 20px;
+  font-size: .78rem; font-weight: 700; letter-spacing: .04em;
+  background: var(--a1-bg); color: var(--a1-fg); border: 1px solid var(--a1-br);
+}
+.pill-a2 {
+  display: inline-block; padding: 3px 10px; border-radius: 20px;
+  font-size: .78rem; font-weight: 700; letter-spacing: .04em;
+  background: var(--a2-bg); color: var(--a2-fg); border: 1px solid var(--a2-br);
+}
+
+.fc-cta {
+  padding: 36px 32px;
+  display: flex; flex-direction: column; justify-content: space-between; gap: 24px;
+}
+.free-badge {
+  background: var(--gold-lt);
+  border: 2px solid var(--gold);
+  border-radius: 14px; padding: 18px 20px; text-align: center;
+}
+.free-badge .free-price {
+  font-family: var(--font-d); font-weight: 900; font-size: 2.8rem;
+  color: var(--gold-dk); line-height: 1;
+}
+.free-badge .free-label {
+  font-family: var(--font-d); font-weight: 700; font-size: 1rem;
+  color: var(--gold-dk); margin-top: 4px;
+}
+.free-badge .free-sub {
+  font-size: .82rem; color: var(--fg-mid); margin-top: 6px;
+}
+
+.cta-block { display: flex; flex-direction: column; gap: 10px; }
+.cta-block-title {
+  font-family: var(--font-d); font-weight: 800; font-size: 1.05rem;
+  color: var(--fg); margin-bottom: 4px;
+}
+.btn-call {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  background: var(--green); color: #fff;
+  font-family: var(--font-d); font-size: 1rem; font-weight: 700;
+  border-radius: 40px; padding: 13px 20px; text-decoration: none;
+  box-shadow: 0 3px 14px rgba(10,148,80,.3); transition: all .2s;
+}
+.btn-call:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(10,148,80,.4); }
+.btn-copy {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  background: var(--bg-subtle); color: var(--fg-mid);
+  font-family: var(--font-d); font-size: .9rem; font-weight: 600;
+  border: 1.5px solid var(--border); border-radius: 40px; padding: 10px 20px;
+  cursor: pointer; transition: all .2s;
+}
+.btn-copy:hover { border-color: var(--blue); color: var(--blue); }
+.btn-map {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  background: var(--blue-lt); color: var(--blue);
+  font-family: var(--font-d); font-size: .9rem; font-weight: 700;
+  border: 1.5px solid var(--blue); border-radius: 40px; padding: 11px 20px;
+  text-decoration: none; transition: all .2s;
+}
+.btn-map:hover { background: var(--blue); color: #fff; }
+
+/* ─── STEPS ─── */
+.steps-section { padding: 48px 0; background: var(--bg-subtle); }
+.steps-section .wrap { padding-block: 0; }
+.steps-inner { padding: 0 20px; }
+.steps-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px;
+  margin-top: 8px;
+}
+.step-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r); padding: 24px; box-shadow: var(--sh);
+}
+.step-num {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--green); color: #fff;
+  font-family: var(--font-d); font-weight: 900; font-size: 1.1rem;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 14px;
+}
+.step-card h3 {
+  font-family: var(--font-d); font-weight: 800; font-size: 1rem;
+  color: var(--fg); margin-bottom: 6px;
+}
+.step-card p { font-size: .88rem; color: var(--fg-mid); line-height: 1.55; }
+
+/* ─── STATS ─── */
+.stats-section { padding: 56px 0; }
+.stats-inner { padding: 0 20px; }
+.stats-list { display: flex; flex-direction: column; gap: 14px; margin-top: 8px; }
+.stat-row { display: flex; align-items: center; gap: 14px; }
+.stat-flag { font-size: 1.4rem; min-width: 32px; text-align: center; }
+.stat-country {
+  min-width: 90px; font-family: var(--font-d); font-weight: 700;
+  font-size: .9rem; color: var(--fg);
+}
+.stat-bar-wrap {
+  flex: 1; background: var(--bg-subtle); border-radius: 4px; height: 10px; overflow: hidden;
+}
+.sbf {
+  height: 100%; border-radius: 4px; width: 0;
+  background: linear-gradient(90deg, var(--green) 0%, #0EC76A 100%);
+  transition: width 1.1s cubic-bezier(.22,.61,.36,1);
+}
+.stat-pct {
+  min-width: 38px; text-align: right;
+  font-family: var(--font-d); font-size: .85rem; font-weight: 700; color: var(--green);
+}
+.stats-note {
+  margin-top: 22px; font-size: .78rem; color: var(--fg-muted);
+  padding-left: 8px; border-left: 3px solid var(--border);
+}
+
+/* ─── OTHER SCHOOLS ─── */
+.other-section { padding: 56px 0 64px; background: var(--bg-subtle); }
+.other-inner { padding: 0 20px; }
+.other-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 20px;
+  margin-top: 8px;
+}
+.other-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r); padding: 24px; box-shadow: var(--sh);
+  transition: box-shadow .2s;
+}
+.other-card:hover { box-shadow: var(--sh-hv); }
+.other-card-tag {
+  display: inline-block; font-size: .7rem; font-weight: 700;
+  letter-spacing: .07em; text-transform: uppercase;
+  background: var(--blue-lt); color: var(--blue); border-radius: 20px;
+  padding: 3px 10px; margin-bottom: 12px;
+}
+.other-card h3 {
+  font-family: var(--font-d); font-weight: 800; font-size: 1rem;
+  color: var(--fg); margin-bottom: 10px; line-height: 1.3;
+}
+.other-row { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; font-size: .85rem; color: var(--fg-mid); }
+.other-row a { color: var(--blue); text-decoration: none; }
+.other-row a:hover { text-decoration: underline; }
+.other-levels { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 10px; }
+.other-level {
+  font-size: .72rem; font-weight: 700; letter-spacing: .04em;
+  background: var(--bg-subtle); color: var(--fg-mid);
+  border: 1px solid var(--border); border-radius: 20px; padding: 2px 8px;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--hero-bg); color: rgba(255,255,255,.5);
+  text-align: center; padding: 28px 20px;
+  padding-bottom: calc(28px + env(safe-area-inset-bottom, 0px));
+  font-size: .82rem;
+}
+footer a { color: rgba(255,255,255,.65); text-decoration: none; }
+footer a:hover { color: #fff; }
+footer strong { color: rgba(255,255,255,.85); }
+
+/* ─── RTL ─── */
+[dir="rtl"] .info-row,
+[dir="rtl"] .stat-row,
+[dir="rtl"] .other-row { flex-direction: row-reverse; }
+[dir="rtl"] .sbf {
+  background: linear-gradient(270deg, var(--green) 0%, #0EC76A 100%);
+}
+[dir="rtl"] .stats-note { border-left: none; border-right: 3px solid var(--border); padding-left: 0; padding-right: 8px; }
+
+/* ─── WHATSAPP FLOAT ─── */
+.wa-float {
+  position: fixed;
+  bottom: calc(22px + env(safe-area-inset-bottom, 0px));
+  right: max(20px, env(safe-area-inset-right, 0px));
+  z-index: 300; width: 58px; height: 58px; border-radius: 50%;
+  background: #25D366; color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem; box-shadow: 0 4px 22px rgba(37,211,102,.55);
+  text-decoration: none; transition: transform .2s, box-shadow .2s;
+}
+.wa-float:hover { transform: scale(1.1); box-shadow: 0 6px 30px rgba(37,211,102,.7); }
+.wa-tooltip {
+  position: absolute; right: 66px; white-space: nowrap;
+  background: #1a1a1a; color: #fff;
+  font-family: var(--font-d); font-size: .78rem; font-weight: 600;
+  padding: 5px 11px; border-radius: 8px;
+  opacity: 0; pointer-events: none; transition: opacity .2s;
+}
+.wa-float:hover .wa-tooltip { opacity: 1; }
+
+/* ─── SCROLL TOP ─── */
+.scroll-top {
+  position: fixed;
+  bottom: calc(90px + env(safe-area-inset-bottom, 0px));
+  right: max(20px, env(safe-area-inset-right, 0px));
+  z-index: 300; width: 40px; height: 40px; border-radius: 50%;
+  background: var(--surface); border: 1.5px solid var(--border);
+  color: var(--fg-mid); font-size: 1.1rem;
+  display: none; align-items: center; justify-content: center;
+  cursor: pointer; box-shadow: var(--sh); transition: all .2s;
+}
+.scroll-top.show { display: flex; }
+.scroll-top:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
+
+/* ─── WA BUTTON IN CARD ─── */
+.btn-wa {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  background: #25D366; color: #fff;
+  font-family: var(--font-d); font-size: .97rem; font-weight: 700;
+  border-radius: 40px; padding: 12px 20px; text-decoration: none;
+  box-shadow: 0 3px 14px rgba(37,211,102,.3); transition: all .2s;
+}
+.btn-wa:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(37,211,102,.45); }
+
+/* ─── SCHEDULE GRID ─── */
+.sched-grid { display: flex; gap: 5px; margin-top: 8px; flex-wrap: wrap; }
+.sched-day {
+  width: 36px; height: 36px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-d); font-size: .7rem; font-weight: 700;
+  letter-spacing: .04em; text-transform: uppercase;
+}
+.sched-day.on  { background: var(--green); color: #fff; }
+.sched-day.off { background: var(--bg-subtle); color: var(--fg-muted); border: 1px solid var(--border); }
+.sched-times { display: flex; flex-direction: column; gap: 5px; margin-top: 8px; }
+.sched-time-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--blue-lt); color: var(--blue);
+  border: 1px solid var(--blue); border-radius: 20px;
+  padding: 4px 12px; font-family: var(--font-d); font-size: .8rem; font-weight: 700;
+}
+</style>
+
+<!-- ══ FLOATING WA + SCROLL TOP ══ -->
+<a href="https://wa.me/393462110985" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp">
+  <span class="wa-tooltip">💬 WhatsApp Rosa</span>💬
+</a>
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Torna in cima">↑</button>
+
+<!-- ══ LANGUAGE BAR ══ -->
+<nav class="lang-bar" role="navigation" aria-label="Language selector">
+  <button class="lb active" data-lang="it" onclick="setLang('it')">🇮🇹 IT</button>
+  <button class="lb" data-lang="es" onclick="setLang('es')">🇪🇸 ES</button>
+  <button class="lb" data-lang="ar" onclick="setLang('ar')">🇲🇦 AR</button>
+  <button class="lb" data-lang="ro" onclick="setLang('ro')">🇷🇴 RO</button>
+  <button class="lb" data-lang="sq" onclick="setLang('sq')">🇦🇱 SQ</button>
+  <button class="lb" data-lang="zh" onclick="setLang('zh')">🇨🇳 ZH</button>
+  <button class="lb" data-lang="tl" onclick="setLang('tl')">🇵🇭 TL</button>
+  <button class="lb" data-lang="uk" onclick="setLang('uk')">🇺🇦 UK</button>
+  <button class="lb" data-lang="fr" onclick="setLang('fr')">🇫🇷 FR</button>
+  <button class="lb" data-lang="en" onclick="setLang('en')">🇬🇧 EN</button>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-eyebrow">🇮🇹 &nbsp;Scuola San Vitale · Caritas Como</div>
+  <h1 data-i18n="hero_title">Studia e impara<br>l'<em>Italiano</em><br>— è gratis!</h1>
+  <p class="hero-sub" data-i18n="hero_sub">Corsi gratuiti di lingua italiana per stranieri a Como. Livelli A1 e A2. Lunedì, Mercoledì e Venerdì.</p>
+  <a href="tel:+393462110985" class="hero-cta" data-i18n="hero_cta">📞 Chiama e iscriviti — gratis</a>
+</section>
+
+<!-- Italian flag strip -->
+<div class="flag-strip" aria-hidden="true"><span></span><span></span><span></span></div>
+
+<!-- ══ FEATURED CARD ══ -->
+<section class="fc-section">
+  <div class="wrap">
+    <div class="fc">
+      <!-- LEFT: Info -->
+      <div class="fc-info">
+        <div class="fc-badge">🏫 Scuola Principale</div>
+        <h2>Scuola San Vitale<br><span style="font-size:.7em;font-weight:600;color:var(--fg-mid)">Caritas Como</span></h2>
+        <p class="subtitle" data-i18n="p_cost">✅ Completamente gratuita — 0 € — nessuna spesa</p>
+
+        <div class="info-row">
+          <span class="info-icon">📅</span>
+          <div style="flex:1">
+            <div class="info-label" data-i18n="lbl_main">Giorni</div>
+            <div class="sched-grid">
+              <div class="sched-day on">Lun</div>
+              <div class="sched-day off">Mar</div>
+              <div class="sched-day on">Mer</div>
+              <div class="sched-day off">Gio</div>
+              <div class="sched-day on">Ven</div>
+              <div class="sched-day off">Sab</div>
+              <div class="sched-day off">Dom</div>
+            </div>
+            <div class="sched-times" style="margin-top:10px">
+              <div><span class="sched-time-pill">🌅 9:30 – 11:30</span></div>
+              <div><span class="sched-time-pill">🌇 14:00 – 16:00</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <span class="info-icon">🎓</span>
+          <div>
+            <div class="info-label" data-i18n="lbl_levels">Livelli</div>
+            <div class="info-val">
+              <div class="level-pills">
+                <span class="pill-a1">A1</span>
+                <span class="pill-a2">A2</span>
+              </div>
+              <div style="font-size:.82rem;color:var(--fg-muted);margin-top:6px" data-i18n="p_levels">Italiano elementare e pre-intermedio</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <span class="info-icon">📍</span>
+          <div>
+            <div class="info-label">Indirizzo</div>
+            <div class="info-val">Via Tommaso Grossi, 22100 Como<br><span style="font-size:.82rem;color:var(--fg-muted)">Quartiere San Vitale</span></div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <span class="info-icon">📞</span>
+          <div>
+            <div class="info-label">Segretaria</div>
+            <div class="info-val">Rosa Mucerino<br><a href="tel:+393462110985">+39 346 211 0985</a></div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <span class="info-icon">✉️</span>
+          <div>
+            <div class="info-label">Email</div>
+            <div class="info-val">
+              <a href="mailto:scuolasanvitale-caritas@gmail.com">scuolasanvitale-caritas@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: CTA -->
+      <div class="fc-cta">
+        <div class="free-badge">
+          <div class="free-price">0 €</div>
+          <div class="free-label" data-i18n="free_main">COMPLETAMENTE GRATUITA</div>
+          <div class="free-sub" data-i18n="free_sub">Nessuna quota — nessuna spesa — sempre gratis</div>
+        </div>
+
+        <div class="cta-block">
+          <div class="cta-block-title" data-i18n="cblock_title">Iscriviti oggi — è semplice</div>
+          <a href="tel:+393462110985" class="btn-call">📞 +39 346 211 0985</a>
+          <a href="https://wa.me/393462110985" target="_blank" rel="noopener" class="btn-wa">💬 WhatsApp Rosa</a>
+          <button class="btn-copy" onclick="cp(this,'+393462110985')">📋 Copia numero</button>
+          <a href="mailto:scuolasanvitale-caritas@gmail.com" class="btn-map" style="background:var(--blue-lt);color:var(--blue);border-color:var(--blue)">✉️ Scrivi email</a>
+          <a href="https://www.google.com/maps/place/Scuola+di+italiano+per+stranieri/@45.8082064,9.088245,18z/data=!4m6!3m5!1s0x47869d00490c21e7:0x60bb2cd2ed268019!8m2!3d45.8079793!4d9.0885628!16s%2Fg%2F11ldkxbz9s" target="_blank" rel="noopener" class="btn-map" data-i18n="map_btn">🗺️ Vedi su Google Maps</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ STEPS ══ -->
+<section class="steps-section">
+  <div class="wrap">
+    <div class="steps-inner">
+      <div class="sh">
+        <h2 data-i18n="steps_title">Come iscriversi — 3 passi semplici</h2>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <h3 data-i18n="s1_t">📞 Chiama Rosa</h3>
+          <p data-i18n="s1_d">Contatta la segretaria Rosa Mucerino al +39 346 211 0985. Puoi chiamare o inviare un messaggio WhatsApp.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <h3 data-i18n="s2_t">📅 Fissa la data</h3>
+          <p data-i18n="s2_d">Scegli l'orario che preferisci: mattina (9:30–11:30) o pomeriggio (14:00–16:00), da lunedì a venerdì.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <h3 data-i18n="s3_t">🚶 Vieni — è gratis</h3>
+          <p data-i18n="s3_d">Presentati in Via Tommaso Grossi, Quartiere San Vitale, Como. Non servono documenti particolari. Sei il benvenuto!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ STATS ══ -->
+<section class="stats-section">
+  <div class="wrap">
+    <div class="stats-inner">
+      <div class="sh">
+        <h2 data-i18n="stats_title">Chi studia italiano a Como?</h2>
+        <p data-i18n="stats_sub">Le comunità straniere più presenti nella provincia di Como</p>
+      </div>
+      <div class="stats-list">
+        <div class="stat-row">
+          <span class="stat-flag">🇷🇴</span>
+          <span class="stat-country">Romania</span>
+          <div class="stat-bar-wrap"><div class="sbf" data-w="100%"></div></div>
+          <span class="stat-pct">14%</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-flag">🇲🇦</span>
+          <span class="stat-country">Marocco</span>
+          <div class="stat-bar-wrap"><div class="sbf" data-w="79%"></div></div>
+          <span class="stat-pct">11%</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-flag">🇦🇱</span>
+          <span class="stat-country">Albania</span>
+          <div class="stat-bar-wrap"><div class="sbf" data-w="64%"></div></div>
+          <span class="stat-pct">9%</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-flag">🇺🇦</span>
+          <span class="stat-country">Ucraina</span>
+          <div class="stat-bar-wrap"><div class="sbf" data-w="50%"></div></div>
+          <span class="stat-pct">7%</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-flag">🇵🇭</span>
+          <span class="stat-country">Filippine</span>
+          <div class="stat-bar-wrap"><div class="sbf" data-w="43%"></div></div>
+          <span class="stat-pct">6%</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-flag">🇪🇨</span>
+          <span class="stat-country">Ecuador</span>
+          <div class="stat-bar-wrap"><div class="sbf" data-w="36%"></div></div>
+          <span class="stat-pct">5%</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-flag">🇨🇳</span>
+          <span class="stat-country">Cina</span>
+          <div class="stat-bar-wrap"><div class="sbf" data-w="36%"></div></div>
+          <span class="stat-pct">5%</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-flag">🇵🇰</span>
+          <span class="stat-country">Pakistan</span>
+          <div class="stat-bar-wrap"><div class="sbf" data-w="29%"></div></div>
+          <span class="stat-pct">4%</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-flag">🌍</span>
+          <span class="stat-country" data-i18n="stats_other">Altri</span>
+          <div class="stat-bar-wrap"><div class="sbf" data-w="28%"></div></div>
+          <span class="stat-pct">39%</span>
+        </div>
+      </div>
+      <p class="stats-note" data-i18n="stats_src">Fonte: ISTAT 2022–2023 · Provincia di Como · ~66.000 stranieri su 590.000 abitanti</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ OTHER SCHOOLS ══ -->
+<section class="other-section">
+  <div class="wrap">
+    <div class="other-inner">
+      <div class="sh">
+        <h2 data-i18n="other_title">Altre scuole nella zona</h2>
+        <p data-i18n="other_sub">Ulteriori opportunità di apprendimento a Como e dintorni</p>
+      </div>
+      <div class="other-grid">
+
+        <div class="other-card">
+          <span class="other-card-tag">Istituto Pubblico</span>
+          <h3>CPIA 1 Como</h3>
+          <div class="other-row">📍 Via Lucini 3, 22100 Como</div>
+          <div class="other-row">📞 <a href="tel:031305450">031 305450</a></div>
+          <div class="other-row">🌐 <a href="https://www.cpia1como.edu.it" target="_blank" rel="noopener">cpia1como.edu.it</a></div>
+          <div class="other-levels">
+            <span class="other-level">Alfa</span>
+            <span class="other-level">A1</span>
+            <span class="other-level">A2</span>
+            <span class="other-level">B1</span>
+            <span class="other-level">B2</span>
+          </div>
+          <a href="https://www.google.com/maps/search/CPIA+1+Como+Via+Lucini+3" target="_blank" rel="noopener" class="btn-map" style="display:inline-flex;margin-top:14px;font-size:.82rem;padding:8px 16px">🗺️ Mappa</a>
+        </div>
+
+        <div class="other-card">
+          <span class="other-card-tag">Caritas Erba</span>
+          <h3>Voci e Colori del Mondo</h3>
+          <div class="other-row">📍 Via Cesare Battisti 5, Erba (CO)</div>
+          <div class="other-row">📞 <a href="tel:+393892383012">+39 389 238 3012</a></div>
+          <div class="other-levels">
+            <span class="other-level">Alfa</span>
+            <span class="other-level">A1</span>
+            <span class="other-level">A2</span>
+          </div>
+          <a href="https://www.google.com/maps/search/Voci+Colori+Mondo+Via+Cesare+Battisti+Erba+Como" target="_blank" rel="noopener" class="btn-map" style="display:inline-flex;margin-top:14px;font-size:.82rem;padding:8px 16px">🗺️ Mappa</a>
+        </div>
+
+        <div class="other-card">
+          <span class="other-card-tag">Caritas Como</span>
+          <h3>Caritas Diocesana Como<br><span style="font-size:.85em;font-weight:600">(Porta Aperta)</span></h3>
+          <div class="other-row">📍 Viale Varese 25, Como</div>
+          <div class="other-row">📞 <a href="tel:031035353">031 035 35 33</a></div>
+          <div class="other-row">🌐 <a href="https://www.caritascomo.it" target="_blank" rel="noopener">caritascomo.it</a></div>
+          <div class="other-levels">
+            <span class="other-level">A1</span>
+            <span class="other-level">A2</span>
+          </div>
+          <a href="https://www.google.com/maps/search/Caritas+Como+Viale+Varese+25" target="_blank" rel="noopener" class="btn-map" style="display:inline-flex;margin-top:14px;font-size:.82rem;padding:8px 16px">🗺️ Mappa</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <p>
+    <strong>Scuola San Vitale</strong> · Caritas Como ·
+    Via Tommaso Grossi, 22100 Como ·
+    <a href="tel:+393462110985">+39 346 211 0985</a>
+  </p>
+  <p style="margin-top:8px">
+    Sito realizzato da <a href="https://d4digitalstudio.com" target="_blank" rel="noopener"><strong>D4 Digital Studio</strong></a>
+  </p>
+</footer>
+
+<script>
+/* ══ TRANSLATIONS ══ */
+const T = {
+  it: {
+    hero_title: "Studia e impara<br>l'<em>Italiano</em><br>— è gratis!",
+    hero_sub: "Corsi gratuiti di lingua italiana per stranieri a Como. Livelli A1 e A2. Lunedì, Mercoledì e Venerdì.",
+    hero_cta: "📞 Chiama e iscriviti — gratis",
+    p_cost: "✅ Completamente gratuita — 0 € — nessuna spesa",
+    p_levels: "Italiano elementare e pre-intermedio",
+    lbl_main: "Giorni",
+    lbl_levels: "Livelli",
+    sched_days: "Lun · Mer · Ven",
+    sched_and: "e",
+    free_main: "COMPLETAMENTE GRATUITA",
+    free_sub: "Nessuna quota — nessuna spesa — sempre gratis",
+    cblock_title: "Iscriviti oggi — è semplice",
+    map_btn: "🗺️ Vedi su Google Maps",
+    steps_title: "Come iscriversi — 3 passi semplici",
+    s1_t: "📞 Chiama Rosa",
+    s1_d: "Contatta la segretaria Rosa Mucerino al +39 346 211 0985. Puoi chiamare o inviare un messaggio WhatsApp.",
+    s2_t: "📅 Fissa la data",
+    s2_d: "Scegli l'orario che preferisci: mattina (9:30–11:30) o pomeriggio (14:00–16:00), da lunedì a venerdì.",
+    s3_t: "🚶 Vieni — è gratis",
+    s3_d: "Presentati in Via Tommaso Grossi, Quartiere San Vitale, Como. Non servono documenti particolari. Sei il benvenuto!",
+    stats_title: "Chi studia italiano a Como?",
+    stats_sub: "Le comunità straniere più presenti nella provincia di Como",
+    stats_other: "Altri",
+    stats_src: "Fonte: ISTAT 2022–2023 · Provincia di Como · ~66.000 stranieri su 590.000 abitanti",
+    other_title: "Altre scuole nella zona",
+    other_sub: "Ulteriori opportunità di apprendimento a Como e dintorni"
+  },
+  es: {
+    hero_title: "Estudia y aprende<br>el <em>Italiano</em><br>— ¡es gratis!",
+    hero_sub: "Clases gratuitas de italiano para extranjeros en Como. Niveles A1 y A2. Lunes, Miércoles y Viernes.",
+    hero_cta: "📞 Llama e inscríbete — gratis",
+    p_cost: "✅ Completamente gratis — 0 € — sin costos",
+    p_levels: "Italiano elemental y pre-intermedio",
+    lbl_main: "Días",
+    lbl_levels: "Niveles",
+    sched_days: "Lun · Mié · Vie",
+    sched_and: "y",
+    free_main: "COMPLETAMENTE GRATIS",
+    free_sub: "Sin cuota — sin gastos — siempre gratis",
+    cblock_title: "Inscríbete hoy — es sencillo",
+    map_btn: "🗺️ Ver en Google Maps",
+    steps_title: "Cómo inscribirse — 3 pasos simples",
+    s1_t: "📞 Llama a Rosa",
+    s1_d: "Contacta a la secretaria Rosa Mucerino al +39 346 211 0985. Puedes llamar o enviar un WhatsApp.",
+    s2_t: "📅 Elige la fecha",
+    s2_d: "Escoge el horario que prefieras: mañana (9:30–11:30) o tarde (14:00–16:00), de lunes a viernes.",
+    s3_t: "🚶 Ven — es gratis",
+    s3_d: "Preséntate en Via Tommaso Grossi, Quartiere San Vitale, Como. No necesitas documentos especiales. ¡Eres bienvenido!",
+    stats_title: "¿Quién estudia italiano en Como?",
+    stats_sub: "Las comunidades extranjeras más presentes en la provincia de Como",
+    stats_other: "Otros",
+    stats_src: "Fuente: ISTAT 2022–2023 · Provincia de Como · ~66.000 extranjeros de 590.000 habitantes",
+    other_title: "Otras escuelas en la zona",
+    other_sub: "Más oportunidades de aprendizaje en Como y alrededores"
+  },
+  ar: {
+    hero_title: "تعلّم وادرس<br><em>الإيطالية</em><br>— مجاناً تماماً!",
+    hero_sub: "دورات مجانية للغة الإيطالية للأجانب في كومو. مستويات A1 و A2. الاثنين والأربعاء والجمعة.",
+    hero_cta: "📞 اتصل وسجّل — مجاناً",
+    p_cost: "✅ مجانية بالكامل — 0 € — لا تكاليف",
+    p_levels: "الإيطالية الأساسية وما قبل المتوسط",
+    lbl_main: "الأيام",
+    lbl_levels: "المستويات",
+    sched_days: "الإثنين · الأربعاء · الجمعة",
+    sched_and: "و",
+    free_main: "مجانية تماماً",
+    free_sub: "لا رسوم — لا مصاريف — دائماً مجانية",
+    cblock_title: "سجّل اليوم — الأمر بسيط",
+    map_btn: "🗺️ عرض على خرائط Google",
+    steps_title: "كيفية التسجيل — 3 خطوات بسيطة",
+    s1_t: "📞 اتصل بروزا",
+    s1_d: "تواصل مع السكرتيرة روزا موتشيرينو على +39 346 211 0985. يمكنك الاتصال أو إرسال رسالة واتساب.",
+    s2_t: "📅 حدد الموعد",
+    s2_d: "اختر الوقت المناسب: صباحاً (9:30–11:30) أو مساءً (14:00–16:00)، من الاثنين إلى الجمعة.",
+    s3_t: "🚶 تعال — مجاناً",
+    s3_d: "تعال إلى Via Tommaso Grossi، حي San Vitale، كومو. لا تحتاج إلى وثائق خاصة. أنت مرحب بك!",
+    stats_title: "من يدرس الإيطالية في كومو؟",
+    stats_sub: "أكبر المجتمعات الأجنبية في مقاطعة كومو",
+    stats_other: "أخرى",
+    stats_src: "المصدر: ISTAT 2022–2023 · مقاطعة كومو · ~66.000 أجنبي من أصل 590.000 ساكن",
+    other_title: "مدارس أخرى في المنطقة",
+    other_sub: "المزيد من فرص التعلم في كومو والمنطقة المحيطة"
+  },
+  ro: {
+    hero_title: "Studiază și învață<br><em>Italiana</em><br>— e gratuit!",
+    hero_sub: "Cursuri gratuite de limbă italiană pentru străini la Como. Nivelurile A1 și A2. Luni, Miercuri și Vineri.",
+    hero_cta: "📞 Sună și înscrie-te — gratuit",
+    p_cost: "✅ Complet gratuit — 0 € — fără costuri",
+    p_levels: "Italiană elementară și pre-intermediară",
+    lbl_main: "Zile",
+    lbl_levels: "Niveluri",
+    sched_days: "Lun · Mie · Vin",
+    sched_and: "și",
+    free_main: "COMPLET GRATUIT",
+    free_sub: "Nicio taxă — niciun cost — mereu gratuit",
+    cblock_title: "Înscrie-te azi — este simplu",
+    map_btn: "🗺️ Vezi pe Google Maps",
+    steps_title: "Cum să te înscrii — 3 pași simpli",
+    s1_t: "📞 Sună-o pe Rosa",
+    s1_d: "Contactează secretara Rosa Mucerino la +39 346 211 0985. Poți suna sau trimite un mesaj WhatsApp.",
+    s2_t: "📅 Stabilește data",
+    s2_d: "Alege programul preferat: dimineața (9:30–11:30) sau după-amiaza (14:00–16:00), de luni până vineri.",
+    s3_t: "🚶 Vino — e gratuit",
+    s3_d: "Prezintă-te la Via Tommaso Grossi, Cartierul San Vitale, Como. Nu ai nevoie de documente speciale. Ești binevenit!",
+    stats_title: "Cine studiază italiana la Como?",
+    stats_sub: "Comunitățile de străini din provincia Como",
+    stats_other: "Alții",
+    stats_src: "Sursă: ISTAT 2022–2023 · Provincia Como · ~66.000 străini din 590.000 locuitori",
+    other_title: "Alte școli din zonă",
+    other_sub: "Mai multe oportunități de învățare la Como și împrejurimi"
+  },
+  sq: {
+    hero_title: "Studjо dhe mëso<br><em>Italisht</em><br>— është falas!",
+    hero_sub: "Kurse falas të gjuhës italiane për të huajt në Como. Nivelet A1 dhe A2. E hënë, E mërkurë dhe E premte.",
+    hero_cta: "📞 Telefono dhe regjistrohu — falas",
+    p_cost: "✅ Plotësisht falas — 0 € — pa shpenzime",
+    p_levels: "Italisht bazë dhe para-mesëm",
+    lbl_main: "Ditët",
+    lbl_levels: "Nivelet",
+    sched_days: "Hën · Mër · Pre",
+    sched_and: "dhe",
+    free_main: "PLOTËSISHT FALAS",
+    free_sub: "Pa tarifë — pa shpenzime — gjithmonë falas",
+    cblock_title: "Regjistrohu sot — është e thjeshtë",
+    map_btn: "🗺️ Shiko në Google Maps",
+    steps_title: "Si të regjistrohesh — 3 hapa të thjeshtë",
+    s1_t: "📞 Telefono Rosën",
+    s1_d: "Kontakto sekretaren Rosa Mucerino në +39 346 211 0985. Mund të telefonosh ose të dërgosh mesazh WhatsApp.",
+    s2_t: "📅 Cakto datën",
+    s2_d: "Zgjidh orarin që preferoni: mëngjes (9:30–11:30) ose pasdite (14:00–16:00), nga e hëna deri të premten.",
+    s3_t: "🚶 Eja — është falas",
+    s3_d: "Paraqitu në Via Tommaso Grossi, Lagja San Vitale, Como. Nuk keni nevojë për dokumente të veçanta. Jeni të mirëpritur!",
+    stats_title: "Kush studion italisht në Como?",
+    stats_sub: "Komunitetet e huaja më të pranishme në provincën e Como-s",
+    stats_other: "Të tjerë",
+    stats_src: "Burimi: ISTAT 2022–2023 · Provinca Como · ~66.000 të huaj nga 590.000 banorë",
+    other_title: "Shkolla të tjera në zonë",
+    other_sub: "Mundësi të tjera mësimi në Como dhe rrethinë"
+  },
+  zh: {
+    hero_title: "学习和掌握<br><em>意大利语</em><br>— 完全免费！",
+    hero_sub: "科莫外国人免费意大利语课程。A1和A2级别。周一、周三和周五。",
+    hero_cta: "📞 致电报名 — 免费",
+    p_cost: "✅ 完全免费 — 0 € — 无任何费用",
+    p_levels: "初级和中初级意大利语",
+    lbl_main: "上课日",
+    lbl_levels: "级别",
+    sched_days: "周一 · 周三 · 周五",
+    sched_and: "和",
+    free_main: "完全免费",
+    free_sub: "无费用 — 无开销 — 始终免费",
+    cblock_title: "今天报名 — 很简单",
+    map_btn: "🗺️ 在谷歌地图上查看",
+    steps_title: "如何报名 — 3个简单步骤",
+    s1_t: "📞 致电Rosa",
+    s1_d: "联系秘书Rosa Mucerino，电话+39 346 211 0985。可以打电话或发WhatsApp消息。",
+    s2_t: "📅 确定日期",
+    s2_d: "选择您喜欢的时间：上午（9:30–11:30）或下午（14:00–16:00），周一至周五。",
+    s3_t: "🚶 来上课 — 免费",
+    s3_d: "前往Como的San Vitale街区Via Tommaso Grossi。无需特殊文件。欢迎您！",
+    stats_title: "谁在科莫学习意大利语？",
+    stats_sub: "科莫省最多的外国人社区",
+    stats_other: "其他",
+    stats_src: "来源：ISTAT 2022–2023 · 科莫省 · 590,000居民中约66,000名外国人",
+    other_title: "该地区的其他学校",
+    other_sub: "科莫及周边更多学习机会"
+  },
+  tl: {
+    hero_title: "Mag-aral at matutunan<br>ang <em>Italyano</em><br>— libre!",
+    hero_sub: "Libreng klase sa wikang Italyano para sa mga dayuhan sa Como. Antas A1 at A2. Lunes, Miyerkules at Biyernes.",
+    hero_cta: "📞 Tumawag at mag-enroll — libre",
+    p_cost: "✅ Ganap na libre — 0 € — walang bayad",
+    p_levels: "Pangunahing at pre-intermediate na Italyano",
+    lbl_main: "Mga Araw",
+    lbl_levels: "Mga Antas",
+    sched_days: "Lun · Miy · Biy",
+    sched_and: "at",
+    free_main: "GANAP NA LIBRE",
+    free_sub: "Walang bayad — walang gastos — laging libre",
+    cblock_title: "Mag-enroll ngayon — madali lang",
+    map_btn: "🗺️ Tingnan sa Google Maps",
+    steps_title: "Paano mag-enroll — 3 simpleng hakbang",
+    s1_t: "📞 Tumawag kay Rosa",
+    s1_d: "Makipag-ugnayan sa sekretarya na si Rosa Mucerino sa +39 346 211 0985. Maaari kang tumawag o magpadala ng WhatsApp.",
+    s2_t: "📅 Itakda ang petsa",
+    s2_d: "Piliin ang iyong nais na iskedyul: umaga (9:30–11:30) o hapon (14:00–16:00), Lunes hanggang Biyernes.",
+    s3_t: "🚶 Pumunta — libre",
+    s3_d: "Pumunta sa Via Tommaso Grossi, Quartiere San Vitale, Como. Hindi kailangan ng espesyal na dokumento. Maligayang pagdating!",
+    stats_title: "Sino ang nag-aaral ng Italyano sa Como?",
+    stats_sub: "Pinakamaraming dayuhang komunidad sa lalawigan ng Como",
+    stats_other: "Iba pa",
+    stats_src: "Pinagmulan: ISTAT 2022–2023 · Lalawigan ng Como · ~66,000 dayuhan sa 590,000 residente",
+    other_title: "Iba pang paaralan sa lugar",
+    other_sub: "Karagdagang pagkakataon sa pag-aaral sa Como at mga karatig-lugar"
+  },
+  uk: {
+    hero_title: "Навчайся та опануй<br><em>Італійську</em><br>— безкоштовно!",
+    hero_sub: "Безкоштовні курси італійської для іноземців у Комо. Рівні A1 і A2. Понеділок, Середа та П'ятниця.",
+    hero_cta: "📞 Зателефонуй і запишись — безкоштовно",
+    p_cost: "✅ Повністю безкоштовно — 0 € — без витрат",
+    p_levels: "Елементарна та передсередня італійська",
+    lbl_main: "Дні",
+    lbl_levels: "Рівні",
+    sched_days: "Пон · Сер · Пят",
+    sched_and: "і",
+    free_main: "ПОВНІСТЮ БЕЗКОШТОВНО",
+    free_sub: "Без плати — без витрат — завжди безкоштовно",
+    cblock_title: "Запишись сьогодні — це просто",
+    map_btn: "🗺️ Переглянути на Google Maps",
+    steps_title: "Як записатися — 3 простих кроки",
+    s1_t: "📞 Зателефонуй Розі",
+    s1_d: "Зв'яжись із секретарем Розою Мучеріно за номером +39 346 211 0985. Можна зателефонувати або написати в WhatsApp.",
+    s2_t: "📅 Визнач дату",
+    s2_d: "Обери зручний розклад: ранок (9:30–11:30) або після обіду (14:00–16:00), з понеділка по п'ятницю.",
+    s3_t: "🚶 Приходь — безкоштовно",
+    s3_d: "Приходь до Via Tommaso Grossi, квартал San Vitale, Комо. Спеціальних документів не потрібно. Ласкаво просимо!",
+    stats_title: "Хто вчить італійську в Комо?",
+    stats_sub: "Найбільші іноземні спільноти провінції Комо",
+    stats_other: "Інші",
+    stats_src: "Джерело: ISTAT 2022–2023 · Провінція Комо · ~66.000 іноземців із 590.000 мешканців",
+    other_title: "Інші школи в районі",
+    other_sub: "Додаткові можливості навчання в Комо та околицях"
+  },
+  fr: {
+    hero_title: "Étudie et apprends<br>l'<em>Italien</em><br>— c'est gratuit!",
+    hero_sub: "Cours gratuits d'italien pour étrangers à Come. Niveaux A1 et A2. Lundi, Mercredi et Vendredi.",
+    hero_cta: "📞 Appelle et inscris-toi — gratuit",
+    p_cost: "✅ Entièrement gratuit — 0 € — sans frais",
+    p_levels: "Italien élémentaire et pré-intermédiaire",
+    lbl_main: "Jours",
+    lbl_levels: "Niveaux",
+    sched_days: "Lun · Mer · Ven",
+    sched_and: "et",
+    free_main: "ENTIÈREMENT GRATUIT",
+    free_sub: "Sans frais — sans dépenses — toujours gratuit",
+    cblock_title: "Inscris-toi aujourd'hui — c'est simple",
+    map_btn: "🗺️ Voir sur Google Maps",
+    steps_title: "Comment s'inscrire — 3 étapes simples",
+    s1_t: "📞 Appelle Rosa",
+    s1_d: "Contacte la secrétaire Rosa Mucerino au +39 346 211 0985. Tu peux appeler ou envoyer un message WhatsApp.",
+    s2_t: "📅 Fixe la date",
+    s2_d: "Choisis l'horaire que tu préfères : matin (9h30–11h30) ou après-midi (14h–16h), du lundi au vendredi.",
+    s3_t: "🚶 Viens — c'est gratuit",
+    s3_d: "Présente-toi à Via Tommaso Grossi, Quartier San Vitale, Côme. Pas besoin de documents particuliers. Tu es le bienvenu!",
+    stats_title: "Qui apprend l'italien à Côme ?",
+    stats_sub: "Les communautés étrangères les plus présentes dans la province de Côme",
+    stats_other: "Autres",
+    stats_src: "Source : ISTAT 2022–2023 · Province de Côme · ~66 000 étrangers sur 590 000 habitants",
+    other_title: "Autres écoles dans la région",
+    other_sub: "D'autres opportunités d'apprentissage à Côme et alentours"
+  },
+  en: {
+    hero_title: "Study and learn<br><em>Italian</em><br>— it's free!",
+    hero_sub: "Free Italian language courses for foreigners in Como. Levels A1 and A2. Monday, Wednesday and Friday.",
+    hero_cta: "📞 Call and enroll — free",
+    p_cost: "✅ Completely free — 0 € — no costs",
+    p_levels: "Elementary and pre-intermediate Italian",
+    lbl_main: "Days",
+    lbl_levels: "Levels",
+    sched_days: "Mon · Wed · Fri",
+    sched_and: "and",
+    free_main: "COMPLETELY FREE",
+    free_sub: "No fee — no costs — always free",
+    cblock_title: "Enroll today — it's simple",
+    map_btn: "🗺️ View on Google Maps",
+    steps_title: "How to enroll — 3 simple steps",
+    s1_t: "📞 Call Rosa",
+    s1_d: "Contact secretary Rosa Mucerino at +39 346 211 0985. You can call or send a WhatsApp message.",
+    s2_t: "📅 Set the date",
+    s2_d: "Choose your preferred schedule: morning (9:30–11:30) or afternoon (14:00–16:00), Monday to Friday.",
+    s3_t: "🚶 Come — it's free",
+    s3_d: "Come to Via Tommaso Grossi, San Vitale Quarter, Como. No special documents needed. You are welcome!",
+    stats_title: "Who studies Italian in Como?",
+    stats_sub: "The largest foreign communities in the Como province",
+    stats_other: "Others",
+    stats_src: "Source: ISTAT 2022–2023 · Province of Como · ~66,000 foreigners out of 590,000 residents",
+    other_title: "Other schools in the area",
+    other_sub: "More learning opportunities in Como and surroundings"
+  }
+};
+
+const RTL = ['ar'];
+
+function setLang(lang) {
+  if (!T[lang]) return;
+  document.querySelectorAll('.lb').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  document.documentElement.dir = RTL.includes(lang) ? 'rtl' : 'ltr';
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.dataset.i18n;
+    if (T[lang][k] !== undefined) el.innerHTML = T[lang][k];
+  });
+}
+
+/* ══ STAT BAR ANIMATION ══ */
+const fills = document.querySelectorAll('.sbf');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.width = e.target.dataset.w;
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+fills.forEach(f => obs.observe(f));
+
+/* ══ COPY TO CLIPBOARD ══ */
+function cp(btn, text) {
+  const orig = btn.textContent;
+  const ok = () => { btn.textContent = '✓ Copiato!'; setTimeout(() => btn.textContent = orig, 1600); };
+  try { navigator.clipboard.writeText(text).then(ok).catch(() => fb(text, ok)); }
+  catch { fb(text, ok); }
+}
+function fb(text, done) {
+  const el = document.createElement('textarea');
+  el.value = text;
+  Object.assign(el.style, { position: 'fixed', opacity: '0', pointerEvents: 'none' });
+  document.body.appendChild(el); el.select();
+  try { document.execCommand('copy'); done(); } catch {}
+  el.remove();
+}
+
+/* ══ SCROLL TO TOP ══ */
+const stBtn = document.getElementById('scrollTop');
+window.addEventListener('scroll', () => stBtn && stBtn.classList.toggle('show', window.scrollY > 400), { passive: true });
+
+/* ══ AUTO LANGUAGE DETECTION ══ */
+(function() {
+  const nav = navigator.language || navigator.userLanguage || 'it';
+  const code = nav.slice(0,2).toLowerCase();
+  const map = { it:'it', es:'es', ar:'ar', ro:'ro', sq:'sq', zh:'zh', tl:'tl', uk:'uk', fr:'fr', en:'en' };
+  if (map[code] && code !== 'it') {
+    // suggest only, don't force — user can switch
+    const bar = document.querySelector('.lang-bar');
+    if (bar && map[code]) {
+      const hint = document.createElement('div');
+      hint.style.cssText = 'width:100%;padding:4px 0 2px;font-size:.72rem;color:rgba(255,255,255,.45);font-family:var(--font-d)';
+      hint.textContent = '← Tocca la tua lingua / Tap your language';
+      bar.appendChild(hint);
+    }
+  }
+})();
+</script>
