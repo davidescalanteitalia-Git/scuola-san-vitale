@@ -1,5 +1,8 @@
 FROM nginx:1.27-alpine
 
+# Instalar wget para healthcheck
+RUN apk add --no-cache wget
+
 # Copia el sitio estático
 COPY index.html /usr/share/nginx/html/index.html
 
