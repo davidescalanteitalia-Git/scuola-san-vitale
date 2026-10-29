@@ -26,9 +26,14 @@
   --text-mid:   #4A4E57;
   --font-body:  'Public Sans', Arial, sans-serif;
   --font-head:  'Poppins', Arial, sans-serif;
-  --radius:     2px;
+  --radius:     12px;
+  --radius-lg:  20px;
+  --radius-xl:  28px;
   --max-w:      1200px;
   --tr:         0.25s ease;
+  --shadow-card: 0 2px 4px rgba(0,0,0,.06), 0 6px 18px rgba(0,0,0,.10), 0 18px 40px rgba(0,0,0,.08);
+  --shadow-hover: 0 4px 8px rgba(0,0,0,.08), 0 12px 32px rgba(0,0,0,.14), 0 24px 56px rgba(0,0,0,.10);
+  --shadow-dark:  0 2px 4px rgba(0,0,0,.20), 0 8px 24px rgba(0,0,0,.28), 0 20px 48px rgba(0,0,0,.20);
 }
 
 /* ── RESET ── */
@@ -116,10 +121,12 @@ ul { list-style: none; }
   background: var(--gold); color: var(--red-dark) !important;
   font-weight: 700; font-size: 14px;
   padding: 12px 22px 12px 18px;
+  border-radius: 50px;
   letter-spacing: .02em; text-transform: uppercase;
-  transition: background var(--tr); flex-shrink: 0;
+  transition: background var(--tr), box-shadow var(--tr), transform var(--tr); flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(246,169,36,.35);
 }
-.btn-cta:hover { background: var(--gold-dark); }
+.btn-cta:hover { background: var(--gold-dark); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(246,169,36,.45); }
 
 .nav-toggle { display: none; flex-direction: column; gap: 5px; width: 32px; padding: 4px; cursor: pointer; background: none; border: none; }
 .nav-toggle span { display: block; height: 2px; background: var(--red-dark); border-radius: 2px; transition: transform .3s, opacity .3s; }
@@ -154,6 +161,8 @@ ul { list-style: none; }
   color: var(--gold); font-size: 12px; font-weight: 600;
   letter-spacing: .10em; text-transform: uppercase;
   padding: 6px 14px; margin-bottom: 20px;
+  border-radius: 50px;
+  box-shadow: 0 2px 12px rgba(246,169,36,.18);
 }
 .hero__title {
   font-family: var(--font-head);
@@ -173,18 +182,21 @@ ul { list-style: none; }
   background: var(--gold); color: var(--red-dark);
   font-weight: 700; font-size: 15px;
   padding: 14px 28px; text-transform: uppercase; letter-spacing: .04em;
-  transition: background var(--tr), transform var(--tr);
+  border-radius: 50px;
+  box-shadow: 0 2px 8px rgba(246,169,36,.35);
+  transition: background var(--tr), transform var(--tr), box-shadow var(--tr);
 }
-.btn-primary:hover { background: var(--gold-dark); transform: translateY(-1px); }
+.btn-primary:hover { background: var(--gold-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(246,169,36,.45); }
 
 .btn-outline {
   display: inline-flex; align-items: center; gap: 8px;
   border: 2px solid rgba(255,255,255,.55); color: #fff;
   font-weight: 600; font-size: 15px;
   padding: 14px 28px; text-transform: uppercase; letter-spacing: .04em;
-  transition: border-color var(--tr), color var(--tr), background var(--tr);
+  border-radius: 50px;
+  transition: border-color var(--tr), color var(--tr), background var(--tr), transform var(--tr);
 }
-.btn-outline:hover { border-color: var(--gold); color: var(--gold); background: rgba(246,169,36,.08); }
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); background: rgba(246,169,36,.08); transform: translateY(-2px); }
 
 .hero__deco {
   position: absolute; right: 0; top: 0; bottom: 0; width: 42%;
@@ -202,8 +214,13 @@ ul { list-style: none; }
   text-align: center; padding: 28px 16px;
   background: rgba(255,255,255,.10);
   border-right: 1px solid rgba(99,26,13,.15);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-dark);
+  margin: 6px;
+  transition: transform var(--tr), box-shadow var(--tr);
 }
 .stat-item:last-child { border-right: none; }
+.stat-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
 .stat-item__icon { font-size: 30px; margin-bottom: 10px; display: block; }
 .stat-item__num { font-family: var(--font-head); font-size: 2.6rem; font-weight: 800; color: var(--red-dark); line-height: 1; display: block; margin-bottom: 6px; }
 .stat-item__label { font-size: 12px; font-weight: 700; color: var(--red-dark); text-transform: uppercase; letter-spacing: .06em; opacity: .85; }
@@ -229,9 +246,15 @@ ul { list-style: none; }
   border: 1px solid rgba(255,255,255,.12);
   border-left: 3px solid var(--gold);
   padding: 28px;
-  transition: background var(--tr);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-dark);
+  transition: background var(--tr), transform var(--tr), box-shadow var(--tr);
 }
-.offer-card:hover { background: rgba(255,255,255,.12); }
+.offer-card:hover {
+  background: rgba(255,255,255,.13);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,.30), 0 20px 48px rgba(0,0,0,.32);
+}
 .offer-card__ico { width: 44px; height: 44px; background: rgba(246,169,36,.18); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; font-size: 20px; }
 .offer-card__title { font-family: var(--font-head); font-weight: 700; font-size: 17px; color: #fff; margin-bottom: 8px; }
 .offer-card__desc { font-size: 14px; color: rgba(255,255,255,.76); line-height: 1.6; }
@@ -251,20 +274,24 @@ ul { list-style: none; }
 
 .schedule-table { width: 100%; border-collapse: collapse; }
 .schedule-table th, .schedule-table td { padding: 12px 16px; text-align: left; font-size: 14px; border-bottom: 1px solid var(--gray-mid); }
-.schedule-table th { background: var(--red-dark); color: #fff; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .05em; }
+.schedule-table th { background: var(--red-dark); color: #fff; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .05em; border-radius: 0; }
 .schedule-table tr:hover td { background: rgba(99,26,13,.04); }
 .schedule-table td:first-child { font-weight: 600; color: var(--red-dark); }
 
 .level-cards { display: flex; flex-direction: column; gap: 16px; }
 .level-card {
   background: #fff; border: 1px solid var(--gray-mid); border-left: 4px solid var(--gold);
-  padding: 20px 22px; box-shadow: 0 2px 8px rgba(0,0,0,.05);
+  padding: 20px 22px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  transition: transform var(--tr), box-shadow var(--tr);
 }
-.level-card__badge { display: inline-block; background: var(--red-dark); color: #fff; font-size: 11px; font-weight: 700; padding: 3px 10px; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 10px; }
+.level-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+.level-card__badge { display: inline-block; background: var(--red-dark); color: #fff; font-size: 11px; font-weight: 700; padding: 3px 10px; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 10px; border-radius: 50px; }
 .level-card__name { font-family: var(--font-head); font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 6px; }
 .level-card__desc { font-size: 14px; color: var(--text-mid); }
 
-.secretary-box { background: rgba(99,26,13,.06); border: 1px solid rgba(99,26,13,.20); border-left: 4px solid var(--gold); padding: 20px 22px; margin-top: 20px; }
+.secretary-box { background: rgba(99,26,13,.06); border: 1px solid rgba(99,26,13,.20); border-left: 4px solid var(--gold); padding: 20px 22px; margin-top: 20px; border-radius: var(--radius); box-shadow: var(--shadow-card); }
 .secretary-box__label { font-size: 12px; font-weight: 700; color: var(--red-dark); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 4px; }
 .secretary-box__name  { font-family: var(--font-head); font-weight: 700; font-size: 16px; color: var(--text-dark); margin-bottom: 4px; }
 .secretary-box__hours { font-size: 13px; color: var(--text-mid); }
@@ -297,10 +324,10 @@ ul { list-style: none; }
 .contact-info__value a { color: var(--gold); transition: opacity var(--tr); }
 .contact-info__value a:hover { opacity: .8; }
 
-.map-box { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); overflow: hidden; min-height: 300px; height: 100%; }
+.map-box { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); overflow: hidden; min-height: 300px; height: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-dark); }
 .map-box iframe { width: 100%; height: 100%; min-height: 300px; border: none; filter: grayscale(15%) contrast(1.1); }
 
-.contact-sec-box { background: rgba(246,169,36,.12); border: 1px solid rgba(246,169,36,.30); padding: 24px; margin-top: 28px; }
+.contact-sec-box { background: rgba(246,169,36,.12); border: 1px solid rgba(246,169,36,.30); padding: 24px; margin-top: 28px; border-radius: var(--radius-lg); box-shadow: var(--shadow-dark); }
 .contact-sec-box__title { font-family: var(--font-head); font-weight: 700; font-size: 16px; color: var(--gold); margin-bottom: 6px; }
 .contact-sec-box__name  { font-size: 15px; color: #fff; margin-bottom: 4px; }
 .contact-sec-box__hours { font-size: 13px; color: rgba(255,255,255,.72); }
@@ -318,8 +345,11 @@ ul { list-style: none; }
 /* ════════════════════════════════
    FOOTER
 ════════════════════════════════ */
-.site-footer { background: var(--text-dark); color: rgba(255,255,255,.70); padding: 24px 0; font-size: 13px; text-align: center; }
+.site-footer { background: var(--text-dark); color: rgba(255,255,255,.70); padding: 28px 0; font-size: 13px; text-align: center; }
 .site-footer a { color: var(--gold); }
+.footer-d4 { margin-top: 10px; font-size: 12px; color: rgba(255,255,255,.45); }
+.footer-d4__link { color: var(--gold); font-weight: 600; text-decoration: none; letter-spacing: .02em; transition: opacity var(--tr); }
+.footer-d4__link:hover { opacity: .75; }
 
 /* ════════════════════════════════
    FLOATING WHATSAPP
@@ -684,6 +714,13 @@ ul { list-style: none; }
   <div class="container">
     <p>© 2026 Scuola San Vitale – Caritas Como &nbsp;|&nbsp; Via Tommaso Grossi, Como &nbsp;|&nbsp;
       <a href="tel:+393462110985">+39 346 211 0985</a>
+    </p>
+    <p class="footer-d4">
+      Sito web gestito da
+      <a href="https://d4digitalstudio.it" target="_blank" rel="noopener" class="footer-d4__link">
+        <svg width="14" height="14" viewBox="0 0 20 20" fill="none" style="vertical-align:middle;margin-right:3px"><rect width="20" height="20" rx="4" fill="#F6A924"/><text x="10" y="15" text-anchor="middle" font-family="Poppins,Arial" font-weight="900" font-size="13" fill="#631A0D">D4</text></svg>
+        D4 Digital Studio
+      </a>
     </p>
   </div>
 </footer>
