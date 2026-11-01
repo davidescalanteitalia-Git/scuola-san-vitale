@@ -4,7 +4,7 @@ FROM nginx:1.27-alpine
 RUN apk add --no-cache wget
 
 # Copia el sitio estático
-COPY index.html /usr/share/nginx/html/index.html
+COPY *.html /usr/share/nginx/html/
 
 # Configuración nginx liviana: gzip + cache headers
 RUN printf 'server {\n\
