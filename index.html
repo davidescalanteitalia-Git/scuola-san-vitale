@@ -8,6 +8,8 @@
 <meta property="og:title" content="Scuola San Vitale — Italiano Gratis Como">
 <meta property="og:description" content="Corsi gratuiti di italiano per stranieri. Livelli A1 e A2. Completamente gratis. Chiama +39 346 211 0985">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://scuolasanvitale.d4digitalstudio.it/assets/hero.webp">
+<link rel="preload" as="image" href="assets/hero.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -509,6 +511,40 @@ a:focus-visible, button:focus-visible {
   outline: 3px solid var(--italian-red);
   outline-offset: 3px;
 }
+
+/* Fotografie illustrative generate — Scuola San Vitale */
+.site-logo { gap: 0; }
+.site-logo__name { font-size: clamp(17px, 2vw, 21px); }
+.hero { background: #004D29; min-height: 555px; }
+.hero__bg {
+  background: linear-gradient(90deg, rgba(0,49,25,.96) 0%, rgba(0,67,34,.89) 37%, rgba(0,67,34,.58) 72%, rgba(0,67,34,.27) 100%),
+    url("assets/hero.webp") center 45% / cover no-repeat;
+}
+.hero__content { max-width: 670px; }
+.section-photo {
+  margin: 30px 0 10px;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 12px 32px rgba(0,0,0,.17);
+  background: rgba(255,255,255,.1);
+}
+.section-photo img { display: block; width: 100%; height: 315px; object-fit: cover; object-position: center 45%; }
+.section-photo--offers { border: 3px solid rgba(255,255,255,.24); }
+.section-photo--schedule { border: 1px solid #DDE7E0; }
+.section-photo--welcome { border: 3px solid rgba(255,255,255,.22); }
+.section-photo--schedule img { height: 265px; }
+.section-photo--welcome img { height: 285px; object-position:center 38%; }
+@media (max-width: 768px) {
+  .hero { min-height: 560px; }
+  .hero__bg { background: linear-gradient(90deg,rgba(0,49,25,.90),rgba(0,67,34,.68)), url("assets/hero.webp") 55% center / cover no-repeat; }
+  .section-photo img { height: 245px; }
+  .section-photo--schedule img,.section-photo--welcome img { height: 235px; }
+}
+@media (max-width: 480px) {
+  .site-logo__name { font-size: 16px; }
+  .section-photo { margin-top: 22px; border-radius: 14px; }
+  .section-photo img,.section-photo--schedule img,.section-photo--welcome img { height: 205px; }
+}
 </style>
 </head>
 <body>
@@ -537,17 +573,6 @@ a:focus-visible, button:focus-visible {
 <header class="site-header">
   <div class="site-header__inner">
     <a href="#" class="site-logo">
-      <svg class="site-logo__icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="50" cy="50" r="48" fill="#006B35"/>
-        <g fill="#FFFFFF">
-          <rect x="43" y="18" width="14" height="64" rx="3"/>
-          <rect x="18" y="43" width="64" height="14" rx="3"/>
-        </g>
-        <circle cx="50" cy="21" r="5" fill="#FFFFFF"/>
-        <circle cx="50" cy="79" r="5" fill="#FFFFFF"/>
-        <circle cx="21" cy="50" r="5" fill="#FFFFFF"/>
-        <circle cx="79" cy="50" r="5" fill="#FFFFFF"/>
-      </svg>
       <div class="site-logo__text">
         <span class="site-logo__name">Scuola San Vitale</span>
         <span class="site-logo__sub">Caritas Como · Como</span>
@@ -575,14 +600,7 @@ a:focus-visible, button:focus-visible {
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero__bg"></div>
-  <div class="hero__deco" aria-hidden="true">
-    <svg class="hero__cross" viewBox="0 0 200 200" fill="none">
-      <circle cx="100" cy="100" r="98" stroke="white" stroke-width="2"/>
-      <rect x="85" y="25" width="30" height="150" rx="6" fill="white"/>
-      <rect x="25" y="85" width="150" height="30" rx="6" fill="white"/>
-    </svg>
-  </div>
+  <div class="hero__bg" aria-hidden="true"></div>
   <div class="container">
     <div class="hero__content">
       <div class="hero__badge">
@@ -648,6 +666,9 @@ a:focus-visible, button:focus-visible {
     <h2 class="sec-title" data-i18n="cosa_title">Cosa offriamo</h2>
     <div class="divider"></div>
     <p class="sec-desc" data-i18n="cosa_desc">La Scuola San Vitale è un luogo di accoglienza e formazione per tutte le persone straniere che desiderano imparare l'italiano e integrarsi nella comunità di Como.</p>
+    <figure class="section-photo section-photo--offers">
+      <img src="assets/corsi.webp" width="1279" height="720" loading="lazy" decoding="async" alt="Immagine illustrativa generata: un'insegnante aiuta studenti adulti internazionali durante una lezione di italiano." />
+    </figure>
     <div class="offers-grid">
       <div class="offer-card">
         <div class="offer-card__ico">📚</div>
@@ -679,6 +700,9 @@ a:focus-visible, button:focus-visible {
     <span class="eyebrow" data-i18n="orari_eyebrow">Quando e dove</span>
     <h2 class="sec-title" data-i18n="orari_title">Orari e Livelli</h2>
     <div class="divider"></div>
+    <figure class="section-photo section-photo--schedule">
+      <img src="assets/orari.webp" width="1279" height="720" loading="lazy" decoding="async" alt="Immagine illustrativa generata: studenti e docente consultano un calendario dei corsi e i livelli di italiano." />
+    </figure>
     <div class="info-grid">
       <div>
         <div class="info-block__title" data-i18n="orari_block">Orari dei corsi</div>
@@ -754,6 +778,9 @@ a:focus-visible, button:focus-visible {
     <span class="eyebrow" data-i18n="cnt_eyebrow">Vieni a trovarci</span>
     <h2 class="sec-title" style="color:#fff" data-i18n="cnt_title">Dove siamo</h2>
     <div class="divider"></div>
+    <figure class="section-photo section-photo--welcome">
+      <img src="assets/accoglienza.webp" width="1279" height="720" loading="lazy" decoding="async" alt="Immagine illustrativa generata: accoglienza calorosa di nuovi studenti alla segreteria di una scuola di italiano." />
+    </figure>
     <div class="contact-grid">
       <div>
         <div class="contact-info__item">

@@ -807,6 +807,17 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   outline: 3px solid var(--italian-red);
   outline-offset: 3px;
 }
+
+/* Test di italiano: fotografia illustrativa e colori della bandiera */
+.hero {
+  background: linear-gradient(90deg,rgba(0,52,25,.94),rgba(0,81,39,.77),rgba(0,95,42,.72)),
+    url("assets/hero.webp") center 48% / cover no-repeat;
+}
+.topbar-brand { gap: 0; }
+@media (max-width:560px) {
+  .hero { background-position: center, 55% center; }
+  .topbar-brand { font-size: .8rem; }
+}
 </style>
 </head>
 <body>
@@ -816,10 +827,6 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 <nav class="topbar">
   <div class="page-wrap topbar-inner">
     <div class="topbar-brand">
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="28" height="28" rx="7" fill="#009246"/>
-        <path d="M5 20V8h5.5c1.4 0 2.5.35 3.2 1.05.8.7 1.2 1.65 1.2 2.9 0 .8-.18 1.5-.55 2.1-.36.6-.9 1.05-1.6 1.35l2.75 4.6H13l-2.5-4.2H7.4V20H5zm2.4-6.05h2.9c.8 0 1.4-.2 1.8-.6.4-.4.6-.96.6-1.65 0-.72-.2-1.27-.6-1.67-.4-.4-1-.6-1.8-.6H7.4v4.52zm9.2 6.05V8H23v2h-4v3.38H22.4v1.95H19V18h4.1v2h-6.5z" fill="#FFFFFF"/>
-      </svg>
       Scuola San Vitale — Test di Italiano
     </div>
     <a href="index.html" class="topbar-back">← Torna al sito</a>

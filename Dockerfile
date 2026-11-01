@@ -5,6 +5,7 @@ RUN apk add --no-cache wget
 
 # Copia el sitio estático
 COPY *.html /usr/share/nginx/html/
+COPY assets/ /usr/share/nginx/html/assets/
 
 # Configuración nginx: gzip + no almacenar HTML viejo en caché
 RUN printf 'server {\n\
