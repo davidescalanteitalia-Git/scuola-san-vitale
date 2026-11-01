@@ -1,0 +1,2104 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test di Italiano — Scuola San Vitale</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap">
+<style>
+/* ── TOKEN SYSTEM ─────────────────────────────────────── */
+:root {
+  --red:       #631A0D;
+  --red-mid:   #8B2412;
+  --red-light: #B8392B;
+  --gold:      #F6A924;
+  --gold-dark: #D4891A;
+  --cream:     #FDF6EE;
+  --white:     #FFFFFF;
+  --grey-50:   #F8F4F0;
+  --grey-100:  #EDE8E3;
+  --grey-200:  #D8D0C8;
+  --grey-400:  #9E9088;
+  --grey-600:  #5E5550;
+  --grey-800:  #2A2420;
+
+  --bg:        var(--white);
+  --bg-page:   var(--cream);
+  --fg:        var(--grey-800);
+  --fg-muted:  var(--grey-600);
+  --border:    var(--grey-200);
+  --card-bg:   var(--white);
+  --card-shadow: 0 2px 4px rgba(0,0,0,.06), 0 6px 18px rgba(0,0,0,.10), 0 16px 32px rgba(0,0,0,.07);
+  --card-hover: 0 4px 8px rgba(0,0,0,.08), 0 12px 28px rgba(0,0,0,.14), 0 24px 48px rgba(0,0,0,.09);
+
+  --radius:    12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 50px;
+
+  --tr: .22s cubic-bezier(.4,0,.2,1);
+
+  --correct:   #1B6B3A;
+  --correct-bg:#E8F5EE;
+  --wrong:     #9B1C1C;
+  --wrong-bg:  #FEE2E2;
+  --neutral:   #1E40AF;
+  --neutral-bg:#EFF6FF;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:        #1C1512;
+    --bg-page:   #241A16;
+    --fg:        #F0EAE3;
+    --fg-muted:  #A89E96;
+    --border:    #3D3028;
+    --card-bg:   #2C201A;
+    --card-shadow: 0 2px 6px rgba(0,0,0,.35), 0 8px 24px rgba(0,0,0,.40);
+    --card-hover: 0 4px 10px rgba(0,0,0,.45), 0 14px 36px rgba(0,0,0,.50);
+    --correct-bg:#14372A;
+    --wrong-bg:  #3B1515;
+    --neutral-bg:#1E2A4A;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:        #1C1512;
+  --bg-page:   #241A16;
+  --fg:        #F0EAE3;
+  --fg-muted:  #A89E96;
+  --border:    #3D3028;
+  --card-bg:   #2C201A;
+  --card-shadow: 0 2px 6px rgba(0,0,0,.35), 0 8px 24px rgba(0,0,0,.40);
+  --card-hover: 0 4px 10px rgba(0,0,0,.45), 0 14px 36px rgba(0,0,0,.50);
+  --correct-bg:#14372A;
+  --wrong-bg:  #3B1515;
+  --neutral-bg:#1E2A4A;
+  color-scheme: dark;
+}
+
+/* ── RESET & BASE ─────────────────────────────────────── */
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Public Sans', system-ui, sans-serif;
+  background: var(--bg-page);
+  color: var(--fg);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; line-height: 1.2; }
+img { max-width: 100%; display:block; }
+button { cursor: pointer; font-family: inherit; border: none; }
+a { color: inherit; text-decoration: none; }
+
+/* ── LAYOUT WRAPPER ───────────────────────────────────── */
+.page-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* ── TOPBAR ───────────────────────────────────────────── */
+.topbar {
+  background: var(--red);
+  color: var(--white);
+  padding: 14px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(99,26,13,.35);
+}
+.topbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.topbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: .95rem;
+  letter-spacing: -.01em;
+}
+.topbar-brand svg { flex-shrink: 0; }
+.topbar-back {
+  background: rgba(255,255,255,.12);
+  color: var(--white);
+  padding: 7px 16px;
+  border-radius: var(--radius-pill);
+  font-size: .82rem;
+  font-weight: 600;
+  transition: background var(--tr);
+  border: 1px solid rgba(255,255,255,.18);
+}
+.topbar-back:hover { background: rgba(255,255,255,.22); }
+
+/* ── HERO ─────────────────────────────────────────────── */
+.hero {
+  background: linear-gradient(135deg, var(--red) 0%, var(--red-mid) 60%, #B03020 100%);
+  color: var(--white);
+  padding: 52px 0 44px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='1.5' fill='rgba(255,255,255,.07)'/%3E%3C/svg%3E") repeat;
+}
+.hero-inner { position: relative; }
+.hero-flag {
+  font-size: 2.8rem;
+  margin-bottom: 12px;
+  display: block;
+}
+.hero h1 {
+  font-size: clamp(1.7rem, 5vw, 2.6rem);
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+.hero h1 span { color: var(--gold); }
+.hero p {
+  font-size: clamp(.9rem, 2.5vw, 1.05rem);
+  opacity: .88;
+  max-width: 520px;
+  margin: 0 auto 28px;
+}
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+.badge {
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.22);
+  color: var(--white);
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  font-size: .78rem;
+  font-weight: 600;
+}
+
+/* ── MODE SELECTOR ────────────────────────────────────── */
+.mode-section {
+  padding: 44px 0 60px;
+}
+.section-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 20px;
+}
+.mode-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+.mode-card {
+  background: var(--card-bg);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px 20px 22px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color var(--tr), box-shadow var(--tr), transform var(--tr), background var(--tr);
+  box-shadow: var(--card-shadow);
+  position: relative;
+}
+.mode-card:hover {
+  border-color: var(--red);
+  box-shadow: var(--card-hover);
+  transform: translateY(-4px);
+}
+.mode-card.selected {
+  border-color: var(--gold);
+  background: linear-gradient(145deg, var(--card-bg), rgba(246,169,36,.06));
+  box-shadow: 0 0 0 4px rgba(246,169,36,.15), var(--card-hover);
+}
+.mode-icon {
+  font-size: 2.2rem;
+  margin-bottom: 12px;
+  display: block;
+}
+.mode-card h3 {
+  font-size: .98rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--red);
+}
+.mode-card p {
+  font-size: .78rem;
+  color: var(--fg-muted);
+  line-height: 1.5;
+}
+
+/* ── LEVEL & LENGTH PICKERS ───────────────────────────── */
+.config-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin: 32px 0;
+}
+.config-group { flex: 1; min-width: 200px; }
+.config-group label {
+  display: block;
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--fg-muted);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip {
+  background: var(--grey-100);
+  color: var(--fg-muted);
+  border: 2px solid transparent;
+  padding: 7px 18px;
+  border-radius: var(--radius-pill);
+  font-size: .82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--tr);
+}
+.chip:hover { background: var(--grey-200); color: var(--fg); }
+.chip.active {
+  background: var(--red);
+  color: var(--white);
+  border-color: var(--red);
+}
+
+/* ── START BUTTON ─────────────────────────────────────── */
+.start-area {
+  text-align: center;
+  padding: 8px 0 16px;
+}
+.btn-start {
+  background: var(--gold);
+  color: var(--grey-800);
+  padding: 16px 48px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 4px 16px rgba(246,169,36,.45);
+  transition: all var(--tr);
+  font-family: 'Poppins', sans-serif;
+  display: inline-block;
+}
+.btn-start:hover {
+  background: var(--gold-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(246,169,36,.55);
+}
+.btn-start:active { transform: translateY(0); }
+
+/* ── QUIZ SCREEN ──────────────────────────────────────── */
+#quiz-screen { display: none; padding: 32px 0 60px; }
+
+.quiz-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.quiz-meta {
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--fg-muted);
+}
+.quiz-meta strong { color: var(--fg); }
+.quiz-score-live {
+  background: var(--card-bg);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-pill);
+  padding: 5px 14px;
+  font-size: .82rem;
+  font-weight: 700;
+  color: var(--red);
+}
+
+.progress-track {
+  background: var(--grey-100);
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 28px;
+}
+.progress-fill {
+  background: linear-gradient(90deg, var(--red), var(--gold));
+  height: 100%;
+  border-radius: 4px;
+  transition: width .4s ease;
+}
+
+/* ── QUESTION CARD ────────────────────────────────────── */
+.q-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--card-shadow);
+  padding: 36px 32px 28px;
+  margin-bottom: 20px;
+  animation: slideIn .3s ease;
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.q-type-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(99,26,13,.09);
+  color: var(--red);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.q-text {
+  font-size: clamp(1.05rem, 3vw, 1.3rem);
+  font-weight: 600;
+  color: var(--fg);
+  margin-bottom: 6px;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.4;
+}
+.q-hint {
+  font-size: .82rem;
+  color: var(--fg-muted);
+  margin-bottom: 22px;
+  font-style: italic;
+}
+
+/* Audio play button (placeholder - no ElevenLabs yet) */
+.audio-btn {
+  background: var(--red);
+  color: var(--white);
+  padding: 12px 24px;
+  border-radius: var(--radius-pill);
+  font-size: .88rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  transition: all var(--tr);
+  box-shadow: 0 3px 10px rgba(99,26,13,.3);
+}
+.audio-btn:hover { background: var(--red-mid); transform: scale(1.02); }
+.audio-btn svg { width:18px; height:18px; }
+.audio-btn.speaking { background: var(--gold-dark); animation: pulse .8s infinite; }
+@keyframes pulse {
+  0%,100% { opacity:1; } 50% { opacity:.7; }
+}
+
+/* ── ANSWER TYPES ─────────────────────────────────────── */
+
+/* Multiple choice */
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.option-btn {
+  background: var(--card-bg);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  font-size: .92rem;
+  text-align: left;
+  transition: all var(--tr);
+  color: var(--fg);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.option-btn::before {
+  content: attr(data-letter);
+  background: var(--grey-100);
+  color: var(--fg-muted);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .78rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: all var(--tr);
+}
+.option-btn:hover:not([disabled]) {
+  border-color: var(--red);
+  background: rgba(99,26,13,.04);
+}
+.option-btn:hover:not([disabled])::before {
+  background: var(--red);
+  color: white;
+}
+.option-btn.correct {
+  border-color: var(--correct);
+  background: var(--correct-bg);
+  color: var(--correct);
+}
+.option-btn.correct::before { background: var(--correct); color: white; }
+.option-btn.wrong {
+  border-color: var(--wrong);
+  background: var(--wrong-bg);
+  color: var(--wrong);
+}
+.option-btn.wrong::before { background: var(--wrong); color: white; }
+
+/* True/False */
+.tf-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.tf-btn {
+  padding: 20px;
+  border-radius: var(--radius-lg);
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  border: 2px solid var(--border);
+  background: var(--card-bg);
+  color: var(--fg);
+  transition: all var(--tr);
+  text-align: center;
+}
+.tf-btn:hover:not([disabled]) { border-color: var(--red); transform: translateY(-2px); }
+.tf-btn.tf-vero:hover:not([disabled]) { background: var(--correct-bg); border-color: var(--correct); color: var(--correct); }
+.tf-btn.tf-falso:hover:not([disabled]) { background: var(--wrong-bg); border-color: var(--wrong); color: var(--wrong); }
+.tf-btn.correct { background: var(--correct-bg); border-color: var(--correct); color: var(--correct); }
+.tf-btn.wrong   { background: var(--wrong-bg);   border-color: var(--wrong);   color: var(--wrong); }
+
+/* Writing input */
+.write-area {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.write-input {
+  background: var(--card-bg);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  font-size: 1rem;
+  color: var(--fg);
+  font-family: inherit;
+  width: 100%;
+  transition: border-color var(--tr);
+  outline: none;
+}
+.write-input:focus { border-color: var(--red); }
+.write-input.correct { border-color: var(--correct); background: var(--correct-bg); color: var(--correct); }
+.write-input.wrong   { border-color: var(--wrong); background: var(--wrong-bg); color: var(--wrong); }
+.btn-check {
+  background: var(--red);
+  color: white;
+  padding: 13px 32px;
+  border-radius: var(--radius-pill);
+  font-size: .9rem;
+  font-weight: 700;
+  align-self: flex-end;
+  transition: all var(--tr);
+  box-shadow: 0 2px 8px rgba(99,26,13,.25);
+}
+.btn-check:hover { background: var(--red-mid); transform: translateY(-1px); }
+
+/* Conjugation */
+.conj-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .88rem;
+}
+.conj-table th {
+  background: rgba(99,26,13,.08);
+  color: var(--red);
+  padding: 8px 12px;
+  text-align: left;
+  font-weight: 700;
+  font-size: .72rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.conj-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+.conj-table tr:last-child td { border-bottom: none; }
+.conj-label { font-weight: 600; color: var(--fg-muted); }
+.conj-input {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--border);
+  padding: 4px 6px;
+  font-size: .88rem;
+  color: var(--fg);
+  font-family: inherit;
+  width: 100%;
+  max-width: 180px;
+  transition: border-color var(--tr);
+  outline: none;
+}
+.conj-input:focus { border-bottom-color: var(--red); }
+.conj-input.correct { border-bottom-color: var(--correct); color: var(--correct); font-weight: 600; }
+.conj-input.wrong   { border-bottom-color: var(--wrong);   color: var(--wrong); }
+
+/* ── FEEDBACK BANNER ──────────────────────────────────── */
+.feedback {
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  font-size: .88rem;
+  font-weight: 600;
+  display: none;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  animation: fadeUp .25s ease;
+}
+.feedback.show { display: flex; }
+@keyframes fadeUp {
+  from { opacity:0; transform: translateY(6px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+.feedback.correct-fb { background: var(--correct-bg); color: var(--correct); border-left: 4px solid var(--correct); }
+.feedback.wrong-fb   { background: var(--wrong-bg);   color: var(--wrong);   border-left: 4px solid var(--wrong); }
+.feedback-icon { font-size: 1.2rem; flex-shrink: 0; }
+
+/* Next button */
+.btn-next {
+  background: var(--red);
+  color: white;
+  padding: 14px 36px;
+  border-radius: var(--radius-pill);
+  font-size: .95rem;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  margin-top: 12px;
+  transition: all var(--tr);
+  display: none;
+  box-shadow: 0 3px 12px rgba(99,26,13,.3);
+}
+.btn-next.show { display: block; }
+.btn-next:hover { background: var(--red-mid); transform: translateY(-1px); }
+
+/* ── RESULTS SCREEN ───────────────────────────────────── */
+#result-screen { display: none; padding: 40px 0 70px; text-align: center; }
+.result-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--card-shadow);
+  padding: 44px 32px 36px;
+  max-width: 560px;
+  margin: 0 auto 28px;
+}
+.result-emoji { font-size: 4rem; display: block; margin-bottom: 16px; }
+.result-card h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--red);
+  margin-bottom: 8px;
+}
+.result-card .score-big {
+  font-size: 3.6rem;
+  font-weight: 800;
+  font-family: 'Poppins', sans-serif;
+  color: var(--red);
+  line-height: 1;
+  margin: 16px 0 4px;
+}
+.result-card .score-label {
+  font-size: .88rem;
+  color: var(--fg-muted);
+  margin-bottom: 24px;
+}
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
+.stat-mini {
+  background: var(--grey-50);
+  border-radius: var(--radius);
+  padding: 12px 8px;
+  text-align: center;
+}
+.stat-mini .n {
+  font-size: 1.5rem;
+  font-weight: 800;
+  font-family: 'Poppins', sans-serif;
+  display: block;
+}
+.stat-mini .l { font-size: .72rem; color: var(--fg-muted); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; }
+.stat-mini.correct-stat .n { color: var(--correct); }
+.stat-mini.wrong-stat .n   { color: var(--wrong); }
+.stat-mini.neutral-stat .n { color: var(--neutral); }
+
+.result-message {
+  font-size: .95rem;
+  color: var(--fg-muted);
+  line-height: 1.6;
+  padding: 0 8px;
+}
+
+.result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+.btn-restart {
+  background: var(--gold);
+  color: var(--grey-800);
+  padding: 14px 36px;
+  border-radius: var(--radius-pill);
+  font-size: .95rem;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  transition: all var(--tr);
+  box-shadow: 0 3px 12px rgba(246,169,36,.4);
+}
+.btn-restart:hover { background: var(--gold-dark); transform: translateY(-2px); }
+.btn-home {
+  background: transparent;
+  color: var(--red);
+  border: 2px solid var(--red);
+  padding: 14px 36px;
+  border-radius: var(--radius-pill);
+  font-size: .95rem;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  transition: all var(--tr);
+}
+.btn-home:hover { background: rgba(99,26,13,.06); }
+
+/* ── REVIEW LIST ──────────────────────────────────────── */
+.review-section {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: left;
+}
+.review-section h3 {
+  font-size: 1.1rem;
+  color: var(--fg);
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+.review-item {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  border-left: 4px solid var(--border);
+  box-shadow: var(--card-shadow);
+  font-size: .85rem;
+}
+.review-item.review-correct { border-left-color: var(--correct); }
+.review-item.review-wrong   { border-left-color: var(--wrong); }
+.review-q { font-weight: 600; color: var(--fg); margin-bottom: 4px; }
+.review-a { color: var(--fg-muted); }
+.review-a span.ok  { color: var(--correct); font-weight: 700; }
+.review-a span.bad { color: var(--wrong);   font-weight: 700; text-decoration: line-through; }
+
+/* ── FOOTER ───────────────────────────────────────────── */
+.site-footer {
+  background: var(--red);
+  color: rgba(255,255,255,.65);
+  text-align: center;
+  padding: 20px 16px;
+  font-size: .78rem;
+}
+.site-footer a {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* ── RESPONSIVE ───────────────────────────────────────── */
+@media (max-width: 560px) {
+  .q-card { padding: 24px 18px 20px; }
+  .result-card { padding: 32px 20px 28px; }
+  .config-row { gap: 16px; }
+  .tf-group { grid-template-columns: 1fr 1fr; }
+  .stats-row { grid-template-columns: repeat(3,1fr); gap:8px; }
+  .conj-table { font-size: .8rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── TOPBAR ─────────────────────────────────────────── -->
+<nav class="topbar">
+  <div class="page-wrap topbar-inner">
+    <div class="topbar-brand">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="28" height="28" rx="7" fill="#F6A924"/>
+        <path d="M5 20V8h5.5c1.4 0 2.5.35 3.2 1.05.8.7 1.2 1.65 1.2 2.9 0 .8-.18 1.5-.55 2.1-.36.6-.9 1.05-1.6 1.35l2.75 4.6H13l-2.5-4.2H7.4V20H5zm2.4-6.05h2.9c.8 0 1.4-.2 1.8-.6.4-.4.6-.96.6-1.65 0-.72-.2-1.27-.6-1.67-.4-.4-1-.6-1.8-.6H7.4v4.52zm9.2 6.05V8H23v2h-4v3.38H22.4v1.95H19V18h4.1v2h-6.5z" fill="#631A0D"/>
+      </svg>
+      Scuola San Vitale — Test di Italiano
+    </div>
+    <a href="index.html" class="topbar-back">← Torna al sito</a>
+  </div>
+</nav>
+
+<!-- ── HERO ───────────────────────────────────────────── -->
+<header class="hero" id="home-screen">
+  <div class="page-wrap hero-inner">
+    <span class="hero-flag">🇮🇹</span>
+    <h1>Pratica il tuo<br><span>Italiano</span></h1>
+    <p>Esercizi interattivi per migliorare le tue competenze linguistiche. Ogni sessione è unica e diversa.</p>
+    <div class="hero-badges">
+      <span class="badge">📝 Scrittura</span>
+      <span class="badge">🎧 Ascolto</span>
+      <span class="badge">✅ Vero/Falso</span>
+      <span class="badge">🔤 Scelta Multipla</span>
+      <span class="badge">🔄 Coniugazione</span>
+    </div>
+  </div>
+</header>
+
+<!-- ── SETUP SCREEN ────────────────────────────────────── -->
+<main id="setup-screen">
+  <div class="page-wrap">
+    <section class="mode-section">
+
+      <!-- TYPE SELECTOR -->
+      <div class="section-label">Tipo di esercizio</div>
+      <div class="mode-grid" id="mode-grid">
+        <div class="mode-card" data-mode="all" onclick="selectMode(this)">
+          <span class="mode-icon">🎯</span>
+          <h3>Tutto misto</h3>
+          <p>Combinazione di tutti i tipi di esercizi per una pratica completa</p>
+        </div>
+        <div class="mode-card selected" data-mode="scelta" onclick="selectMode(this)">
+          <span class="mode-icon">🔤</span>
+          <h3>Scelta multipla</h3>
+          <p>Scegli la risposta giusta tra quattro opzioni</p>
+        </div>
+        <div class="mode-card" data-mode="verofalso" onclick="selectMode(this)">
+          <span class="mode-icon">✅</span>
+          <h3>Vero o Falso</h3>
+          <p>Decidi se la frase è corretta o sbagliata</p>
+        </div>
+        <div class="mode-card" data-mode="scrittura" onclick="selectMode(this)">
+          <span class="mode-icon">✏️</span>
+          <h3>Scrittura</h3>
+          <p>Scrivi la risposta corretta in italiano</p>
+        </div>
+        <div class="mode-card" data-mode="coniugazione" onclick="selectMode(this)">
+          <span class="mode-icon">🔄</span>
+          <h3>Coniugazione</h3>
+          <p>Coniuga i verbi nelle forme corrette</p>
+        </div>
+        <div class="mode-card" data-mode="ascolto" onclick="selectMode(this)">
+          <span class="mode-icon">🎧</span>
+          <h3>Ascolto</h3>
+          <p>Ascolta e rispondi alle domande in italiano</p>
+        </div>
+      </div>
+
+      <!-- LEVEL & LENGTH -->
+      <div class="config-row">
+        <div class="config-group">
+          <label>Livello</label>
+          <div class="chip-group" id="level-chips">
+            <button class="chip active" data-level="all" onclick="selectLevel(this)">Tutti</button>
+            <button class="chip" data-level="A1" onclick="selectLevel(this)">A1 — Base</button>
+            <button class="chip" data-level="A2" onclick="selectLevel(this)">A2 — Elementare</button>
+            <button class="chip" data-level="B1" onclick="selectLevel(this)">B1 — Intermedio</button>
+          </div>
+        </div>
+        <div class="config-group">
+          <label>Domande per sessione</label>
+          <div class="chip-group" id="qty-chips">
+            <button class="chip" data-qty="5" onclick="selectQty(this)">5</button>
+            <button class="chip active" data-qty="10" onclick="selectQty(this)">10</button>
+            <button class="chip" data-qty="15" onclick="selectQty(this)">15</button>
+            <button class="chip" data-qty="20" onclick="selectQty(this)">20</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="start-area">
+        <button class="btn-start" onclick="startQuiz()">Inizia il test ›</button>
+      </div>
+    </section>
+  </div>
+</main>
+
+<!-- ── QUIZ SCREEN ─────────────────────────────────────── -->
+<div id="quiz-screen">
+  <div class="page-wrap">
+    <div class="quiz-header">
+      <div class="quiz-meta">Domanda <strong id="q-num">1</strong> di <strong id="q-total">10</strong></div>
+      <div class="quiz-score-live">✅ <span id="score-live">0</span> corrette</div>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+    </div>
+    <div id="q-container"></div>
+    <button class="btn-next" id="btn-next" onclick="nextQuestion()">Prossima domanda →</button>
+  </div>
+</div>
+
+<!-- ── RESULTS SCREEN ─────────────────────────────────── -->
+<div id="result-screen">
+  <div class="page-wrap">
+    <div class="result-card">
+      <span class="result-emoji" id="result-emoji">🎉</span>
+      <h2 id="result-title">Ottimo lavoro!</h2>
+      <div class="score-big" id="score-big">8/10</div>
+      <div class="score-label" id="score-pct">80%</div>
+      <div class="stats-row">
+        <div class="stat-mini correct-stat">
+          <span class="n" id="stat-correct">0</span>
+          <span class="l">Corrette</span>
+        </div>
+        <div class="stat-mini wrong-stat">
+          <span class="n" id="stat-wrong">0</span>
+          <span class="l">Sbagliate</span>
+        </div>
+        <div class="stat-mini neutral-stat">
+          <span class="n" id="stat-pct">0%</span>
+          <span class="l">Precisione</span>
+        </div>
+      </div>
+      <p class="result-message" id="result-msg">Continua così! Ogni sessione ti avvicina alla padronanza dell'italiano.</p>
+    </div>
+    <div class="result-actions">
+      <button class="btn-restart" onclick="restartSame()">🔄 Riprova (diverse domande)</button>
+      <button class="btn-home" onclick="goHome()">🏠 Menu principale</button>
+    </div>
+    <div class="review-section" id="review-section"></div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  Scuola di Italiano Caritas Como &nbsp;|&nbsp;
+  Sito gestito da <a href="https://d4digitalstudio.it" target="_blank" rel="noopener">D4 Digital Studio</a>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════════════════
+   EXERCISE DATABASE — 155 exercises across 5 types
+   Levels: A1, A2, B1
+   Types: scelta, verofalso, scrittura, coniugazione, ascolto
+═══════════════════════════════════════════════════════ */
+const DB = [
+
+/* ─── SCELTA MULTIPLA (45 questions) ──────────────────── */
+{type:'scelta',level:'A1',cat:'saluti',
+ q:'Come si dice "Good morning" in italiano?',
+ opts:['Buonasera','Buonanotte','Buongiorno','Ciao'],correct:2},
+
+{type:'scelta',level:'A1',cat:'saluti',
+ q:'Cosa significa "Arrivederci"?',
+ opts:['Buongiorno','Prego','Scusa','Arrivederci (Goodbye)'],correct:3},
+
+{type:'scelta',level:'A1',cat:'numeri',
+ q:'Quanti giorni ha una settimana?',
+ opts:['Cinque','Sei','Sette','Otto'],correct:2},
+
+{type:'scelta',level:'A1',cat:'articoli',
+ q:'Quale articolo si usa con "libro"?',
+ opts:["L'","La","Il","I"],correct:2},
+
+{type:'scelta',level:'A1',cat:'articoli',
+ q:'Quale articolo si usa con "amica"?',
+ opts:["Il","La","Lo","Le"],correct:1},
+
+{type:'scelta',level:'A1',cat:'verbi',
+ q:'Come si dice "I eat" in italiano?',
+ opts:['Io bevo','Io mangio','Io dormo','Io leggo'],correct:1},
+
+{type:'scelta',level:'A1',cat:'verbi',
+ q:'Qual è la forma corretta? "Tu ___ a scuola."',
+ opts:['vado','vai','va','andiamo'],correct:1},
+
+{type:'scelta',level:'A1',cat:'famiglia',
+ q:'Come si chiama il padre di tua madre?',
+ opts:['Zio','Fratello','Nonno','Nipote'],correct:2},
+
+{type:'scelta',level:'A1',cat:'colori',
+ q:'Di che colore è il cielo di solito?',
+ opts:['Verde','Rosso','Azzurro/Blu','Giallo'],correct:2},
+
+{type:'scelta',level:'A1',cat:'tempo',
+ q:'Come si dice "It is raining" in italiano?',
+ opts:['Fa caldo','Piove','Nevica','Fa freddo'],correct:1},
+
+{type:'scelta',level:'A2',cat:'preposizioni',
+ q:'Scelgo la preposizione giusta: "Vado ___ scuola"',
+ opts:['in','di','su','per'],correct:0},
+
+{type:'scelta',level:'A2',cat:'preposizioni',
+ q:'Completa: "Arrivo ___ Roma domani."',
+ opts:['da','di','a','su'],correct:2},
+
+{type:'scelta',level:'A2',cat:'passato',
+ q:'Passato prossimo di "mangiare" (io):',
+ opts:['ho mangiato','sono mangiato','avevo mangiato','mangiavo'],correct:0},
+
+{type:'scelta',level:'A2',cat:'passato',
+ q:'Passato prossimo di "andare" (lei):',
+ opts:['ha andato','è andato','è andata','aveva andato'],correct:2},
+
+{type:'scelta',level:'A2',cat:'pronomi',
+ q:'Come si dice "I like it" in italiano?',
+ opts:['Mi piace','Ti piace','Gli piace','Vi piace'],correct:0},
+
+{type:'scelta',level:'A2',cat:'pronomi',
+ q:'Scegli il pronome corretto: "___ parli italiano bene!"',
+ opts:['Io','Lui','Tu','Lei'],correct:2},
+
+{type:'scelta',level:'A2',cat:'aggettivi',
+ q:'Come si dice "interesting" in italiano?',
+ opts:['noioso','interessante','difficile','facile'],correct:1},
+
+{type:'scelta',level:'A2',cat:'negazione',
+ q:'Come si forma la negazione in italiano?',
+ opts:['Si mette "not" prima del verbo','Si usa "no" dopo il verbo','Si usa "non" prima del verbo','Si usa "niente" dopo il verbo'],correct:2},
+
+{type:'scelta',level:'A2',cat:'plurale',
+ q:'Qual è il plurale di "il libro"?',
+ opts:['i libri','i libre','le libri','gli libri'],correct:0},
+
+{type:'scelta',level:'A2',cat:'plurale',
+ q:'Qual è il plurale di "la città"?',
+ opts:['le città','le cittàs','le cittàe','le cittì'],correct:0},
+
+{type:'scelta',level:'B1',cat:'congiuntivo',
+ q:'Scegli la forma corretta: "Penso che lui ___ stanco."',
+ opts:['è','sia','sarà','è stato'],correct:1},
+
+{type:'scelta',level:'B1',cat:'congiuntivo',
+ q:'Scegli la forma corretta: "Spero che tu ___ bene."',
+ opts:['stai','stia','starai','stavi'],correct:1},
+
+{type:'scelta',level:'B1',cat:'condizionale',
+ q:'"Vorrei un caffè." Che tempo verbale è "vorrei"?',
+ opts:['Presente','Imperfetto','Condizionale presente','Futuro'],correct:2},
+
+{type:'scelta',level:'B1',cat:'condizionale',
+ q:'Se potessi, ___ in Italia.',
+ opts:['andrei','andrò','sono andato','vado'],correct:0},
+
+{type:'scelta',level:'B1',cat:'pronomi_relativi',
+ q:'Scegli il pronome corretto: "Il libro ___ ho letto è interessante."',
+ opts:['chi','quello','che','cui'],correct:2},
+
+{type:'scelta',level:'B1',cat:'pronomi_relativi',
+ q:'Completa: "L\'amico con ___ parlo è italiano."',
+ opts:['che','cui','chi','quale'],correct:1},
+
+{type:'scelta',level:'B1',cat:'vocabolario',
+ q:'Cosa significa "nonostante"?',
+ opts:['quindi','anche se / despite','però','perché'],correct:1},
+
+{type:'scelta',level:'B1',cat:'vocabolario',
+ q:'Sinonimo di "iniziare":',
+ opts:['finire','continuare','cominciare','smettere'],correct:2},
+
+{type:'scelta',level:'A1',cat:'giorni',
+ q:'Quale giorno viene dopo "martedì"?',
+ opts:['Lunedì','Mercoledì','Giovedì','Venerdì'],correct:1},
+
+{type:'scelta',level:'A1',cat:'mesi',
+ q:'Qual è il quarto mese dell\'anno?',
+ opts:['Marzo','Aprile','Maggio','Febbraio'],correct:1},
+
+{type:'scelta',level:'A2',cat:'cibo',
+ q:'Cosa si mette normalmente nella "pizza Margherita"?',
+ opts:['Prosciutto e funghi','Pomodoro e mozzarella','Solo formaggio','Verdure miste'],correct:1},
+
+{type:'scelta',level:'A2',cat:'sport',
+ q:'Come si chiama lo sport più popolare in Italia?',
+ opts:['Basket','Tennis','Calcio','Nuoto'],correct:2},
+
+{type:'scelta',level:'B1',cat:'cultura',
+ q:'Quale città è la capitale d\'Italia?',
+ opts:['Milano','Venezia','Napoli','Roma'],correct:3},
+
+{type:'scelta',level:'B1',cat:'cultura',
+ q:'Il Colosseo si trova a:',
+ opts:['Firenze','Roma','Venezia','Torino'],correct:1},
+
+{type:'scelta',level:'A1',cat:'corpo',
+ q:'Come si dice "eye" in italiano?',
+ opts:['Orecchio','Naso','Bocca','Occhio'],correct:3},
+
+{type:'scelta',level:'A1',cat:'corpo',
+ q:'Come si dice "hand" in italiano?',
+ opts:['Piede','Mano','Braccio','Testa'],correct:1},
+
+{type:'scelta',level:'A2',cat:'casa',
+ q:'Dove si cucina il cibo? In:',
+ opts:['La camera da letto','Il bagno','La cucina','Il salotto'],correct:2},
+
+{type:'scelta',level:'A2',cat:'lavoro',
+ q:'Chi cura i malati in ospedale?',
+ opts:['Avvocato','Maestro','Medico / Infermiere','Cuoco'],correct:2},
+
+{type:'scelta',level:'B1',cat:'grammatica',
+ q:'"Leggere" è un verbo della:',
+ opts:['Prima coniugazione (-are)','Seconda coniugazione (-ere)','Terza coniugazione (-ire)','Verbo irregolare'],correct:1},
+
+{type:'scelta',level:'B1',cat:'grammatica',
+ q:'Quale frase usa correttamente il passato remoto?',
+ opts:['Ieri ho mangiato la pizza','Dante scrisse la Divina Commedia','Stamattina sono uscito tardi','Ho già visto quel film'],correct:1},
+
+{type:'scelta',level:'A1',cat:'animali',
+ q:'Come si dice "dog" in italiano?',
+ opts:['Gatto','Cavallo','Cane','Uccello'],correct:2},
+
+{type:'scelta',level:'A1',cat:'frutta',
+ q:'Come si dice "apple" in italiano?',
+ opts:['Pera','Mela','Banana','Arancia'],correct:1},
+
+{type:'scelta',level:'A2',cat:'trasporti',
+ q:'Come si chiama il mezzo che si usa in mare?',
+ opts:['Treno','Aereo','Barca / Nave','Autobus'],correct:2},
+
+{type:'scelta',level:'B1',cat:'avverbi',
+ q:'Quale avverbio indica "in modo lento"?',
+ opts:['Velocemente','Lentamente','Facilmente','Chiaramente'],correct:1},
+
+{type:'scelta',level:'B1',cat:'preposizioni',
+ q:'Completa: "Ho bisogno ___ dormire."',
+ opts:['a','per','di','su'],correct:2},
+
+
+/* ─── VERO / FALSO (35 questions) ─────────────────────── */
+{type:'verofalso',level:'A1',cat:'grammatica',
+ q:'"Io" in italiano significa "You".',
+ correct:false,spiegazione:'"Io" significa "I" (prima persona singolare).'},
+
+{type:'verofalso',level:'A1',cat:'grammatica',
+ q:'In italiano, tutti i nomi femminili finiscono in -a.',
+ correct:false,spiegazione:'Molti nomi femminili finiscono in -a, ma non tutti. Es: "la chiave", "la città", "la notte".'},
+
+{type:'verofalso',level:'A1',cat:'pronuncia',
+ q:'In italiano, la lettera "c" davanti a "e" o "i" si pronuncia come "ch" in inglese ("church").',
+ correct:true,spiegazione:'Corretto! "Cena" si pronuncia "chena", "ciao" si pronuncia "chao".'},
+
+{type:'verofalso',level:'A1',cat:'numeri',
+ q:'"Venti" in italiano significa 30.',
+ correct:false,spiegazione:'"Venti" significa 20. 30 si dice "trenta".'},
+
+{type:'verofalso',level:'A1',cat:'verbi',
+ q:'Il verbo "essere" è irregolare in italiano.',
+ correct:true,spiegazione:'Corretto! "Essere" è molto irregolare: sono, sei, è, siamo, siete, sono.'},
+
+{type:'verofalso',level:'A2',cat:'passato',
+ q:'I verbi di movimento usano "avere" nel passato prossimo.',
+ correct:false,spiegazione:'I verbi di movimento (andare, venire, uscire…) usano "essere": sono andato, sono venuto.'},
+
+{type:'verofalso',level:'A2',cat:'passato',
+ q:'"Ho mangiato" è la forma corretta del passato prossimo di "mangiare" (io).',
+ correct:true,spiegazione:'Corretto! Mangiare usa "avere": ho mangiato, hai mangiato, ha mangiato...'},
+
+{type:'verofalso',level:'A2',cat:'articoli',
+ q:'L\'articolo determinativo "gli" si usa davanti a nomi maschili plurali.',
+ correct:true,spiegazione:'Corretto! "Gli" si usa davanti a z, s+consonante, ps, gn: "gli studenti", "gli zaini".'},
+
+{type:'verofalso',level:'A2',cat:'negazione',
+ q:'"Non mangio mai la carne" usa la doppia negazione.',
+ correct:true,spiegazione:'Corretto! In italiano la doppia negazione è corretta: "non... mai", "non... niente", "non... nessuno".'},
+
+{type:'verofalso',level:'A2',cat:'pronomi',
+ q:'"Mi piace i libri" è grammaticalmente corretto.',
+ correct:false,spiegazione:'Sbagliato! Con soggetto plurale: "Mi piacciono i libri". "Piace" → singolare, "piacciono" → plurale.'},
+
+{type:'verofalso',level:'B1',cat:'congiuntivo',
+ q:'Il congiuntivo si usa spesso dopo "pensare che" e "credere che".',
+ correct:true,spiegazione:'Corretto! "Penso che sia difficile", "Credo che venga domani".'},
+
+{type:'verofalso',level:'B1',cat:'condizionale',
+ q:'"Se avessi tempo, verrei" usa il condizionale presente.',
+ correct:true,spiegazione:'Corretto! "Verrei" è condizionale presente di "venire".'},
+
+{type:'verofalso',level:'B1',cat:'cultura',
+ q:'La lingua italiana è parlata solo in Italia.',
+ correct:false,spiegazione:'L\'italiano è parlato anche in Svizzera, San Marino, Vaticano, alcune zone della Croazia e Slovacchia, e da comunità di emigrati nel mondo.'},
+
+{type:'verofalso',level:'B1',cat:'storia',
+ q:'Dante Alighieri ha scritto la "Divina Commedia" nel XIV secolo.',
+ correct:true,spiegazione:'Corretto! Dante ha scritto la Divina Commedia tra il 1306 e il 1321.'},
+
+{type:'verofalso',level:'A1',cat:'saluti',
+ q:'"Buonanotte" si usa quando si incontra qualcuno di mattina.',
+ correct:false,spiegazione:'"Buonanotte" si usa la sera/notte, prima di dormire. Al mattino si dice "Buongiorno".'},
+
+{type:'verofalso',level:'A1',cat:'geografia',
+ q:'L\'Italia ha la forma di uno stivale.',
+ correct:true,spiegazione:'Corretto! La penisola italiana ha una caratteristica forma di stivale.'},
+
+{type:'verofalso',level:'A2',cat:'cibo',
+ q:'La carbonara tradizionale contiene panna.',
+ correct:false,spiegazione:'La carbonara tradizionale romana NON contiene panna, ma solo uova, guanciale, pecorino e pepe nero.'},
+
+{type:'verofalso',level:'A2',cat:'cibo',
+ q:'L\'espresso italiano si beve in una tazza grande.',
+ correct:false,spiegazione:'L\'espresso si beve in una tazzina piccola. Una tazza grande è un "cappuccino" o un "caffè americano".'},
+
+{type:'verofalso',level:'B1',cat:'grammatica',
+ q:'L\'imperfetto si usa per descrivere azioni abituali nel passato.',
+ correct:true,spiegazione:'Corretto! "Da bambino mangiavo sempre la pasta" — azione abitudinaria nel passato.'},
+
+{type:'verofalso',level:'B1',cat:'grammatica',
+ q:'Il futuro semplice di "andare" (io) è "andrò".',
+ correct:true,spiegazione:'Corretto! Andrò, andrai, andrà, andremo, andrete, andranno.'},
+
+{type:'verofalso',level:'A1',cat:'famiglia',
+ q:'In italiano, "genitori" significa "parents".',
+ correct:true,spiegazione:'Corretto! "I genitori" = the parents. Singolare: "il genitore".'},
+
+{type:'verofalso',level:'A2',cat:'stagioni',
+ q:'Le stagioni in italiano sono: primavera, estate, autunno, inverno.',
+ correct:true,spiegazione:'Corretto! Spring, Summer, Autumn, Winter.'},
+
+{type:'verofalso',level:'A2',cat:'orario',
+ q:'"Sono le tre e mezza" significa 3:30.',
+ correct:true,spiegazione:'Corretto! "Mezza" = 30 minuti. "E un quarto" = 15 minuti.'},
+
+{type:'verofalso',level:'B1',cat:'letteratura',
+ q:'Alessandro Manzoni ha scritto "I Promessi Sposi".',
+ correct:true,spiegazione:'Corretto! "I Promessi Sposi" (1827-1842) è considerato il primo grande romanzo della letteratura italiana.'},
+
+{type:'verofalso',level:'B1',cat:'regionalismi',
+ q:'Il dialetto veneto e il dialetto siciliano sono la stessa cosa.',
+ correct:false,spiegazione:'I dialetti italiani sono molto diversi tra loro. Ogni regione ha il suo dialetto con caratteristiche proprie.'},
+
+{type:'verofalso',level:'A1',cat:'scuola',
+ q:'In Italia, il voto massimo a scuola è 10.',
+ correct:true,spiegazione:'Corretto! La scala va da 0 a 10, con 6 come voto minimo per la sufficienza.'},
+
+{type:'verofalso',level:'A2',cat:'denaro',
+ q:'In Italia si usa l\'euro come moneta.',
+ correct:true,spiegazione:'Corretto! L\'Italia adottò l\'euro nel 2002 (in sostituzione della lira).'},
+
+{type:'verofalso',level:'B1',cat:'grammatica',
+ q:'Il verbo "piacere" si coniuga come un verbo transitivo normale.',
+ correct:false,spiegazione:'No! "Piacere" si costruisce al contrario: il soggetto è la cosa che piace e la persona è il complemento indiretto: "A me piace il caffè" = "The coffee pleases me".'},
+
+{type:'verofalso',level:'A1',cat:'corpo',
+ q:'"La testa" significa "the head" in italiano.',
+ correct:true,spiegazione:'Corretto! Testa = head, occhio = eye, orecchio = ear, naso = nose, bocca = mouth.'},
+
+{type:'verofalso',level:'A2',cat:'tempo',
+ q:'"Fa bello" significa che il tempo è brutto.',
+ correct:false,spiegazione:'"Fa bello" significa che fa bel tempo (nice weather). Il contrario è "fa brutto" o "fa cattivo tempo".'},
+
+{type:'verofalso',level:'B1',cat:'preposizioni',
+ q:'Le preposizioni articolate si formano unendo una preposizione a un articolo determinativo.',
+ correct:true,spiegazione:'Corretto! di + il = del, di + la = della, a + il = al, in + il = nel, ecc.'},
+
+{type:'verofalso',level:'A1',cat:'colori',
+ q:'"Giallo" significa "blue" in italiano.',
+ correct:false,spiegazione:'"Giallo" significa "yellow". "Blue/Azzurro" = blue, "Rosso" = red, "Verde" = green.'},
+
+{type:'verofalso',level:'A2',cat:'trasporti',
+ q:'In Italia, "il treno" è un mezzo di trasporto comune.',
+ correct:true,spiegazione:'Corretto! L\'Italia ha un\'ottima rete ferroviaria. Trenitalia e Italo sono le principali compagnie.'},
+
+{type:'verofalso',level:'B1',cat:'cultura',
+ q:'Il carnevale di Venezia è famoso in tutto il mondo.',
+ correct:true,spiegazione:'Corretto! Il Carnevale di Venezia è uno dei più famosi del mondo, con maschere tradizionali e costumi elaborati.'},
+
+{type:'verofalso',level:'B1',cat:'arte',
+ q:'Leonardo da Vinci ha dipinto la "Gioconda" (Mona Lisa).',
+ correct:true,spiegazione:'Corretto! La Gioconda fu dipinta da Leonardo tra il 1503 e il 1519. Ora si trova al museo del Louvre a Parigi.'},
+
+
+/* ─── SCRITTURA (30 questions) ─────────────────────────── */
+{type:'scrittura',level:'A1',cat:'saluti',
+ q:'Come si dice "Hello" informale in italiano?',
+ accept:['ciao'],hint:'Una parola di 4 lettere...'},
+
+{type:'scrittura',level:'A1',cat:'verbi',
+ q:'Scrivi la forma corretta: "Io ___ (chiamarsi) Marco."',
+ accept:['mi chiamo'],hint:'Verbo riflessivo...'},
+
+{type:'scrittura',level:'A1',cat:'numeri',
+ q:'Scrivi in lettere il numero 7.',
+ accept:['sette'],hint:'Inizia con "s"...'},
+
+{type:'scrittura',level:'A1',cat:'numeri',
+ q:'Scrivi in lettere il numero 12.',
+ accept:['dodici'],hint:'Inizia con "d"...'},
+
+{type:'scrittura',level:'A1',cat:'colori',
+ q:'Di che colore è l\'erba? Scrivi il colore in italiano.',
+ accept:['verde'],hint:'Inizia con "v"...'},
+
+{type:'scrittura',level:'A1',cat:'articoli',
+ q:'Qual è l\'articolo indeterminativo maschile singolare? (Es: ___ libro)',
+ accept:['un'],hint:'Due lettere...'},
+
+{type:'scrittura',level:'A2',cat:'passato',
+ q:'Coniuga "fare" al passato prossimo, prima persona singolare.',
+ accept:['ho fatto'],hint:'"Fare" è un verbo irregolare...'},
+
+{type:'scrittura',level:'A2',cat:'passato',
+ q:'Coniuga "venire" al passato prossimo, lei/lui.',
+ accept:['è venuto','è venuta'],hint:'Usa "essere", non "avere"...'},
+
+{type:'scrittura',level:'A2',cat:'plurale',
+ q:'Qual è il plurale di "ragazzo"?',
+ accept:['ragazzi'],hint:'Maschile in -o → plurale in -i'},
+
+{type:'scrittura',level:'A2',cat:'plurale',
+ q:'Qual è il plurale di "ragazza"?',
+ accept:['ragazze'],hint:'Femminile in -a → plurale in -e'},
+
+{type:'scrittura',level:'A2',cat:'preposizioni',
+ q:'Completa con la preposizione articolata: "Vado ___ (a + il) supermercato."',
+ accept:['al'],hint:'"a" + "il" = ?'},
+
+{type:'scrittura',level:'A2',cat:'preposizioni',
+ q:'Completa: "Vengo ___ (da + la) palestra."',
+ accept:['dalla'],hint:'"da" + "la" = ?'},
+
+{type:'scrittura',level:'B1',cat:'congiuntivo',
+ q:'Completa con il congiuntivo: "Penso che Marco ___ (essere) italiano."',
+ accept:['sia'],hint:'Congiuntivo presente di "essere"...'},
+
+{type:'scrittura',level:'B1',cat:'condizionale',
+ q:'Forma il condizionale: "Se potessi, ___ (andare) in Italia."',
+ accept:['andrei'],hint:'Condizionale presente di "andare"...'},
+
+{type:'scrittura',level:'B1',cat:'vocabolario',
+ q:'Scrivi il contrario di "veloce".',
+ accept:['lento','lenta'],hint:'L\'opposto di fast/quick...'},
+
+{type:'scrittura',level:'B1',cat:'vocabolario',
+ q:'Scrivi il contrario di "aperto".',
+ accept:['chiuso','chiusa'],hint:'L\'opposto di open...'},
+
+{type:'scrittura',level:'A1',cat:'giorni',
+ q:'Qual è il primo giorno della settimana in Italia?',
+ accept:['lunedì'],hint:'Monday in italiano...'},
+
+{type:'scrittura',level:'A2',cat:'imperativo',
+ q:'Forma l\'imperativo informale di "mangiare" (tu): "___ la verdura!"',
+ accept:['mangia'],hint:'"Tu mangi" → imperativo...'},
+
+{type:'scrittura',level:'A2',cat:'imperativo',
+ q:'Forma l\'imperativo formale (Lei) di "aspettare": "___, per favore!"',
+ accept:['aspetti'],hint:'Imperativo formale, terza persona...'},
+
+{type:'scrittura',level:'B1',cat:'avverbi',
+ q:'Forma l\'avverbio da "rapido".',
+ accept:['rapidamente'],hint:'Aggettivo femminile + -mente'},
+
+{type:'scrittura',level:'A1',cat:'mesi',
+ q:'In quale mese si festeggia il Natale?',
+ accept:['dicembre'],hint:'Il 25° giorno di questo mese...'},
+
+{type:'scrittura',level:'A2',cat:'orario',
+ q:'Come si dice "It is half past two" in italiano?',
+ accept:['sono le due e mezza','sono le 2 e mezza'],hint:'"Sono le ___"...'},
+
+{type:'scrittura',level:'B1',cat:'grammatica',
+ q:'Trasforma in passivo: "Marco mangia la pizza." → "La pizza ___ mangiata da Marco."',
+ accept:['è','viene'],hint:'Usa il verbo "essere" o "venire"...'},
+
+{type:'scrittura',level:'A1',cat:'paese',
+ q:'Come si chiama il paese dove si parla italiano? (la capitale è Roma)',
+ accept:['italia','l\'italia'],hint:'Inizia con "I"...'},
+
+{type:'scrittura',level:'A2',cat:'verbi_modali',
+ q:'Completa: "Devo ___ (studiare) di più." Scrivi il verbo all\'infinito.',
+ accept:['studiare'],hint:'Infinito di "to study"...'},
+
+{type:'scrittura',level:'B1',cat:'comparativo',
+ q:'Forma il comparativo: "Roma è ___ grande ___ Venezia." (more... than)',
+ accept:['più grande di','più grande che'],hint:'"più ___ di/che"'},
+
+{type:'scrittura',level:'A1',cat:'possessivi',
+ q:'Come si dice "my mother" in italiano?',
+ accept:['mia madre','la mia madre'],hint:'"Mio/Mia" = my'},
+
+{type:'scrittura',level:'A2',cat:'riflessivi',
+ q:'Come si dice "I wake up" in italiano? (svegliarsi, io)',
+ accept:['mi sveglio'],hint:'Verbo riflessivo: mi/ti/si...'},
+
+{type:'scrittura',level:'B1',cat:'gerundio',
+ q:'Forma il gerundio di "parlare".',
+ accept:['parlando'],hint:'-are → -ando'},
+
+{type:'scrittura',level:'B1',cat:'gerundio',
+ q:'Forma il gerundio di "partire".',
+ accept:['partendo'],hint:'-ire → -endo'},
+
+
+/* ─── CONIUGAZIONE (25 questions) ────────────────────────
+   Each item has a verb, tense, and 6 forms (io/tu/lui/noi/voi/loro)
+   We show the verb/tense as prompt, user fills 1-3 selected forms
+*/
+{type:'coniugazione',level:'A1',cat:'verbi',
+ verb:'ESSERE',tense:'Presente',
+ pronoms:['io','tu','lui/lei'],
+ correct:['sono','sei','è']},
+
+{type:'coniugazione',level:'A1',cat:'verbi',
+ verb:'AVERE',tense:'Presente',
+ pronoms:['io','tu','lui/lei'],
+ correct:['ho','hai','ha']},
+
+{type:'coniugazione',level:'A1',cat:'verbi',
+ verb:'PARLARE',tense:'Presente',
+ pronoms:['io','tu','lui/lei'],
+ correct:['parlo','parli','parla']},
+
+{type:'coniugazione',level:'A1',cat:'verbi',
+ verb:'ANDARE',tense:'Presente',
+ pronoms:['io','tu','lui/lei'],
+ correct:['vado','vai','va']},
+
+{type:'coniugazione',level:'A1',cat:'verbi',
+ verb:'FARE',tense:'Presente',
+ pronoms:['io','tu','lui/lei'],
+ correct:['faccio','fai','fa']},
+
+{type:'coniugazione',level:'A2',cat:'verbi',
+ verb:'MANGIARE',tense:'Imperfetto',
+ pronoms:['io','tu','lui/lei'],
+ correct:['mangiavo','mangiavi','mangiava']},
+
+{type:'coniugazione',level:'A2',cat:'verbi',
+ verb:'VOLERE',tense:'Presente',
+ pronoms:['io','tu','lui/lei'],
+ correct:['voglio','vuoi','vuole']},
+
+{type:'coniugazione',level:'A2',cat:'verbi',
+ verb:'POTERE',tense:'Presente',
+ pronoms:['io','tu','lui/lei'],
+ correct:['posso','puoi','può']},
+
+{type:'coniugazione',level:'A2',cat:'verbi',
+ verb:'DOVERE',tense:'Presente',
+ pronoms:['io','tu','lui/lei'],
+ correct:['devo','devi','deve']},
+
+{type:'coniugazione',level:'A2',cat:'verbi',
+ verb:'VENIRE',tense:'Presente',
+ pronoms:['io','tu','lui/lei'],
+ correct:['vengo','vieni','viene']},
+
+{type:'coniugazione',level:'B1',cat:'verbi',
+ verb:'SAPERE',tense:'Presente',
+ pronoms:['io','tu','lui/lei'],
+ correct:['so','sai','sa']},
+
+{type:'coniugazione',level:'B1',cat:'verbi',
+ verb:'DARE',tense:'Presente',
+ pronoms:['io','tu','lui/lei'],
+ correct:['do','dai','dà']},
+
+{type:'coniugazione',level:'B1',cat:'verbi',
+ verb:'STARE',tense:'Congiuntivo presente',
+ pronoms:['io','tu','lui/lei'],
+ correct:['stia','stia','stia']},
+
+{type:'coniugazione',level:'B1',cat:'verbi',
+ verb:'ANDARE',tense:'Futuro semplice',
+ pronoms:['io','tu','lui/lei'],
+ correct:['andrò','andrai','andrà']},
+
+{type:'coniugazione',level:'B1',cat:'verbi',
+ verb:'LEGGERE',tense:'Passato remoto',
+ pronoms:['io','tu','lui/lei'],
+ correct:['lessi','leggesti','lesse']},
+
+{type:'coniugazione',level:'A2',cat:'verbi',
+ verb:'CAPIRE',tense:'Presente',
+ pronoms:['io','tu','lui/lei'],
+ correct:['capisco','capisci','capisce']},
+
+{type:'coniugazione',level:'A2',cat:'verbi',
+ verb:'PREFERIRE',tense:'Presente',
+ pronoms:['io','tu','lui/lei'],
+ correct:['preferisco','preferisci','preferisce']},
+
+{type:'coniugazione',level:'A1',cat:'verbi',
+ verb:'CHIAMARSI',tense:'Presente',
+ pronoms:['io','tu','lui/lei'],
+ correct:['mi chiamo','ti chiami','si chiama']},
+
+{type:'coniugazione',level:'B1',cat:'verbi',
+ verb:'PIACERE',tense:'Presente',
+ pronoms:['io (a me)','tu (a te)','lui/lei (a lui/lei)'],
+ correct:['mi piace','ti piace','gli/le piace']},
+
+{type:'coniugazione',level:'B1',cat:'verbi',
+ verb:'VOLERE',tense:'Condizionale presente',
+ pronoms:['io','tu','lui/lei'],
+ correct:['vorrei','vorresti','vorrebbe']},
+
+{type:'coniugazione',level:'A2',cat:'verbi',
+ verb:'SCRIVERE',tense:'Passato prossimo',
+ pronoms:['io','tu','lui/lei'],
+ correct:['ho scritto','hai scritto','ha scritto']},
+
+{type:'coniugazione',level:'A2',cat:'verbi',
+ verb:'USCIRE',tense:'Presente',
+ pronoms:['io','tu','lui/lei'],
+ correct:['esco','esci','esce']},
+
+{type:'coniugazione',level:'B1',cat:'verbi',
+ verb:'RIMANERE',tense:'Presente',
+ pronoms:['io','tu','lui/lei'],
+ correct:['rimango','rimani','rimane']},
+
+{type:'coniugazione',level:'B1',cat:'verbi',
+ verb:'TRADURRE',tense:'Presente',
+ pronoms:['io','tu','lui/lei'],
+ correct:['traduco','traduci','traduce']},
+
+{type:'coniugazione',level:'A2',cat:'verbi',
+ verb:'PRENDERE',tense:'Presente',
+ pronoms:['io','tu','lui/lei'],
+ correct:['prendo','prendi','prende']},
+
+
+/* ─── ASCOLTO (20 questions — Web Speech API for now) ─── */
+{type:'ascolto',level:'A1',cat:'pronuncia',
+ tts:'Buongiorno, come stai?',
+ q:'Cosa senti? Scrivi la frase.',
+ accept:['buongiorno come stai','buongiorno, come stai?'],
+ hint:'Un saluto comune al mattino...'},
+
+{type:'ascolto',level:'A1',cat:'pronuncia',
+ tts:'Mi chiamo Lucia. Sono italiana.',
+ q:'Come si chiama la persona?',
+ accept:['lucia'],
+ hint:'Ascolta il nome proprio...'},
+
+{type:'ascolto',level:'A1',cat:'numeri',
+ tts:'Ho trentadue anni.',
+ q:'Quanti anni ha la persona?',
+ accept:['32','trentadue'],
+ hint:'Un numero tra 30 e 40...'},
+
+{type:'ascolto',level:'A2',cat:'comprensione',
+ tts:'Domani vado al mercato con mia sorella.',
+ q:'Dove va la persona domani?',
+ accept:['al mercato','mercato'],
+ hint:'Un posto dove si compra cibo...'},
+
+{type:'ascolto',level:'A2',cat:'comprensione',
+ tts:'Sono le otto e un quarto di mattina.',
+ q:'Che ora è?',
+ accept:['8:15','le otto e un quarto','otto e un quarto'],
+ hint:'Un\'ora del mattino...'},
+
+{type:'ascolto',level:'A2',cat:'comprensione',
+ tts:'Il treno per Roma parte dal binario tre alle dieci.',
+ q:'Da quale binario parte il treno?',
+ accept:['tre','binario tre','3'],
+ hint:'Un numero piccolo...'},
+
+{type:'ascolto',level:'B1',cat:'comprensione',
+ tts:'Nonostante la pioggia, siamo andati al parco.',
+ q:'Sono andati al parco?',
+ accept:['sì','si','yes'],
+ hint:'Nonostante = despite...'},
+
+{type:'ascolto',level:'B1',cat:'comprensione',
+ tts:'Se avessi più tempo, studierei il giapponese.',
+ q:'La persona studia già il giapponese?',
+ accept:['no'],
+ hint:'Il condizionale indica un\'ipotesi...'},
+
+{type:'ascolto',level:'A1',cat:'vocabolo',
+ tts:'La mela è un frutto rosso o verde.',
+ q:'Di che colore è la mela?',
+ accept:['rosso e verde','rosso o verde','rossa o verde','rossa e verde','red and green'],
+ hint:'Due colori...'},
+
+{type:'ascolto',level:'A2',cat:'vocabolo',
+ tts:'Per fare la pasta bisogna mettere l\'acqua in una pentola grande.',
+ q:'Cosa serve per fare la pasta?',
+ accept:['acqua','una pentola','pentola'],
+ hint:'Un liquido comune...'},
+
+{type:'ascolto',level:'A1',cat:'pronuncia',
+ tts:'Arrivederci e buona giornata!',
+ q:'Cosa senti? (scrivi le parole principali)',
+ accept:['arrivederci','buona giornata','arrivederci e buona giornata'],
+ hint:'Un saluto di commiato...'},
+
+{type:'ascolto',level:'A2',cat:'comprensione',
+ tts:'Mio fratello lavora come medico in un ospedale di Milano.',
+ q:'Dove lavora il fratello?',
+ accept:['in un ospedale','ospedale','a milano','un ospedale di milano'],
+ hint:'Un edificio sanitario...'},
+
+{type:'ascolto',level:'B1',cat:'comprensione',
+ tts:'Benché sia stanco, continuerò a lavorare fino alle sei.',
+ q:'La persona continuerà a lavorare?',
+ accept:['sì','si'],
+ hint:'"Benché" = although...'},
+
+{type:'ascolto',level:'A1',cat:'numeri',
+ tts:'La settimana ha sette giorni.',
+ q:'Quanti giorni ha la settimana?',
+ accept:['sette','7'],
+ hint:'Un numero singolo cifra...'},
+
+{type:'ascolto',level:'A2',cat:'orario',
+ tts:'Il negozio apre alle nove e chiude alle diciannove.',
+ q:'A che ora chiude il negozio?',
+ accept:['diciannove','19','alle diciannove','alle 19'],
+ hint:'Un orario nel tardo pomeriggio/sera...'},
+
+{type:'ascolto',level:'B1',cat:'comprehensione',
+ tts:'Vorrei prenotare un tavolo per due persone, per favore.',
+ q:'Quante persone vuole prenotare?',
+ accept:['due','2'],
+ hint:'Il numero dopo "uno"...'},
+
+{type:'ascolto',level:'A1',cat:'saluti',
+ tts:'Ciao! Come ti chiami?',
+ q:'Cosa chiede la persona?',
+ accept:['come ti chiami','il nome','il tuo nome'],
+ hint:'Una domanda comune quando si incontra qualcuno...'},
+
+{type:'ascolto',level:'A2',cat:'comprehensione',
+ tts:'Ho dimenticato il mio ombrello a casa. Adesso piove.',
+ q:'Perché la persona ha un problema?',
+ accept:['piove','ha dimenticato l\'ombrello','non ha l\'ombrello','piove e non ha l\'ombrello'],
+ hint:'"Dimenticato" + condizione meteo...'},
+
+{type:'ascolto',level:'B1',cat:'comprehensione',
+ tts:'Poiché domani ho un esame importante, stasera non esco.',
+ q:'Perché la persona non esce stasera?',
+ accept:['ha un esame','per l\'esame','a causa dell\'esame','studia per l\'esame'],
+ hint:'"Poiché" = because...'},
+
+{type:'ascolto',level:'A2',cat:'vocabolo',
+ tts:'Ho comprato una camicia bianca e dei pantaloni neri.',
+ q:'Che colore è la camicia?',
+ accept:['bianca','bianco'],
+ hint:'Il colore della neve...'},
+];
+
+/* ═══════════════════════════════════════════════════════
+   STATE
+═══════════════════════════════════════════════════════ */
+let state = {
+  mode: 'scelta',
+  level: 'all',
+  qty: 10,
+  pool: [],
+  index: 0,
+  correct: 0,
+  wrong: 0,
+  answered: false,
+  results: []
+};
+
+/* ═══════════════════════════════════════════════════════
+   SETUP CONTROLS
+═══════════════════════════════════════════════════════ */
+function selectMode(el){
+  document.querySelectorAll('.mode-card').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+  state.mode = el.dataset.mode;
+}
+function selectLevel(el){
+  document.querySelectorAll('#level-chips .chip').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  state.level = el.dataset.level;
+}
+function selectQty(el){
+  document.querySelectorAll('#qty-chips .chip').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  state.qty = parseInt(el.dataset.qty);
+}
+
+/* ═══════════════════════════════════════════════════════
+   FISHER-YATES SHUFFLE
+═══════════════════════════════════════════════════════ */
+function shuffle(arr){
+  const a=[...arr];
+  for(let i=a.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+/* ═══════════════════════════════════════════════════════
+   START QUIZ
+═══════════════════════════════════════════════════════ */
+function startQuiz(){
+  // Filter by mode and level
+  let pool = DB.filter(q=>{
+    const modeOk = state.mode==='all' || q.type===state.mode;
+    const lvlOk  = state.level==='all' || q.level===state.level;
+    return modeOk && lvlOk;
+  });
+
+  if(pool.length===0){
+    alert('Nessun esercizio trovato per questa combinazione. Prova con impostazioni diverse.');
+    return;
+  }
+
+  pool = shuffle(pool);
+  state.pool = pool.slice(0, Math.min(state.qty, pool.length));
+  state.index = 0;
+  state.correct = 0;
+  state.wrong = 0;
+  state.results = [];
+  state.answered = false;
+
+  document.getElementById('home-screen').style.display='none';
+  document.getElementById('setup-screen').style.display='none';
+  document.getElementById('quiz-screen').style.display='block';
+  document.getElementById('result-screen').style.display='none';
+
+  document.getElementById('q-total').textContent = state.pool.length;
+  document.getElementById('score-live').textContent = '0';
+  renderQuestion();
+}
+
+/* ═══════════════════════════════════════════════════════
+   RENDER QUESTION
+═══════════════════════════════════════════════════════ */
+function renderQuestion(){
+  state.answered = false;
+  const q = state.pool[state.index];
+  const total = state.pool.length;
+
+  document.getElementById('q-num').textContent = state.index+1;
+  document.getElementById('progress-fill').style.width = ((state.index/total)*100)+'%';
+
+  const btn = document.getElementById('btn-next');
+  btn.classList.remove('show');
+  btn.textContent = state.index < total-1 ? 'Prossima domanda →' : 'Vedi risultati ✓';
+
+  const container = document.getElementById('q-container');
+  container.innerHTML = '';
+
+  const card = document.createElement('div');
+  card.className = 'q-card';
+
+  const typeLabel = {
+    scelta:'🔤 Scelta multipla',
+    verofalso:'✅ Vero o Falso',
+    scrittura:'✏️ Scrittura',
+    coniugazione:'🔄 Coniugazione',
+    ascolto:'🎧 Ascolto'
+  };
+
+  card.innerHTML = `<div class="q-type-badge">${typeLabel[q.type]||q.type} · ${q.level}</div>`;
+
+  if(q.type==='scelta')      buildScelta(card, q);
+  else if(q.type==='verofalso')  buildVeroFalso(card, q);
+  else if(q.type==='scrittura')  buildScrittura(card, q);
+  else if(q.type==='coniugazione') buildConiugazione(card, q);
+  else if(q.type==='ascolto')    buildAscolto(card, q);
+
+  // Feedback area
+  const fb = document.createElement('div');
+  fb.className = 'feedback';
+  fb.id = 'feedback';
+  card.appendChild(fb);
+
+  container.appendChild(card);
+}
+
+/* ── BUILD: SCELTA MULTIPLA ───────────────────────────── */
+function buildScelta(card, q){
+  card.innerHTML += `<div class="q-text">${q.q}</div>`;
+
+  const letters=['A','B','C','D'];
+  const shuffledIdxs = shuffle([0,1,2,3]);
+
+  const list = document.createElement('div');
+  list.className='options-list';
+
+  let newCorrect = 0;
+  shuffledIdxs.forEach((origIdx, pos)=>{
+    if(origIdx===q.correct) newCorrect=pos;
+    const btn=document.createElement('button');
+    btn.className='option-btn';
+    btn.dataset.letter=letters[pos];
+    btn.dataset.idx=pos;
+    btn.textContent=q.opts[origIdx];
+    btn.onclick=()=>answerScelta(btn, pos, newCorrect, q, list);
+    list.appendChild(btn);
+  });
+
+  // store correct in closure via data attribute
+  list.dataset.correct = newCorrect;
+  card.appendChild(list);
+}
+
+function answerScelta(btn, chosen, correct, q, list){
+  if(state.answered) return;
+  state.answered=true;
+
+  const btns=list.querySelectorAll('.option-btn');
+  btns.forEach(b=>{b.disabled=true;});
+
+  const isCorrect = chosen===correct;
+  btn.classList.add(isCorrect?'correct':'wrong');
+  if(!isCorrect) btns[correct].classList.add('correct');
+
+  showFeedback(isCorrect, q.opts[q.correct]);
+  recordResult(isCorrect, q.q, q.opts[q.correct], q.opts[chosen]||'');
+}
+
+/* ── BUILD: VERO / FALSO ──────────────────────────────── */
+function buildVeroFalso(card, q){
+  card.innerHTML += `<div class="q-text">${q.q}</div>`;
+  if(q.spiegazione) {/* shown in feedback */}
+
+  const group=document.createElement('div');
+  group.className='tf-group';
+
+  ['Vero ✓','Falso ✗'].forEach((label, i)=>{
+    const btn=document.createElement('button');
+    btn.className='tf-btn '+(i===0?'tf-vero':'tf-falso');
+    btn.textContent=label;
+    const answer=(i===0); // Vero=true, Falso=false
+    btn.onclick=()=>answerTF(btn, answer, q, group);
+    group.appendChild(btn);
+  });
+  card.appendChild(group);
+}
+
+function answerTF(btn, chosen, q, group){
+  if(state.answered) return;
+  state.answered=true;
+
+  group.querySelectorAll('.tf-btn').forEach(b=>b.disabled=true);
+  const isCorrect=(chosen===q.correct);
+  btn.classList.add(isCorrect?'correct':'wrong');
+  if(!isCorrect){
+    const otherBtn=group.querySelector(q.correct?'.tf-vero':'.tf-falso');
+    if(otherBtn) otherBtn.classList.add('correct');
+  }
+
+  const expl = q.spiegazione || (q.correct ? 'La risposta corretta è Vero.' : 'La risposta corretta è Falso.');
+  showFeedback(isCorrect, expl);
+  recordResult(isCorrect, q.q, q.correct?'Vero':'Falso', chosen?'Vero':'Falso');
+}
+
+/* ── BUILD: SCRITTURA ─────────────────────────────────── */
+function buildScrittura(card, q){
+  card.innerHTML += `<div class="q-text">${q.q}</div>`;
+  if(q.hint) card.innerHTML += `<div class="q-hint">💡 ${q.hint}</div>`;
+
+  const wrap=document.createElement('div');
+  wrap.className='write-area';
+
+  const inp=document.createElement('input');
+  inp.type='text';
+  inp.className='write-input';
+  inp.id='write-input';
+  inp.placeholder='Scrivi la tua risposta...';
+  inp.autocomplete='off';
+  inp.autocorrect='off';
+  inp.spellcheck=false;
+
+  const checkBtn=document.createElement('button');
+  checkBtn.className='btn-check';
+  checkBtn.textContent='Controlla ✓';
+  checkBtn.onclick=()=>answerScrittura(inp, q);
+
+  inp.addEventListener('keydown', e=>{
+    if(e.key==='Enter') checkBtn.click();
+  });
+
+  wrap.appendChild(inp);
+  wrap.appendChild(checkBtn);
+  card.appendChild(wrap);
+
+  setTimeout(()=>inp.focus(),100);
+}
+
+function answerScrittura(inp, q){
+  if(state.answered) return;
+  state.answered=true;
+
+  const userVal=inp.value.trim().toLowerCase()
+    .normalize('NFD').replace(/[̀-ͯ]/g,''); // remove accents for comparison
+
+  const isCorrect=q.accept.some(a=>{
+    const norm=a.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+    return userVal===norm || userVal.includes(norm) || norm.includes(userVal);
+  });
+
+  inp.disabled=true;
+  inp.classList.add(isCorrect?'correct':'wrong');
+  if(!isCorrect) inp.value=inp.value; // keep user input
+
+  showFeedback(isCorrect, q.accept[0]);
+  recordResult(isCorrect, q.q, q.accept[0], inp.value);
+}
+
+/* ── BUILD: CONIUGAZIONE ──────────────────────────────── */
+function buildConiugazione(card, q){
+  card.innerHTML += `<div class="q-text">Coniuga: <strong>${q.verb}</strong> — ${q.tense}</div>`;
+
+  const table=document.createElement('table');
+  table.className='conj-table';
+  table.innerHTML=`<thead><tr><th>Persona</th><th>Forma</th></tr></thead>`;
+  const tbody=document.createElement('tbody');
+
+  q.pronoms.forEach((pron,i)=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td class="conj-label">${pron}</td>
+      <td><input type="text" class="conj-input" data-i="${i}" placeholder="..." autocomplete="off" autocorrect="off" spellcheck="false"></td>`;
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+  card.appendChild(table);
+
+  const checkBtn=document.createElement('button');
+  checkBtn.className='btn-check';
+  checkBtn.style.cssText='margin-top:12px;display:block;';
+  checkBtn.textContent='Controlla ✓';
+  checkBtn.onclick=()=>answerConiugazione(table, q);
+  card.appendChild(checkBtn);
+
+  table.querySelectorAll('.conj-input')[0]?.focus();
+}
+
+function answerConiugazione(table, q){
+  if(state.answered) return;
+  state.answered=true;
+
+  const inputs=table.querySelectorAll('.conj-input');
+  let allCorrect=true;
+  let wrong=[];
+
+  inputs.forEach((inp,i)=>{
+    inp.disabled=true;
+    const userVal=inp.value.trim().toLowerCase()
+      .normalize('NFD').replace(/[̀-ͯ]/g,'');
+    const correctVal=q.correct[i].toLowerCase()
+      .normalize('NFD').replace(/[̀-ͯ]/g,'');
+    const ok = userVal===correctVal || correctVal.includes(userVal) || userVal.includes(correctVal);
+    inp.classList.add(ok?'correct':'wrong');
+    if(!ok){ allCorrect=false; wrong.push(`${q.pronoms[i]}: ${q.correct[i]}`); }
+  });
+
+  const fb = allCorrect ? null : 'Forme corrette: '+q.correct.join(', ');
+  showFeedback(allCorrect, fb||'Perfetto! Tutte le forme sono corrette.');
+  recordResult(allCorrect, `${q.verb} (${q.tense})`, q.correct.join(', '),
+    Array.from(inputs).map(i=>i.value).join(', '));
+}
+
+/* ── BUILD: ASCOLTO ───────────────────────────────────── */
+function buildAscolto(card, q){
+  // Web Speech API as placeholder (ElevenLabs audio will replace this)
+  const audioBtn=document.createElement('button');
+  audioBtn.className='audio-btn';
+  audioBtn.id='audio-btn';
+  audioBtn.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5,3 19,12 5,21"/></svg> Ascolta`;
+  audioBtn.onclick=()=>speak(q.tts, audioBtn);
+  card.appendChild(audioBtn);
+
+  card.innerHTML += `<div class="q-text">${q.q}</div>`;
+  if(q.hint) card.innerHTML += `<div class="q-hint">💡 ${q.hint}</div>`;
+
+  const wrap=document.createElement('div');
+  wrap.className='write-area';
+  const inp=document.createElement('input');
+  inp.type='text';
+  inp.className='write-input';
+  inp.id='write-input';
+  inp.placeholder='Scrivi la tua risposta...';
+  inp.autocomplete='off';
+  inp.autocorrect='off';
+  inp.spellcheck=false;
+  const checkBtn=document.createElement('button');
+  checkBtn.className='btn-check';
+  checkBtn.textContent='Controlla ✓';
+  checkBtn.onclick=()=>answerAscolto(inp, q);
+  inp.addEventListener('keydown',e=>{ if(e.key==='Enter') checkBtn.click(); });
+  wrap.appendChild(inp);
+  wrap.appendChild(checkBtn);
+  card.appendChild(wrap);
+}
+
+function speak(text, btn){
+  if(!window.speechSynthesis){ alert('Il tuo browser non supporta la sintesi vocale.'); return; }
+  speechSynthesis.cancel();
+  const utt=new SpeechSynthesisUtterance(text);
+  utt.lang='it-IT';
+  utt.rate=0.9;
+
+  // Try to find Italian voice
+  const voices=speechSynthesis.getVoices();
+  const itVoice=voices.find(v=>v.lang.startsWith('it'));
+  if(itVoice) utt.voice=itVoice;
+
+  btn.classList.add('speaking');
+  btn.innerHTML=`<svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><rect x="5" y="4" width="4" height="16" rx="1"/><rect x="15" y="4" width="4" height="16" rx="1"/></svg> In riproduzione...`;
+  utt.onend=()=>{
+    btn.classList.remove('speaking');
+    btn.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5,3 19,12 5,21"/></svg> Ascolta di nuovo`;
+  };
+  speechSynthesis.speak(utt);
+}
+
+function answerAscolto(inp, q){
+  if(state.answered) return;
+  state.answered=true;
+
+  const userVal=inp.value.trim().toLowerCase()
+    .normalize('NFD').replace(/[̀-ͯ]/g,'');
+
+  const isCorrect=q.accept.some(a=>{
+    const norm=a.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+    return userVal===norm || userVal.includes(norm) || norm.includes(userVal);
+  });
+
+  inp.disabled=true;
+  inp.classList.add(isCorrect?'correct':'wrong');
+  showFeedback(isCorrect, q.accept[0]);
+  recordResult(isCorrect, q.q, q.accept[0], inp.value);
+}
+
+/* ═══════════════════════════════════════════════════════
+   SHARED HELPERS
+═══════════════════════════════════════════════════════ */
+function showFeedback(isCorrect, correctAnswer){
+  const fb=document.getElementById('feedback');
+  if(!fb) return;
+  fb.className=`feedback ${isCorrect?'correct-fb':'wrong-fb'} show`;
+  if(isCorrect){
+    fb.innerHTML=`<span class="feedback-icon">🎉</span><span>Ottimo! <strong>Corretto!</strong></span>`;
+  } else {
+    fb.innerHTML=`<span class="feedback-icon">❌</span><span>Sbagliato. La risposta corretta è: <strong>${correctAnswer}</strong></span>`;
+  }
+
+  if(isCorrect){ state.correct++; }
+  else { state.wrong++; }
+  document.getElementById('score-live').textContent = state.correct;
+
+  const btn=document.getElementById('btn-next');
+  btn.classList.add('show');
+}
+
+function recordResult(isCorrect, question, correct, given){
+  state.results.push({isCorrect, question, correct, given});
+}
+
+function nextQuestion(){
+  state.index++;
+  if(state.index>=state.pool.length){
+    showResults();
+  } else {
+    renderQuestion();
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   RESULTS
+═══════════════════════════════════════════════════════ */
+function showResults(){
+  document.getElementById('quiz-screen').style.display='none';
+  document.getElementById('result-screen').style.display='block';
+
+  const total=state.pool.length;
+  const pct=Math.round((state.correct/total)*100);
+
+  document.getElementById('score-big').textContent=`${state.correct}/${total}`;
+  document.getElementById('score-pct').textContent=`${pct}% di precisione`;
+  document.getElementById('stat-correct').textContent=state.correct;
+  document.getElementById('stat-wrong').textContent=state.wrong;
+  document.getElementById('stat-pct').textContent=pct+'%';
+
+  // Emoji & message
+  let emoji, title, msg;
+  if(pct>=90){ emoji='🏆'; title='Eccellente!'; msg='Risultato straordinario! Il tuo italiano è davvero ottimo. Continua così!'; }
+  else if(pct>=75){ emoji='🎉'; title='Ottimo lavoro!'; msg='Molto bene! Hai dimostrato una buona padronanza dell\'italiano. Pratica ancora per raggiungere la perfezione.'; }
+  else if(pct>=60){ emoji='👍'; title='Buon risultato!'; msg='Ben fatto! Stai progredendo. Riprova per migliorare ulteriormente le tue competenze.'; }
+  else if(pct>=40){ emoji='💪'; title='Continua a praticare!'; msg='Un buon inizio. L\'italiano richiede pratica costante. Riprova e vedrai i miglioramenti!'; }
+  else { emoji='📚'; title='Impariamo insieme!'; msg='Non preoccuparti! Ogni errore è un\'opportunità di imparare. Riprova con fiducia!'; }
+
+  document.getElementById('result-emoji').textContent=emoji;
+  document.getElementById('result-title').textContent=title;
+  document.getElementById('result-msg').textContent=msg;
+
+  // Progress bar final
+  document.getElementById('progress-fill').style.width='100%';
+
+  // Review
+  const rev=document.getElementById('review-section');
+  if(state.results.length>0){
+    const wrongOnes=state.results.filter(r=>!r.isCorrect);
+    if(wrongOnes.length>0){
+      let html=`<h3>📖 Rivedi gli errori (${wrongOnes.length})</h3>`;
+      wrongOnes.forEach(r=>{
+        html+=`<div class="review-item review-wrong">
+          <div class="review-q">${r.question}</div>
+          <div class="review-a">La tua risposta: <span class="bad">${r.given||'—'}</span> &nbsp;→&nbsp; Risposta corretta: <span class="ok">${r.correct}</span></div>
+        </div>`;
+      });
+      rev.innerHTML=html;
+    } else {
+      rev.innerHTML='<p style="text-align:center;color:var(--correct);font-weight:700;font-size:1.1rem;padding:20px">🎯 Tutte le risposte corrette!</p>';
+    }
+  }
+
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ═══════════════════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════════════════ */
+function restartSame(){
+  startQuiz(); // re-shuffles with same settings
+}
+function goHome(){
+  document.getElementById('home-screen').style.display='block';
+  document.getElementById('setup-screen').style.display='block';
+  document.getElementById('quiz-screen').style.display='none';
+  document.getElementById('result-screen').style.display='none';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* Preload voices on interaction */
+if(window.speechSynthesis){
+  window.speechSynthesis.getVoices();
+  window.speechSynthesis.addEventListener('voiceschanged',()=>{
+    window.speechSynthesis.getVoices();
+  });
+}
+</script>
+</body>
+</html>
