@@ -994,42 +994,72 @@ const DB = [
 /* ─── SCELTA MULTIPLA (45 questions) ──────────────────── */
 {type:'scelta',level:'A1',cat:'saluti',
  q:'Come si dice "Good morning" in italiano?',
+ img:'assets/quiz/001-buongiorno.webp',
+ imgCaption:'Il saluto del mattino',
+ imgAlt:'Due persone si salutano al mattino in una piazza italiana',
  opts:['Buonasera','Buonanotte','Buongiorno','Ciao'],correct:2},
 
 {type:'scelta',level:'A1',cat:'saluti',
  q:'Cosa significa "Arrivederci"?',
+ img:'assets/quiz/002-arrivederci.webp',
+ imgCaption:'Dire arrivederci',
+ imgAlt:'Una persona saluta un\'altra prima di andare via',
  opts:['Buongiorno','Prego','Scusa','Arrivederci (Goodbye)'],correct:3},
 
 {type:'scelta',level:'A1',cat:'numeri',
  q:'Quanti giorni ha una settimana?',
+ img:'assets/quiz/003-settimana.webp',
+ imgCaption:'I sette giorni della settimana',
+ imgAlt:'Un calendario settimanale su una scrivania con sette colonne',
  opts:['Cinque','Sei','Sette','Otto'],correct:2},
 
 {type:'scelta',level:'A1',cat:'articoli',
  q:'Quale articolo si usa con "libro"?',
+ img:'assets/quiz/004-libro.webp',
+ imgCaption:'Il libro',
+ imgAlt:'Un libro blu su un banco di studio',
  opts:["L'","La","Il","I"],correct:2},
 
 {type:'scelta',level:'A1',cat:'articoli',
  q:'Quale articolo si usa con "amica"?',
+ img:'assets/quiz/005-amica.webp',
+ imgCaption:'Un\'amica',
+ imgAlt:'Due amiche sorridono insieme in una piazza italiana',
  opts:["Il","La","Lo","Le"],correct:1},
 
 {type:'scelta',level:'A1',cat:'verbi',
  q:'Come si dice "I eat" in italiano?',
+ img:'assets/quiz/006-mangiare.webp',
+ imgCaption:'Il verbo mangiare',
+ imgAlt:'Una donna mangia un piatto di pasta',
  opts:['Io bevo','Io mangio','Io dormo','Io leggo'],correct:1},
 
 {type:'scelta',level:'A1',cat:'verbi',
  q:'Qual è la forma corretta? "Tu ___ a scuola."',
+ img:'assets/quiz/007-andare-scuola.webp',
+ imgCaption:'Andare a scuola',
+ imgAlt:'Una studentessa con zaino entra in un edificio scolastico',
  opts:['vado','vai','va','andiamo'],correct:1},
 
 {type:'scelta',level:'A1',cat:'famiglia',
  q:'Come si chiama il padre di tua madre?',
+ img:'assets/quiz/008-nonno.webp',
+ imgCaption:'Il nonno',
+ imgAlt:'Un nonno abbraccia la nipote',
  opts:['Zio','Fratello','Nonno','Nipote'],correct:2},
 
 {type:'scelta',level:'A1',cat:'colori',
  q:'Di che colore è il cielo di solito?',
+ img:'assets/quiz/009-cielo.webp',
+ imgCaption:'Il cielo azzurro',
+ imgAlt:'Il cielo azzurro sopra la campagna italiana',
  opts:['Verde','Rosso','Azzurro/Blu','Giallo'],correct:2},
 
 {type:'scelta',level:'A1',cat:'tempo',
  q:'Come si dice "It is raining" in italiano?',
+ img:'assets/quiz/010-pioggia.webp',
+ imgCaption:'Quando piove',
+ imgAlt:'Una persona con ombrello cammina sotto la pioggia',
  opts:['Fa caldo','Piove','Nevica','Fa freddo'],correct:1},
 
 {type:'scelta',level:'A2',cat:'preposizioni',
@@ -1710,6 +1740,7 @@ const QUIZ_PHOTOS={
  pizza:['https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=1000&q=75','Cucina italiana','Una pizza margherita']
 };
 function getQuizPhoto(q){
+ if(q.img) return [q.img,q.imgCaption||'Immagine didattica',q.imgAlt||'Immagine illustrativa per la domanda'];
  const t=[q.q||'',q.tts||'',q.verb||'',q.cat||''].join(' ').toLowerCase();
  let k;
  if(/mela|frutta|frutto rosso|frutto verde/.test(t))k='mela';
