@@ -1224,7 +1224,7 @@ const DB = [
 
 {type:'verofalso',level:'B1',cat:'cultura',
  q:'La lingua italiana è parlata solo in Italia.',
- correct:false,spiegazione:'L\'italiano è parlato anche in Svizzera, San Marino, Vaticano, alcune zone della Croazia e Slovacchia, e da comunità di emigrati nel mondo.'},
+ correct:false,spiegazione:'L\'italiano è parlato anche in Svizzera, San Marino, Vaticano, alcune zone della Croazia e della Slovenia, e da comunità di emigrati nel mondo.'},
 
 {type:'verofalso',level:'B1',cat:'storia',
  q:'Dante Alighieri ha scritto la "Divina Commedia" nel XIV secolo.',
@@ -1717,7 +1717,7 @@ function getQuizPhoto(q){
  else if(/espresso|caff[eè]|tazzina/.test(t))k='caffe';
  else if(/cane|animali|dog\b/.test(t))k='cane';
  else if(/venezia|carnevale|dialetto veneto/.test(t))k='venezia';
- else if(/roma|colosseo|capitale|italia|penisola|paese/.test(t))k='roma';
+ else if(/roma|colosseo|capitale|\bitalia\b|penisola|paese/.test(t))k='roma';
  else if(/cielo|colore|erba|stagion|piove|pioggia|bel tempo|fa bello|ombrello|nevica/.test(t))k='prato';
  else if(/orario|orologio|settimana|giorni|mesi|quarto|mezza|dicembre|natale|numero|numeri|trentadue/.test(t))k='orologio';
  else if(/trasport|treno|binario|barca|nave|autobus/.test(t))k='venezia';
