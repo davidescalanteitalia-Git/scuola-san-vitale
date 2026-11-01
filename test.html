@@ -1034,7 +1034,7 @@ const DB = [
 
 {type:'scelta',level:'A2',cat:'preposizioni',
  q:'Scelgo la preposizione giusta: "Vado ___ scuola"',
- opts:['in','di','su','per'],correct:0},
+ opts:['a','di','su','per'],correct:0},
 
 {type:'scelta',level:'A2',cat:'preposizioni',
  q:'Completa: "Arrivo ___ Roma domani."',
@@ -1743,6 +1743,35 @@ let state = {
 /* ═══════════════════════════════════════════════════════
    SETUP CONTROLS
 ═══════════════════════════════════════════════════════ */
+
+/* Verifica completa senza falsi positivi per risposte vuote o parziali. */
+function normalizzaRisposta(v){
+ return String(v==null?'':v).trim().toLowerCase().normalize('NFD')
+   .replace(/[\u0300-\u036f]/g,'').replace(/[.,!?;:"'’“”]/g,'')
+   .replace(/\s+/g,' ').trim();
+}
+function rispostaAccettata(v,opzioni){
+ const n=normalizzaRisposta(v);
+ return !!n && opzioni.some(x=>normalizzaRisposta(x)===n);
+}
+function spiegazioneDidattica(q,risposta){
+ if(q.spiegazione)return q.spiegazione;
+ const t=q.q||'';
+ if(t.includes('Tu ___ a scuola'))return 'Il verbo «andare» al presente si coniuga così: io vado, tu vai, lui o lei va.';
+ if(t.includes('Vado ___ scuola'))return 'In italiano si dice «vado a scuola» usando la preposizione semplice «a».';
+ if(q.type==='ascolto')return 'La frase ascoltata era: «'+q.tts+'». Riascoltala e pronunciala ad alta voce.';
+ if(q.type==='coniugazione')return 'Queste sono le tre forme richieste di «'+q.verb.toLowerCase()+'» nel tempo «'+q.tense.toLowerCase()+'».';
+ if(t.includes('___'))return 'Inserisci «'+risposta+'» nello spazio vuoto e rileggi la frase completa.';
+ if(q.cat==='articoli')return 'L’articolo concorda con il genere e il numero del nome.';
+ if(q.cat==='plurale')return 'Osserva la trasformazione della desinenza dal singolare al plurale.';
+ if(q.cat==='passato')return 'Il passato prossimo si forma con l’ausiliare e il participio passato.';
+ if(q.cat==='congiuntivo')return 'Il congiuntivo è frequente dopo espressioni di opinione, desiderio o dubbio.';
+ if(q.cat==='condizionale')return 'Il condizionale permette di esprimere desideri, richieste cortesi e ipotesi.';
+ if(q.cat==='pronomi')return 'Scegli il pronome corretto secondo la persona e il ruolo nella frase.';
+ if(q.cat==='saluti')return 'Un saluto cambia secondo l’ora e il contesto.';
+ return 'Rileggi la risposta corretta e prova a inserirla in una nuova frase.';
+}
+
 function selectMode(el){
   document.querySelectorAll('.mode-card').forEach(c=>c.classList.remove('selected'));
   el.classList.add('selected');
@@ -1893,8 +1922,8 @@ function answerScelta(btn, chosen, correct, q, list){
   btn.classList.add(isCorrect?'correct':'wrong');
   if(!isCorrect) btns[correct].classList.add('correct');
 
-  showFeedback(isCorrect, q.opts[q.correct]);
-  recordResult(isCorrect, q.q, q.opts[q.correct], q.opts[chosen]||'');
+  showFeedback(isCorrect, q.opts[q.correct], q);
+  recordResult(isCorrect, q.q, q.opts[q.correct], btn.textContent||'');
 }
 
 /* ── BUILD: VERO / FALSO ──────────────────────────────── */
@@ -1929,7 +1958,7 @@ function answerTF(btn, chosen, q, group){
   }
 
   const expl = q.spiegazione || (q.correct ? 'La risposta corretta è Vero.' : 'La risposta corretta è Falso.');
-  showFeedback(isCorrect, expl);
+  showFeedback(isCorrect, q.correct?'Vero':'Falso', q);
   recordResult(isCorrect, q.q, q.correct?'Vero':'Falso', chosen?'Vero':'Falso');
 }
 
@@ -1967,22 +1996,20 @@ function buildScrittura(card, q){
 }
 
 function answerScrittura(inp, q){
-  if(state.answered) return;
+  if(state.answered)return;
+  if(!normalizzaRisposta(inp.value)){
+    inp.placeholder='Scrivi una risposta prima di controllare';
+    inp.focus();
+    return;
+  }
   state.answered=true;
-
-  const userVal=inp.value.trim().toLowerCase()
-    .normalize('NFD').replace(/[̀-ͯ]/g,''); // remove accents for comparison
-
-  const isCorrect=q.accept.some(a=>{
-    const norm=a.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
-    return userVal===norm || userVal.includes(norm) || norm.includes(userVal);
-  });
+  const isCorrect=rispostaAccettata(inp.value,q.accept);
 
   inp.disabled=true;
   inp.classList.add(isCorrect?'correct':'wrong');
   if(!isCorrect) inp.value=inp.value; // keep user input
 
-  showFeedback(isCorrect, q.accept[0]);
+  showFeedback(isCorrect, q.accept[0], q);
   recordResult(isCorrect, q.q, q.accept[0], inp.value);
 }
 
@@ -2015,26 +2042,22 @@ function buildConiugazione(card, q){
 }
 
 function answerConiugazione(table, q){
-  if(state.answered) return;
-  state.answered=true;
-
+  if(state.answered)return;
   const inputs=table.querySelectorAll('.conj-input');
+  const empty=Array.from(inputs).find(x=>!normalizzaRisposta(x.value));
+  if(empty){ empty.placeholder='Completa la forma';empty.focus();return; }
+  state.answered=true;
   let allCorrect=true;
-  let wrong=[];
-
   inputs.forEach((inp,i)=>{
     inp.disabled=true;
-    const userVal=inp.value.trim().toLowerCase()
-      .normalize('NFD').replace(/[̀-ͯ]/g,'');
-    const correctVal=q.correct[i].toLowerCase()
-      .normalize('NFD').replace(/[̀-ͯ]/g,'');
-    const ok = userVal===correctVal || correctVal.includes(userVal) || userVal.includes(correctVal);
+    const accepted=q.correct[i]==='gli/le piace'?['gli piace','le piace','gli/le piace']:[q.correct[i]];
+    const ok=rispostaAccettata(inp.value,accepted);
     inp.classList.add(ok?'correct':'wrong');
-    if(!ok){ allCorrect=false; wrong.push(`${q.pronoms[i]}: ${q.correct[i]}`); }
+    if(!ok)allCorrect=false;
   });
 
   const fb = allCorrect ? null : 'Forme corrette: '+q.correct.join(', ');
-  showFeedback(allCorrect, fb||'Perfetto! Tutte le forme sono corrette.');
+  showFeedback(allCorrect, q.correct.join(', '), q);
   recordResult(allCorrect, `${q.verb} (${q.tense})`, q.correct.join(', '),
     Array.from(inputs).map(i=>i.value).join(', '));
 }
@@ -2049,8 +2072,8 @@ function buildAscolto(card, q){
   audioBtn.onclick=()=>speak(q.tts, audioBtn);
   card.appendChild(audioBtn);
 
-  card.innerHTML += `<div class="q-text">${q.q}</div>`;
-  if(q.hint) card.innerHTML += `<div class="q-hint">💡 ${q.hint}</div>`;
+  card.insertAdjacentHTML("beforeend", `<div class="q-text">${q.q}</div>`);
+  if(q.hint) card.insertAdjacentHTML("beforeend", `<div class="q-hint">💡 ${q.hint}</div>`);
 
   const wrap=document.createElement('div');
   wrap.className='write-area';
@@ -2094,36 +2117,38 @@ function speak(text, btn){
 }
 
 function answerAscolto(inp, q){
-  if(state.answered) return;
+  if(state.answered)return;
+  if(!normalizzaRisposta(inp.value)){
+    inp.placeholder='Scrivi una risposta prima di controllare';
+    inp.focus();
+    return;
+  }
   state.answered=true;
-
-  const userVal=inp.value.trim().toLowerCase()
-    .normalize('NFD').replace(/[̀-ͯ]/g,'');
-
-  const isCorrect=q.accept.some(a=>{
-    const norm=a.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
-    return userVal===norm || userVal.includes(norm) || norm.includes(userVal);
-  });
+  const isCorrect=rispostaAccettata(inp.value,q.accept);
 
   inp.disabled=true;
   inp.classList.add(isCorrect?'correct':'wrong');
-  showFeedback(isCorrect, q.accept[0]);
+  showFeedback(isCorrect, q.accept[0], q);
   recordResult(isCorrect, q.q, q.accept[0], inp.value);
 }
 
 /* ═══════════════════════════════════════════════════════
    SHARED HELPERS
 ═══════════════════════════════════════════════════════ */
-function showFeedback(isCorrect, correctAnswer){
+function showFeedback(isCorrect, correctAnswer, q){
   const fb=document.getElementById('feedback');
-  if(!fb) return;
-  fb.className=`feedback ${isCorrect?'correct-fb':'wrong-fb'} show`;
-  if(isCorrect){
-    fb.innerHTML=`<span class="feedback-icon">🎉</span><span>Ottimo! <strong>Corretto!</strong></span>`;
-  } else {
-    fb.innerHTML=`<span class="feedback-icon">❌</span><span>Sbagliato. La risposta corretta è: <strong>${correctAnswer}</strong></span>`;
-  }
-
+  if(!fb)return;
+  fb.className='feedback '+(isCorrect?'correct-fb':'wrong-fb')+' show';
+  fb.replaceChildren();
+  const icon=document.createElement('span');icon.className='feedback-icon';icon.textContent=isCorrect?'🎉':'❌';
+  const copy=document.createElement('div');
+  const title=document.createElement('strong');
+  title.textContent=isCorrect?'Ottimo! Corretto!':'Rivedi questa risposta';
+  const answer=document.createElement('div');answer.textContent='Risposta corretta: '+correctAnswer;
+  const explanation=document.createElement('span');explanation.className='fb-expl';
+  explanation.textContent=spiegazioneDidattica(q,correctAnswer);
+  copy.appendChild(title);copy.appendChild(answer);copy.appendChild(explanation);
+  fb.appendChild(icon);fb.appendChild(copy);
   if(isCorrect){ state.correct++; }
   else { state.wrong++; }
   document.getElementById('score-live').textContent = state.correct;
