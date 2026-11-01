@@ -818,6 +818,19 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   .hero { background-position: center, 55% center; }
   .topbar-brand { font-size: .8rem; }
 }
+
+/* FOTO DIDATTICHE */
+.q-layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(240px,.9fr);gap:24px;align-items:start;margin-top:18px}
+.q-panel{min-width:0}
+.q-photo{margin:0;overflow:hidden;border-radius:18px;border:1px solid var(--border);background:var(--card-bg);box-shadow:0 10px 28px rgba(0,0,0,.15)}
+.q-photo img{display:block;width:100%;height:335px;object-fit:cover}
+.q-photo figcaption{padding:10px 14px;font-size:.75rem;color:var(--fg-muted)}
+.q-panel .q-text{margin-bottom:18px}
+.q-panel .option-btn{min-height:54px;width:100%}
+.q-panel .feedback{align-items:flex-start;line-height:1.55}
+.fb-expl{display:block;margin-top:7px;font-weight:400}
+@media(max-width:850px){.q-layout{grid-template-columns:1fr;gap:16px}.q-photo{grid-row:1}.q-panel{grid-row:2}.q-photo img{height:245px}}
+@media(max-width:480px){.q-card{padding:20px 16px}.q-photo img{height:195px}}
 </style>
 </head>
 <body>
@@ -1679,6 +1692,42 @@ const DB = [
 /* ═══════════════════════════════════════════════════════
    STATE
 ═══════════════════════════════════════════════════════ */
+
+/* Ogni domanda ha una fotografia illustrativa. Le foto non documentano lezioni reali della scuola. */
+const QUIZ_PHOTOS={
+ scuola:['assets/quiz_student.webp','Andare a scuola','Studentessa con un quaderno davanti a una scuola'],
+ classe:['assets/hero.webp','In classe','Adulti durante una lezione di italiano'],
+ libri:['assets/corsi.webp','Studiare italiano','Persone che studiano un libro italiano'],
+ agenda:['assets/orari.webp','Calendario e studio','Un gruppo che prepara gli orari di studio'],
+ persone:['assets/accoglienza.webp','Dialoghi e saluti','Persone che si salutano'],
+ mela:['https://images.unsplash.com/photo-1600423115367-87ea7661688f?auto=format&fit=crop&w=1000&q=75','La frutta','Una mela rossa'],
+ prato:['https://images.unsplash.com/photo-1621925637054-b39f2ef3f3d3?auto=format&fit=crop&w=1000&q=75','Colori e natura','Un prato verde e un cielo azzurro'],
+ cane:['https://images.unsplash.com/photo-1741789951960-cd6ac0ddc63c?auto=format&fit=crop&w=1000&q=75','Animali','Un cane su un prato'],
+ roma:['https://images.unsplash.com/photo-1610723222652-6182cd9ac5ae?auto=format&fit=crop&w=1000&q=75','Roma e Italia','Il Colosseo di Roma'],
+ venezia:['https://images.unsplash.com/photo-1566763209513-c2c07a944faa?auto=format&fit=crop&w=1000&q=75','Città italiane','Una gondola sui canali di Venezia'],
+ caffe:['https://images.unsplash.com/photo-1749105504718-3faac64bc214?auto=format&fit=crop&w=1000&q=75','Il caffè','Una tazzina di espresso'],
+ orologio:['https://images.unsplash.com/photo-1710854473876-4c136362d817?auto=format&fit=crop&w=1000&q=75','Ora e numeri','Un orologio analogico'],
+ pizza:['https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=1000&q=75','Cucina italiana','Una pizza margherita']
+};
+function getQuizPhoto(q){
+ const t=[q.q||'',q.tts||'',q.verb||'',q.cat||''].join(' ').toLowerCase();
+ let k;
+ if(/mela|frutta|frutto rosso|frutto verde/.test(t))k='mela';
+ else if(/pizza|margherita|carbonara|pasta|cibo|mangiare|cucina|pentola|verdura/.test(t))k='pizza';
+ else if(/espresso|caff[eè]|tazzina/.test(t))k='caffe';
+ else if(/cane|animali|dog\b/.test(t))k='cane';
+ else if(/venezia|carnevale|dialetto veneto/.test(t))k='venezia';
+ else if(/roma|colosseo|capitale|italia|penisola|paese/.test(t))k='roma';
+ else if(/cielo|colore|erba|stagion|piove|pioggia|bel tempo|fa bello|ombrello|nevica/.test(t))k='prato';
+ else if(/orario|orologio|settimana|giorni|mesi|quarto|mezza|dicembre|natale|numero|numeri|trentadue/.test(t))k='orologio';
+ else if(/trasport|treno|binario|barca|nave|autobus/.test(t))k='venezia';
+ else if(/famigli|fratello|sorella|genitor|nonno|madre|padre|nipote|amico|saluti|arrivederci|buongiorno|ciao|buonanotte/.test(t))k='persone';
+ else if(/scuola|studiare|studente|esame|andare|vado|vai|venire|uscire|partire/.test(t))k='scuola';
+ else if(/libro|leggere|scrivere|articoli|pronomi|preposizion|plurale|coniugazion|grammatica|verbi|negazione|gerundio|imperativo/.test(t))k='libri';
+ else k=['classe','libri','agenda','persone'][Math.max(0,DB.indexOf(q))%4];
+ return QUIZ_PHOTOS[k];
+}
+
 let state = {
   mode: 'scelta',
   level: 'all',
@@ -1785,20 +1834,24 @@ function renderQuestion(){
     ascolto:'🎧 Ascolto'
   };
 
-  card.innerHTML = `<div class="q-type-badge">${typeLabel[q.type]||q.type} · ${q.level}</div>`;
 
-  if(q.type==='scelta')      buildScelta(card, q);
-  else if(q.type==='verofalso')  buildVeroFalso(card, q);
-  else if(q.type==='scrittura')  buildScrittura(card, q);
-  else if(q.type==='coniugazione') buildConiugazione(card, q);
-  else if(q.type==='ascolto')    buildAscolto(card, q);
-
-  // Feedback area
-  const fb = document.createElement('div');
-  fb.className = 'feedback';
-  fb.id = 'feedback';
-  card.appendChild(fb);
-
+  card.innerHTML = '<div class="q-type-badge">'+(typeLabel[q.type]||q.type)+' · '+q.level+'</div>';
+  const layout=document.createElement('div');layout.className='q-layout';
+  const panel=document.createElement('div');panel.className='q-panel';
+  const data=getQuizPhoto(q);
+  const figure=document.createElement('figure');figure.className='q-photo';
+  const img=document.createElement('img');
+  img.src=data[0];img.alt=data[2];img.loading='eager';img.decoding='async';
+  img.onerror=function(){if(img.dataset.fallback)return;img.dataset.fallback='1';img.src='assets/corsi.webp';};
+  const caption=document.createElement('figcaption');caption.textContent='Immagine illustrativa · '+data[1];
+  figure.appendChild(img);figure.appendChild(caption);layout.appendChild(panel);layout.appendChild(figure);card.appendChild(layout);
+  if(q.type==='scelta') buildScelta(panel,q);
+  else if(q.type==='verofalso') buildVeroFalso(panel,q);
+  else if(q.type==='scrittura') buildScrittura(panel,q);
+  else if(q.type==='coniugazione') buildConiugazione(panel,q);
+  else if(q.type==='ascolto') buildAscolto(panel,q);
+  const fb=document.createElement('div');fb.className='feedback';fb.id='feedback';fb.setAttribute('role','status');fb.setAttribute('aria-live','polite');
+  panel.appendChild(fb);
   container.appendChild(card);
 }
 
