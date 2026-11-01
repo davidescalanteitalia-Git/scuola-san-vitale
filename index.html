@@ -12,18 +12,18 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* ── DESIGN TOKENS — Caritas Como identity ── */
+/* ── DESIGN TOKENS — identità tricolore italiana, contenuti Caritas Como ── */
 :root {
-  --red-dark:   #631A0D;
-  --red-mid:    #8B2412;
-  --red-light:  #A63020;
-  --gold:       #F6A924;
-  --gold-dark:  #D98E10;
+  --green-dark:   #006B35;
+  --green-mid:    #008043;
+  --green-light:  #009246;
+  --italian-red:       #CE2B37;
+  --italian-red-hover:  #A61F2B;
   --white:      #FFFFFF;
-  --gray-light: #F9F9F9;
-  --gray-mid:   #E2E2E2;
-  --text-dark:  #212934;
-  --text-mid:   #4A4E57;
+  --gray-light: #F5F7F5;
+  --gray-mid:   #DDE7E0;
+  --text-dark:  #1D3025;
+  --text-mid:   #526259;
   --font-body:  'Public Sans', Arial, sans-serif;
   --font-head:  'Poppins', Arial, sans-serif;
   --radius:     12px;
@@ -62,7 +62,7 @@ ul { list-style: none; }
    TOP BAR
 ════════════════════════════════ */
 .top-bar {
-  background: var(--red-dark);
+  background: var(--green-dark);
   color: #fff;
   font-size: 13px;
 }
@@ -79,10 +79,10 @@ ul { list-style: none; }
 }
 .top-bar__social { display: flex; gap: 16px; align-items: center; }
 .top-bar__social a { color: rgba(255,255,255,.75); transition: color var(--tr); display: flex; align-items: center; }
-.top-bar__social a:hover { color: var(--gold); }
+.top-bar__social a:hover { color: var(--italian-red); }
 .top-bar__links { display: flex; gap: 20px; }
 .top-bar__links a { color: rgba(255,255,255,.75); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; transition: color var(--tr); }
-.top-bar__links a:hover { color: var(--gold); }
+.top-bar__links a:hover { color: var(--italian-red); }
 
 /* ════════════════════════════════
    HEADER
@@ -109,27 +109,27 @@ ul { list-style: none; }
 .site-logo { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
 .site-logo__icon { width: 52px; height: 52px; flex-shrink: 0; }
 .site-logo__text { display: flex; flex-direction: column; line-height: 1.2; }
-.site-logo__name { font-family: var(--font-head); font-weight: 700; font-size: 18px; color: var(--red-dark); }
+.site-logo__name { font-family: var(--font-head); font-weight: 700; font-size: 18px; color: var(--green-dark); }
 .site-logo__sub  { font-size: 11px; color: var(--text-mid); text-transform: uppercase; letter-spacing: .06em; font-weight: 500; }
 
 .main-nav { display: flex; align-items: center; gap: 4px; }
 .main-nav a { font-size: 14px; font-weight: 500; color: var(--text-dark); padding: 8px 14px; border-radius: var(--radius); transition: color var(--tr), background var(--tr); white-space: nowrap; }
-.main-nav a:hover { color: var(--red-dark); background: rgba(99,26,13,.06); }
+.main-nav a:hover { color: var(--green-dark); background: rgba(0,107,53,.06); }
 
 .btn-cta {
   display: inline-flex; align-items: center; gap: 8px;
-  background: var(--gold); color: var(--red-dark) !important;
+  background: var(--italian-red); color: var(--green-dark) !important;
   font-weight: 700; font-size: 14px;
   padding: 12px 22px 12px 18px;
   border-radius: 50px;
   letter-spacing: .02em; text-transform: uppercase;
   transition: background var(--tr), box-shadow var(--tr), transform var(--tr); flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(246,169,36,.35);
+  box-shadow: 0 2px 8px rgba(206,43,55,.35);
 }
-.btn-cta:hover { background: var(--gold-dark); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(246,169,36,.45); }
+.btn-cta:hover { background: var(--italian-red-hover); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(206,43,55,.45); }
 
 .nav-toggle { display: none; flex-direction: column; gap: 5px; width: 32px; padding: 4px; cursor: pointer; background: none; border: none; }
-.nav-toggle span { display: block; height: 2px; background: var(--red-dark); border-radius: 2px; transition: transform .3s, opacity .3s; }
+.nav-toggle span { display: block; height: 2px; background: var(--green-dark); border-radius: 2px; transition: transform .3s, opacity .3s; }
 
 /* ════════════════════════════════
    HERO
@@ -140,12 +140,12 @@ ul { list-style: none; }
   display: flex;
   align-items: center;
   overflow: hidden;
-  background: var(--red-dark);
+  background: var(--green-dark);
 }
 .hero__bg {
   position: absolute; inset: 0;
   background:
-    linear-gradient(135deg, rgba(99,26,13,.92) 0%, rgba(139,36,18,.78) 55%, rgba(246,169,36,.12) 100%),
+    linear-gradient(135deg, rgba(0,107,53,.92) 0%, rgba(0,128,67,.78) 55%, rgba(206,43,55,.12) 100%),
     repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,255,255,.02) 40px, rgba(255,255,255,.02) 41px);
 }
 .hero__content {
@@ -157,12 +157,12 @@ ul { list-style: none; }
 }
 .hero__badge {
   display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(246,169,36,.15); border: 1px solid var(--gold);
-  color: var(--gold); font-size: 12px; font-weight: 600;
+  background: rgba(206,43,55,.15); border: 1px solid var(--italian-red);
+  color: var(--italian-red); font-size: 12px; font-weight: 600;
   letter-spacing: .10em; text-transform: uppercase;
   padding: 6px 14px; margin-bottom: 20px;
   border-radius: 50px;
-  box-shadow: 0 2px 12px rgba(246,169,36,.18);
+  box-shadow: 0 2px 12px rgba(206,43,55,.18);
 }
 .hero__title {
   font-family: var(--font-head);
@@ -173,20 +173,20 @@ ul { list-style: none; }
   color: #fff;
   text-wrap: balance;
 }
-.hero__title em { font-style: normal; color: var(--gold); }
+.hero__title em { font-style: normal; color: var(--italian-red); }
 .hero__desc { font-size: 18px; line-height: 1.7; color: rgba(255,255,255,.88); margin-bottom: 36px; max-width: 560px; }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 14px; }
 
 .btn-primary {
   display: inline-flex; align-items: center; gap: 8px;
-  background: var(--gold); color: var(--red-dark);
+  background: var(--italian-red); color: var(--green-dark);
   font-weight: 700; font-size: 15px;
   padding: 14px 28px; text-transform: uppercase; letter-spacing: .04em;
   border-radius: 50px;
-  box-shadow: 0 2px 8px rgba(246,169,36,.35);
+  box-shadow: 0 2px 8px rgba(206,43,55,.35);
   transition: background var(--tr), transform var(--tr), box-shadow var(--tr);
 }
-.btn-primary:hover { background: var(--gold-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(246,169,36,.45); }
+.btn-primary:hover { background: var(--italian-red-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(206,43,55,.45); }
 
 .btn-outline {
   display: inline-flex; align-items: center; gap: 8px;
@@ -196,7 +196,7 @@ ul { list-style: none; }
   border-radius: 50px;
   transition: border-color var(--tr), color var(--tr), background var(--tr), transform var(--tr);
 }
-.btn-outline:hover { border-color: var(--gold); color: var(--gold); background: rgba(246,169,36,.08); transform: translateY(-2px); }
+.btn-outline:hover { border-color: var(--italian-red); color: var(--italian-red); background: rgba(206,43,55,.08); transform: translateY(-2px); }
 
 .hero__deco {
   position: absolute; right: 0; top: 0; bottom: 0; width: 42%;
@@ -206,14 +206,14 @@ ul { list-style: none; }
 .hero__cross { width: 260px; height: 260px; opacity: .07; }
 
 /* ════════════════════════════════
-   STATS STRIP — Gold
+   STATS STRIP — Bianco e verde
 ════════════════════════════════ */
-.stats-strip { background: var(--gold); padding: 52px 0; }
+.stats-strip { background: var(--italian-red); padding: 52px 0; }
 .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; }
 .stat-item {
   text-align: center; padding: 28px 16px;
   background: rgba(255,255,255,.10);
-  border-right: 1px solid rgba(99,26,13,.15);
+  border-right: 1px solid rgba(0,107,53,.15);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-dark);
   margin: 6px;
@@ -222,21 +222,21 @@ ul { list-style: none; }
 .stat-item:last-child { border-right: none; }
 .stat-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
 .stat-item__icon { font-size: 30px; margin-bottom: 10px; display: block; }
-.stat-item__num { font-family: var(--font-head); font-size: 2.6rem; font-weight: 800; color: var(--red-dark); line-height: 1; display: block; margin-bottom: 6px; }
-.stat-item__label { font-size: 12px; font-weight: 700; color: var(--red-dark); text-transform: uppercase; letter-spacing: .06em; opacity: .85; }
+.stat-item__num { font-family: var(--font-head); font-size: 2.6rem; font-weight: 800; color: var(--green-dark); line-height: 1; display: block; margin-bottom: 6px; }
+.stat-item__label { font-size: 12px; font-weight: 700; color: var(--green-dark); text-transform: uppercase; letter-spacing: .06em; opacity: .85; }
 
 /* ════════════════════════════════
    SHARED SECTION HELPERS
 ════════════════════════════════ */
-.eyebrow { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--gold); display: block; margin-bottom: 10px; }
+.eyebrow { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--italian-red); display: block; margin-bottom: 10px; }
 .sec-title { font-family: var(--font-head); font-size: clamp(1.6rem,3.5vw,2.4rem); font-weight: 700; line-height: 1.2; margin-bottom: 14px; text-wrap: balance; }
-.divider { width: 56px; height: 3px; background: var(--gold); margin: 0 0 24px; }
+.divider { width: 56px; height: 3px; background: var(--italian-red); margin: 0 0 24px; }
 .divider--center { margin: 0 auto 24px; }
 
 /* ════════════════════════════════
-   COSA OFFRIAMO — Dark Red
+   COSA OFFRIAMO — Verde
 ════════════════════════════════ */
-.sec-dark { background: var(--red-dark); color: #fff; padding: 80px 0; }
+.sec-dark { background: var(--green-dark); color: #fff; padding: 80px 0; }
 .sec-dark .sec-title { color: #fff; }
 .sec-dark .sec-desc { color: rgba(255,255,255,.82); max-width: 620px; font-size: 17px; line-height: 1.7; }
 
@@ -244,7 +244,7 @@ ul { list-style: none; }
 .offer-card {
   background: rgba(255,255,255,.07);
   border: 1px solid rgba(255,255,255,.12);
-  border-left: 3px solid var(--gold);
+  border-left: 3px solid var(--italian-red);
   padding: 28px;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-dark);
@@ -255,7 +255,7 @@ ul { list-style: none; }
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0,0,0,.30), 0 20px 48px rgba(0,0,0,.32);
 }
-.offer-card__ico { width: 44px; height: 44px; background: rgba(246,169,36,.18); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; font-size: 20px; }
+.offer-card__ico { width: 44px; height: 44px; background: rgba(206,43,55,.18); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; font-size: 20px; }
 .offer-card__title { font-family: var(--font-head); font-weight: 700; font-size: 17px; color: #fff; margin-bottom: 8px; }
 .offer-card__desc { font-size: 14px; color: rgba(255,255,255,.76); line-height: 1.6; }
 
@@ -267,39 +267,39 @@ ul { list-style: none; }
 .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 48px; align-items: start; }
 .info-block__title {
   font-family: var(--font-head); font-size: 20px; font-weight: 700;
-  color: var(--red-dark); margin-bottom: 20px;
+  color: var(--green-dark); margin-bottom: 20px;
   display: flex; align-items: center; gap: 10px;
 }
-.info-block__title::before { content:''; display:block; width:4px; height:24px; background:var(--gold); border-radius:2px; flex-shrink:0; }
+.info-block__title::before { content:''; display:block; width:4px; height:24px; background:var(--italian-red); border-radius:2px; flex-shrink:0; }
 
 .schedule-table { width: 100%; border-collapse: collapse; }
 .schedule-table th, .schedule-table td { padding: 12px 16px; text-align: left; font-size: 14px; border-bottom: 1px solid var(--gray-mid); }
-.schedule-table th { background: var(--red-dark); color: #fff; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .05em; border-radius: 0; }
-.schedule-table tr:hover td { background: rgba(99,26,13,.04); }
-.schedule-table td:first-child { font-weight: 600; color: var(--red-dark); }
+.schedule-table th { background: var(--green-dark); color: #fff; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .05em; border-radius: 0; }
+.schedule-table tr:hover td { background: rgba(0,107,53,.04); }
+.schedule-table td:first-child { font-weight: 600; color: var(--green-dark); }
 
 .level-cards { display: flex; flex-direction: column; gap: 16px; }
 .level-card {
-  background: #fff; border: 1px solid var(--gray-mid); border-left: 4px solid var(--gold);
+  background: #fff; border: 1px solid var(--gray-mid); border-left: 4px solid var(--italian-red);
   padding: 20px 22px;
   border-radius: var(--radius);
   box-shadow: var(--shadow-card);
   transition: transform var(--tr), box-shadow var(--tr);
 }
 .level-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
-.level-card__badge { display: inline-block; background: var(--red-dark); color: #fff; font-size: 11px; font-weight: 700; padding: 3px 10px; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 10px; border-radius: 50px; }
+.level-card__badge { display: inline-block; background: var(--green-dark); color: #fff; font-size: 11px; font-weight: 700; padding: 3px 10px; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 10px; border-radius: 50px; }
 .level-card__name { font-family: var(--font-head); font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 6px; }
 .level-card__desc { font-size: 14px; color: var(--text-mid); }
 
-.secretary-box { background: rgba(99,26,13,.06); border: 1px solid rgba(99,26,13,.20); border-left: 4px solid var(--gold); padding: 20px 22px; margin-top: 20px; border-radius: var(--radius); box-shadow: var(--shadow-card); }
-.secretary-box__label { font-size: 12px; font-weight: 700; color: var(--red-dark); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 4px; }
+.secretary-box { background: rgba(0,107,53,.06); border: 1px solid rgba(0,107,53,.20); border-left: 4px solid var(--italian-red); padding: 20px 22px; margin-top: 20px; border-radius: var(--radius); box-shadow: var(--shadow-card); }
+.secretary-box__label { font-size: 12px; font-weight: 700; color: var(--green-dark); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 4px; }
 .secretary-box__name  { font-family: var(--font-head); font-weight: 700; font-size: 16px; color: var(--text-dark); margin-bottom: 4px; }
 .secretary-box__hours { font-size: 13px; color: var(--text-mid); }
 
 /* ════════════════════════════════
-   LINGUE — Mid Red
+   LINGUE — Verde italiano
 ════════════════════════════════ */
-.sec-mid { background: var(--red-mid); padding: 60px 0; color: #fff; }
+.sec-mid { background: var(--green-mid); padding: 60px 0; color: #fff; }
 .lang-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; justify-content: center; }
 .lang-pill {
   display: flex; align-items: center; gap: 8px;
@@ -308,47 +308,47 @@ ul { list-style: none; }
   padding: 8px 16px; border-radius: 24px; cursor: pointer;
   transition: background var(--tr), border-color var(--tr);
 }
-.lang-pill:hover, .lang-pill.active { background: rgba(246,169,36,.28); border-color: var(--gold); color: var(--gold); }
+.lang-pill:hover, .lang-pill.active { background: rgba(206,43,55,.28); border-color: var(--italian-red); color: var(--italian-red); }
 .lang-pill .flag { font-size: 18px; }
 
 /* ════════════════════════════════
-   CONTATTI — Dark Red
+   CONTATTI — Verde scuro
 ════════════════════════════════ */
-.sec-contact { background: var(--red-dark); color: #fff; padding: 80px 0; }
+.sec-contact { background: var(--green-dark); color: #fff; padding: 80px 0; }
 
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 48px; align-items: start; }
 .contact-info__item { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 24px; }
-.contact-info__ico { width: 44px; height: 44px; background: rgba(246,169,36,.18); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px; }
-.contact-info__label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--gold); margin-bottom: 4px; }
+.contact-info__ico { width: 44px; height: 44px; background: rgba(206,43,55,.18); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px; }
+.contact-info__label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--italian-red); margin-bottom: 4px; }
 .contact-info__value { font-size: 15px; color: rgba(255,255,255,.90); line-height: 1.5; }
-.contact-info__value a { color: var(--gold); transition: opacity var(--tr); }
+.contact-info__value a { color: var(--italian-red); transition: opacity var(--tr); }
 .contact-info__value a:hover { opacity: .8; }
 
 .map-box { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); overflow: hidden; min-height: 300px; height: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-dark); }
 .map-box iframe { width: 100%; height: 100%; min-height: 300px; border: none; filter: grayscale(15%) contrast(1.1); }
 
-.contact-sec-box { background: rgba(246,169,36,.12); border: 1px solid rgba(246,169,36,.30); padding: 24px; margin-top: 28px; border-radius: var(--radius-lg); box-shadow: var(--shadow-dark); }
-.contact-sec-box__title { font-family: var(--font-head); font-weight: 700; font-size: 16px; color: var(--gold); margin-bottom: 6px; }
+.contact-sec-box { background: rgba(206,43,55,.12); border: 1px solid rgba(206,43,55,.30); padding: 24px; margin-top: 28px; border-radius: var(--radius-lg); box-shadow: var(--shadow-dark); }
+.contact-sec-box__title { font-family: var(--font-head); font-weight: 700; font-size: 16px; color: var(--italian-red); margin-bottom: 6px; }
 .contact-sec-box__name  { font-size: 15px; color: #fff; margin-bottom: 4px; }
 .contact-sec-box__hours { font-size: 13px; color: rgba(255,255,255,.72); }
 
 /* ════════════════════════════════
    CARITAS STRIP
 ════════════════════════════════ */
-.caritas-strip { background: #fff; border-top: 3px solid var(--gold); padding: 36px 0; }
+.caritas-strip { background: #fff; border-top: 3px solid var(--italian-red); padding: 36px 0; }
 .caritas-strip__inner { display: flex; align-items: center; justify-content: center; gap: 28px; flex-wrap: wrap; }
 .caritas-strip__text { font-size: 15px; color: var(--text-mid); text-align: center; }
-.caritas-strip__text strong { color: var(--red-dark); }
+.caritas-strip__text strong { color: var(--green-dark); }
 .caritas-link { display: flex; align-items: center; gap: 8px; text-decoration: none; }
-.caritas-link__label { font-family: var(--font-head); font-weight: 700; color: var(--red-dark); font-size: 15px; }
+.caritas-link__label { font-family: var(--font-head); font-weight: 700; color: var(--green-dark); font-size: 15px; }
 
 /* ════════════════════════════════
    FOOTER
 ════════════════════════════════ */
 .site-footer { background: var(--text-dark); color: rgba(255,255,255,.70); padding: 28px 0; font-size: 13px; text-align: center; }
-.site-footer a { color: var(--gold); }
+.site-footer a { color: var(--italian-red); }
 .footer-d4 { margin-top: 10px; font-size: 12px; color: rgba(255,255,255,.45); }
-.footer-d4__link { color: var(--gold); font-weight: 600; text-decoration: none; letter-spacing: .02em; transition: opacity var(--tr); }
+.footer-d4__link { color: var(--italian-red); font-weight: 600; text-decoration: none; letter-spacing: .02em; transition: opacity var(--tr); }
 .footer-d4__link:hover { opacity: .75; }
 
 /* ════════════════════════════════
@@ -369,13 +369,13 @@ ul { list-style: none; }
 ════════════════════════════════ */
 .lang-switcher { position: fixed; top: 50%; right: 0; transform: translateY(-50%); z-index: 150; display: flex; flex-direction: column; gap: 2px; }
 .lang-switcher button {
-  background: var(--red-dark); color: #fff;
+  background: var(--green-dark); color: #fff;
   font-size: 10px; font-weight: 700; font-family: var(--font-body);
   padding: 6px 8px; width: 36px; text-align: center; letter-spacing: .02em;
   opacity: .70; border: none; cursor: pointer;
   transition: opacity var(--tr), background var(--tr);
 }
-.lang-switcher button:hover, .lang-switcher button.active { opacity: 1; background: var(--gold); color: var(--red-dark); }
+.lang-switcher button:hover, .lang-switcher button.active { opacity: 1; background: var(--italian-red); color: var(--green-dark); }
 
 /* ════════════════════════════════
    RESPONSIVE
@@ -401,6 +401,113 @@ ul { list-style: none; }
   .hero__title { font-size: 1.8rem; }
   .hero__desc  { font-size: 16px; }
   .wa-float { bottom: 20px; right: 16px; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   TEMA ITALIA • Scuola San Vitale
+   Verde #009246 · Bianco #FFFFFF · Rosso #CE2B37
+   Contrasto ottimizzato per leggibilità e accessibilità.
+═══════════════════════════════════════════════════════════════ */
+:root {
+  --italian-green: #009246;
+  --italian-white: #FFFFFF;
+  --italian-red: #CE2B37;
+  --italian-red-hover: #A61F2B;
+  --green-dark: #006B35;
+  --green-mid: #008043;
+  --green-light: #009246;
+}
+.top-bar { background: #00562B; }
+.top-bar__social a:hover, .top-bar__links a:hover { color: #FFFFFF; text-decoration: underline; }
+.site-header { border-bottom: 0; }
+.site-header::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0;
+  height: 4px; pointer-events: none;
+  background: linear-gradient(90deg, #009246 0 33.333%, #FFFFFF 33.333% 66.666%, #CE2B37 66.666% 100%);
+}
+.site-logo__name, .main-nav a:hover { color: var(--green-dark); }
+.main-nav a:hover { background: rgba(0,146,70,.08); }
+.main-nav a[href="test.html"] {
+  color: #FFFFFF !important; background: var(--italian-red) !important;
+  border-radius: var(--radius);
+}
+.main-nav a[href="test.html"]:hover { background: var(--italian-red-hover) !important; }
+.btn-cta, .btn-primary {
+  background: var(--italian-red); color: #FFFFFF !important;
+  box-shadow: 0 3px 12px rgba(206,43,55,.25);
+}
+.btn-cta:hover, .btn-primary:hover {
+  background: var(--italian-red-hover);
+  box-shadow: 0 6px 20px rgba(206,43,55,.32);
+}
+.hero { background: #005C2E; }
+.hero__bg {
+  background:
+    linear-gradient(115deg, rgba(0,68,33,.97) 0%, rgba(0,107,53,.92) 60%, rgba(0,146,70,.76) 100%),
+    radial-gradient(circle at 95% 40%, rgba(206,43,55,.22), transparent 50%);
+}
+.hero__badge {
+  color: #FFFFFF; background: rgba(255,255,255,.12);
+  border-color: rgba(255,255,255,.48);
+  box-shadow: none;
+}
+.hero__title em {
+  color: #FFFFFF;
+  text-decoration: underline;
+  text-decoration-color: var(--italian-red);
+  text-decoration-thickness: .11em;
+  text-underline-offset: .16em;
+}
+.btn-outline:hover { color: #FFFFFF; border-color: #FFFFFF; background: rgba(255,255,255,.10); }
+.hero__actions a[href="test.html"] {
+  background: rgba(255,255,255,.12) !important;
+  border-color: #FFFFFF !important;
+  color: #FFFFFF !important;
+}
+.hero__actions a[href="test.html"]:hover { background: rgba(255,255,255,.22) !important; }
+.stats-strip { background: #F5F7F5; }
+.stat-item {
+  background: #FFFFFF; border: 1px solid #DDE7E0;
+  border-top: 4px solid var(--italian-green);
+  box-shadow: var(--shadow-card);
+}
+.stat-item:last-child { border: 1px solid #DDE7E0; border-top: 4px solid var(--italian-red); }
+.stat-item__num { color: var(--green-dark); }
+.stat-item__label { color: #254333; opacity: 1; }
+.sec-dark { background: #006B35; }
+.sec-mid { background: #008043; }
+.sec-contact { background: #004D29; }
+.sec-dark .eyebrow, .sec-mid .eyebrow, .sec-contact .eyebrow { color: #FFFFFF; }
+.offer-card { border-left-color: var(--italian-red); }
+.offer-card__ico, .contact-info__ico { background: rgba(255,255,255,.13); }
+.sec-gray { background: #F5F7F5; }
+.schedule-table th { background: var(--green-dark); }
+.schedule-table tr:hover td { background: rgba(0,146,70,.06); }
+.secretary-box { background: rgba(0,146,70,.07); border-color: rgba(0,107,53,.20); border-left-color: var(--italian-red); }
+.level-card { border-left-color: var(--italian-red); }
+.lang-pill:hover, .lang-pill.active {
+  background: #FFFFFF; border-color: #FFFFFF; color: #006B35;
+}
+.contact-info__label, .contact-sec-box__title { color: #FFFFFF; }
+.contact-info__value a {
+  color: #FFFFFF; text-decoration: underline; text-decoration-color: #FFFFFF;
+  text-underline-offset: 3px;
+}
+.contact-sec-box {
+  background: rgba(255,255,255,.10);
+  border-color: rgba(255,255,255,.28);
+}
+.caritas-strip { border-top-color: var(--italian-red); }
+.site-footer { background: #193D2B; }
+.site-footer a, .footer-d4__link {
+  color: #FFFFFF; text-decoration: underline; text-underline-offset: 3px;
+}
+.lang-switcher button:hover, .lang-switcher button.active {
+  background: #FFFFFF; color: var(--green-dark);
+}
+a:focus-visible, button:focus-visible {
+  outline: 3px solid var(--italian-red);
+  outline-offset: 3px;
 }
 </style>
 </head>
@@ -431,15 +538,15 @@ ul { list-style: none; }
   <div class="site-header__inner">
     <a href="#" class="site-logo">
       <svg class="site-logo__icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="50" cy="50" r="48" fill="#631A0D"/>
-        <g fill="#F6A924">
+        <circle cx="50" cy="50" r="48" fill="#006B35"/>
+        <g fill="#FFFFFF">
           <rect x="43" y="18" width="14" height="64" rx="3"/>
           <rect x="18" y="43" width="64" height="14" rx="3"/>
         </g>
-        <circle cx="50" cy="21" r="5" fill="#F6A924"/>
-        <circle cx="50" cy="79" r="5" fill="#F6A924"/>
-        <circle cx="21" cy="50" r="5" fill="#F6A924"/>
-        <circle cx="79" cy="50" r="5" fill="#F6A924"/>
+        <circle cx="50" cy="21" r="5" fill="#FFFFFF"/>
+        <circle cx="50" cy="79" r="5" fill="#FFFFFF"/>
+        <circle cx="21" cy="50" r="5" fill="#FFFFFF"/>
+        <circle cx="79" cy="50" r="5" fill="#FFFFFF"/>
       </svg>
       <div class="site-logo__text">
         <span class="site-logo__name">Scuola San Vitale</span>
@@ -452,7 +559,7 @@ ul { list-style: none; }
       <a href="#orari"         data-i18n="nav_orari">Orari</a>
       <a href="#lingue"        data-i18n="nav_lingue">Lingue</a>
       <a href="#contatti"      data-i18n="nav_contatti">Contatti</a>
-      <a href="test.html" style="color:var(--red-dark);font-weight:700;background:rgba(246,169,36,.12);border-radius:var(--radius);">🇮🇹 Test di Italiano</a>
+      <a href="test.html" style="color:var(--green-dark);font-weight:700;background:rgba(206,43,55,.12);border-radius:var(--radius);">🇮🇹 Test di Italiano</a>
     </nav>
 
     <a href="https://wa.me/393462110985" target="_blank" rel="noopener" class="btn-cta">
@@ -498,7 +605,7 @@ ul { list-style: none; }
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
           <span data-i18n="cta_map">Come raggiungerci</span>
         </a>
-        <a href="test.html" class="btn-outline" style="background:rgba(246,169,36,.12);border-color:var(--gold);color:var(--red-dark);">
+        <a href="test.html" class="btn-outline" style="background:rgba(206,43,55,.12);border-color:var(--italian-red);color:var(--green-dark);">
           🇮🇹 <span>Test di Italiano</span>
         </a>
       </div>
@@ -608,8 +715,8 @@ ul { list-style: none; }
             <div class="level-card__name" data-i18n="a2_name">Elementare</div>
             <p class="level-card__desc" data-i18n="a2_desc">Per chi ha già una base. Consolida la grammatica e amplia il vocabolario per più situazioni.</p>
           </div>
-          <div class="level-card" style="border-left-color:var(--gold)">
-            <span class="level-card__badge" style="background:var(--gold);color:var(--red-dark)">✓</span>
+          <div class="level-card" style="border-left-color:var(--italian-red)">
+            <span class="level-card__badge" style="background:var(--italian-red);color:var(--green-dark)">✓</span>
             <div class="level-card__name" data-i18n="free_name">Completamente gratuito</div>
             <p class="level-card__desc" data-i18n="free_desc">Entrambi i livelli sono 0 €. Basta contattarci su WhatsApp o presentarsi in segreteria.</p>
           </div>
@@ -701,8 +808,8 @@ ul { list-style: none; }
       <p class="caritas-strip__text">La Scuola San Vitale è un servizio di <strong>Caritas Como</strong> — Fondazione Caritas Solidarietà e Servizio ETS</p>
       <a href="https://www.caritascomo.it" target="_blank" rel="noopener" class="caritas-link">
         <svg width="36" height="36" viewBox="0 0 100 100">
-          <circle cx="50" cy="50" r="48" fill="#631A0D"/>
-          <g fill="#F6A924">
+          <circle cx="50" cy="50" r="48" fill="#006B35"/>
+          <g fill="#CE2B37">
             <rect x="43" y="18" width="14" height="64" rx="3"/>
             <rect x="18" y="43" width="64" height="14" rx="3"/>
           </g>
@@ -722,7 +829,7 @@ ul { list-style: none; }
     <p class="footer-d4">
       Sito web gestito da
       <a href="https://d4digitalstudio.it" target="_blank" rel="noopener" class="footer-d4__link">
-        <svg width="14" height="14" viewBox="0 0 20 20" fill="none" style="vertical-align:middle;margin-right:3px"><rect width="20" height="20" rx="4" fill="#F6A924"/><text x="10" y="15" text-anchor="middle" font-family="Poppins,Arial" font-weight="900" font-size="13" fill="#631A0D">D4</text></svg>
+        <svg width="14" height="14" viewBox="0 0 20 20" fill="none" style="vertical-align:middle;margin-right:3px"><rect width="20" height="20" rx="4" fill="#CE2B37"/><text x="10" y="15" text-anchor="middle" font-family="Poppins,Arial" font-weight="900" font-size="13" fill="#006B35">D4</text></svg>
         D4 Digital Studio
       </a>
     </p>
