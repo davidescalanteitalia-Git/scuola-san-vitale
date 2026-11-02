@@ -584,6 +584,19 @@ a:focus-visible, button:focus-visible {
   margin-bottom: 14px;
   background: #f5f7f5;
 }
+
+/* Immagine A2 Elementare: foto ad alta risoluzione, originale 3840×1000 senza crop */
+.level-card .level-card__photo--a2 {
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio: 96 / 25;
+  object-fit: contain;
+  object-position:center;
+  border-radius:10px;
+  margin-bottom:14px;
+  background:#f6f7f5;
+}
 </style>
 </head>
 <body>
@@ -779,7 +792,7 @@ a:focus-visible, button:focus-visible {
             <p class="level-card__desc" data-i18n="a1_desc">Per chi non ha mai studiato italiano. Impara le basi della comunicazione quotidiana.</p>
           </div>
           <div class="level-card">
-            <img class="level-card__photo" src="assets/quiz/125-leggere.webp" width="640" height="360" loading="lazy" decoding="async" alt="Studentessa che legge un libro in biblioteca">
+            <img class="level-card__photo level-card__photo--a2" src="assets/a2-elementare-1920.webp" srcset="assets/a2-elementare-1920.webp 1920w, assets/a2-elementare-4k.webp 3840w" sizes="(max-width: 720px) calc(100vw - 44px), 700px" width="3840" height="1000" loading="lazy" decoding="async" alt="Immagine illustrativa del corso Italiano A2: studenti adulti esercitano grammatica, vocabolario e conversazione con un’insegnante" />
             <span class="level-card__badge">A2</span>
             <div class="level-card__name" data-i18n="a2_name">Elementare</div>
             <p class="level-card__desc" data-i18n="a2_desc">Per chi ha già una base. Consolida la grammatica e amplia il vocabolario per più situazioni.</p>
