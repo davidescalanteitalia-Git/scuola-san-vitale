@@ -571,6 +571,19 @@ a:focus-visible, button:focus-visible {
  .level-card__photo {height:143px;}
  .lang-photo img {height:170px;}
 }
+
+/* Foto della scheda Completamente gratuito: composizione integrale, senza tagli */
+.level-card .level-card__photo--free {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 1;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  background: #f5f7f5;
+}
 </style>
 </head>
 <body>
@@ -772,7 +785,7 @@ a:focus-visible, button:focus-visible {
             <p class="level-card__desc" data-i18n="a2_desc">Per chi ha già una base. Consolida la grammatica e amplia il vocabolario per più situazioni.</p>
           </div>
           <div class="level-card" style="border-left-color:var(--italian-red)">
-            <img class="level-card__photo" src="assets/quiz/136-buongiorno.webp" width="640" height="360" loading="lazy" decoding="async" alt="Persone che condividono un momento di apprendimento">
+            <img class="level-card__photo level-card__photo--free" src="assets/scuola-gratuita-1920.webp" srcset="assets/scuola-gratuita-1920.webp 1920w, assets/scuola-gratuita-4k.webp 3840w" sizes="(max-width: 720px) calc(100vw - 44px), 700px" width="3840" height="1280" loading="lazy" decoding="async" alt="Immagine illustrativa generata: insegnante e studenti adulti di diverse nazionalità frequentano insieme una lezione di italiano" />
             <span class="level-card__badge" style="background:var(--italian-red);color:var(--green-dark)">✓</span>
             <div class="level-card__name" data-i18n="free_name">Completamente gratuito</div>
             <p class="level-card__desc" data-i18n="free_desc">Entrambi i livelli sono 0 €. Basta contattarci su WhatsApp o presentarsi in segreteria.</p>
