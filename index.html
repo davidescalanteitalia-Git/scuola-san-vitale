@@ -545,6 +545,32 @@ a:focus-visible, button:focus-visible {
   .section-photo { margin-top: 22px; border-radius: 14px; }
   .section-photo img,.section-photo--schedule img,.section-photo--welcome img { height: 205px; }
 }
+
+/* Immagini dei servizi, dei livelli e delle lingue */
+.offer-card__photo {
+ display:block; width:100%; height:152px; object-fit:cover; object-position:center;
+ border-radius:12px; margin-bottom:18px; border:1px solid rgba(255,255,255,.19);
+}
+.level-card__photo {
+ display:block; width:100%; height:134px; object-fit:cover; object-position:center 42%;
+ border-radius:10px; margin-bottom:14px; border:1px solid rgba(0,107,53,.12);
+}
+.lang-photo {
+ max-width:660px; margin:4px auto 30px; border-radius:16px;
+ overflow:hidden; box-shadow:0 12px 28px rgba(0,0,0,.2);
+ border:2px solid rgba(255,255,255,.18);
+}
+.lang-photo img { width:100%; height:250px; object-fit:cover; display:block; }
+@media(max-width:720px) {
+ .offer-card__photo {height:170px;}
+ .level-card__photo {height:175px;}
+ .lang-photo img {height:200px;}
+}
+@media(max-width:420px) {
+ .offer-card__photo {height:138px;}
+ .level-card__photo {height:143px;}
+ .lang-photo img {height:170px;}
+}
 </style>
 </head>
 <body>
@@ -671,21 +697,25 @@ a:focus-visible, button:focus-visible {
     </figure>
     <div class="offers-grid">
       <div class="offer-card">
+        <img class="offer-card__photo" src="assets/quiz/081-ciao.webp" width="640" height="360" loading="lazy" decoding="async" alt="Studentesse e studenti si salutano in una situazione quotidiana">
         <div class="offer-card__ico">📚</div>
         <div class="offer-card__title" data-i18n="o1t">Corsi di Italiano A1</div>
         <p class="offer-card__desc" data-i18n="o1d">Per chi inizia da zero: saluti, numeri, presentarsi e le frasi quotidiane essenziali. Completamente gratuito.</p>
       </div>
       <div class="offer-card">
+        <img class="offer-card__photo" src="assets/corsi.webp" width="640" height="360" loading="lazy" decoding="async" alt="Lezione di italiano con insegnante e studenti adulti">
         <div class="offer-card__ico">📖</div>
         <div class="offer-card__title" data-i18n="o2t">Corsi di Italiano A2</div>
         <p class="offer-card__desc" data-i18n="o2d">Per chi ha già una base: grammatica più profonda, vocabolario ampliato e comunicazione in situazioni reali.</p>
       </div>
       <div class="offer-card">
+        <img class="offer-card__photo" src="assets/accoglienza.webp" width="640" height="360" loading="lazy" decoding="async" alt="Accoglienza e orientamento per nuovi studenti">
         <div class="offer-card__ico">🤝</div>
         <div class="offer-card__title" data-i18n="o3t">Supporto all'integrazione</div>
         <p class="offer-card__desc" data-i18n="o3d">Orientamento sui servizi del territorio, supporto burocratico e accompagnamento nella vita quotidiana a Como.</p>
       </div>
       <div class="offer-card">
+        <img class="offer-card__photo" src="assets/quiz/058-italiano-oltre-italia.webp" width="640" height="360" loading="lazy" decoding="async" alt="Persone di origini diverse che parlano insieme">
         <div class="offer-card__ico">🌐</div>
         <div class="offer-card__title" data-i18n="o4t">Materiali in 10 lingue</div>
         <p class="offer-card__desc" data-i18n="o4d">Tutte le informazioni sono disponibili in italiano, spagnolo, arabo, romeno, albanese, cinese, tagalog, ucraino, francese e inglese.</p>
@@ -730,16 +760,19 @@ a:focus-visible, button:focus-visible {
         <div class="info-block__title" data-i18n="livelli_block">Livelli disponibili</div>
         <div class="level-cards">
           <div class="level-card">
+            <img class="level-card__photo" src="assets/quiz/105-studiare.webp" width="640" height="360" loading="lazy" decoding="async" alt="Studente che impara le basi della lingua italiana">
             <span class="level-card__badge">A1</span>
             <div class="level-card__name" data-i18n="a1_name">Principiante</div>
             <p class="level-card__desc" data-i18n="a1_desc">Per chi non ha mai studiato italiano. Impara le basi della comunicazione quotidiana.</p>
           </div>
           <div class="level-card">
+            <img class="level-card__photo" src="assets/quiz/125-leggere.webp" width="640" height="360" loading="lazy" decoding="async" alt="Studentessa che legge un libro in biblioteca">
             <span class="level-card__badge">A2</span>
             <div class="level-card__name" data-i18n="a2_name">Elementare</div>
             <p class="level-card__desc" data-i18n="a2_desc">Per chi ha già una base. Consolida la grammatica e amplia il vocabolario per più situazioni.</p>
           </div>
           <div class="level-card" style="border-left-color:var(--italian-red)">
+            <img class="level-card__photo" src="assets/quiz/136-buongiorno.webp" width="640" height="360" loading="lazy" decoding="async" alt="Persone che condividono un momento di apprendimento">
             <span class="level-card__badge" style="background:var(--italian-red);color:var(--green-dark)">✓</span>
             <div class="level-card__name" data-i18n="free_name">Completamente gratuito</div>
             <p class="level-card__desc" data-i18n="free_desc">Entrambi i livelli sono 0 €. Basta contattarci su WhatsApp o presentarsi in segreteria.</p>
@@ -757,6 +790,9 @@ a:focus-visible, button:focus-visible {
     <h2 class="sec-title" style="color:#fff" data-i18n="lang_title">Parliamo la tua lingua</h2>
     <div class="divider divider--center"></div>
     <p style="color:rgba(255,255,255,.82);max-width:540px;margin:0 auto 24px;font-size:16px" data-i18n="lang_desc">Seleziona la tua lingua per leggere tutte le informazioni in essa:</p>
+    <figure class="lang-photo">
+      <img src="assets/quiz/058-italiano-oltre-italia.webp" width="960" height="540" alt="Persone di paesi diversi comunicano e imparano insieme" loading="lazy" decoding="async">
+    </figure>
     <div class="lang-grid">
       <button class="lang-pill active" onclick="setLang('it')"><span class="flag">🇮🇹</span><span data-i18n="l_it">Italiano</span></button>
       <button class="lang-pill" onclick="setLang('es')"><span class="flag">🇪🇸</span><span data-i18n="l_es">Español</span></button>
