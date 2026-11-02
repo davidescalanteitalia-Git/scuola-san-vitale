@@ -831,6 +831,23 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .fb-expl{display:block;margin-top:7px;font-weight:400}
 @media(max-width:850px){.q-layout{grid-template-columns:1fr;gap:16px}.q-photo{grid-row:1}.q-panel{grid-row:2}.q-photo img{height:245px}}
 @media(max-width:480px){.q-card{padding:20px 16px}.q-photo img{height:195px}}
+
+/* Fotografie illustrative nelle opzioni di esercizio */
+.mode-card {overflow:hidden;}
+.mode-card__photo {
+ display:block; width:100%; height:122px; object-fit:cover; object-position:center 45%;
+ border-radius:12px; margin-bottom:12px; border:1px solid var(--border);
+}
+.mode-card.selected .mode-card__photo { border-color: var(--italian-red); }
+@media (max-width:640px) {
+ .mode-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+ .mode-card { padding:14px 12px 16px; }
+ .mode-card__photo {height:105px;}
+}
+@media (max-width:360px) {
+ .mode-grid {grid-template-columns:1fr;}
+ .mode-card__photo {height:152px;}
+}
 </style>
 </head>
 <body>
@@ -871,31 +888,37 @@ a:focus-visible, button:focus-visible, input:focus-visible {
       <div class="section-label">Tipo di esercizio</div>
       <div class="mode-grid" id="mode-grid">
         <div class="mode-card" data-mode="all" onclick="selectMode(this)">
+          <img class="mode-card__photo" src="assets/hero.webp" width="640" height="360" loading="lazy" decoding="async" alt="Gruppo di persone adulte durante una lezione di italiano">
           <span class="mode-icon">🎯</span>
           <h3>Tutto misto</h3>
           <p>Combinazione di tutti i tipi di esercizi per una pratica completa</p>
         </div>
         <div class="mode-card selected" data-mode="scelta" onclick="selectMode(this)">
+          <img class="mode-card__photo" src="assets/quiz/086-un-libro.webp" width="640" height="360" loading="lazy" decoding="async" alt="Studenti che discutono un esercizio scritto">
           <span class="mode-icon">🔤</span>
           <h3>Scelta multipla</h3>
           <p>Scegli la risposta giusta tra quattro opzioni</p>
         </div>
         <div class="mode-card" data-mode="verofalso" onclick="selectMode(this)">
+          <img class="mode-card__photo" src="assets/quiz/048-pronuncia-ci-ce.webp" width="640" height="360" loading="lazy" decoding="async" alt="Insegnante che aiuta gli studenti a verificare una frase">
           <span class="mode-icon">✅</span>
           <h3>Vero o Falso</h3>
           <p>Decidi se la frase è corretta o sbagliata</p>
         </div>
         <div class="mode-card" data-mode="scrittura" onclick="selectMode(this)">
+          <img class="mode-card__photo" src="assets/quiz/131-scrivere.webp" width="640" height="360" loading="lazy" decoding="async" alt="Studentessa che scrive con una penna in un quaderno">
           <span class="mode-icon">✏️</span>
           <h3>Scrittura</h3>
           <p>Scrivi la risposta corretta in italiano</p>
         </div>
         <div class="mode-card" data-mode="coniugazione" onclick="selectMode(this)">
+          <img class="mode-card__photo" src="assets/corsi.webp" width="640" height="360" loading="lazy" decoding="async" alt="Studio dei verbi e della grammatica con un insegnante">
           <span class="mode-icon">🔄</span>
           <h3>Coniugazione</h3>
           <p>Coniuga i verbi nelle forme corrette</p>
         </div>
         <div class="mode-card" data-mode="ascolto" onclick="selectMode(this)">
+          <img class="mode-card__photo" src="assets/quiz/109-parlando.webp" width="640" height="360" loading="lazy" decoding="async" alt="Persone che si parlano e si ascoltano">
           <span class="mode-icon">🎧</span>
           <h3>Ascolto</h3>
           <p>Ascolta e rispondi alle domande in italiano</p>
