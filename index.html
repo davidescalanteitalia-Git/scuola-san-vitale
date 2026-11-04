@@ -24,16 +24,21 @@
 <style>
 /* ── DESIGN TOKENS — Bandiera d'Italia ── */
 :root {
-  --red-dark:   #CE2B37;
-  --red-mid:    #CE2B37;
-  --red-light:  #CE2B37;
-  --gold:       #009246;
-  --gold-dark:  #007A35;
-  --white:      #FFFFFF;
-  --gray-light: #F9F9F9;
-  --gray-mid:   #E2E2E2;
-  --text-dark:  #212934;
-  --text-mid:   #4A4E57;
+  --green-dark:        #006B35;
+  --green-mid:         #008043;
+  --green-light:       #009246;
+  --italian-red:       #CE2B37;
+  --italian-red-hover: #A61F2B;
+  --red-dark:          #CE2B37;
+  --red-mid:           #CE2B37;
+  --red-light:         #CE2B37;
+  --gold:              #009246;
+  --gold-dark:         #007A35;
+  --white:             #FFFFFF;
+  --gray-light:        #F5F7F5;
+  --gray-mid:          #DDE7E0;
+  --text-dark:         #1D3025;
+  --text-mid:          #526259;
   --font-body:  'Public Sans', Arial, sans-serif;
   --font-head:  'Poppins', Arial, sans-serif;
   --radius:     12px;
@@ -72,7 +77,7 @@ ul { list-style: none; }
    TOP BAR
 ════════════════════════════════ */
 .top-bar {
-  background: var(--red-dark);
+  background: var(--green-dark);
   color: #fff;
   font-size: 13px;
 }
@@ -98,7 +103,7 @@ ul { list-style: none; }
    HEADER
 ════════════════════════════════ */
 .site-header {
-  background: #fff;
+  background: var(--green-dark);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -139,7 +144,7 @@ ul { list-style: none; }
 .btn-cta:hover { background: var(--gold-dark); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,146,70,.45); }
 
 .nav-toggle { display: none; flex-direction: column; gap: 5px; width: 32px; padding: 4px; cursor: pointer; background: none; border: none; }
-.nav-toggle span { display: block; height: 2px; background: var(--red-dark); border-radius: 2px; transition: transform .3s, opacity .3s; }
+.nav-toggle span { display: block; height: 2px; background: var(--green-dark); border-radius: 2px; transition: transform .3s, opacity .3s; }
 
 /* ════════════════════════════════
    HERO
@@ -178,36 +183,32 @@ ul { list-style: none; }
 
 
 /* Card photos */
-.offer-card { overflow: hidden; }
 .offer-card__photo {
-  display: block;
-  width: calc(100% + 44px);
-  height: 175px;
-  object-fit: cover;
-  border-radius: 8px 8px 0 0;
-  margin: -20px -22px 16px;
+ display:block; width:100%; height:152px; object-fit:cover; object-position:center;
+ border-radius:12px; margin-bottom:18px; border:1px solid rgba(255,255,255,.19);
 }
-.level-card { overflow: hidden; }
 .level-card__photo {
-  display: block;
-  width: calc(100% + 44px);
-  height: 155px;
-  object-fit: cover;
-  border-radius: 4px 4px 0 0;
-  margin: -20px -22px 14px;
+ display:block; width:100%; height:134px; object-fit:cover; object-position:center 42%;
+ border-radius:10px; margin-bottom:14px; border:1px solid rgba(0,107,53,.12);
 }
+.lang-photo {
+ max-width:660px; margin:4px auto 30px; border-radius:16px;
+ overflow:hidden; box-shadow:0 12px 28px rgba(0,0,0,.2);
+ border:2px solid rgba(255,255,255,.18);
+}
+.lang-photo img { width:100%; height:250px; object-fit:cover; object-position:center; display:block; }
 .hero {
   position: relative;
   min-height: 520px;
   display: flex;
   align-items: center;
   overflow: hidden;
-  background: var(--red-dark);
+  background: var(--green-dark);
 }
 .hero__bg {
   position: absolute; inset: 0;
   background:
-    linear-gradient(135deg, rgba(206,43,55,.88) 0%, rgba(206,43,55,.72) 50%, rgba(0,0,0,.45) 100%),
+    linear-gradient(135deg, rgba(0,107,53,.92) 0%, rgba(0,128,67,.78) 55%, rgba(206,43,55,.12) 100%),
     url("assets/hero.webp") center 45% / cover no-repeat;
 }
 .hero__content {
@@ -241,7 +242,7 @@ ul { list-style: none; }
 
 .btn-primary {
   display: inline-flex; align-items: center; gap: 8px;
-  background: var(--gold); color: var(--red-dark);
+  background: var(--green-mid); color: var(--red-dark);
   font-weight: 700; font-size: 15px;
   padding: 14px 28px; text-transform: uppercase; letter-spacing: .04em;
   border-radius: 50px;
@@ -298,7 +299,7 @@ ul { list-style: none; }
 /* ════════════════════════════════
    COSA OFFRIAMO — Dark Red
 ════════════════════════════════ */
-.sec-dark { background: var(--red-dark); color: #fff; padding: 80px 0; }
+.sec-dark { background: var(--green-dark); color: #fff; padding: 80px 0; }
 .sec-dark .sec-title { color: #fff; }
 .sec-dark .sec-desc { color: rgba(255,255,255,.82); max-width: 620px; font-size: 17px; line-height: 1.7; }
 
@@ -345,7 +346,7 @@ ul { list-style: none; }
   transition: transform var(--tr), box-shadow var(--tr);
 }
 .level-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
-.level-card__badge { display: inline-block; background: var(--red-dark); color: #fff; font-size: 11px; font-weight: 700; padding: 3px 10px; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 10px; border-radius: 50px; }
+.level-card__badge { display: inline-block; background: var(--green-dark); color: #fff; font-size: 11px; font-weight: 700; padding: 3px 10px; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 10px; border-radius: 50px; }
 .level-card__name { font-family: var(--font-head); font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 6px; }
 .level-card__desc { font-size: 14px; color: var(--text-mid); }
 
@@ -357,7 +358,7 @@ ul { list-style: none; }
 /* ════════════════════════════════
    LINGUE — Mid Red
 ════════════════════════════════ */
-.sec-mid { background: var(--red-mid); padding: 60px 0; color: #fff; }
+.sec-mid { background: var(--green-mid); padding: 60px 0; color: #fff; }
 .lang-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; justify-content: center; }
 .lang-pill {
   display: flex; align-items: center; gap: 8px;
@@ -372,7 +373,7 @@ ul { list-style: none; }
 /* ════════════════════════════════
    CONTATTI — Dark Red
 ════════════════════════════════ */
-.sec-contact { background: var(--red-dark); color: #fff; padding: 80px 0; }
+.sec-contact { background: var(--green-dark); color: #fff; padding: 80px 0; }
 
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 48px; align-items: start; }
 .contact-info__item { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 24px; }
@@ -427,7 +428,7 @@ ul { list-style: none; }
 ════════════════════════════════ */
 .lang-switcher { position: fixed; top: 50%; right: 0; transform: translateY(-50%); z-index: 150; display: flex; flex-direction: column; gap: 2px; }
 .lang-switcher button {
-  background: var(--red-dark); color: #fff;
+  background: var(--green-dark); color: #fff;
   font-size: 10px; font-weight: 700; font-family: var(--font-body);
   padding: 6px 8px; width: 36px; text-align: center; letter-spacing: .02em;
   opacity: .70; border: none; cursor: pointer;
@@ -554,7 +555,7 @@ ul { list-style: none; }
   white-space: nowrap;
 }
 .schedule-table th {
-  background: var(--red-dark);
+  background: var(--green-dark);
   color: #fff;
   font-weight: 600;
   font-size: 12px;
@@ -725,25 +726,25 @@ ul { list-style: none; }
     </figure>
     <div class="offers-grid">
       <div class="offer-card">
-        <img class="offer-card__photo" src="assets/a1-principiante-1920.webp" width="1920" height="1080" loading="lazy" decoding="async" alt="Curso de italiano A1 principiantes">
+        <img class="offer-card__photo" src="assets/quiz/081-ciao.webp" width="640" height="360" loading="lazy" decoding="async" alt="Studentesse e studenti si salutano in una situazione quotidiana">
         <div class="offer-card__ico">📚</div>
         <div class="offer-card__title" data-i18n="o1t">Corsi di Italiano A1</div>
         <p class="offer-card__desc" data-i18n="o1d">Per chi inizia da zero: saluti, numeri, presentarsi e le frasi quotidiane essenziali. Completamente gratuito.</p>
       </div>
       <div class="offer-card">
-        <img class="offer-card__photo" src="assets/a2-elementare-1920.webp" width="1920" height="1080" loading="lazy" decoding="async" alt="Curso de italiano A2 elemental">
+        <img class="offer-card__photo" src="assets/corsi.webp" width="1279" height="720" loading="lazy" decoding="async" alt="Lezione di italiano con insegnante e studenti adulti">
         <div class="offer-card__ico">📖</div>
         <div class="offer-card__title" data-i18n="o2t">Corsi di Italiano A2</div>
         <p class="offer-card__desc" data-i18n="o2d">Per chi ha già una base: grammatica più profonda, vocabolario ampliato e comunicazione in situazioni reali.</p>
       </div>
       <div class="offer-card">
-        <img class="offer-card__photo" src="assets/accoglienza.webp" width="1279" height="720" loading="lazy" decoding="async" alt="Supporto all'integrazione">
+        <img class="offer-card__photo" src="assets/accoglienza.webp" width="1279" height="720" loading="lazy" decoding="async" alt="Accoglienza e orientamento per nuovi studenti">
         <div class="offer-card__ico">🤝</div>
         <div class="offer-card__title" data-i18n="o3t">Supporto all'integrazione</div>
         <p class="offer-card__desc" data-i18n="o3d">Orientamento sui servizi del territorio, supporto burocratico e accompagnamento nella vita quotidiana a Como.</p>
       </div>
       <div class="offer-card">
-        <img class="offer-card__photo" src="assets/quiz_student.webp" width="1279" height="720" loading="lazy" decoding="async" alt="Materiali in 10 lingue">
+        <img class="offer-card__photo" src="assets/quiz/058-italiano-oltre-italia.webp" width="640" height="360" loading="lazy" decoding="async" alt="Persone di origini diverse che parlano insieme">
         <div class="offer-card__ico">🌐</div>
         <div class="offer-card__title" data-i18n="o4t">Materiali in 10 lingue</div>
         <p class="offer-card__desc" data-i18n="o4d">Tutte le informazioni sono disponibili in italiano, spagnolo, arabo, romeno, albanese, cinese, tagalog, ucraino, francese e inglese.</p>
@@ -793,31 +794,29 @@ ul { list-style: none; }
         <div class="info-block__title" data-i18n="livelli_block">Livelli disponibili</div>
         <div class="level-cards">
           <div class="level-card">
-            <img class="level-card__photo" src="assets/corsi.webp" width="1279" height="720" loading="lazy" decoding="async" alt="Clase de alfabetizzazione">
             <span class="level-card__badge">ALFA</span>
             <div class="level-card__name" data-i18n="alfa_name">Alfabetizzazione</div>
             <p class="level-card__desc" data-i18n="alfa_desc">Per chi non sa leggere o scrivere. Si impara l'alfabeto latino e la lettura di base.</p>
           </div>
           <div class="level-card">
-            <img class="level-card__photo" src="assets/a1-principiante-1920.webp" width="1920" height="1080" loading="lazy" decoding="async" alt="Livello A0/A1 principiante">
+            <img class="level-card__photo" src="assets/a1-principiante-1920.webp" srcset="assets/a1-principiante-1920.webp 1920w, assets/a1-principiante-4k.webp 3840w" sizes="(max-width:720px) calc(100vw - 44px), 700px" width="1920" height="589" loading="lazy" decoding="async" alt="Studentessa impara l'italiano con materiali didattici" />
             <span class="level-card__badge">A0/A1</span>
             <div class="level-card__name" data-i18n="a01_name">Principiante</div>
             <p class="level-card__desc" data-i18n="a01_desc">Per chi inizia da zero: saluti, numeri, presentarsi e le frasi quotidiane essenziali.</p>
           </div>
           <div class="level-card">
-            <img class="level-card__photo" src="assets/a2-elementare-1920.webp" width="1920" height="1080" loading="lazy" decoding="async" alt="Livello A1/A2 elementare">
+            <img class="level-card__photo" src="assets/a2-elementare-1920.webp" srcset="assets/a2-elementare-1920.webp 1920w, assets/a2-elementare-4k.webp 3840w" sizes="(max-width:720px) calc(100vw - 44px), 700px" width="3840" height="1000" loading="lazy" decoding="async" alt="Studenti adulti esercitano grammatica e vocabolario" />
             <span class="level-card__badge">A1/A2</span>
             <div class="level-card__name" data-i18n="a12_name">Elementare</div>
             <p class="level-card__desc" data-i18n="a12_desc">Per chi ha già una base. Consolida la grammatica e amplia il vocabolario per più situazioni reali.</p>
           </div>
           <div class="level-card">
-            <img class="level-card__photo" src="assets/quiz_student.webp" width="1279" height="720" loading="lazy" decoding="async" alt="Livello B1 pre-intermedio">
             <span class="level-card__badge">B1</span>
             <div class="level-card__name" data-i18n="b1_name">Pre-intermedio</div>
             <p class="level-card__desc" data-i18n="b1_desc">Per chi sa già comunicare. Grammatica avanzata, comprensione testi e comunicazione fluida.</p>
           </div>
-          <div class="level-card" style="border-left-color:var(--gold)">
-            <img class="level-card__photo" src="assets/scuola-gratuita-1920.webp" width="1920" height="1080" loading="lazy" decoding="async" alt="Scuola completamente gratuita">
+          <div class="level-card" style="border-left-color:var(--italian-red)">
+            <img class="level-card__photo level-card__photo--free" src="assets/scuola-gratuita-1920.webp" srcset="assets/scuola-gratuita-1920.webp 1920w, assets/scuola-gratuita-4k.webp 3840w" sizes="(max-width:720px) calc(100vw - 44px), 700px" width="3840" height="1280" loading="lazy" decoding="async" alt="Insegnante e studenti di diverse nazionalità" />
             <span class="level-card__badge" style="background:var(--gold);color:var(--red-dark)">✓</span>
             <div class="level-card__name" data-i18n="free_name">Completamente gratuito</div>
             <p class="level-card__desc" data-i18n="free_desc">Tutti i livelli sono 0 €. Basta contattarci su WhatsApp o presentarsi in segreteria.</p>
