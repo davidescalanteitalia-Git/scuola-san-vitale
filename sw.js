@@ -1,5 +1,5 @@
-/* ── Scuola San Vitale — Service Worker v1 ── */
-const CACHE = 'ssv-v1';
+/* ── Scuola San Vitale — Service Worker v2 ── */
+const CACHE = 'ssv-v2';
 const ASSETS = [
   '/',
   '/index.html',
