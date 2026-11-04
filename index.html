@@ -927,7 +927,7 @@ function setLang(lang) {
 
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const k = el.dataset.i18n;
-    if (tr[k] !== undefined) el.textContent = tr[k];
+    if (tr[k] !== undefined) { if (tr[k].includes("<")) el.innerHTML = tr[k]; else el.textContent = tr[k]; }
   });
 
   // active state — sidebar
