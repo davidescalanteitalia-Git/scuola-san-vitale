@@ -581,6 +581,52 @@ ul { list-style: none; }
   .hero__actions { flex-direction: column; align-items: flex-start; gap: 8px; }
   .level-card__badge { font-size: 10px; }
 }
+
+/* ── Ripristino grafico: tricolore italiano e contrasti accessibili ── */
+.site-header { background: #006b35; border-bottom: 4px solid #ce2b37; }
+.site-logo__name { color: #fff; }
+.site-logo__sub { color: rgba(255,255,255,.82); }
+.main-nav a { color: #fff; }
+.main-nav a:hover, .main-nav a:focus-visible { color: #fff; background: rgba(255,255,255,.15); }
+.main-nav a[href="test.html"] { color: #fff !important; background: #ce2b37 !important; }
+.nav-toggle span { background: #fff; }
+.btn-cta { background: #ce2b37; color: #fff !important; box-shadow: 0 3px 12px rgba(0,0,0,.18); }
+.btn-cta:hover { background: #a61f2b; }
+.hero__bg {
+  background:
+    linear-gradient(90deg, rgba(0,63,31,.82) 0%, rgba(0,93,47,.58) 53%, rgba(0,0,0,.13) 100%),
+    url("assets/hero.webp") center 45% / cover no-repeat;
+}
+.hero__badge { color: #fff; background: rgba(0,0,0,.20); border-color: rgba(255,255,255,.8); }
+.hero__title em { color: #fff; text-decoration: underline; text-decoration-color: #ce2b37; text-underline-offset: 7px; }
+.btn-primary { background: #ce2b37; color: #fff; }
+.btn-primary:hover { background: #a61f2b; }
+.stats-strip { background: #fff; border-block: 5px solid #009246; }
+.stat-item { background: #f4f8f5; box-shadow: var(--shadow-card); }
+.stat-item__num { color: #006b35; }
+.stat-item__label { color: #26362b; opacity: 1; }
+.eyebrow { color: #007a3b; }
+.sec-dark .eyebrow, .sec-mid .eyebrow, .sec-contact .eyebrow { color: #fff; }
+.divider { background: #ce2b37; }
+.offer-card { border-left-color: #ce2b37; }
+.level-card { border-left-color: #009246; }
+.level-card__photo, .offer-card__photo { object-fit: cover; }
+.lang-pill:hover, .lang-pill.active { background: #fff; color: #006b35; border-color: #fff; }
+.lang-switcher button.active, .lang-switcher button:hover { background: #ce2b37; color: #fff; }
+@media (max-width: 900px) {
+  .main-nav.open { background: #006b35; border-top: 1px solid rgba(255,255,255,.3); }
+  .main-nav.open a { color: #fff; width: 100%; }
+  .main-nav.open a:hover { background: rgba(255,255,255,.13); }
+}
+@media (max-width: 560px) {
+  .site-header__inner { gap: 10px; }
+  .site-logo__icon { width: 40px; height: 40px; }
+  .site-logo__name { font-size: 15px; }
+  .site-logo__sub { font-size: 9px; }
+  .site-header .btn-cta { padding: 9px 11px; font-size: 11px; }
+  .hero__bg { background-position: center, 57% center; }
+}
+
 </style>
 </head>
 <body>
