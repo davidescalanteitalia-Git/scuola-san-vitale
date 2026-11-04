@@ -176,6 +176,26 @@ ul { list-style: none; }
   .section-photo img { height: 220px; }
 }
 
+
+/* Card photos */
+.offer-card { overflow: hidden; }
+.offer-card__photo {
+  display: block;
+  width: calc(100% + 44px);
+  height: 175px;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+  margin: -20px -22px 16px;
+}
+.level-card { overflow: hidden; }
+.level-card__photo {
+  display: block;
+  width: calc(100% + 44px);
+  height: 155px;
+  object-fit: cover;
+  border-radius: 4px 4px 0 0;
+  margin: -20px -22px 14px;
+}
 .hero {
   position: relative;
   min-height: 520px;
@@ -705,21 +725,25 @@ ul { list-style: none; }
     </figure>
     <div class="offers-grid">
       <div class="offer-card">
+        <img class="offer-card__photo" src="assets/a1-principiante-1920.webp" width="1920" height="1080" loading="lazy" decoding="async" alt="Curso de italiano A1 principiantes">
         <div class="offer-card__ico">📚</div>
         <div class="offer-card__title" data-i18n="o1t">Corsi di Italiano A1</div>
         <p class="offer-card__desc" data-i18n="o1d">Per chi inizia da zero: saluti, numeri, presentarsi e le frasi quotidiane essenziali. Completamente gratuito.</p>
       </div>
       <div class="offer-card">
+        <img class="offer-card__photo" src="assets/a2-elementare-1920.webp" width="1920" height="1080" loading="lazy" decoding="async" alt="Curso de italiano A2 elemental">
         <div class="offer-card__ico">📖</div>
         <div class="offer-card__title" data-i18n="o2t">Corsi di Italiano A2</div>
         <p class="offer-card__desc" data-i18n="o2d">Per chi ha già una base: grammatica più profonda, vocabolario ampliato e comunicazione in situazioni reali.</p>
       </div>
       <div class="offer-card">
+        <img class="offer-card__photo" src="assets/accoglienza.webp" width="1279" height="720" loading="lazy" decoding="async" alt="Supporto all'integrazione">
         <div class="offer-card__ico">🤝</div>
         <div class="offer-card__title" data-i18n="o3t">Supporto all'integrazione</div>
         <p class="offer-card__desc" data-i18n="o3d">Orientamento sui servizi del territorio, supporto burocratico e accompagnamento nella vita quotidiana a Como.</p>
       </div>
       <div class="offer-card">
+        <img class="offer-card__photo" src="assets/quiz_student.webp" width="1279" height="720" loading="lazy" decoding="async" alt="Materiali in 10 lingue">
         <div class="offer-card__ico">🌐</div>
         <div class="offer-card__title" data-i18n="o4t">Materiali in 10 lingue</div>
         <p class="offer-card__desc" data-i18n="o4d">Tutte le informazioni sono disponibili in italiano, spagnolo, arabo, romeno, albanese, cinese, tagalog, ucraino, francese e inglese.</p>
@@ -769,26 +793,31 @@ ul { list-style: none; }
         <div class="info-block__title" data-i18n="livelli_block">Livelli disponibili</div>
         <div class="level-cards">
           <div class="level-card">
+            <img class="level-card__photo" src="assets/corsi.webp" width="1279" height="720" loading="lazy" decoding="async" alt="Clase de alfabetizzazione">
             <span class="level-card__badge">ALFA</span>
             <div class="level-card__name" data-i18n="alfa_name">Alfabetizzazione</div>
             <p class="level-card__desc" data-i18n="alfa_desc">Per chi non sa leggere o scrivere. Si impara l'alfabeto latino e la lettura di base.</p>
           </div>
           <div class="level-card">
+            <img class="level-card__photo" src="assets/a1-principiante-1920.webp" width="1920" height="1080" loading="lazy" decoding="async" alt="Livello A0/A1 principiante">
             <span class="level-card__badge">A0/A1</span>
             <div class="level-card__name" data-i18n="a01_name">Principiante</div>
             <p class="level-card__desc" data-i18n="a01_desc">Per chi inizia da zero: saluti, numeri, presentarsi e le frasi quotidiane essenziali.</p>
           </div>
           <div class="level-card">
+            <img class="level-card__photo" src="assets/a2-elementare-1920.webp" width="1920" height="1080" loading="lazy" decoding="async" alt="Livello A1/A2 elementare">
             <span class="level-card__badge">A1/A2</span>
             <div class="level-card__name" data-i18n="a12_name">Elementare</div>
             <p class="level-card__desc" data-i18n="a12_desc">Per chi ha già una base. Consolida la grammatica e amplia il vocabolario per più situazioni reali.</p>
           </div>
           <div class="level-card">
+            <img class="level-card__photo" src="assets/quiz_student.webp" width="1279" height="720" loading="lazy" decoding="async" alt="Livello B1 pre-intermedio">
             <span class="level-card__badge">B1</span>
             <div class="level-card__name" data-i18n="b1_name">Pre-intermedio</div>
             <p class="level-card__desc" data-i18n="b1_desc">Per chi sa già comunicare. Grammatica avanzata, comprensione testi e comunicazione fluida.</p>
           </div>
           <div class="level-card" style="border-left-color:var(--gold)">
+            <img class="level-card__photo" src="assets/scuola-gratuita-1920.webp" width="1920" height="1080" loading="lazy" decoding="async" alt="Scuola completamente gratuita">
             <span class="level-card__badge" style="background:var(--gold);color:var(--red-dark)">✓</span>
             <div class="level-card__name" data-i18n="free_name">Completamente gratuito</div>
             <p class="level-card__desc" data-i18n="free_desc">Tutti i livelli sono 0 €. Basta contattarci su WhatsApp o presentarsi in segreteria.</p>
