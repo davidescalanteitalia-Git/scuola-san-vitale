@@ -144,6 +144,38 @@ ul { list-style: none; }
 /* ════════════════════════════════
    HERO
 ════════════════════════════════ */
+
+/* Section photos */
+.section-with-photo {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 2.5rem;
+  align-items: start;
+}
+.section-with-photo.photo-left {
+  grid-template-columns: 400px 1fr;
+}
+.section-with-photo.photo-left .section-photo { order: -1; }
+.section-photo {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,.18);
+}
+.section-photo img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+}
+@media (max-width: 860px) {
+  .section-with-photo,
+  .section-with-photo.photo-left {
+    grid-template-columns: 1fr;
+  }
+  .section-with-photo.photo-left .section-photo { order: 0; }
+  .section-photo img { height: 220px; }
+}
+
 .hero {
   position: relative;
   min-height: 520px;
@@ -155,8 +187,8 @@ ul { list-style: none; }
 .hero__bg {
   position: absolute; inset: 0;
   background:
-    linear-gradient(135deg, rgba(206,43,55,.92) 0%, rgba(206,43,55,.78) 55%, rgba(0,146,70,.12) 100%),
-    repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,255,255,.02) 40px, rgba(255,255,255,.02) 41px);
+    linear-gradient(135deg, rgba(206,43,55,.88) 0%, rgba(206,43,55,.72) 50%, rgba(0,0,0,.45) 100%),
+    url("assets/hero.webp") center 45% / cover no-repeat;
 }
 .hero__content {
   position: relative;
@@ -667,6 +699,10 @@ ul { list-style: none; }
     <h2 class="sec-title" data-i18n="cosa_title">Cosa offriamo</h2>
     <div class="divider"></div>
     <p class="sec-desc" data-i18n="cosa_desc">La Scuola San Vitale è un luogo di accoglienza e formazione per tutte le persone straniere che desiderano imparare l'italiano e integrarsi nella comunità di Como.</p>
+    <figure class="section-photo" style="margin:1.5rem 0 2rem;max-width:720px;">
+      <img src="assets/corsi.webp" width="1279" height="720" loading="lazy" decoding="async"
+        alt="Insegnante aiuta studenti adulti internazionali durante una lezione di italiano." />
+    </figure>
     <div class="offers-grid">
       <div class="offer-card">
         <div class="offer-card__ico">📚</div>
@@ -698,6 +734,10 @@ ul { list-style: none; }
     <span class="eyebrow" data-i18n="orari_eyebrow">Quando e dove</span>
     <h2 class="sec-title" data-i18n="orari_title">Orari e Livelli</h2>
     <div class="divider"></div>
+    <figure class="section-photo" style="margin:0 0 2rem;max-width:720px;">
+      <img src="assets/orari.webp" width="1279" height="720" loading="lazy" decoding="async"
+        alt="Studenti e docente consultano un calendario dei corsi e i livelli di italiano." />
+    </figure>
     <div class="info-grid">
       <div>
         <div class="info-block__title" data-i18n="orari_block">Orari dei corsi</div>
@@ -787,6 +827,10 @@ ul { list-style: none; }
     <span class="eyebrow" data-i18n="cnt_eyebrow">Vieni a trovarci</span>
     <h2 class="sec-title" style="color:#fff" data-i18n="cnt_title">Dove siamo</h2>
     <div class="divider"></div>
+    <figure class="section-photo" style="margin:0 0 2rem;max-width:720px;">
+      <img src="assets/accoglienza.webp" width="1279" height="720" loading="lazy" decoding="async"
+        alt="Accoglienza calorosa di nuovi studenti alla segreteria della Scuola San Vitale." />
+    </figure>
     <div class="contact-grid">
       <div>
         <div class="contact-info__item">
