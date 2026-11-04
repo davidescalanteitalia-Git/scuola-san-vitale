@@ -919,6 +919,7 @@ let currentLang = 'it';
 function setLang(lang) {
   if (!T[lang]) return;
   currentLang = lang;
+  try { localStorage.setItem('ssv_lang', lang); } catch(e) {}
   const tr = T[lang];
   const rtl = lang === 'ar';
   document.documentElement.lang = lang;
@@ -967,6 +968,9 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   });
 });
+
+/* INIT IDIOMA — cargar preferencia guardada o italiano por defecto */
+setLang((() => { try { return localStorage.getItem('ssv_lang'); } catch(e) { return null; } })() || 'it');
 </script>
 
 <script>
