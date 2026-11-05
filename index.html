@@ -24,16 +24,21 @@
 <style>
 /* ── DESIGN TOKENS — Bandiera d'Italia ── */
 :root {
-  --red-dark:   #CE2B37;
-  --red-mid:    #CE2B37;
-  --red-light:  #CE2B37;
-  --gold:       #009246;
-  --gold-dark:  #007A35;
-  --white:      #FFFFFF;
-  --gray-light: #F9F9F9;
-  --gray-mid:   #E2E2E2;
-  --text-dark:  #212934;
-  --text-mid:   #4A4E57;
+  --green-dark:        #006B35;
+  --green-mid:         #008043;
+  --green-light:       #009246;
+  --italian-red:       #CE2B37;
+  --italian-red-hover: #A61F2B;
+  --red-dark:          #CE2B37;
+  --red-mid:           #CE2B37;
+  --red-light:         #CE2B37;
+  --gold:              #009246;
+  --gold-dark:         #007A35;
+  --white:             #FFFFFF;
+  --gray-light:        #F5F7F5;
+  --gray-mid:          #DDE7E0;
+  --text-dark:         #1D3025;
+  --text-mid:          #526259;
   --font-body:  'Public Sans', Arial, sans-serif;
   --font-head:  'Poppins', Arial, sans-serif;
   --radius:     12px;
@@ -72,7 +77,7 @@ ul { list-style: none; }
    TOP BAR
 ════════════════════════════════ */
 .top-bar {
-  background: var(--red-dark);
+  background: var(--green-dark);
   color: #fff;
   font-size: 13px;
 }
@@ -98,7 +103,7 @@ ul { list-style: none; }
    HEADER
 ════════════════════════════════ */
 .site-header {
-  background: #fff;
+  background: var(--green-dark);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -139,24 +144,72 @@ ul { list-style: none; }
 .btn-cta:hover { background: var(--gold-dark); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,146,70,.45); }
 
 .nav-toggle { display: none; flex-direction: column; gap: 5px; width: 32px; padding: 4px; cursor: pointer; background: none; border: none; }
-.nav-toggle span { display: block; height: 2px; background: var(--red-dark); border-radius: 2px; transition: transform .3s, opacity .3s; }
+.nav-toggle span { display: block; height: 2px; background: var(--green-dark); border-radius: 2px; transition: transform .3s, opacity .3s; }
 
 /* ════════════════════════════════
    HERO
 ════════════════════════════════ */
+
+/* Section photos */
+.section-with-photo {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 2.5rem;
+  align-items: start;
+}
+.section-with-photo.photo-left {
+  grid-template-columns: 400px 1fr;
+}
+.section-with-photo.photo-left .section-photo { order: -1; }
+.section-photo {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,.18);
+}
+.section-photo img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+}
+@media (max-width: 860px) {
+  .section-with-photo,
+  .section-with-photo.photo-left {
+    grid-template-columns: 1fr;
+  }
+  .section-with-photo.photo-left .section-photo { order: 0; }
+  .section-photo img { height: 220px; }
+}
+
+
+/* Card photos */
+.offer-card__photo {
+ display:block; width:100%; height:152px; object-fit:cover; object-position:center;
+ border-radius:12px; margin-bottom:18px; border:1px solid rgba(255,255,255,.19);
+}
+.level-card__photo {
+ display:block; width:100%; height:134px; object-fit:cover; object-position:center 42%;
+ border-radius:10px; margin-bottom:14px; border:1px solid rgba(0,107,53,.12);
+}
+.lang-photo {
+ max-width:660px; margin:4px auto 30px; border-radius:16px;
+ overflow:hidden; box-shadow:0 12px 28px rgba(0,0,0,.2);
+ border:2px solid rgba(255,255,255,.18);
+}
+.lang-photo img { width:100%; height:250px; object-fit:cover; object-position:center; display:block; }
 .hero {
   position: relative;
   min-height: 520px;
   display: flex;
   align-items: center;
   overflow: hidden;
-  background: var(--red-dark);
+  background: var(--green-dark);
 }
 .hero__bg {
   position: absolute; inset: 0;
   background:
-    linear-gradient(135deg, rgba(206,43,55,.92) 0%, rgba(206,43,55,.78) 55%, rgba(0,146,70,.12) 100%),
-    repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,255,255,.02) 40px, rgba(255,255,255,.02) 41px);
+    linear-gradient(135deg, rgba(0,107,53,.92) 0%, rgba(0,128,67,.78) 55%, rgba(206,43,55,.12) 100%),
+    url("assets/hero.webp") center 45% / cover no-repeat;
 }
 .hero__content {
   position: relative;
@@ -189,7 +242,7 @@ ul { list-style: none; }
 
 .btn-primary {
   display: inline-flex; align-items: center; gap: 8px;
-  background: var(--gold); color: var(--red-dark);
+  background: var(--green-mid); color: var(--red-dark);
   font-weight: 700; font-size: 15px;
   padding: 14px 28px; text-transform: uppercase; letter-spacing: .04em;
   border-radius: 50px;
@@ -246,7 +299,7 @@ ul { list-style: none; }
 /* ════════════════════════════════
    COSA OFFRIAMO — Dark Red
 ════════════════════════════════ */
-.sec-dark { background: var(--red-dark); color: #fff; padding: 80px 0; }
+.sec-dark { background: var(--green-dark); color: #fff; padding: 80px 0; }
 .sec-dark .sec-title { color: #fff; }
 .sec-dark .sec-desc { color: rgba(255,255,255,.82); max-width: 620px; font-size: 17px; line-height: 1.7; }
 
@@ -293,7 +346,7 @@ ul { list-style: none; }
   transition: transform var(--tr), box-shadow var(--tr);
 }
 .level-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
-.level-card__badge { display: inline-block; background: var(--red-dark); color: #fff; font-size: 11px; font-weight: 700; padding: 3px 10px; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 10px; border-radius: 50px; }
+.level-card__badge { display: inline-block; background: var(--green-dark); color: #fff; font-size: 11px; font-weight: 700; padding: 3px 10px; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 10px; border-radius: 50px; }
 .level-card__name { font-family: var(--font-head); font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 6px; }
 .level-card__desc { font-size: 14px; color: var(--text-mid); }
 
@@ -305,7 +358,7 @@ ul { list-style: none; }
 /* ════════════════════════════════
    LINGUE — Mid Red
 ════════════════════════════════ */
-.sec-mid { background: var(--red-mid); padding: 60px 0; color: #fff; }
+.sec-mid { background: var(--green-mid); padding: 60px 0; color: #fff; }
 .lang-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; justify-content: center; }
 .lang-pill {
   display: flex; align-items: center; gap: 8px;
@@ -320,7 +373,7 @@ ul { list-style: none; }
 /* ════════════════════════════════
    CONTATTI — Dark Red
 ════════════════════════════════ */
-.sec-contact { background: var(--red-dark); color: #fff; padding: 80px 0; }
+.sec-contact { background: var(--green-dark); color: #fff; padding: 80px 0; }
 
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 48px; align-items: start; }
 .contact-info__item { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 24px; }
@@ -375,7 +428,7 @@ ul { list-style: none; }
 ════════════════════════════════ */
 .lang-switcher { position: fixed; top: 50%; right: 0; transform: translateY(-50%); z-index: 150; display: flex; flex-direction: column; gap: 2px; }
 .lang-switcher button {
-  background: var(--red-dark); color: #fff;
+  background: var(--green-dark); color: #fff;
   font-size: 10px; font-weight: 700; font-family: var(--font-body);
   padding: 6px 8px; width: 36px; text-align: center; letter-spacing: .02em;
   opacity: .70; border: none; cursor: pointer;
@@ -502,7 +555,7 @@ ul { list-style: none; }
   white-space: nowrap;
 }
 .schedule-table th {
-  background: var(--red-dark);
+  background: var(--green-dark);
   color: #fff;
   font-weight: 600;
   font-size: 12px;
@@ -528,6 +581,52 @@ ul { list-style: none; }
   .hero__actions { flex-direction: column; align-items: flex-start; gap: 8px; }
   .level-card__badge { font-size: 10px; }
 }
+
+/* ── Ripristino grafico: tricolore italiano e contrasti accessibili ── */
+.site-header { background: #006b35; border-bottom: 4px solid #ce2b37; }
+.site-logo__name { color: #fff; }
+.site-logo__sub { color: rgba(255,255,255,.82); }
+.main-nav a { color: #fff; }
+.main-nav a:hover, .main-nav a:focus-visible { color: #fff; background: rgba(255,255,255,.15); }
+.main-nav a[href="test.html"] { color: #fff !important; background: #ce2b37 !important; }
+.nav-toggle span { background: #fff; }
+.btn-cta { background: #ce2b37; color: #fff !important; box-shadow: 0 3px 12px rgba(0,0,0,.18); }
+.btn-cta:hover { background: #a61f2b; }
+.hero__bg {
+  background:
+    linear-gradient(90deg, rgba(0,63,31,.82) 0%, rgba(0,93,47,.58) 53%, rgba(0,0,0,.13) 100%),
+    url("assets/hero.webp") center 45% / cover no-repeat;
+}
+.hero__badge { color: #fff; background: rgba(0,0,0,.20); border-color: rgba(255,255,255,.8); }
+.hero__title em { color: #fff; text-decoration: underline; text-decoration-color: #ce2b37; text-underline-offset: 7px; }
+.btn-primary { background: #ce2b37; color: #fff; }
+.btn-primary:hover { background: #a61f2b; }
+.stats-strip { background: #fff; border-block: 5px solid #009246; }
+.stat-item { background: #f4f8f5; box-shadow: var(--shadow-card); }
+.stat-item__num { color: #006b35; }
+.stat-item__label { color: #26362b; opacity: 1; }
+.eyebrow { color: #007a3b; }
+.sec-dark .eyebrow, .sec-mid .eyebrow, .sec-contact .eyebrow { color: #fff; }
+.divider { background: #ce2b37; }
+.offer-card { border-left-color: #ce2b37; }
+.level-card { border-left-color: #009246; }
+.level-card__photo, .offer-card__photo { object-fit: cover; }
+.lang-pill:hover, .lang-pill.active { background: #fff; color: #006b35; border-color: #fff; }
+.lang-switcher button.active, .lang-switcher button:hover { background: #ce2b37; color: #fff; }
+@media (max-width: 900px) {
+  .main-nav.open { background: #006b35; border-top: 1px solid rgba(255,255,255,.3); }
+  .main-nav.open a { color: #fff; width: 100%; }
+  .main-nav.open a:hover { background: rgba(255,255,255,.13); }
+}
+@media (max-width: 560px) {
+  .site-header__inner { gap: 10px; }
+  .site-logo__icon { width: 40px; height: 40px; }
+  .site-logo__name { font-size: 15px; }
+  .site-logo__sub { font-size: 9px; }
+  .site-header .btn-cta { padding: 9px 11px; font-size: 11px; }
+  .hero__bg { background-position: center, 57% center; }
+}
+
 </style>
 </head>
 <body>
@@ -556,6 +655,17 @@ ul { list-style: none; }
 <header class="site-header">
   <div class="site-header__inner">
     <a href="#" class="site-logo">
+      <svg class="site-logo__icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="48" fill="#CE2B37"/>
+        <g fill="#009246">
+          <rect x="43" y="18" width="14" height="64" rx="3"/>
+          <rect x="18" y="43" width="64" height="14" rx="3"/>
+        </g>
+        <circle cx="50" cy="21" r="5" fill="#009246"/>
+        <circle cx="50" cy="79" r="5" fill="#009246"/>
+        <circle cx="21" cy="50" r="5" fill="#009246"/>
+        <circle cx="79" cy="50" r="5" fill="#009246"/>
+      </svg>
       <div class="site-logo__text">
         <span class="site-logo__name">Scuola San Vitale</span>
         <span class="site-logo__sub">Caritas Como · Como</span>
@@ -656,23 +766,31 @@ ul { list-style: none; }
     <h2 class="sec-title" data-i18n="cosa_title">Cosa offriamo</h2>
     <div class="divider"></div>
     <p class="sec-desc" data-i18n="cosa_desc">La Scuola San Vitale è un luogo di accoglienza e formazione per tutte le persone straniere che desiderano imparare l'italiano e integrarsi nella comunità di Como.</p>
+    <figure class="section-photo" style="margin:1.5rem 0 2rem;max-width:720px;">
+      <img src="assets/corsi.webp" width="1279" height="720" loading="lazy" decoding="async"
+        alt="Insegnante aiuta studenti adulti internazionali durante una lezione di italiano." />
+    </figure>
     <div class="offers-grid">
       <div class="offer-card">
+        <img class="offer-card__photo" src="assets/quiz/081-ciao.webp" width="640" height="360" loading="lazy" decoding="async" alt="Studentesse e studenti si salutano in una situazione quotidiana">
         <div class="offer-card__ico">📚</div>
         <div class="offer-card__title" data-i18n="o1t">Corsi di Italiano A1</div>
         <p class="offer-card__desc" data-i18n="o1d">Per chi inizia da zero: saluti, numeri, presentarsi e le frasi quotidiane essenziali. Completamente gratuito.</p>
       </div>
       <div class="offer-card">
+        <img class="offer-card__photo" src="assets/corsi.webp" width="1279" height="720" loading="lazy" decoding="async" alt="Lezione di italiano con insegnante e studenti adulti">
         <div class="offer-card__ico">📖</div>
         <div class="offer-card__title" data-i18n="o2t">Corsi di Italiano A2</div>
         <p class="offer-card__desc" data-i18n="o2d">Per chi ha già una base: grammatica più profonda, vocabolario ampliato e comunicazione in situazioni reali.</p>
       </div>
       <div class="offer-card">
+        <img class="offer-card__photo" src="assets/accoglienza.webp" width="1279" height="720" loading="lazy" decoding="async" alt="Accoglienza e orientamento per nuovi studenti">
         <div class="offer-card__ico">🤝</div>
         <div class="offer-card__title" data-i18n="o3t">Supporto all'integrazione</div>
         <p class="offer-card__desc" data-i18n="o3d">Orientamento sui servizi del territorio, supporto burocratico e accompagnamento nella vita quotidiana a Como.</p>
       </div>
       <div class="offer-card">
+        <img class="offer-card__photo" src="assets/quiz/058-italiano-oltre-italia.webp" width="640" height="360" loading="lazy" decoding="async" alt="Persone di origini diverse che parlano insieme">
         <div class="offer-card__ico">🌐</div>
         <div class="offer-card__title" data-i18n="o4t">Materiali in 10 lingue</div>
         <p class="offer-card__desc" data-i18n="o4d">Tutte le informazioni sono disponibili in italiano, spagnolo, arabo, romeno, albanese, cinese, tagalog, ucraino, francese e inglese.</p>
@@ -687,6 +805,10 @@ ul { list-style: none; }
     <span class="eyebrow" data-i18n="orari_eyebrow">Quando e dove</span>
     <h2 class="sec-title" data-i18n="orari_title">Orari e Livelli</h2>
     <div class="divider"></div>
+    <figure class="section-photo" style="margin:0 0 2rem;max-width:720px;">
+      <img src="assets/orari.webp" width="1279" height="720" loading="lazy" decoding="async"
+        alt="Studenti e docente consultano un calendario dei corsi e i livelli di italiano." />
+    </figure>
     <div class="info-grid">
       <div>
         <div class="info-block__title" data-i18n="orari_block">Orari dei corsi</div>
@@ -723,11 +845,13 @@ ul { list-style: none; }
             <p class="level-card__desc" data-i18n="alfa_desc">Per chi non sa leggere o scrivere. Si impara l'alfabeto latino e la lettura di base.</p>
           </div>
           <div class="level-card">
+            <img class="level-card__photo" src="assets/a1-principiante-1920.webp" srcset="assets/a1-principiante-1920.webp 1920w, assets/a1-principiante-4k.webp 3840w" sizes="(max-width:720px) calc(100vw - 44px), 700px" width="1920" height="589" loading="lazy" decoding="async" alt="Studentessa impara l'italiano con materiali didattici" />
             <span class="level-card__badge">A0/A1</span>
             <div class="level-card__name" data-i18n="a01_name">Principiante</div>
             <p class="level-card__desc" data-i18n="a01_desc">Per chi inizia da zero: saluti, numeri, presentarsi e le frasi quotidiane essenziali.</p>
           </div>
           <div class="level-card">
+            <img class="level-card__photo" src="assets/a2-elementare-1920.webp" srcset="assets/a2-elementare-1920.webp 1920w, assets/a2-elementare-4k.webp 3840w" sizes="(max-width:720px) calc(100vw - 44px), 700px" width="3840" height="1000" loading="lazy" decoding="async" alt="Studenti adulti esercitano grammatica e vocabolario" />
             <span class="level-card__badge">A1/A2</span>
             <div class="level-card__name" data-i18n="a12_name">Elementare</div>
             <p class="level-card__desc" data-i18n="a12_desc">Per chi ha già una base. Consolida la grammatica e amplia il vocabolario per più situazioni reali.</p>
@@ -737,7 +861,8 @@ ul { list-style: none; }
             <div class="level-card__name" data-i18n="b1_name">Pre-intermedio</div>
             <p class="level-card__desc" data-i18n="b1_desc">Per chi sa già comunicare. Grammatica avanzata, comprensione testi e comunicazione fluida.</p>
           </div>
-          <div class="level-card" style="border-left-color:var(--gold)">
+          <div class="level-card" style="border-left-color:var(--italian-red)">
+            <img class="level-card__photo level-card__photo--free" src="assets/scuola-gratuita-1920.webp" srcset="assets/scuola-gratuita-1920.webp 1920w, assets/scuola-gratuita-4k.webp 3840w" sizes="(max-width:720px) calc(100vw - 44px), 700px" width="3840" height="1280" loading="lazy" decoding="async" alt="Insegnante e studenti di diverse nazionalità" />
             <span class="level-card__badge" style="background:var(--gold);color:var(--red-dark)">✓</span>
             <div class="level-card__name" data-i18n="free_name">Completamente gratuito</div>
             <p class="level-card__desc" data-i18n="free_desc">Tutti i livelli sono 0 €. Basta contattarci su WhatsApp o presentarsi in segreteria.</p>
@@ -776,6 +901,10 @@ ul { list-style: none; }
     <span class="eyebrow" data-i18n="cnt_eyebrow">Vieni a trovarci</span>
     <h2 class="sec-title" style="color:#fff" data-i18n="cnt_title">Dove siamo</h2>
     <div class="divider"></div>
+    <figure class="section-photo" style="margin:0 0 2rem;max-width:720px;">
+      <img src="assets/accoglienza.webp" width="1279" height="720" loading="lazy" decoding="async"
+        alt="Accoglienza calorosa di nuovi studenti alla segreteria della Scuola San Vitale." />
+    </figure>
     <div class="contact-grid">
       <div>
         <div class="contact-info__item">
@@ -916,7 +1045,7 @@ function setLang(lang) {
 
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const k = el.dataset.i18n;
-    if (tr[k] !== undefined) el.textContent = tr[k];
+    if (tr[k] !== undefined) { if (tr[k].includes("<")) el.innerHTML = tr[k]; else el.textContent = tr[k]; }
   });
 
   // active state — sidebar
