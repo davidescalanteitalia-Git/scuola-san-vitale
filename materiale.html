@@ -10,8 +10,8 @@
 <style>
 /* ── TOKEN SYSTEM: Italian tricolor identity (coerente con index.html / test.html) ── */
 :root {
-  --green-dark: #006B35;
-  --green-mid:  #008043;
+  --green-dark: #00843D;
+  --green-mid:  #00A651;
   --green:      #009246;
   --italian-red:#CE2B37;
   --red-hover:  #A61F2B;
@@ -104,7 +104,7 @@ a { color: inherit; text-decoration: none; }
 
 /* ── HERO ── */
 .hero {
-  background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 60%, #009246 100%);
+  background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 60%, var(--green) 100%);
   color: var(--white); padding: 52px 0 44px; text-align: center; position: relative; overflow: hidden;
 }
 .hero::before {
@@ -163,17 +163,28 @@ a { color: inherit; text-decoration: none; }
 .ep-card__level { font-size:.74rem; font-weight:700; color: var(--italian-red); }
 
 /* ── PLAYER ── */
+.player-card {
+  max-width: 900px; margin: 28px auto 10px;
+  background: var(--card-bg); border-radius: var(--radius-lg);
+  box-shadow: var(--card-shadow); overflow: hidden;
+}
+.player-card__head {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 14px 22px; border-bottom: 1px solid var(--border); flex-wrap: wrap;
+}
+.player-card__head .dot-row { display:flex; gap:6px; }
+.player-card__head .dot-row span { width:9px; height:9px; border-radius:50%; background: var(--grey-200); }
+.player-current { font-size:.85rem; color: var(--fg-muted); }
+.player-current strong { color: var(--green-dark); }
 .player-wrap {
-  position: relative; width:100%; max-width: 860px; margin: 28px auto 10px;
-  border-radius: var(--radius-lg); overflow:hidden; box-shadow: 0 10px 36px rgba(0,0,0,.22);
-  background:#000; aspect-ratio: 16/9;
-  border: 3px solid var(--white);
+  position: relative; width:100%;
+  height: 760px;
+  background: var(--white);
 }
 .player-wrap iframe { width:100%; height:100%; border:0; display:block; }
-.player-current {
-  text-align:center; font-size:.85rem; color: var(--fg-muted); margin-bottom: 4px;
+@media (max-width: 760px) {
+  .player-wrap { height: 1180px; }
 }
-.player-current strong { color: var(--green-dark); }
 
 /* ── CREDIT ── */
 .credit-box {
@@ -319,11 +330,16 @@ a { color: inherit; text-decoration: none; }
       </div>
     </div>
 
-    <p class="player-current">Stai guardando: <strong id="epLabel">Episodio 1 — Mi chiamo Li Li</strong></p>
-    <div class="player-wrap">
-      <iframe id="videoPlayer"
-        src="https://ciaoamici.rizzolieducation.it/storie_situazioni/ud1/index.html"
-        allowfullscreen loading="lazy" title="Video-lezione di italiano"></iframe>
+    <div class="player-card">
+      <div class="player-card__head">
+        <div class="dot-row"><span></span><span></span><span></span></div>
+        <p class="player-current">Stai guardando: <strong id="epLabel">Episodio 1 — Mi chiamo Li Li</strong></p>
+      </div>
+      <div class="player-wrap">
+        <iframe id="videoPlayer"
+          src="https://ciaoamici.rizzolieducation.it/storie_situazioni/ud1/index.html"
+          allowfullscreen loading="lazy" title="Video-lezione di italiano"></iframe>
+      </div>
     </div>
 
     <p class="credit-box">
@@ -362,7 +378,7 @@ document.querySelectorAll('.ep-card').forEach(card => {
     document.querySelectorAll('.ep-card').forEach(c => c.classList.remove('active'));
     card.classList.add('active');
     document.getElementById('epLabel').textContent = 'Episodio ' + n + ' — ' + episodeTitles[n];
-    document.querySelector('.player-wrap').scrollIntoView({behavior:'smooth', block:'center'});
+    document.querySelector('.player-card').scrollIntoView({behavior:'smooth', block:'center'});
   });
 });
 </script>
