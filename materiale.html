@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Materiale per imparare l'italiano — Scuola San Vitale</title>
+<meta name="description" content="Video-lezioni ed esercizi gratuiti per esercitarti con l'italiano a casa, dal livello A1 al B1. Un servizio della Scuola San Vitale — Caritas Como.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap">
+<style>
+/* ── TOKEN SYSTEM: Italian tricolor identity (coerente con index.html / test.html) ── */
+:root {
+  --green-dark: #006B35;
+  --green-mid:  #008043;
+  --green:      #009246;
+  --italian-red:#CE2B37;
+  --red-hover:  #A61F2B;
+  --cream:      #F5F7F5;
+  --white:      #FFFFFF;
+  --grey-50:    #F2F6F2;
+  --grey-100:   #E9F0EA;
+  --grey-200:   #D7E3D9;
+  --grey-400:   #788F7E;
+  --grey-600:   #526259;
+  --grey-800:   #1D3025;
+
+  --bg:        var(--white);
+  --bg-page:   var(--cream);
+  --fg:        var(--grey-800);
+  --fg-muted:  var(--grey-600);
+  --border:    var(--grey-200);
+  --card-bg:   var(--white);
+  --card-shadow: 0 2px 4px rgba(0,0,0,.06), 0 6px 18px rgba(0,0,0,.10), 0 16px 32px rgba(0,0,0,.07);
+  --card-hover:  0 4px 8px rgba(0,0,0,.08), 0 12px 28px rgba(0,0,0,.14), 0 24px 48px rgba(0,0,0,.09);
+
+  --radius:    12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 50px;
+  --tr: .22s cubic-bezier(.4,0,.2,1);
+
+  --verde:    #009246;
+  --bianco:   #FFFFFF;
+  --rosso-it: #CE2B37;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #101F18; --bg-page:#12271B; --fg:#E7F3EB; --fg-muted:#B2C6B9; --border:#35503E;
+    --card-bg:#1A3123;
+    --card-shadow: 0 2px 6px rgba(0,0,0,.35), 0 8px 24px rgba(0,0,0,.40);
+    --card-hover: 0 4px 10px rgba(0,0,0,.45), 0 14px 36px rgba(0,0,0,.50);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #101F18; --bg-page:#12271B; --fg:#E7F3EB; --fg-muted:#B2C6B9; --border:#35503E;
+  --card-bg:#1A3123;
+  --card-shadow: 0 2px 6px rgba(0,0,0,.35), 0 8px 24px rgba(0,0,0,.40);
+  --card-hover: 0 4px 10px rgba(0,0,0,.45), 0 14px 36px rgba(0,0,0,.50);
+  color-scheme: dark;
+}
+
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Public Sans', system-ui, sans-serif;
+  background: var(--bg-page);
+  color: var(--fg);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; line-height: 1.25; }
+img { max-width: 100%; display:block; }
+button { cursor: pointer; font-family: inherit; border: none; }
+a { color: inherit; text-decoration: none; }
+
+.page-wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* ── TOPBAR ── */
+.tricolor-stripe {
+  height: 5px;
+  background: linear-gradient(90deg, var(--verde) 0% 33.33%, var(--bianco) 33.33% 66.67%, var(--rosso-it) 66.67% 100%);
+  position: sticky; top: 0; z-index: 101; flex-shrink: 0;
+}
+.topbar {
+  background: var(--green-dark); color: var(--white);
+  padding: 14px 0; position: sticky; top: 5px; z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,107,53,.35);
+}
+.topbar-inner { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap: wrap; }
+.topbar-brand { display:flex; align-items:center; gap:10px; font-family:'Poppins',sans-serif; font-weight:700; font-size:.95rem; letter-spacing:-.01em; }
+.topbar-back {
+  background: rgba(255,255,255,.12); color: var(--white);
+  padding: 7px 16px; border-radius: var(--radius-pill);
+  font-size: .82rem; font-weight: 600; transition: background var(--tr);
+  border: 1px solid rgba(255,255,255,.18);
+}
+.topbar-back:hover { background: rgba(255,255,255,.22); }
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 60%, #009246 100%);
+  color: var(--white); padding: 52px 0 44px; text-align: center; position: relative; overflow: hidden;
+}
+.hero::before {
+  content:''; position:absolute; inset:0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='1.5' fill='rgba(255,255,255,.07)'/%3E%3C/svg%3E") repeat;
+}
+.hero-inner { position: relative; }
+.hero-flag { font-size: 2.6rem; margin-bottom: 12px; display:block; }
+.hero h1 { font-size: clamp(1.6rem, 4.6vw, 2.5rem); font-weight: 800; margin-bottom: 10px; }
+.hero h1 span { color: var(--italian-red); }
+.hero p { font-size: clamp(.9rem, 2.4vw, 1.05rem); opacity:.9; max-width: 600px; margin: 0 auto 26px; }
+.hero-badges { display:flex; flex-wrap:wrap; justify-content:center; gap:8px; }
+.badge { background: rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.22); color:var(--white); padding:5px 14px; border-radius:var(--radius-pill); font-size:.78rem; font-weight:600; }
+
+/* ── SECTION LABELS ── */
+.section { padding: 44px 0; }
+.section-label {
+  font-family:'Poppins',sans-serif; font-size:.7rem; font-weight:700; letter-spacing:.12em;
+  text-transform:uppercase; color: var(--green-dark); margin-bottom: 10px; text-align:center;
+}
+.section-title { font-size: clamp(1.3rem,3.4vw,1.9rem); font-weight:800; color: var(--grey-800); text-align:center; margin-bottom: 14px; }
+.section-desc { font-size: .98rem; color: var(--fg-muted); text-align:center; max-width: 640px; margin: 0 auto; }
+
+/* ── ABOUT CARD ── */
+.about-card {
+  background: var(--card-bg); border-radius: var(--radius-lg);
+  box-shadow: var(--card-shadow); padding: 28px 28px 26px;
+  margin: 30px auto 0; max-width: 780px;
+  border-left: 5px solid var(--green);
+}
+.about-card h3 { font-size: 1.05rem; color: var(--green-dark); margin-bottom: 10px; }
+.about-card p { font-size: .92rem; color: var(--fg-muted); margin-bottom: 14px; }
+.about-list { display:grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 10px; }
+.about-list li { list-style:none; display:flex; align-items:flex-start; gap:8px; font-size:.86rem; color: var(--fg); }
+.about-list li::before { content:'✓'; color: var(--green); font-weight:800; flex-shrink:0; }
+
+/* ── EPISODE GRID ── */
+.ep-grid {
+  display:grid; grid-template-columns: repeat(auto-fill,minmax(220px,1fr));
+  gap: 14px; margin: 30px 0 10px;
+}
+.ep-card {
+  background: var(--card-bg); border: 2px solid var(--border); border-radius: var(--radius-lg);
+  padding: 18px 18px 16px; cursor:pointer; text-align:left;
+  box-shadow: var(--card-shadow); transition: border-color var(--tr), box-shadow var(--tr), transform var(--tr), background var(--tr);
+}
+.ep-card:hover { border-color: var(--green-dark); box-shadow: var(--card-hover); transform: translateY(-3px); }
+.ep-card.active {
+  border-color: var(--italian-red);
+  background: linear-gradient(145deg, var(--card-bg), rgba(206,43,55,.06));
+  box-shadow: 0 0 0 4px rgba(206,43,55,.15), var(--card-hover);
+}
+.ep-card__num { font-size:.7rem; font-weight:700; color: var(--green-dark); text-transform:uppercase; letter-spacing:.08em; margin-bottom:6px; }
+.ep-card__title { font-size: .98rem; font-weight:700; color: var(--grey-800); line-height:1.35; margin-bottom: 6px; }
+.ep-card__topic { font-size: .8rem; color: var(--fg-muted); margin-bottom: 8px; line-height:1.4; }
+.ep-card__level { font-size:.74rem; font-weight:700; color: var(--italian-red); }
+
+/* ── PLAYER ── */
+.player-wrap {
+  position: relative; width:100%; max-width: 860px; margin: 28px auto 10px;
+  border-radius: var(--radius-lg); overflow:hidden; box-shadow: 0 10px 36px rgba(0,0,0,.22);
+  background:#000; aspect-ratio: 16/9;
+  border: 3px solid var(--white);
+}
+.player-wrap iframe { width:100%; height:100%; border:0; display:block; }
+.player-current {
+  text-align:center; font-size:.85rem; color: var(--fg-muted); margin-bottom: 4px;
+}
+.player-current strong { color: var(--green-dark); }
+
+/* ── CREDIT ── */
+.credit-box {
+  max-width: 780px; margin: 30px auto 0; text-align:center;
+  font-size: .82rem; color: var(--fg-muted); padding-top: 18px; border-top: 1px solid var(--border);
+}
+.credit-box a { color: var(--green-dark); font-weight:700; text-decoration: underline; }
+
+/* ── CTA FOOTER ── */
+.cta-footer {
+  background: var(--grey-800); color: var(--white); padding: 40px 0; text-align:center;
+}
+.cta-footer h3 { font-size: 1.2rem; margin-bottom: 8px; }
+.cta-footer p { color: rgba(255,255,255,.75); font-size:.9rem; margin-bottom: 20px; }
+.cta-row { display:flex; flex-wrap:wrap; justify-content:center; gap: 12px; }
+.btn-cta-wa, .btn-cta-out {
+  display:inline-flex; align-items:center; gap:8px; padding: 12px 24px; border-radius: var(--radius-pill);
+  font-weight:700; font-size:.9rem; transition: transform var(--tr), box-shadow var(--tr);
+}
+.btn-cta-wa { background: var(--green); color:#fff; box-shadow: 0 4px 16px rgba(0,146,70,.4); }
+.btn-cta-wa:hover { transform: translateY(-2px); }
+.btn-cta-out { background: rgba(255,255,255,.1); color:#fff; border: 1px solid rgba(255,255,255,.3); }
+.btn-cta-out:hover { background: rgba(255,255,255,.18); }
+
+@media (max-width: 600px) {
+  .ep-grid { grid-template-columns: 1fr 1fr; }
+  .about-card { padding: 22px 18px; }
+}
+@media (max-width: 420px) {
+  .ep-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── TOPBAR ── -->
+<div class="tricolor-stripe" aria-hidden="true"></div>
+<nav class="topbar">
+  <div class="page-wrap topbar-inner">
+    <div class="topbar-brand">Scuola San Vitale — Materiale per imparare</div>
+    <a href="index.html" class="topbar-back">← Torna al sito</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<header class="hero">
+  <div class="page-wrap hero-inner">
+    <span class="hero-flag">🇮🇹</span>
+    <h1>Materiale gratuito per<br><span>imparare l'italiano</span></h1>
+    <p>Video-lezioni ed esercizi interattivi pensati per chi studia l'italiano a casa, tra una lezione e l'altra con la Scuola San Vitale.</p>
+    <div class="hero-badges">
+      <span class="badge">🎬 10 video-lezioni</span>
+      <span class="badge">📝 Esercizi interattivi</span>
+      <span class="badge">🆓 Completamente gratuito</span>
+      <span class="badge">🎯 Livelli A1 → B1</span>
+    </div>
+  </div>
+</header>
+
+<!-- ── ABOUT ── -->
+<section class="section">
+  <div class="page-wrap">
+    <div class="section-label">Come funziona</div>
+    <h2 class="section-title">Dieci episodi, un percorso completo</h2>
+    <p class="section-desc">Ogni episodio segue la storia di alcuni studenti stranieri in Italia: dai primi saluti fino a raccontare progetti futuri. Scegli un episodio qui sotto per guardarlo e fare gli esercizi collegati.</p>
+
+    <div class="about-card">
+      <h3>📚 Cosa troverai in ogni episodio</h3>
+      <p>Ogni video-lezione è accompagnata da esercizi interattivi pensati per fissare il vocabolario e la grammatica della situazione raccontata.</p>
+      <ul class="about-list">
+        <li>Video con sottotitoli e dialoghi reali</li>
+        <li>Esercizi di vocabolario e comprensione</li>
+        <li>Progressione naturale dal livello A1 al B1</li>
+        <li>Puoi guardarli quante volte vuoi, gratis</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── EPISODI ── -->
+<section class="section" style="padding-top:0">
+  <div class="page-wrap">
+    <div class="ep-grid" id="epGrid">
+      <div class="ep-card active" data-ep="1" data-level="A1">
+        <div class="ep-card__num">Episodio 1</div>
+        <div class="ep-card__title">Mi chiamo Li Li</div>
+        <div class="ep-card__topic">Presentarsi e i primi saluti</div>
+        <div class="ep-card__level">🎯 Livello A1</div>
+      </div>
+      <div class="ep-card" data-ep="2" data-level="A1">
+        <div class="ep-card__num">Episodio 2</div>
+        <div class="ep-card__title">Andiamo a scuola</div>
+        <div class="ep-card__topic">La routine scolastica e i mezzi di trasporto</div>
+        <div class="ep-card__level">🎯 Livello A1</div>
+      </div>
+      <div class="ep-card" data-ep="3" data-level="A1">
+        <div class="ep-card__num">Episodio 3</div>
+        <div class="ep-card__title">Ecco la mia famiglia</div>
+        <div class="ep-card__topic">Parlare della propria famiglia</div>
+        <div class="ep-card__level">🎯 Livello A1</div>
+      </div>
+      <div class="ep-card" data-ep="4" data-level="A1–A2">
+        <div class="ep-card__num">Episodio 4</div>
+        <div class="ep-card__title">Dove abiti?</div>
+        <div class="ep-card__topic">Indicazioni stradali e la propria casa</div>
+        <div class="ep-card__level">🎯 Livello A1–A2</div>
+      </div>
+      <div class="ep-card" data-ep="5" data-level="A2">
+        <div class="ep-card__num">Episodio 5</div>
+        <div class="ep-card__title">Ti piace la pizza?</div>
+        <div class="ep-card__topic">Cibo, gusti e preferenze</div>
+        <div class="ep-card__level">🎯 Livello A2</div>
+      </div>
+      <div class="ep-card" data-ep="6" data-level="A2">
+        <div class="ep-card__num">Episodio 6</div>
+        <div class="ep-card__title">La mia giornata</div>
+        <div class="ep-card__topic">Raccontare le attività quotidiane</div>
+        <div class="ep-card__level">🎯 Livello A2</div>
+      </div>
+      <div class="ep-card" data-ep="7" data-level="A2–B1">
+        <div class="ep-card__num">Episodio 7</div>
+        <div class="ep-card__title">Che cosa hai fatto ieri?</div>
+        <div class="ep-card__topic">Il passato prossimo nella vita di tutti i giorni</div>
+        <div class="ep-card__level">🎯 Livello A2–B1</div>
+      </div>
+      <div class="ep-card" data-ep="8" data-level="B1">
+        <div class="ep-card__num">Episodio 8</div>
+        <div class="ep-card__title">Una cartolina da...</div>
+        <div class="ep-card__topic">Scrivere e raccontare un viaggio</div>
+        <div class="ep-card__level">🎯 Livello B1</div>
+      </div>
+      <div class="ep-card" data-ep="9" data-level="B1">
+        <div class="ep-card__num">Episodio 9</div>
+        <div class="ep-card__title">Quando ero piccola...</div>
+        <div class="ep-card__topic">Ricordi d'infanzia con l'imperfetto</div>
+        <div class="ep-card__level">🎯 Livello B1</div>
+      </div>
+      <div class="ep-card" data-ep="10" data-level="B1">
+        <div class="ep-card__num">Episodio 10</div>
+        <div class="ep-card__title">Da grande farò il pittore</div>
+        <div class="ep-card__topic">Parlare di progetti e sogni futuri</div>
+        <div class="ep-card__level">🎯 Livello B1</div>
+      </div>
+    </div>
+
+    <p class="player-current">Stai guardando: <strong id="epLabel">Episodio 1 — Mi chiamo Li Li</strong></p>
+    <div class="player-wrap">
+      <iframe id="videoPlayer"
+        src="https://ciaoamici.rizzolieducation.it/storie_situazioni/ud1/index.html"
+        allowfullscreen loading="lazy" title="Video-lezione di italiano"></iframe>
+    </div>
+
+    <p class="credit-box">
+      Contenuti video e materiali didattici forniti da
+      <a href="https://ciaoamici.rizzolieducation.it" target="_blank" rel="noopener">Ciao, amici! — Rizzoli Education</a>.
+      Grazie per rendere queste risorse disponibili gratuitamente.
+    </p>
+  </div>
+</section>
+
+<!-- ── CTA FOOTER ── -->
+<section class="cta-footer">
+  <div class="page-wrap">
+    <h3>Vuoi seguire anche le lezioni in presenza?</h3>
+    <p>I nostri corsi gratuiti di italiano sono aperti a tutte e tutti. Scrivici per iscriverti.</p>
+    <div class="cta-row">
+      <a href="https://wa.me/393462110985" target="_blank" rel="noopener" class="btn-cta-wa">💬 Prenota via WhatsApp</a>
+      <a href="test.html" class="btn-cta-out">🇮🇹 Fai il Test di Italiano</a>
+      <a href="index.html" class="btn-cta-out">← Torna al sito</a>
+    </div>
+  </div>
+</section>
+
+<script>
+const episodeTitles = {
+  1:"Mi chiamo Li Li", 2:"Andiamo a scuola", 3:"Ecco la mia famiglia",
+  4:"Dove abiti?", 5:"Ti piace la pizza?", 6:"La mia giornata",
+  7:"Che cosa hai fatto ieri?", 8:"Una cartolina da...",
+  9:"Quando ero piccola...", 10:"Da grande farò il pittore"
+};
+document.querySelectorAll('.ep-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const n = card.dataset.ep;
+    document.getElementById('videoPlayer').src =
+      'https://ciaoamici.rizzolieducation.it/storie_situazioni/ud' + n + '/index.html';
+    document.querySelectorAll('.ep-card').forEach(c => c.classList.remove('active'));
+    card.classList.add('active');
+    document.getElementById('epLabel').textContent = 'Episodio ' + n + ' — ' + episodeTitles[n];
+    document.querySelector('.player-wrap').scrollIntoView({behavior:'smooth', block:'center'});
+  });
+});
+</script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
+}
+</script>
+
+</body>
+</html>
