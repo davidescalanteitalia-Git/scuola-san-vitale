@@ -161,11 +161,12 @@ ul { list-style: none; }
 .nav-dropdown__menu a {
   display: flex; align-items: center; gap: 10px;
   padding: 10px 12px; border-radius: 10px;
-  font-size: 14px; font-weight: 600; color: var(--text-dark);
+  font-size: 14px; font-weight: 600; color: var(--text-dark) !important;
   white-space: nowrap;
   transition: background var(--tr), color var(--tr);
 }
-.nav-dropdown__menu a:hover { background: rgba(0,146,70,.1); color: #006b35; }
+.nav-dropdown__menu a:hover { background: rgba(0,146,70,.1); color: #006b35 !important; }
+.nav-dropdown__menu a[href="test.html"] { color: #fff !important; }
 .nav-dropdown__icon { font-size: 16px; flex-shrink: 0; line-height: 1; }
 
 .btn-cta {
