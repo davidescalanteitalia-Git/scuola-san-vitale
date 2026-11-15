@@ -97,6 +97,23 @@ img { max-width: 100%; display:block; }
 button { cursor: pointer; font-family: inherit; border: none; }
 a { color: inherit; text-decoration: none; }
 
+/* ── LANGUAGE SWITCHER (same languages/preference as index.html) ──── */
+.lang-switcher { position: fixed; top: 50%; right: 0; transform: translateY(-50%); z-index: 150; display: flex; flex-direction: column; gap: 2px; }
+.lang-switcher button {
+  background: var(--green-dark); color: #fff;
+  font-size: 10px; font-weight: 700; font-family: inherit;
+  padding: 6px 8px; width: 36px; text-align: center; letter-spacing: .02em;
+  opacity: .70; border: none; cursor: pointer;
+  transition: opacity .2s, background .2s;
+}
+.lang-switcher button.active, .lang-switcher button:hover { opacity: 1; background: var(--italian-red); }
+/* On phones the fixed side rail would cover the answers, so the switcher
+   becomes a full-width row in normal flow right under the top bar. */
+@media (max-width: 640px) {
+  .lang-switcher { position: static; transform: none; flex-direction: row; background: var(--green-dark); }
+  .lang-switcher button { flex: 1; width: auto; min-height: 44px; padding: 6px 0; font-size: 11px; opacity: .85; }
+}
+
 /* ── LAYOUT WRAPPER ───────────────────────────────────── */
 .page-wrap {
   max-width: 860px;
@@ -289,6 +306,7 @@ a { color: inherit; text-decoration: none; }
   color: var(--fg-muted);
   border: 2px solid transparent;
   padding: 7px 18px;
+  min-height: 44px;
   border-radius: var(--radius-pill);
   font-size: .82rem;
   font-weight: 600;
@@ -859,22 +877,36 @@ a:focus-visible, button:focus-visible, input:focus-visible {
     <div class="topbar-brand">
       Scuola San Vitale — Test di Italiano
     </div>
-    <a href="index.html" class="topbar-back">← Torna al sito</a>
+    <a href="index.html" class="topbar-back" data-i18n="back">← Torna al sito</a>
   </div>
 </nav>
+
+<!-- LANG SIDEBAR (same languages/choice as index.html; shares ssv_lang) -->
+<div class="lang-switcher" id="langSwitcher">
+  <button onclick="setLang('it')" class="active">IT</button>
+  <button onclick="setLang('es')">ES</button>
+  <button onclick="setLang('ar')">AR</button>
+  <button onclick="setLang('ro')">RO</button>
+  <button onclick="setLang('sq')">SQ</button>
+  <button onclick="setLang('zh')">ZH</button>
+  <button onclick="setLang('tl')">TL</button>
+  <button onclick="setLang('uk')">UK</button>
+  <button onclick="setLang('fr')">FR</button>
+  <button onclick="setLang('en')">EN</button>
+</div>
 
 <!-- ── HERO ───────────────────────────────────────────── -->
 <header class="hero" id="home-screen">
   <div class="page-wrap hero-inner">
     <span class="hero-flag">🇮🇹</span>
-    <h1>Pratica il tuo<br><span>Italiano</span></h1>
-    <p>Esercizi interattivi per migliorare le tue competenze linguistiche. Ogni sessione è unica e diversa.</p>
+    <h1><span data-i18n="hero_l1">Pratica il tuo</span><br><span data-i18n="hero_l2">Italiano</span></h1>
+    <p data-i18n="hero_sub">Esercizi interattivi per migliorare le tue competenze linguistiche. Ogni sessione è unica e diversa.</p>
     <div class="hero-badges">
-      <span class="badge">📝 Scrittura</span>
-      <span class="badge">🎧 Ascolto</span>
-      <span class="badge">✅ Vero/Falso</span>
-      <span class="badge">🔤 Scelta Multipla</span>
-      <span class="badge">🔄 Coniugazione</span>
+      <span class="badge" data-i18n="badge_scrittura">📝 Scrittura</span>
+      <span class="badge" data-i18n="badge_ascolto">🎧 Ascolto</span>
+      <span class="badge" data-i18n="badge_verofalso">✅ Vero/Falso</span>
+      <span class="badge" data-i18n="badge_scelta">🔤 Scelta Multipla</span>
+      <span class="badge" data-i18n="badge_coniugazione">🔄 Coniugazione</span>
     </div>
   </div>
 </header>
@@ -885,59 +917,59 @@ a:focus-visible, button:focus-visible, input:focus-visible {
     <section class="mode-section">
 
       <!-- TYPE SELECTOR -->
-      <div class="section-label">Tipo di esercizio</div>
+      <div class="section-label" data-i18n="lbl_tipo">Tipo di esercizio</div>
       <div class="mode-grid" id="mode-grid">
-        <div class="mode-card" data-mode="all" onclick="selectMode(this)">
+        <div class="mode-card" data-mode="all" tabindex="0" role="button" aria-pressed="false" onclick="selectMode(this)">
           <img class="mode-card__photo" src="assets/hero.webp" width="640" height="360" loading="lazy" decoding="async" alt="Gruppo di persone adulte durante una lezione di italiano">
           <span class="mode-icon">🎯</span>
-          <h3>Tutto misto</h3>
-          <p>Combinazione di tutti i tipi di esercizi per una pratica completa</p>
+          <h3 data-i18n="mode_all_t">Tutto misto</h3>
+          <p data-i18n="mode_all_d">Combinazione di tutti i tipi di esercizi per una pratica completa</p>
         </div>
-        <div class="mode-card selected" data-mode="scelta" onclick="selectMode(this)">
+        <div class="mode-card selected" data-mode="scelta" tabindex="0" role="button" aria-pressed="true" onclick="selectMode(this)">
           <img class="mode-card__photo" src="assets/quiz/086-un-libro.webp" width="640" height="360" loading="lazy" decoding="async" alt="Studenti che discutono un esercizio scritto">
           <span class="mode-icon">🔤</span>
-          <h3>Scelta multipla</h3>
-          <p>Scegli la risposta giusta tra quattro opzioni</p>
+          <h3 data-i18n="mode_scelta_t">Scelta multipla</h3>
+          <p data-i18n="mode_scelta_d">Scegli la risposta giusta tra quattro opzioni</p>
         </div>
-        <div class="mode-card" data-mode="verofalso" onclick="selectMode(this)">
+        <div class="mode-card" data-mode="verofalso" tabindex="0" role="button" aria-pressed="false" onclick="selectMode(this)">
           <img class="mode-card__photo" src="assets/quiz/048-pronuncia-ci-ce.webp" width="640" height="360" loading="lazy" decoding="async" alt="Insegnante che aiuta gli studenti a verificare una frase">
           <span class="mode-icon">✅</span>
-          <h3>Vero o Falso</h3>
-          <p>Decidi se la frase è corretta o sbagliata</p>
+          <h3 data-i18n="mode_verofalso_t">Vero o Falso</h3>
+          <p data-i18n="mode_verofalso_d">Decidi se la frase è corretta o sbagliata</p>
         </div>
-        <div class="mode-card" data-mode="scrittura" onclick="selectMode(this)">
+        <div class="mode-card" data-mode="scrittura" tabindex="0" role="button" aria-pressed="false" onclick="selectMode(this)">
           <img class="mode-card__photo" src="assets/quiz/131-scrivere.webp" width="640" height="360" loading="lazy" decoding="async" alt="Studentessa che scrive con una penna in un quaderno">
           <span class="mode-icon">✏️</span>
-          <h3>Scrittura</h3>
-          <p>Scrivi la risposta corretta in italiano</p>
+          <h3 data-i18n="mode_scrittura_t">Scrittura</h3>
+          <p data-i18n="mode_scrittura_d">Scrivi la risposta corretta in italiano</p>
         </div>
-        <div class="mode-card" data-mode="coniugazione" onclick="selectMode(this)">
+        <div class="mode-card" data-mode="coniugazione" tabindex="0" role="button" aria-pressed="false" onclick="selectMode(this)">
           <img class="mode-card__photo" src="assets/corsi.webp" width="640" height="360" loading="lazy" decoding="async" alt="Studio dei verbi e della grammatica con un insegnante">
           <span class="mode-icon">🔄</span>
-          <h3>Coniugazione</h3>
-          <p>Coniuga i verbi nelle forme corrette</p>
+          <h3 data-i18n="mode_coniugazione_t">Coniugazione</h3>
+          <p data-i18n="mode_coniugazione_d">Coniuga i verbi nelle forme corrette</p>
         </div>
-        <div class="mode-card" data-mode="ascolto" onclick="selectMode(this)">
+        <div class="mode-card" data-mode="ascolto" tabindex="0" role="button" aria-pressed="false" onclick="selectMode(this)">
           <img class="mode-card__photo" src="assets/quiz/109-parlando.webp" width="640" height="360" loading="lazy" decoding="async" alt="Persone che si parlano e si ascoltano">
           <span class="mode-icon">🎧</span>
-          <h3>Ascolto</h3>
-          <p>Ascolta e rispondi alle domande in italiano</p>
+          <h3 data-i18n="mode_ascolto_t">Ascolto</h3>
+          <p data-i18n="mode_ascolto_d">Ascolta e rispondi alle domande in italiano</p>
         </div>
       </div>
 
       <!-- LEVEL & LENGTH -->
       <div class="config-row">
         <div class="config-group">
-          <label>Livello</label>
+          <label data-i18n="lbl_livello">Livello</label>
           <div class="chip-group" id="level-chips">
-            <button class="chip active" data-level="all" onclick="selectLevel(this)">Tutti</button>
-            <button class="chip" data-level="A1" onclick="selectLevel(this)">A1 — Base</button>
-            <button class="chip" data-level="A2" onclick="selectLevel(this)">A2 — Elementare</button>
-            <button class="chip" data-level="B1" onclick="selectLevel(this)">B1 — Intermedio</button>
+            <button class="chip active" data-level="all" onclick="selectLevel(this)" data-i18n="chip_all">Tutti</button>
+            <button class="chip" data-level="A1" onclick="selectLevel(this)" data-i18n="chip_a1">A1 — Base</button>
+            <button class="chip" data-level="A2" onclick="selectLevel(this)" data-i18n="chip_a2">A2 — Elementare</button>
+            <button class="chip" data-level="B1" onclick="selectLevel(this)" data-i18n="chip_b1">B1 — Intermedio</button>
           </div>
         </div>
         <div class="config-group">
-          <label>Domande per sessione</label>
+          <label data-i18n="lbl_qty">Domande per sessione</label>
           <div class="chip-group" id="qty-chips">
             <button class="chip" data-qty="5" onclick="selectQty(this)">5</button>
             <button class="chip active" data-qty="10" onclick="selectQty(this)">10</button>
@@ -948,7 +980,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
       </div>
 
       <div class="start-area">
-        <button class="btn-start" onclick="startQuiz()">Inizia il test ›</button>
+        <button class="btn-start" onclick="startQuiz()" data-i18n="btn_start">Inizia il test ›</button>
       </div>
     </section>
   </div>
@@ -958,14 +990,14 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 <div id="quiz-screen">
   <div class="page-wrap">
     <div class="quiz-header">
-      <div class="quiz-meta">Domanda <strong id="q-num">1</strong> di <strong id="q-total">10</strong></div>
-      <div class="quiz-score-live">✅ <span id="score-live">0</span> corrette</div>
+      <div class="quiz-meta"><span data-i18n="lbl_domanda">Domanda</span> <strong id="q-num">1</strong> <span data-i18n="lbl_di">di</span> <strong id="q-total">10</strong></div>
+      <div class="quiz-score-live">✅ <span id="score-live">0</span> <span data-i18n="lbl_corrette">corrette</span></div>
     </div>
     <div class="progress-track">
       <div class="progress-fill" id="progress-fill" style="width:0%"></div>
     </div>
     <div id="q-container"></div>
-    <button class="btn-next" id="btn-next" onclick="nextQuestion()">Prossima domanda →</button>
+    <button class="btn-next" id="btn-next" onclick="nextQuestion()" data-i18n="btn_next">Prossima domanda →</button>
   </div>
 </div>
 
@@ -980,22 +1012,22 @@ a:focus-visible, button:focus-visible, input:focus-visible {
       <div class="stats-row">
         <div class="stat-mini correct-stat">
           <span class="n" id="stat-correct">0</span>
-          <span class="l">Corrette</span>
+          <span class="l" data-i18n="lbl_stat_correct">Corrette</span>
         </div>
         <div class="stat-mini wrong-stat">
           <span class="n" id="stat-wrong">0</span>
-          <span class="l">Sbagliate</span>
+          <span class="l" data-i18n="lbl_stat_wrong">Sbagliate</span>
         </div>
         <div class="stat-mini neutral-stat">
           <span class="n" id="stat-pct">0%</span>
-          <span class="l">Precisione</span>
+          <span class="l" data-i18n="lbl_stat_pct">Precisione</span>
         </div>
       </div>
       <p class="result-message" id="result-msg">Continua così! Ogni sessione ti avvicina alla padronanza dell'italiano.</p>
     </div>
     <div class="result-actions">
-      <button class="btn-restart" onclick="restartSame()">🔄 Riprova (diverse domande)</button>
-      <button class="btn-home" onclick="goHome()">🏠 Menu principale</button>
+      <button class="btn-restart" onclick="restartSame()" data-i18n="btn_retry">🔄 Riprova (diverse domande)</button>
+      <button class="btn-home" onclick="goHome()" data-i18n="btn_home">🏠 Menu principale</button>
     </div>
     <div class="review-section" id="review-section"></div>
   </div>
@@ -2237,6 +2269,78 @@ function getQuizPhoto(q){
  return QUIZ_PHOTOS[k];
 }
 
+/* ═══════════════════════════════════════════════════════
+   UI TRANSLATIONS (chrome only — exercise content stays Italian
+   on purpose, since the point is reading/writing Italian).
+   Shares the ssv_lang preference set on index.html.
+═══════════════════════════════════════════════════════ */
+const TT = {
+  it:{back:"← Torna al sito",hero_l1:"Pratica il tuo",hero_l2:"Italiano",hero_sub:"Esercizi interattivi per migliorare le tue competenze linguistiche. Ogni sessione è unica e diversa.",badge_scrittura:"📝 Scrittura",badge_ascolto:"🎧 Ascolto",badge_verofalso:"✅ Vero/Falso",badge_scelta:"🔤 Scelta Multipla",badge_coniugazione:"🔄 Coniugazione",lbl_tipo:"Tipo di esercizio",mode_all_t:"Tutto misto",mode_all_d:"Combinazione di tutti i tipi di esercizi per una pratica completa",mode_scelta_t:"Scelta multipla",mode_scelta_d:"Scegli la risposta giusta tra quattro opzioni",mode_verofalso_t:"Vero o Falso",mode_verofalso_d:"Decidi se la frase è corretta o sbagliata",mode_scrittura_t:"Scrittura",mode_scrittura_d:"Scrivi la risposta corretta in italiano",mode_coniugazione_t:"Coniugazione",mode_coniugazione_d:"Coniuga i verbi nelle forme corrette",mode_ascolto_t:"Ascolto",mode_ascolto_d:"Ascolta e rispondi alle domande in italiano",lbl_livello:"Livello",chip_all:"Tutti",chip_a1:"A1 — Base",chip_a2:"A2 — Elementare",chip_b1:"B1 — Intermedio",lbl_qty:"Domande per sessione",btn_start:"Inizia il test ›",lbl_domanda:"Domanda",lbl_di:"di",lbl_corrette:"corrette",btn_next:"Prossima domanda →",btn_seeresults:"Vedi risultati ✓",lbl_stat_correct:"Corrette",lbl_stat_wrong:"Sbagliate",lbl_stat_pct:"Precisione",lbl_precisione_suffix:"di precisione",btn_retry:"🔄 Riprova (diverse domande)",btn_home:"🏠 Menu principale",lbl_yourAnswer:"La tua risposta:",lbl_correctAnswer:"Risposta corretta:",lbl_allCorrect:"🎯 Tutte le risposte corrette!",lbl_reviewErrors:"📖 Rivedi gli errori",alert_none:"Nessun esercizio trovato per questa combinazione. Prova con impostazioni diverse.",feedback_correct_title:"Ottimo! Corretto!",feedback_wrong_title:"Rivedi questa risposta",rt90_title:"Eccellente!",rt90_msg:"Risultato straordinario! Il tuo italiano è davvero ottimo. Continua così!",rt75_title:"Ottimo lavoro!",rt75_msg:"Molto bene! Hai dimostrato una buona padronanza dell'italiano. Pratica ancora per raggiungere la perfezione.",rt60_title:"Buon risultato!",rt60_msg:"Ben fatto! Stai progredendo. Riprova per migliorare ulteriormente le tue competenze.",rt40_title:"Continua a praticare!",rt40_msg:"Un buon inizio. L'italiano richiede pratica costante. Riprova e vedrai i miglioramenti!",rt0_title:"Impariamo insieme!",rt0_msg:"Non preoccuparti! Ogni errore è un'opportunità di imparare. Riprova con fiducia!"},
+
+  es:{back:"← Volver al sitio",hero_l1:"Practica tu",hero_l2:"Italiano",hero_sub:"Ejercicios interactivos para mejorar tus competencias lingüísticas. Cada sesión es única y diferente.",badge_scrittura:"📝 Escritura",badge_ascolto:"🎧 Escucha",badge_verofalso:"✅ Verdadero/Falso",badge_scelta:"🔤 Opción Múltiple",badge_coniugazione:"🔄 Conjugación",lbl_tipo:"Tipo de ejercicio",mode_all_t:"Mezcla completa",mode_all_d:"Combinación de todos los tipos de ejercicios para una práctica completa",mode_scelta_t:"Opción múltiple",mode_scelta_d:"Elige la respuesta correcta entre cuatro opciones",mode_verofalso_t:"Verdadero o Falso",mode_verofalso_d:"Decide si la frase es correcta o incorrecta",mode_scrittura_t:"Escritura",mode_scrittura_d:"Escribe la respuesta correcta en italiano",mode_coniugazione_t:"Conjugación",mode_coniugazione_d:"Conjuga los verbos en las formas correctas",mode_ascolto_t:"Escucha",mode_ascolto_d:"Escucha y responde a las preguntas en italiano",lbl_livello:"Nivel",chip_all:"Todos",chip_a1:"A1 — Básico",chip_a2:"A2 — Elemental",chip_b1:"B1 — Intermedio",lbl_qty:"Preguntas por sesión",btn_start:"Empezar el test ›",lbl_domanda:"Pregunta",lbl_di:"de",lbl_corrette:"correctas",btn_next:"Siguiente pregunta →",btn_seeresults:"Ver resultados ✓",lbl_stat_correct:"Correctas",lbl_stat_wrong:"Incorrectas",lbl_stat_pct:"Precisión",lbl_precisione_suffix:"de precisión",btn_retry:"🔄 Reintentar (preguntas distintas)",btn_home:"🏠 Menú principal",lbl_yourAnswer:"Tu respuesta:",lbl_correctAnswer:"Respuesta correcta:",lbl_allCorrect:"🎯 ¡Todas las respuestas correctas!",lbl_reviewErrors:"📖 Revisa tus errores",alert_none:"No se encontraron ejercicios para esta combinación. Prueba con otras opciones.",feedback_correct_title:"¡Muy bien! Correcto",feedback_wrong_title:"Revisa esta respuesta",rt90_title:"¡Excelente!",rt90_msg:"¡Resultado extraordinario! Tu italiano es realmente muy bueno. ¡Sigue así!",rt75_title:"¡Muy buen trabajo!",rt75_msg:"¡Muy bien! Has demostrado un buen dominio del italiano. Sigue practicando para alcanzar la perfección.",rt60_title:"¡Buen resultado!",rt60_msg:"¡Bien hecho! Estás progresando. Vuelve a intentarlo para mejorar aún más tus competencias.",rt40_title:"¡Sigue practicando!",rt40_msg:"Un buen comienzo. El italiano requiere práctica constante. ¡Vuelve a intentarlo y verás los avances!",rt0_title:"¡Aprendamos juntos!",rt0_msg:"¡No te preocupes! Cada error es una oportunidad para aprender. ¡Vuelve a intentarlo con confianza!"},
+
+  ar:{back:"← العودة إلى الموقع",hero_l1:"تدرّب على",hero_l2:"الإيطالية",hero_sub:"تمارين تفاعلية لتحسين مهاراتك اللغوية. كل جلسة فريدة ومختلفة.",badge_scrittura:"📝 كتابة",badge_ascolto:"🎧 استماع",badge_verofalso:"✅ صح/خطأ",badge_scelta:"🔤 اختيار من متعدد",badge_coniugazione:"🔄 تصريف الأفعال",lbl_tipo:"نوع التمرين",mode_all_t:"مزيج شامل",mode_all_d:"مزيج من جميع أنواع التمارين لممارسة شاملة",mode_scelta_t:"اختيار من متعدد",mode_scelta_d:"اختر الإجابة الصحيحة من بين أربعة خيارات",mode_verofalso_t:"صح أو خطأ",mode_verofalso_d:"حدد ما إذا كانت الجملة صحيحة أم خاطئة",mode_scrittura_t:"كتابة",mode_scrittura_d:"اكتب الإجابة الصحيحة بالإيطالية",mode_coniugazione_t:"تصريف الأفعال",mode_coniugazione_d:"صرّف الأفعال بالأشكال الصحيحة",mode_ascolto_t:"استماع",mode_ascolto_d:"استمع وأجب عن الأسئلة بالإيطالية",lbl_livello:"المستوى",chip_all:"الكل",chip_a1:"A1 — أساسي",chip_a2:"A2 — ابتدائي",chip_b1:"B1 — متوسط",lbl_qty:"عدد الأسئلة لكل جلسة",btn_start:"ابدأ الاختبار ›",lbl_domanda:"سؤال",lbl_di:"من",lbl_corrette:"صحيحة",btn_next:"السؤال التالي →",btn_seeresults:"عرض النتائج ✓",lbl_stat_correct:"صحيحة",lbl_stat_wrong:"خاطئة",lbl_stat_pct:"الدقة",lbl_precisione_suffix:"دقة",btn_retry:"🔄 إعادة المحاولة (أسئلة مختلفة)",btn_home:"🏠 القائمة الرئيسية",lbl_yourAnswer:"إجابتك:",lbl_correctAnswer:"الإجابة الصحيحة:",lbl_allCorrect:"🎯 كل الإجابات صحيحة!",lbl_reviewErrors:"📖 راجع أخطاءك",alert_none:"لم يتم العثور على تمارين لهذا الاختيار. جرّب إعدادات مختلفة.",feedback_correct_title:"ممتاز! صحيح",feedback_wrong_title:"راجع هذه الإجابة",rt90_title:"ممتاز جداً!",rt90_msg:"نتيجة استثنائية! إيطاليتك ممتازة حقاً. استمر هكذا!",rt75_title:"عمل رائع!",rt75_msg:"أحسنت! أظهرت إتقاناً جيداً للإيطالية. تابع التدرب للوصول إلى الإتقان الكامل.",rt60_title:"نتيجة جيدة!",rt60_msg:"أحسنت! أنت تتقدم. أعد المحاولة لتحسين مهاراتك أكثر.",rt40_title:"واصل التدرب!",rt40_msg:"بداية جيدة. الإيطالية تحتاج تدرباً مستمراً. أعد المحاولة وسترى التحسن!",rt0_title:"لنتعلم معاً!",rt0_msg:"لا تقلق! كل خطأ هو فرصة للتعلم. أعد المحاولة بثقة!"},
+
+  ro:{back:"← Înapoi la site",hero_l1:"Exersează",hero_l2:"italiana ta",hero_sub:"Exerciții interactive pentru a-ți îmbunătăți competențele lingvistice. Fiecare sesiune este unică și diferită.",badge_scrittura:"📝 Scriere",badge_ascolto:"🎧 Ascultare",badge_verofalso:"✅ Adevărat/Fals",badge_scelta:"🔤 Alegere Multiplă",badge_coniugazione:"🔄 Conjugare",lbl_tipo:"Tip de exercițiu",mode_all_t:"Mix complet",mode_all_d:"Combinație a tuturor tipurilor de exerciții pentru o practică completă",mode_scelta_t:"Alegere multiplă",mode_scelta_d:"Alege răspunsul corect din patru opțiuni",mode_verofalso_t:"Adevărat sau Fals",mode_verofalso_d:"Decide dacă propoziția este corectă sau greșită",mode_scrittura_t:"Scriere",mode_scrittura_d:"Scrie răspunsul corect în italiană",mode_coniugazione_t:"Conjugare",mode_coniugazione_d:"Conjugă verbele în formele corecte",mode_ascolto_t:"Ascultare",mode_ascolto_d:"Ascultă și răspunde la întrebări în italiană",lbl_livello:"Nivel",chip_all:"Toate",chip_a1:"A1 — Bază",chip_a2:"A2 — Elementar",chip_b1:"B1 — Intermediar",lbl_qty:"Întrebări pe sesiune",btn_start:"Începe testul ›",lbl_domanda:"Întrebarea",lbl_di:"din",lbl_corrette:"corecte",btn_next:"Întrebarea următoare →",btn_seeresults:"Vezi rezultatele ✓",lbl_stat_correct:"Corecte",lbl_stat_wrong:"Greșite",lbl_stat_pct:"Precizie",lbl_precisione_suffix:"precizie",btn_retry:"🔄 Reîncearcă (întrebări diferite)",btn_home:"🏠 Meniu principal",lbl_yourAnswer:"Răspunsul tău:",lbl_correctAnswer:"Răspunsul corect:",lbl_allCorrect:"🎯 Toate răspunsurile corecte!",lbl_reviewErrors:"📖 Revizuiește greșelile",alert_none:"Nu s-a găsit niciun exercițiu pentru această combinație. Încearcă alte setări.",feedback_correct_title:"Foarte bine! Corect",feedback_wrong_title:"Revizuiește acest răspuns",rt90_title:"Excelent!",rt90_msg:"Rezultat extraordinar! Italiana ta este într-adevăr foarte bună. Continuă așa!",rt75_title:"Treabă excelentă!",rt75_msg:"Foarte bine! Ai demonstrat o bună stăpânire a italienei. Mai exersează pentru a atinge perfecțiunea.",rt60_title:"Rezultat bun!",rt60_msg:"Bravo! Progresezi. Încearcă din nou pentru a-ți îmbunătăți și mai mult competențele.",rt40_title:"Continuă să exersezi!",rt40_msg:"Un început bun. Italiana cere practică constantă. Încearcă din nou și vei vedea progresul!",rt0_title:"Să învățăm împreună!",rt0_msg:"Nu-ți face griji! Fiecare greșeală este o ocazie de a învăța. Încearcă din nou cu încredere!"},
+
+  sq:{back:"← Kthehu te faqja",hero_l1:"Ushtro",hero_l2:"italishten tënde",hero_sub:"Ushtrime interaktive për të përmirësuar aftësitë e tua gjuhësore. Çdo sesion është unik dhe i ndryshëm.",badge_scrittura:"📝 Shkrim",badge_ascolto:"🎧 Dëgjim",badge_verofalso:"✅ E vërtetë/E rreme",badge_scelta:"🔤 Zgjedhje e Shumëfishtë",badge_coniugazione:"🔄 Zgjedhim i foljeve",lbl_tipo:"Lloji i ushtrimit",mode_all_t:"Përzierje e plotë",mode_all_d:"Kombinim i të gjitha llojeve të ushtrimeve për një praktikë të plotë",mode_scelta_t:"Zgjedhje e shumëfishtë",mode_scelta_d:"Zgjidh përgjigjen e saktë mes katër opsioneve",mode_verofalso_t:"E vërtetë apo e rreme",mode_verofalso_d:"Vendos nëse fjalia është e saktë apo e gabuar",mode_scrittura_t:"Shkrim",mode_scrittura_d:"Shkruaj përgjigjen e saktë në italisht",mode_coniugazione_t:"Zgjedhimi i foljeve",mode_coniugazione_d:"Zgjedho foljet në format e sakta",mode_ascolto_t:"Dëgjim",mode_ascolto_d:"Dëgjo dhe përgjigju pyetjeve në italisht",lbl_livello:"Niveli",chip_all:"Të gjitha",chip_a1:"A1 — Bazë",chip_a2:"A2 — Elementar",chip_b1:"B1 — I ndërmjetëm",lbl_qty:"Pyetje për sesion",btn_start:"Fillo testin ›",lbl_domanda:"Pyetja",lbl_di:"nga",lbl_corrette:"të sakta",btn_next:"Pyetja tjetër →",btn_seeresults:"Shiko rezultatet ✓",lbl_stat_correct:"Të sakta",lbl_stat_wrong:"Të gabuara",lbl_stat_pct:"Saktësia",lbl_precisione_suffix:"saktësi",btn_retry:"🔄 Provo përsëri (pyetje të tjera)",btn_home:"🏠 Menyja kryesore",lbl_yourAnswer:"Përgjigja jote:",lbl_correctAnswer:"Përgjigja e saktë:",lbl_allCorrect:"🎯 Të gjitha përgjigjet të sakta!",lbl_reviewErrors:"📖 Rishiko gabimet",alert_none:"Nuk u gjet asnjë ushtrim për këtë kombinim. Provo cilësime të tjera.",feedback_correct_title:"Shumë mirë! E saktë",feedback_wrong_title:"Rishiko këtë përgjigje",rt90_title:"Shkëlqyeshëm!",rt90_msg:"Rezultat i jashtëzakonshëm! Italishtja jote është vërtet shumë e mirë. Vazhdo kështu!",rt75_title:"Punë e shkëlqyer!",rt75_msg:"Shumë mirë! Ke treguar një zotërim të mirë të italishtes. Praktiko edhe më shumë për të arritur përsosmërinë.",rt60_title:"Rezultat i mirë!",rt60_msg:"Të lumtë! Je duke përparuar. Provo përsëri për të përmirësuar edhe më shumë aftësitë e tua.",rt40_title:"Vazhdo të praktikosh!",rt40_msg:"Një fillim i mirë. Italishtja kërkon praktikë të vazhdueshme. Provo përsëri dhe do të shohësh përmirësime!",rt0_title:"Le të mësojmë së bashku!",rt0_msg:"Mos u shqetëso! Çdo gabim është një mundësi për të mësuar. Provo përsëri me besim!"},
+
+  zh:{back:"← 返回首页",hero_l1:"练习你的",hero_l2:"意大利语",hero_sub:"互动练习，提升你的语言能力。每次练习都独一无二。",badge_scrittura:"📝 写作",badge_ascolto:"🎧 听力",badge_verofalso:"✅ 对/错",badge_scelta:"🔤 选择题",badge_coniugazione:"🔄 动词变位",lbl_tipo:"练习类型",mode_all_t:"综合练习",mode_all_d:"所有练习类型的组合，全面练习",mode_scelta_t:"选择题",mode_scelta_d:"从四个选项中选出正确答案",mode_verofalso_t:"对或错",mode_verofalso_d:"判断句子是对还是错",mode_scrittura_t:"写作",mode_scrittura_d:"用意大利语写出正确答案",mode_coniugazione_t:"动词变位",mode_coniugazione_d:"将动词变位为正确形式",mode_ascolto_t:"听力",mode_ascolto_d:"听录音并用意大利语回答问题",lbl_livello:"级别",chip_all:"全部",chip_a1:"A1 — 基础",chip_a2:"A2 — 初级",chip_b1:"B1 — 中级",lbl_qty:"每次练习题数",btn_start:"开始测试 ›",lbl_domanda:"第",lbl_di:"题，共",lbl_corrette:"题正确",btn_next:"下一题 →",btn_seeresults:"查看结果 ✓",lbl_stat_correct:"正确",lbl_stat_wrong:"错误",lbl_stat_pct:"准确率",lbl_precisione_suffix:"准确率",btn_retry:"🔄 重新开始（不同题目）",btn_home:"🏠 主菜单",lbl_yourAnswer:"你的答案：",lbl_correctAnswer:"正确答案：",lbl_allCorrect:"🎯 全部答对！",lbl_reviewErrors:"📖 查看错题",alert_none:"没有找到符合条件的练习，请尝试其他设置。",feedback_correct_title:"太棒了！正确",feedback_wrong_title:"请复习这道题",rt90_title:"非常优秀！",rt90_msg:"成绩非常出色！你的意大利语真的很好。继续保持！",rt75_title:"做得很好！",rt75_msg:"非常好！你已经展示出对意大利语的良好掌握。继续练习以达到完美。",rt60_title:"成绩不错！",rt60_msg:"做得好！你在进步。再试一次以进一步提高你的能力。",rt40_title:"继续练习！",rt40_msg:"好的开始。意大利语需要持续的练习。再试一次，你会看到进步！",rt0_title:"让我们一起学习！",rt0_msg:"别担心！每个错误都是学习的机会。有信心地再试一次！"},
+
+  tl:{back:"← Bumalik sa site",hero_l1:"Magsanay ng iyong",hero_l2:"Italyano",hero_sub:"Mga interactive na ehersisyo para mapabuti ang iyong kasanayan sa wika. Bawat sesyon ay natatangi at iba.",badge_scrittura:"📝 Pagsulat",badge_ascolto:"🎧 Pakikinig",badge_verofalso:"✅ Totoo/Mali",badge_scelta:"🔤 Maramihang Pagpipilian",badge_coniugazione:"🔄 Pagbabanghay",lbl_tipo:"Uri ng ehersisyo",mode_all_t:"Lahat halo-halo",mode_all_d:"Kombinasyon ng lahat ng uri ng ehersisyo para sa kumpletong pagsasanay",mode_scelta_t:"Maramihang pagpipilian",mode_scelta_d:"Piliin ang tamang sagot sa apat na pagpipilian",mode_verofalso_t:"Totoo o Mali",mode_verofalso_d:"Pagdesisyunan kung tama o mali ang pangungusap",mode_scrittura_t:"Pagsulat",mode_scrittura_d:"Isulat ang tamang sagot sa Italyano",mode_coniugazione_t:"Pagbabanghay",mode_coniugazione_d:"Ibanghay ang mga pandiwa sa tamang anyo",mode_ascolto_t:"Pakikinig",mode_ascolto_d:"Makinig at sagutin ang mga tanong sa Italyano",lbl_livello:"Antas",chip_all:"Lahat",chip_a1:"A1 — Batayan",chip_a2:"A2 — Elementarya",chip_b1:"B1 — Intermedyo",lbl_qty:"Bilang ng tanong bawat sesyon",btn_start:"Simulan ang test ›",lbl_domanda:"Tanong",lbl_di:"sa",lbl_corrette:"tama",btn_next:"Susunod na tanong →",btn_seeresults:"Tingnan ang resulta ✓",lbl_stat_correct:"Tama",lbl_stat_wrong:"Mali",lbl_stat_pct:"Katumpakan",lbl_precisione_suffix:"katumpakan",btn_retry:"🔄 Subukan muli (ibang tanong)",btn_home:"🏠 Pangunahing menu",lbl_yourAnswer:"Ang sagot mo:",lbl_correctAnswer:"Tamang sagot:",lbl_allCorrect:"🎯 Lahat ng sagot ay tama!",lbl_reviewErrors:"📖 Suriin ang mga mali",alert_none:"Walang nahanap na ehersisyo para sa kumbinasyong ito. Subukan ang ibang setting.",feedback_correct_title:"Mahusay! Tama",feedback_wrong_title:"Suriin ang sagot na ito",rt90_title:"Napakahusay!",rt90_msg:"Kahanga-hangang resulta! Talagang mahusay ang Italyano mo. Ipagpatuloy mo!",rt75_title:"Magaling na trabaho!",rt75_msg:"Mahusay! Naipakita mo ang mahusay na kaalaman sa Italyano. Magsanay pa para maabot ang perpeksyon.",rt60_title:"Magandang resulta!",rt60_msg:"Mahusay! Umuunlad ka. Subukan muli para pahusayin pa ang iyong kasanayan.",rt40_title:"Ipagpatuloy ang pagsasanay!",rt40_msg:"Magandang simula. Nangangailangan ang Italyano ng patuloy na pagsasanay. Subukan muli at makikita mo ang pag-unlad!",rt0_title:"Mag-aral tayong magkasama!",rt0_msg:"Huwag mag-alala! Bawat pagkakamali ay pagkakataon para matuto. Subukan muli nang may tiwala!"},
+
+  uk:{back:"← Повернутися на сайт",hero_l1:"Практикуй свою",hero_l2:"італійську",hero_sub:"Інтерактивні вправи для покращення мовних навичок. Кожна сесія унікальна і різна.",badge_scrittura:"📝 Письмо",badge_ascolto:"🎧 Аудіювання",badge_verofalso:"✅ Правда/Хибність",badge_scelta:"🔤 Множинний вибір",badge_coniugazione:"🔄 Дієвідміна",lbl_tipo:"Тип вправи",mode_all_t:"Повний мікс",mode_all_d:"Поєднання всіх типів вправ для повноцінної практики",mode_scelta_t:"Множинний вибір",mode_scelta_d:"Обери правильну відповідь із чотирьох варіантів",mode_verofalso_t:"Правда чи хиба",mode_verofalso_d:"Визнач, чи речення правильне, чи помилкове",mode_scrittura_t:"Письмо",mode_scrittura_d:"Напиши правильну відповідь італійською",mode_coniugazione_t:"Дієвідміна",mode_coniugazione_d:"Відмінюй дієслова у правильних формах",mode_ascolto_t:"Аудіювання",mode_ascolto_d:"Послухай і дай відповідь на запитання італійською",lbl_livello:"Рівень",chip_all:"Усі",chip_a1:"A1 — Базовий",chip_a2:"A2 — Елементарний",chip_b1:"B1 — Середній",lbl_qty:"Питань за сесію",btn_start:"Почати тест ›",lbl_domanda:"Питання",lbl_di:"з",lbl_corrette:"правильних",btn_next:"Наступне питання →",btn_seeresults:"Переглянути результати ✓",lbl_stat_correct:"Правильні",lbl_stat_wrong:"Помилкові",lbl_stat_pct:"Точність",lbl_precisione_suffix:"точності",btn_retry:"🔄 Спробувати ще раз (інші питання)",btn_home:"🏠 Головне меню",lbl_yourAnswer:"Твоя відповідь:",lbl_correctAnswer:"Правильна відповідь:",lbl_allCorrect:"🎯 Усі відповіді правильні!",lbl_reviewErrors:"📖 Переглянь помилки",alert_none:"Для цієї комбінації вправ не знайдено. Спробуй інші налаштування.",feedback_correct_title:"Чудово! Правильно",feedback_wrong_title:"Перевір цю відповідь",rt90_title:"Відмінно!",rt90_msg:"Надзвичайний результат! Твоя італійська справді дуже хороша. Так тримати!",rt75_title:"Чудова робота!",rt75_msg:"Дуже добре! Ти показав(ла) добре володіння італійською. Практикуйся ще, щоб досягти досконалості.",rt60_title:"Хороший результат!",rt60_msg:"Молодець! Ти прогресуєш. Спробуй ще раз, щоб покращити свої навички.",rt40_title:"Продовжуй практикуватися!",rt40_msg:"Хороший початок. Італійська потребує постійної практики. Спробуй ще раз і побачиш прогрес!",rt0_title:"Вчімося разом!",rt0_msg:"Не хвилюйся! Кожна помилка — це можливість навчитися. Спробуй ще раз із впевненістю!"},
+
+  fr:{back:"← Retour au site",hero_l1:"Pratique ton",hero_l2:"italien",hero_sub:"Exercices interactifs pour améliorer tes compétences linguistiques. Chaque session est unique et différente.",badge_scrittura:"📝 Écriture",badge_ascolto:"🎧 Écoute",badge_verofalso:"✅ Vrai/Faux",badge_scelta:"🔤 Choix Multiple",badge_coniugazione:"🔄 Conjugaison",lbl_tipo:"Type d'exercice",mode_all_t:"Mélange complet",mode_all_d:"Combinaison de tous les types d'exercices pour une pratique complète",mode_scelta_t:"Choix multiple",mode_scelta_d:"Choisis la bonne réponse parmi quatre options",mode_verofalso_t:"Vrai ou Faux",mode_verofalso_d:"Décide si la phrase est correcte ou incorrecte",mode_scrittura_t:"Écriture",mode_scrittura_d:"Écris la réponse correcte en italien",mode_coniugazione_t:"Conjugaison",mode_coniugazione_d:"Conjugue les verbes aux formes correctes",mode_ascolto_t:"Écoute",mode_ascolto_d:"Écoute et réponds aux questions en italien",lbl_livello:"Niveau",chip_all:"Tous",chip_a1:"A1 — Base",chip_a2:"A2 — Élémentaire",chip_b1:"B1 — Intermédiaire",lbl_qty:"Questions par session",btn_start:"Commencer le test ›",lbl_domanda:"Question",lbl_di:"sur",lbl_corrette:"correctes",btn_next:"Question suivante →",btn_seeresults:"Voir les résultats ✓",lbl_stat_correct:"Correctes",lbl_stat_wrong:"Incorrectes",lbl_stat_pct:"Précision",lbl_precisione_suffix:"de précision",btn_retry:"🔄 Réessayer (questions différentes)",btn_home:"🏠 Menu principal",lbl_yourAnswer:"Ta réponse :",lbl_correctAnswer:"Réponse correcte :",lbl_allCorrect:"🎯 Toutes les réponses correctes !",lbl_reviewErrors:"📖 Revois tes erreurs",alert_none:"Aucun exercice trouvé pour cette combinaison. Essaie d'autres réglages.",feedback_correct_title:"Très bien ! Correct",feedback_wrong_title:"Revois cette réponse",rt90_title:"Excellent !",rt90_msg:"Résultat extraordinaire ! Ton italien est vraiment très bon. Continue comme ça !",rt75_title:"Excellent travail !",rt75_msg:"Très bien ! Tu as montré une bonne maîtrise de l'italien. Entraîne-toi encore pour atteindre la perfection.",rt60_title:"Bon résultat !",rt60_msg:"Bien joué ! Tu progresses. Réessaie pour améliorer encore tes compétences.",rt40_title:"Continue à t'entraîner !",rt40_msg:"Un bon début. L'italien demande une pratique constante. Réessaie et tu verras les progrès !",rt0_title:"Apprenons ensemble !",rt0_msg:"Ne t'inquiète pas ! Chaque erreur est une occasion d'apprendre. Réessaie avec confiance !"},
+
+  en:{back:"← Back to the site",hero_l1:"Practice your",hero_l2:"Italian",hero_sub:"Interactive exercises to improve your language skills. Every session is unique and different.",badge_scrittura:"📝 Writing",badge_ascolto:"🎧 Listening",badge_verofalso:"✅ True/False",badge_scelta:"🔤 Multiple Choice",badge_coniugazione:"🔄 Conjugation",lbl_tipo:"Exercise type",mode_all_t:"Full mix",mode_all_d:"A combination of all exercise types for complete practice",mode_scelta_t:"Multiple choice",mode_scelta_d:"Choose the right answer among four options",mode_verofalso_t:"True or False",mode_verofalso_d:"Decide whether the sentence is correct or wrong",mode_scrittura_t:"Writing",mode_scrittura_d:"Write the correct answer in Italian",mode_coniugazione_t:"Conjugation",mode_coniugazione_d:"Conjugate the verbs in the correct forms",mode_ascolto_t:"Listening",mode_ascolto_d:"Listen and answer the questions in Italian",lbl_livello:"Level",chip_all:"All",chip_a1:"A1 — Basic",chip_a2:"A2 — Elementary",chip_b1:"B1 — Intermediate",lbl_qty:"Questions per session",btn_start:"Start the test ›",lbl_domanda:"Question",lbl_di:"of",lbl_corrette:"correct",btn_next:"Next question →",btn_seeresults:"See results ✓",lbl_stat_correct:"Correct",lbl_stat_wrong:"Wrong",lbl_stat_pct:"Accuracy",lbl_precisione_suffix:"accuracy",btn_retry:"🔄 Try again (different questions)",btn_home:"🏠 Main menu",lbl_yourAnswer:"Your answer:",lbl_correctAnswer:"Correct answer:",lbl_allCorrect:"🎯 All answers correct!",lbl_reviewErrors:"📖 Review your mistakes",alert_none:"No exercises found for this combination. Try different settings.",feedback_correct_title:"Great! Correct",feedback_wrong_title:"Review this answer",rt90_title:"Excellent!",rt90_msg:"Extraordinary result! Your Italian is really very good. Keep it up!",rt75_title:"Great work!",rt75_msg:"Very good! You've shown a good command of Italian. Keep practicing to reach perfection.",rt60_title:"Good result!",rt60_msg:"Well done! You're making progress. Try again to improve your skills even further.",rt40_title:"Keep practicing!",rt40_msg:"A good start. Italian requires constant practice. Try again and you'll see the improvement!",rt0_title:"Let's learn together!",rt0_msg:"Don't worry! Every mistake is a chance to learn. Try again with confidence!"}
+};
+
+/* Controls inside an exercise (check, listen, placeholders). The answers
+   themselves — Vero/Falso, the options, the verb forms — stay Italian. */
+const TT_CONTROLS = {
+  it:{btn_check:"Controlla ✓",ph_answer:"Scrivi la tua risposta...",ph_required:"Scrivi una risposta prima di controllare",ph_complete:"Completa la forma",th_persona:"Persona",th_forma:"Forma",btn_listen:"Ascolta",btn_playing:"In riproduzione...",btn_listen_again:"Ascolta di nuovo"},
+  es:{btn_check:"Comprobar ✓",ph_answer:"Escribe tu respuesta...",ph_required:"Escribe una respuesta antes de comprobar",ph_complete:"Completa la forma",th_persona:"Persona",th_forma:"Forma",btn_listen:"Escuchar",btn_playing:"Reproduciendo...",btn_listen_again:"Escuchar otra vez"},
+  ar:{btn_check:"تحقق ✓",ph_answer:"اكتب إجابتك...",ph_required:"اكتب إجابة قبل التحقق",ph_complete:"أكمل الصيغة",th_persona:"الضمير",th_forma:"الصيغة",btn_listen:"استمع",btn_playing:"جارٍ التشغيل...",btn_listen_again:"استمع مرة أخرى"},
+  ro:{btn_check:"Verifică ✓",ph_answer:"Scrie răspunsul tău...",ph_required:"Scrie un răspuns înainte de a verifica",ph_complete:"Completează forma",th_persona:"Persoana",th_forma:"Forma",btn_listen:"Ascultă",btn_playing:"Se redă...",btn_listen_again:"Ascultă din nou"},
+  sq:{btn_check:"Kontrollo ✓",ph_answer:"Shkruaj përgjigjen tënde...",ph_required:"Shkruaj një përgjigje para se të kontrollosh",ph_complete:"Plotëso formën",th_persona:"Veta",th_forma:"Forma",btn_listen:"Dëgjo",btn_playing:"Duke luajtur...",btn_listen_again:"Dëgjo përsëri"},
+  zh:{btn_check:"检查 ✓",ph_answer:"写下你的答案...",ph_required:"请先写下答案再检查",ph_complete:"请填写这个形式",th_persona:"人称",th_forma:"形式",btn_listen:"播放",btn_playing:"正在播放...",btn_listen_again:"再听一遍"},
+  tl:{btn_check:"Suriin ✓",ph_answer:"Isulat ang sagot mo...",ph_required:"Sumulat muna ng sagot bago suriin",ph_complete:"Kumpletuhin ang anyo",th_persona:"Panauhan",th_forma:"Anyo",btn_listen:"Makinig",btn_playing:"Tumutugtog...",btn_listen_again:"Makinig muli"},
+  uk:{btn_check:"Перевірити ✓",ph_answer:"Напиши свою відповідь...",ph_required:"Напиши відповідь перед перевіркою",ph_complete:"Заповни форму",th_persona:"Особа",th_forma:"Форма",btn_listen:"Слухати",btn_playing:"Відтворення...",btn_listen_again:"Слухати ще раз"},
+  fr:{btn_check:"Vérifier ✓",ph_answer:"Écris ta réponse...",ph_required:"Écris une réponse avant de vérifier",ph_complete:"Complète la forme",th_persona:"Personne",th_forma:"Forme",btn_listen:"Écouter",btn_playing:"Lecture en cours...",btn_listen_again:"Réécouter"},
+  en:{btn_check:"Check ✓",ph_answer:"Write your answer...",ph_required:"Write an answer before checking",ph_complete:"Fill in the form",th_persona:"Person",th_forma:"Form",btn_listen:"Listen",btn_playing:"Playing...",btn_listen_again:"Listen again"}
+};
+Object.keys(TT_CONTROLS).forEach(l => Object.assign(TT[l], TT_CONTROLS[l]));
+
+let currentLang = 'it';
+
+function setLang(lang) {
+  if (!TT[lang]) return;
+  currentLang = lang;
+  try { localStorage.setItem('ssv_lang', lang); } catch(e) {}
+  const tr = TT[lang];
+  const rtl = lang === 'ar';
+  document.documentElement.lang = lang;
+  document.documentElement.dir = rtl ? 'rtl' : 'ltr';
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.dataset.i18n;
+    if (tr[k] !== undefined) { if (tr[k].includes('<')) el.innerHTML = tr[k]; else el.textContent = tr[k]; }
+  });
+
+  document.querySelectorAll('.lang-switcher button').forEach(b => {
+    b.classList.remove('active');
+    if (b.getAttribute('onclick') === `setLang('${lang}')`) b.classList.add('active');
+  });
+
+  // The next button's label depends on quiz position, so data-i18n alone would
+  // reset "Vedi risultati" back to "Prossima domanda" on the last question.
+  const nextBtn = document.getElementById('btn-next');
+  if (nextBtn && state.pool.length) {
+    nextBtn.textContent = state.index < state.pool.length - 1 ? tr.btn_next : tr.btn_seeresults;
+  }
+}
+
 let state = {
   mode: 'scelta',
   level: 'all',
@@ -2282,10 +2386,14 @@ function spiegazioneDidattica(q,risposta){
 }
 
 function selectMode(el){
-  document.querySelectorAll('.mode-card').forEach(c=>c.classList.remove('selected'));
+  document.querySelectorAll('.mode-card').forEach(c=>{c.classList.remove('selected');c.setAttribute('aria-pressed','false');});
   el.classList.add('selected');
+  el.setAttribute('aria-pressed','true');
   state.mode = el.dataset.mode;
 }
+document.querySelectorAll('.mode-card').forEach(card=>card.addEventListener('keydown',e=>{
+  if(e.key==='Enter'||e.key===' '){ e.preventDefault(); selectMode(card); }
+}));
 function selectLevel(el){
   document.querySelectorAll('#level-chips .chip').forEach(c=>c.classList.remove('active'));
   el.classList.add('active');
@@ -2321,7 +2429,7 @@ function startQuiz(){
   });
 
   if(pool.length===0){
-    alert('Nessun esercizio trovato per questa combinazione. Prova con impostazioni diverse.');
+    alert(TT[currentLang].alert_none);
     return;
   }
 
@@ -2356,7 +2464,7 @@ function renderQuestion(){
 
   const btn = document.getElementById('btn-next');
   btn.classList.remove('show');
-  btn.textContent = state.index < total-1 ? 'Prossima domanda →' : 'Vedi risultati ✓';
+  btn.textContent = state.index < total-1 ? TT[currentLang].btn_next : TT[currentLang].btn_seeresults;
 
   const container = document.getElementById('q-container');
   container.innerHTML = '';
@@ -2364,12 +2472,13 @@ function renderQuestion(){
   const card = document.createElement('div');
   card.className = 'q-card';
 
+  const tr = TT[currentLang];
   const typeLabel = {
-    scelta:'🔤 Scelta multipla',
-    verofalso:'✅ Vero o Falso',
-    scrittura:'✏️ Scrittura',
-    coniugazione:'🔄 Coniugazione',
-    ascolto:'🎧 Ascolto'
+    scelta:'🔤 '+tr.mode_scelta_t,
+    verofalso:'✅ '+tr.mode_verofalso_t,
+    scrittura:'✏️ '+tr.mode_scrittura_t,
+    coniugazione:'🔄 '+tr.mode_coniugazione_t,
+    ascolto:'🎧 '+tr.mode_ascolto_t
   };
 
 
@@ -2483,14 +2592,14 @@ function buildScrittura(card, q){
   inp.type='text';
   inp.className='write-input';
   inp.id='write-input';
-  inp.placeholder='Scrivi la tua risposta...';
+  inp.placeholder=TT[currentLang].ph_answer;
   inp.autocomplete='off';
   inp.autocorrect='off';
   inp.spellcheck=false;
 
   const checkBtn=document.createElement('button');
   checkBtn.className='btn-check';
-  checkBtn.textContent='Controlla ✓';
+  checkBtn.textContent=TT[currentLang].btn_check;
   checkBtn.onclick=()=>answerScrittura(inp, q);
 
   inp.addEventListener('keydown', e=>{
@@ -2507,7 +2616,7 @@ function buildScrittura(card, q){
 function answerScrittura(inp, q){
   if(state.answered)return;
   if(!normalizzaRisposta(inp.value)){
-    inp.placeholder='Scrivi una risposta prima di controllare';
+    inp.placeholder=TT[currentLang].ph_required;
     inp.focus();
     return;
   }
@@ -2528,7 +2637,7 @@ function buildConiugazione(card, q){
 
   const table=document.createElement('table');
   table.className='conj-table';
-  table.innerHTML=`<thead><tr><th>Persona</th><th>Forma</th></tr></thead>`;
+  table.innerHTML=`<thead><tr><th>${TT[currentLang].th_persona}</th><th>${TT[currentLang].th_forma}</th></tr></thead>`;
   const tbody=document.createElement('tbody');
 
   q.pronoms.forEach((pron,i)=>{
@@ -2543,7 +2652,7 @@ function buildConiugazione(card, q){
   const checkBtn=document.createElement('button');
   checkBtn.className='btn-check';
   checkBtn.style.cssText='margin-top:12px;display:block;';
-  checkBtn.textContent='Controlla ✓';
+  checkBtn.textContent=TT[currentLang].btn_check;
   checkBtn.onclick=()=>answerConiugazione(table, q);
   card.appendChild(checkBtn);
 
@@ -2554,7 +2663,7 @@ function answerConiugazione(table, q){
   if(state.answered)return;
   const inputs=table.querySelectorAll('.conj-input');
   const empty=Array.from(inputs).find(x=>!normalizzaRisposta(x.value));
-  if(empty){ empty.placeholder='Completa la forma';empty.focus();return; }
+  if(empty){ empty.placeholder=TT[currentLang].ph_complete;empty.focus();return; }
   state.answered=true;
   let allCorrect=true;
   inputs.forEach((inp,i)=>{
@@ -2577,7 +2686,7 @@ function buildAscolto(card, q){
   const audioBtn=document.createElement('button');
   audioBtn.className='audio-btn';
   audioBtn.id='audio-btn';
-  audioBtn.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5,3 19,12 5,21"/></svg> Ascolta`;
+  audioBtn.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5,3 19,12 5,21"/></svg> ${TT[currentLang].btn_listen}`;
   audioBtn.onclick=()=>playAudio(q.audio, audioBtn);
   card.appendChild(audioBtn);
 
@@ -2590,13 +2699,13 @@ function buildAscolto(card, q){
   inp.type='text';
   inp.className='write-input';
   inp.id='write-input';
-  inp.placeholder='Scrivi la tua risposta...';
+  inp.placeholder=TT[currentLang].ph_answer;
   inp.autocomplete='off';
   inp.autocorrect='off';
   inp.spellcheck=false;
   const checkBtn=document.createElement('button');
   checkBtn.className='btn-check';
-  checkBtn.textContent='Controlla ✓';
+  checkBtn.textContent=TT[currentLang].btn_check;
   checkBtn.onclick=()=>answerAscolto(inp, q);
   inp.addEventListener('keydown',e=>{ if(e.key==='Enter') checkBtn.click(); });
   wrap.appendChild(inp);
@@ -2614,14 +2723,14 @@ function playAudio(src, btn){
   const audio=new Audio(src);
   window._currentAudio=audio;
   btn.classList.add('speaking');
-  btn.innerHTML=`<svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><rect x="5" y="4" width="4" height="16" rx="1"/><rect x="15" y="4" width="4" height="16" rx="1"/></svg> In riproduzione...`;
+  btn.innerHTML=`<svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><rect x="5" y="4" width="4" height="16" rx="1"/><rect x="15" y="4" width="4" height="16" rx="1"/></svg> ${TT[currentLang].btn_playing}`;
   audio.play().catch(()=>{
     btn.classList.remove('speaking');
-    btn.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5,3 19,12 5,21"/></svg> Ascolta`;
+    btn.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5,3 19,12 5,21"/></svg> ${TT[currentLang].btn_listen}`;
   });
   audio.onended=()=>{
     btn.classList.remove('speaking');
-    btn.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5,3 19,12 5,21"/></svg> Ascolta di nuovo`;
+    btn.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5,3 19,12 5,21"/></svg> ${TT[currentLang].btn_listen_again}`;
     window._currentAudio=null;
   };
 }
@@ -2629,7 +2738,7 @@ function playAudio(src, btn){
 function answerAscolto(inp, q){
   if(state.answered)return;
   if(!normalizzaRisposta(inp.value)){
-    inp.placeholder='Scrivi una risposta prima di controllare';
+    inp.placeholder=TT[currentLang].ph_required;
     inp.focus();
     return;
   }
@@ -2653,8 +2762,8 @@ function showFeedback(isCorrect, correctAnswer, q){
   const icon=document.createElement('span');icon.className='feedback-icon';icon.textContent=isCorrect?'🎉':'❌';
   const copy=document.createElement('div');
   const title=document.createElement('strong');
-  title.textContent=isCorrect?'Ottimo! Corretto!':'Rivedi questa risposta';
-  const answer=document.createElement('div');answer.textContent='Risposta corretta: '+correctAnswer;
+  title.textContent=isCorrect?TT[currentLang].feedback_correct_title:TT[currentLang].feedback_wrong_title;
+  const answer=document.createElement('div');answer.textContent=TT[currentLang].lbl_correctAnswer+' '+correctAnswer;
   const explanation=document.createElement('span');explanation.className='fb-expl';
   explanation.textContent=spiegazioneDidattica(q,correctAnswer);
   copy.appendChild(title);copy.appendChild(answer);copy.appendChild(explanation);
@@ -2692,18 +2801,19 @@ function showResults(){
   const pct=Math.round((state.correct/total)*100);
 
   document.getElementById('score-big').textContent=`${state.correct}/${total}`;
-  document.getElementById('score-pct').textContent=`${pct}% di precisione`;
+  const tr=TT[currentLang];
+  document.getElementById('score-pct').textContent=`${pct}% ${tr.lbl_precisione_suffix}`;
   document.getElementById('stat-correct').textContent=state.correct;
   document.getElementById('stat-wrong').textContent=state.wrong;
   document.getElementById('stat-pct').textContent=pct+'%';
 
   // Emoji & message
   let emoji, title, msg;
-  if(pct>=90){ emoji='🏆'; title='Eccellente!'; msg='Risultato straordinario! Il tuo italiano è davvero ottimo. Continua così!'; }
-  else if(pct>=75){ emoji='🎉'; title='Ottimo lavoro!'; msg='Molto bene! Hai dimostrato una buona padronanza dell\'italiano. Pratica ancora per raggiungere la perfezione.'; }
-  else if(pct>=60){ emoji='👍'; title='Buon risultato!'; msg='Ben fatto! Stai progredendo. Riprova per migliorare ulteriormente le tue competenze.'; }
-  else if(pct>=40){ emoji='💪'; title='Continua a praticare!'; msg='Un buon inizio. L\'italiano richiede pratica costante. Riprova e vedrai i miglioramenti!'; }
-  else { emoji='📚'; title='Impariamo insieme!'; msg='Non preoccuparti! Ogni errore è un\'opportunità di imparare. Riprova con fiducia!'; }
+  if(pct>=90){ emoji='🏆'; title=tr.rt90_title; msg=tr.rt90_msg; }
+  else if(pct>=75){ emoji='🎉'; title=tr.rt75_title; msg=tr.rt75_msg; }
+  else if(pct>=60){ emoji='👍'; title=tr.rt60_title; msg=tr.rt60_msg; }
+  else if(pct>=40){ emoji='💪'; title=tr.rt40_title; msg=tr.rt40_msg; }
+  else { emoji='📚'; title=tr.rt0_title; msg=tr.rt0_msg; }
 
   document.getElementById('result-emoji').textContent=emoji;
   document.getElementById('result-title').textContent=title;
@@ -2717,16 +2827,16 @@ function showResults(){
   if(state.results.length>0){
     const wrongOnes=state.results.filter(r=>!r.isCorrect);
     if(wrongOnes.length>0){
-      let html=`<h3>📖 Rivedi gli errori (${wrongOnes.length})</h3>`;
+      let html=`<h3>${tr.lbl_reviewErrors} (${wrongOnes.length})</h3>`;
       wrongOnes.forEach(r=>{
         html+=`<div class="review-item review-wrong">
           <div class="review-q">${r.question}</div>
-          <div class="review-a">La tua risposta: <span class="bad">${r.given||'—'}</span> &nbsp;→&nbsp; Risposta corretta: <span class="ok">${r.correct}</span></div>
+          <div class="review-a">${tr.lbl_yourAnswer} <span class="bad">${r.given||'—'}</span> &nbsp;→&nbsp; ${tr.lbl_correctAnswer} <span class="ok">${r.correct}</span></div>
         </div>`;
       });
       rev.innerHTML=html;
     } else {
-      rev.innerHTML='<p style="text-align:center;color:var(--correct);font-weight:700;font-size:1.1rem;padding:20px">🎯 Tutte le risposte corrette!</p>';
+      rev.innerHTML='<p style="text-align:center;color:var(--correct);font-weight:700;font-size:1.1rem;padding:20px">'+tr.lbl_allCorrect+'</p>';
     }
   }
 
@@ -2749,6 +2859,9 @@ function goHome(){
 
 /* Audio player state */
 window._currentAudio=null;
+
+/* Same language the visitor picked on index.html (Italian when none is stored). */
+setLang((() => { try { return localStorage.getItem('ssv_lang'); } catch(e) { return null; } })() || 'it');
 </script>
 </body>
 </html>
