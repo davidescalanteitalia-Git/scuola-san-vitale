@@ -4,8 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Scuola San Vitale — Corsi di Italiano Gratuiti | Caritas Como</title>
-<meta name="description" content="Corsi gratuiti di italiano per stranieri a Como. Livelli Alfa, A0/A1, A1/A2, B1. Scuola San Vitale — Caritas Como.">
+<meta name="description" content="Corsi gratuiti di italiano per stranieri a Como, da Alfa a B1. Iscrizioni il mercoledì mattina in Viale Lecco 125. Scuola San Vitale, Caritas Como.">
 <link rel="canonical" href="https://scuolasanvitale.d4digitalstudio.it/">
+<link rel="preload" as="image" href="assets/hero.webp" fetchpriority="high">
+<meta property="og:site_name" content="Scuola San Vitale">
+<meta property="og:locale" content="it_IT">
 <meta property="og:title" content="Scuola San Vitale — Italiano Gratis Como">
 <meta property="og:description" content="Corsi gratuiti di italiano per stranieri a Como. Livelli Alfa, A0/A1, A1/A2, B1. Completamente gratis. +39 346 211 0985">
 <meta property="og:type" content="website">
@@ -20,22 +23,86 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "EducationalOrganization",
-  "name": "Scuola San Vitale",
-  "description": "Corsi gratuiti di lingua italiana per stranieri a Como, gestiti da Caritas Como.",
-  "url": "https://scuolasanvitale.d4digitalstudio.it/",
-  "telephone": "+39 346 211 0985",
-  "parentOrganization": {
-    "@type": "NGO",
-    "name": "Caritas Como — Fondazione Caritas Solidarietà e Servizio ETS",
-    "url": "https://www.caritascomo.it"
-  },
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Viale Lecco, 125",
-    "addressLocality": "Como",
-    "addressCountry": "IT"
-  }
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://scuolasanvitale.d4digitalstudio.it/#website",
+      "name": "Scuola San Vitale",
+      "url": "https://scuolasanvitale.d4digitalstudio.it/",
+      "inLanguage": "it",
+      "publisher": { "@id": "https://scuolasanvitale.d4digitalstudio.it/#scuola" }
+    },
+    {
+      "@type": "EducationalOrganization",
+      "@id": "https://scuolasanvitale.d4digitalstudio.it/#scuola",
+      "name": "Scuola San Vitale",
+      "description": "Corsi gratuiti di lingua italiana per stranieri a Como, gestiti da Caritas Como.",
+      "url": "https://scuolasanvitale.d4digitalstudio.it/",
+      "image": "https://scuolasanvitale.d4digitalstudio.it/assets/og-image.jpg",
+      "logo": "https://scuolasanvitale.d4digitalstudio.it/icon-512.png",
+      "telephone": "+39 346 211 0985",
+      "isAccessibleForFree": true,
+      "areaServed": { "@type": "City", "name": "Como" },
+      "knowsLanguage": ["it", "es", "ar", "ro", "sq", "zh", "tl", "uk", "fr", "en"],
+      "parentOrganization": {
+        "@type": "NGO",
+        "name": "Caritas Como — Fondazione Caritas Solidarietà e Servizio ETS",
+        "url": "https://www.caritascomo.it"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Viale Lecco, 125",
+        "addressLocality": "Como",
+        "addressRegion": "CO",
+        "addressCountry": "IT"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Segreteria",
+        "name": "Rosa Mucerino",
+        "telephone": "+39 346 211 0985",
+        "hoursAvailable": [
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Wednesday", "Friday"], "opens": "09:30", "closes": "11:30" },
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Wednesday", "Friday"], "opens": "14:30", "closes": "16:30" }
+        ]
+      }
+    },
+    {
+      "@type": "Course",
+      "name": "Italiano — Alfabetizzazione (Alfa)",
+      "description": "Per chi non sa leggere o scrivere. Si impara l'alfabeto latino e la lettura di base.",
+      "inLanguage": "it",
+      "provider": { "@id": "https://scuolasanvitale.d4digitalstudio.it/#scuola" },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR", "category": "Free" }
+    },
+    {
+      "@type": "Course",
+      "name": "Italiano A0/A1 — Principiante",
+      "description": "Per chi inizia da zero: saluti, numeri, presentarsi e le frasi quotidiane essenziali.",
+      "inLanguage": "it",
+      "educationalLevel": "A1",
+      "provider": { "@id": "https://scuolasanvitale.d4digitalstudio.it/#scuola" },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR", "category": "Free" }
+    },
+    {
+      "@type": "Course",
+      "name": "Italiano A1/A2 — Elementare",
+      "description": "Per chi ha già una base. Consolida la grammatica e amplia il vocabolario.",
+      "inLanguage": "it",
+      "educationalLevel": "A2",
+      "provider": { "@id": "https://scuolasanvitale.d4digitalstudio.it/#scuola" },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR", "category": "Free" }
+    },
+    {
+      "@type": "Course",
+      "name": "Italiano B1 — Pre-intermedio",
+      "description": "Per chi sa già comunicare. Grammatica avanzata e comunicazione fluida.",
+      "inLanguage": "it",
+      "educationalLevel": "B1",
+      "provider": { "@id": "https://scuolasanvitale.d4digitalstudio.it/#scuola" },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR", "category": "Free" }
+    }
+  ]
 }
 </script>
 <!-- PWA -->

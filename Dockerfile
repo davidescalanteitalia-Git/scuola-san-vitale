@@ -7,25 +7,12 @@ RUN apk add --no-cache wget
 COPY *.html /usr/share/nginx/html/
 COPY assets/ /usr/share/nginx/html/assets/
 COPY audio/ /usr/share/nginx/html/audio/
-COPY sw.js manifest.json icon-192.png icon-512.png /usr/share/nginx/html/
+COPY sw.js manifest.json icon-192.png icon-512.png robots.txt sitemap.xml /usr/share/nginx/html/
 
-# Configuración nginx: gzip + no almacenar HTML viejo en caché
-RUN printf 'server {\n\
-    listen 80;\n\
-    root /usr/share/nginx/html;\n\
-    gzip on;\n\
-    gzip_types text/html text/css application/javascript;\n\
-    add_header Cache-Control "no-store, no-cache, must-revalidate" always;\n\
-    location /assets/ {\n\
-        try_files $uri =404;\n\
-    }\n\
-    location /audio/ {\n\
-        try_files $uri =404;\n\
-    }\n\
-    location / {\n\
-        try_files $uri $uri/ /index.html;\n\
-    }\n\
-}\n' > /etc/nginx/conf.d/default.conf
+# Configuración nginx (gzip, caché y 404 reales). `nginx -t` hace fallar el build
+# si la configuración es inválida, en vez de fallar el contenedor ya desplegado.
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+RUN nginx -t
 
 EXPOSE 80
 
