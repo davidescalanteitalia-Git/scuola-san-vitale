@@ -794,8 +794,8 @@ ul { list-style: none; }
     </div>
     <div class="top-bar__links">
       <a href="#cosa-offriamo">Corsi</a>
-      <a href="#orari">Orari</a>
-      <a href="#contatti">Contatti</a>
+      <a href="#orari" data-i18n="nav_orari">Orari</a>
+      <a href="#contatti" data-i18n="nav_contatti">Contatti</a>
       <a href="https://www.caritascomo.it" target="_blank" rel="noopener">Caritas Como →</a>
     </div>
   </div>
@@ -1173,16 +1173,40 @@ const T = {
   en:{badge:"A service of Caritas Como",hero_h1a:"Learn Italian.",hero_h1b:"For free.",hero_desc:"Scuola San Vitale offers free Italian language courses for foreigners. A real opportunity to integrate and build a future in Como.",cta_wa:"Book via WhatsApp",cta_map:"How to find us",nav_cosa:"What we offer",nav_orari:"Schedule",nav_lingue:"Languages",nav_contatti:"Contact",nav_cta:"Book now",stat_livelli:"Levels offered",stat_lingue:"Languages supported",stat_giorni:"Days per week",stat_costo:"Registration cost",cosa_eyebrow:"Our services",cosa_title:"What we offer",cosa_desc:"Scuola San Vitale is a welcoming learning space for all foreigners who want to learn Italian and integrate into the Como community.",o1t:"Italian Course A1",o1d:"For beginners: greetings, numbers, introductions and essential everyday phrases. Completely free.",o2t:"Italian Course A2",o2d:"For those with a foundation. Deepen grammar and vocabulary for real-life communication.",o3t:"Integration support",o3d:"Guidance on local services, bureaucratic support and accompaniment in daily life in Como.",o4t:"Materials in 10 languages",o4d:"Information is available in Italian, Spanish, Arabic, Romanian, Albanian, Chinese, Tagalog, Ukrainian, French and English.",orari_eyebrow:"When and where",orari_title:"Schedule and Levels",orari_block:"Class schedule",th_giorno:"Day",th_mat:"Morning",th_pom:"Afternoon",d_lun:"Monday",d_mer:"Wednesday",d_ven:"Friday",seg_label:"🕐 Secretary",seg_hours:"Mon/Wed/Fri   9:30–11:30 and 14:30–16:30",livelli_block:"Available levels",a1_name:"Beginner",a1_desc:"For those who have never studied Italian. Learn the basics of daily communication.",a2_name:"Elementary",a2_desc:"For those with a foundation. Consolidate grammar and expand vocabulary.",free_name:"Completely free",free_desc:"All levels are 0€. Just contact us via WhatsApp or come to the secretary's office.",lang_eyebrow:"We are here for you",lang_title:"We speak your language",lang_desc:"Select your language to read all the information:",l_it:"Italian",l_es:"Spanish",l_ar:"Arabic",l_ro:"Romanian",l_sq:"Albanian",l_zh:"Chinese",l_tl:"Filipino",l_uk:"Ukrainian",l_fr:"French",l_en:"English",cnt_eyebrow:"Come visit us",cnt_title:"Where we are",lbl_addr:"Address",lbl_phone:"Phone",lbl_org:"Organization",seg_ref:"Secretary in charge",seg_sched:"Mon · Wed · Fri   9:30–11:30 / 14:30–16:30",th_sera:"Evening",reg_notice:"ℹ️ Enrollment takes place <strong>Wednesdays only</strong>, from 9:30 to 11:30.",alfa_name:"Literacy",alfa_desc:"For those who cannot read or write. Learn the Latin alphabet and basic reading skills.",a01_name:"Beginner",a01_desc:"For those starting from scratch: greetings, numbers, introductions and essential phrases.",a12_name:"Elementary",a12_desc:"For those with a foundation. Deepen grammar and vocabulary for real communication.",b1_name:"Pre-intermediate",b1_desc:"For those who can already communicate. Advanced grammar and fluent expression.",nav_pratica:"Practice Italian",nav_test:"Italian Test",nav_video:"Learning material",vid_eyebrow:"Free resources",vid_title:"Study at home too",vid_desc:"Watch the videos and do the interactive exercises. Click an episode to get started.",vid_credit:"Video content and teaching materials provided by <a href=\"https://ciaoamici.rizzolieducation.it\" target=\"_blank\" rel=\"noopener\">Ciao, amici! — Rizzoli Education</a>."}
 };
 
+/* Page title and description per language. build.mjs bakes them into the
+   generated /es/, /ar/… pages, which is what search engines index. */
+const T_META = {
+  it:{meta_title:"Scuola San Vitale — Corsi di Italiano Gratuiti | Caritas Como",meta_desc:"Corsi gratuiti di italiano per stranieri a Como, da Alfa a B1. Iscrizioni il mercoledì mattina in Viale Lecco 125. Scuola San Vitale, Caritas Como."},
+  es:{meta_title:"Scuola San Vitale — Cursos de Italiano Gratis en Como | Caritas",meta_desc:"Cursos gratuitos de italiano para extranjeros en Como, desde alfabetización hasta B1. Inscripciones los miércoles por la mañana en Viale Lecco 125. Caritas Como."},
+  ar:{meta_title:"مدرسة سان فيتاله — دورات مجانية في اللغة الإيطالية في كومو | Caritas",meta_desc:"دورات مجانية في اللغة الإيطالية للأجانب في كومو، من محو الأمية إلى مستوى B1. التسجيل صباح الأربعاء في Viale Lecco 125. Caritas Como."},
+  ro:{meta_title:"Scuola San Vitale — Cursuri Gratuite de Italiană în Como | Caritas",meta_desc:"Cursuri gratuite de italiană pentru străini în Como, de la alfabetizare până la B1. Înscrieri miercuri dimineața în Viale Lecco 125. Caritas Como."},
+  sq:{meta_title:"Scuola San Vitale — Kurse Falas të Italishtes në Como | Caritas",meta_desc:"Kurse falas të italishtes për të huajt në Como, nga alfabetizimi deri në nivelin B1. Regjistrimet të mërkurën në mëngjes në Viale Lecco 125. Caritas Como."},
+  zh:{meta_title:"圣维塔莱学校 — 科莫免费意大利语课程 | Caritas Como",meta_desc:"科莫面向外国人的免费意大利语课程，从扫盲班到B1级别。每周三上午在 Viale Lecco 125 报名。Caritas Como。"},
+  tl:{meta_title:"Scuola San Vitale — Libreng Kurso ng Italyano sa Como | Caritas",meta_desc:"Libreng mga kurso ng Italyano para sa mga dayuhan sa Como, mula alpabetisasyon hanggang B1. Pagpapatala tuwing Miyerkules ng umaga sa Viale Lecco 125. Caritas Como."},
+  uk:{meta_title:"Scuola San Vitale — Безкоштовні курси італійської в Комо | Caritas",meta_desc:"Безкоштовні курси італійської мови для іноземців у Комо, від навчання грамоти до рівня B1. Запис щосереди вранці за адресою Viale Lecco 125. Caritas Como."},
+  fr:{meta_title:"Scuola San Vitale — Cours d'Italien Gratuits à Côme | Caritas",meta_desc:"Cours gratuits d'italien pour étrangers à Côme, de l'alphabétisation au niveau B1. Inscriptions le mercredi matin, Viale Lecco 125. Caritas Como."},
+  en:{meta_title:"Scuola San Vitale — Free Italian Courses in Como | Caritas",meta_desc:"Free Italian language courses for foreigners in Como, from literacy to B1 level. Enrolment on Wednesday mornings at Viale Lecco 125. Caritas Como."}
+};
+Object.keys(T_META).forEach(l => Object.assign(T[l], T_META[l]));
+
 let currentLang = 'it';
 
 function setLang(lang) {
   if (!T[lang]) return;
-  currentLang = lang;
   try { localStorage.setItem('ssv_lang', lang); } catch(e) {}
+  // On the built site every language has its own URL (/es/, /ar/…), so picking
+  // another language navigates there. Opened straight from the source file,
+  // SSV_PAGE_LANG is unset and the text is swapped in place instead.
+  if (window.SSV_PAGE_LANG && lang !== window.SSV_PAGE_LANG) {
+    location.href = lang === 'it' ? '/' : '/' + lang + '/';
+    return;
+  }
+  currentLang = lang;
   const tr = T[lang];
   const rtl = lang === 'ar';
   document.documentElement.lang = lang;
   document.documentElement.dir = rtl ? 'rtl' : 'ltr';
+  document.title = tr.meta_title;
 
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const k = el.dataset.i18n;
@@ -1268,7 +1292,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 });
 
 /* INIT IDIOMA — cargar preferencia guardada o italiano por defecto */
-setLang((() => { try { return localStorage.getItem('ssv_lang'); } catch(e) { return null; } })() || 'it');
+setLang(window.SSV_PAGE_LANG || (() => { try { return localStorage.getItem('ssv_lang'); } catch(e) { return null; } })() || 'it');
 </script>
 
 <script>

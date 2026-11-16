@@ -1,13 +1,17 @@
+# Paso 1: genera el sitio en dist/ (home en italiano + una home por idioma + sitemap).
+# Si build.mjs falla, el build falla y el sitio publicado no cambia.
+FROM node:22-alpine AS build
+WORKDIR /src
+COPY . .
+RUN node build.mjs
+
+# Paso 2: nginx sirve dist/ tal cual.
 FROM nginx:1.27-alpine
 
 # Instalar wget para healthcheck
 RUN apk add --no-cache wget
 
-# Copia el sitio estático
-COPY *.html /usr/share/nginx/html/
-COPY assets/ /usr/share/nginx/html/assets/
-COPY audio/ /usr/share/nginx/html/audio/
-COPY sw.js manifest.json icon-192.png icon-512.png robots.txt sitemap.xml /usr/share/nginx/html/
+COPY --from=build /src/dist/ /usr/share/nginx/html/
 
 # Configuración nginx (gzip, caché y 404 reales). `nginx -t` hace fallar el build
 # si la configuración es inválida, en vez de fallar el contenedor ya desplegado.
