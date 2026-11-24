@@ -310,8 +310,7 @@ ul { list-style: none; }
 }
 .section-photo img {
   width: 100%;
-  height: 320px;
-  object-fit: cover;
+  height: auto;
   display: block;
 }
 @media (max-width: 860px) {
@@ -320,17 +319,16 @@ ul { list-style: none; }
     grid-template-columns: 1fr;
   }
   .section-with-photo.photo-left .section-photo { order: 0; }
-  .section-photo img { height: 220px; }
 }
 
 
 /* Card photos */
 .offer-card__photo {
- display:block; width:100%; height:152px; object-fit:cover; object-position:center;
+ display:block; width:100%; height:auto;
  border-radius:12px; margin-bottom:18px; border:1px solid rgba(255,255,255,.19);
 }
 .level-card__photo {
- display:block; width:100%; height:134px; object-fit:cover; object-position:center 42%;
+ display:block; width:100%; height:auto;
  border-radius:10px; margin-bottom:14px; border:1px solid rgba(0,107,53,.12);
 }
 .lang-photo {
@@ -338,7 +336,7 @@ ul { list-style: none; }
  overflow:hidden; box-shadow:0 12px 28px rgba(0,0,0,.2);
  border:2px solid rgba(255,255,255,.18);
 }
-.lang-photo img { width:100%; height:250px; object-fit:cover; object-position:center; display:block; }
+.lang-photo img { width:100%; height:auto; display:block; }
 .hero {
   position: relative;
   min-height: 520px;
@@ -761,7 +759,6 @@ ul { list-style: none; }
 .divider { background: #ce2b37; }
 .offer-card { border-left-color: #ce2b37; }
 .level-card { border-left-color: #009246; }
-.level-card__photo, .offer-card__photo { object-fit: cover; }
 .lang-pill:hover, .lang-pill.active { background: #fff; color: #006b35; border-color: #fff; }
 .lang-switcher button.active, .lang-switcher button:hover { background: #ce2b37; color: #fff; }
 @media (max-width: 900px) {
@@ -927,13 +924,13 @@ ul { list-style: none; }
         <p class="offer-card__desc" data-i18n="o1d">Per chi inizia da zero: saluti, numeri, presentarsi e le frasi quotidiane essenziali. Completamente gratuito.</p>
       </div>
       <div class="offer-card">
-        <img class="offer-card__photo" src="assets/corsi-640.webp" srcset="assets/corsi-640.webp 640w, assets/corsi-960.webp 960w" sizes="(max-width:720px) calc(100vw - 44px), 520px" width="1279" height="720" loading="lazy" decoding="async" alt="Lezione di italiano con insegnante e studenti adulti">
+        <img class="offer-card__photo" src="assets/corsi-640.webp" srcset="assets/corsi-640.webp 640w, assets/corsi-960.webp 960w" sizes="(max-width:720px) calc(100vw - 44px), 520px" width="640" height="360" loading="lazy" decoding="async" alt="Lezione di italiano con insegnante e studenti adulti">
         <div class="offer-card__ico">📖</div>
         <div class="offer-card__title" data-i18n="o2t">Corsi di Italiano A2</div>
         <p class="offer-card__desc" data-i18n="o2d">Per chi ha già una base: grammatica più profonda, vocabolario ampliato e comunicazione in situazioni reali.</p>
       </div>
       <div class="offer-card">
-        <img class="offer-card__photo" src="assets/accoglienza-640.webp" srcset="assets/accoglienza-640.webp 640w, assets/accoglienza-960.webp 960w" sizes="(max-width:720px) calc(100vw - 44px), 520px" width="1279" height="720" loading="lazy" decoding="async" alt="Accoglienza e orientamento per nuovi studenti">
+        <img class="offer-card__photo" src="assets/accoglienza-640.webp" srcset="assets/accoglienza-640.webp 640w, assets/accoglienza-960.webp 960w" sizes="(max-width:720px) calc(100vw - 44px), 520px" width="640" height="360" loading="lazy" decoding="async" alt="Accoglienza e orientamento per nuovi studenti">
         <div class="offer-card__ico">🤝</div>
         <div class="offer-card__title" data-i18n="o3t">Supporto all'integrazione</div>
         <p class="offer-card__desc" data-i18n="o3d">Orientamento sui servizi del territorio, supporto burocratico e accompagnamento nella vita quotidiana a Como.</p>
