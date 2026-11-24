@@ -461,6 +461,7 @@ const episodeTitles = {
 };
 const TOTAL_EP = 10;
 const STORAGE_KEY = 'sanvitale_materiale_visti';
+const LAST_EPISODE_KEY = 'ssv_last_episode';
 
 function getWatched() {
   try { return new Set(JSON.parse(localStorage.getItem(STORAGE_KEY)) || []); }
@@ -499,8 +500,11 @@ function selectEpisode(n, opts) {
   document.getElementById('nextEp').disabled = n >= TOTAL_EP;
 
   const watched = getWatched();
-  watched.add(n);
-  saveWatched(watched);
+  if (opts.track !== false) {
+    watched.add(n);
+    saveWatched(watched);
+    try { localStorage.setItem(LAST_EPISODE_KEY, String(n)); } catch {}
+  }
   updateProgressUI();
 
   try {
@@ -549,7 +553,13 @@ document.querySelectorAll('.filter-chip').forEach(chip => {
   const params = new URLSearchParams(window.location.search);
   const epParam = Number(params.get('ep'));
   const hasDeepLink = epParam >= 1 && epParam <= TOTAL_EP;
-  selectEpisode(hasDeepLink ? epParam : 1, { scroll: hasDeepLink });
+  let lastEpisode;
+  try { lastEpisode = Number(localStorage.getItem(LAST_EPISODE_KEY)); } catch {}
+  const hasSavedEpisode = Object.hasOwn(episodeTitles, lastEpisode);
+  selectEpisode(hasDeepLink ? epParam : hasSavedEpisode ? lastEpisode : 1, {
+    scroll: hasDeepLink,
+    track: hasDeepLink
+  });
 })();
 </script>
 

@@ -896,6 +896,10 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   .hero-layout { grid-template-columns:minmax(0,1fr); }
   .hero-photo { max-width:420px; margin-inline:auto; }
 }
+
+.next-step { background:var(--card-bg); border:1px solid var(--border); border-radius:14px; padding:18px; margin-block:16px; text-align:start; }
+.next-step p { margin-block:6px; }
+.next-step a { color:var(--fg); text-decoration:underline; text-underline-offset:3px; font-weight:700; }
 </style>
 </head>
 <body>
@@ -1059,6 +1063,12 @@ a:focus-visible, button:focus-visible, input:focus-visible {
       </div>
       <p class="result-message" id="result-msg">Continua così! Ogni sessione ti avvicina alla padronanza dell'italiano.</p>
     </div>
+    <section class="next-step" aria-labelledby="next-step-title">
+      <h3 id="next-step-title">Prossimo passo</h3>
+      <p id="next-step-orientation">Il risultato orienta lo studio.</p>
+      <p id="next-step-review" hidden></p>
+      <a id="next-step-lesson" href="materiale.html?ep=1">Lezione consigliata</a>
+    </section>
     <div class="result-actions">
       <button class="btn-restart" onclick="restartSame()" data-i18n="btn_retry">🔄 Riprova (diverse domande)</button>
       <button class="btn-home" onclick="goHome()" data-i18n="btn_home">🏠 Menu principale</button>
@@ -2369,6 +2379,7 @@ function setLang(lang) {
   if (nextBtn && state.pool.length) {
     nextBtn.textContent = state.index < state.pool.length - 1 ? tr.btn_next : tr.btn_seeresults;
   }
+  if (document.getElementById('result-screen').style.display === 'block') updateNextStep();
 }
 
 let state = {
@@ -2813,8 +2824,11 @@ function showFeedback(isCorrect, correctAnswer, q){
   btn.classList.add('show');
 }
 
+const nextStepLabels = {"it": ["Prossimo passo", "Lezione consigliata", "Attività da ripassare", "Il risultato orienta lo studio."], "es": ["Siguiente paso", "Lección recomendada", "Actividad para repasar", "El resultado orienta tu práctica."], "ar": ["الخطوة التالية", "الدرس المقترح", "تمرين للمراجعة", "تساعدك النتيجة على اختيار ما تراجعه."], "ro": ["Pasul următor", "Lecția recomandată", "Activitate de recapitulat", "Rezultatul te ajută să alegi ce să exersezi."], "sq": ["Hapi tjetër", "Mësimi i sugjeruar", "Ushtrim për të përsëritur", "Rezultati të orienton në praktikë."], "zh": ["下一步", "推荐课程", "需要复习的练习", "结果可帮助你选择练习内容。"], "tl": ["Susunod na hakbang", "Iminungkahing aralin", "Pagsasanay na babalikan", "Gabay sa pagsasanay ang resulta."], "uk": ["Наступний крок", "Рекомендований урок", "Вправа для повторення", "Результат допоможе обрати вправи."], "fr": ["Étape suivante", "Leçon conseillée", "Activité à revoir", "Le résultat guide votre pratique."], "en": ["Next step", "Recommended lesson", "Activity to review", "Use this result to guide your practice."]};
+
 function recordResult(isCorrect, question, correct, given){
-  state.results.push({isCorrect, question, correct, given});
+  const { type, level } = state.pool[state.index];
+  state.results.push({isCorrect, question, correct, given, type, level});
 }
 
 function nextQuestion(){
@@ -2830,6 +2844,29 @@ function nextQuestion(){
 /* ═══════════════════════════════════════════════════════
    RESULTS
 ═══════════════════════════════════════════════════════ */
+function updateNextStep() {
+  const [title, lesson, review, orientation] = nextStepLabels[currentLang] || nextStepLabels.it;
+  const mistakes = state.results.filter(result => !result.isCorrect);
+  const groups = new Map();
+  for (const result of mistakes) {
+    const key = result.type + ':' + result.level;
+    const group = groups.get(key) || { ...result, count: 0 };
+    group.count++;
+    groups.set(key, group);
+  }
+  const priority = [...groups.values()].sort((a, b) => b.count - a.count)[0];
+  const level = priority?.level || (state.level === 'all' ? state.pool[0]?.level : state.level) || 'A1';
+  const episode = { A1: 1, A2: 5, B1: 8 }[level] || 1;
+  const reviewText = document.getElementById('next-step-review');
+  reviewText.hidden = !priority;
+  reviewText.textContent = priority ? review + ': ' + TT[currentLang]['mode_' + priority.type + '_t'] + ' ? ' + level : '';
+  document.getElementById('next-step-title').textContent = title;
+  document.getElementById('next-step-orientation').textContent = orientation;
+  const link = document.getElementById('next-step-lesson');
+  link.href = 'materiale.html?ep=' + episode;
+  link.textContent = lesson + ' ? ' + level;
+}
+
 function showResults(){
   document.getElementById('quiz-screen').style.display='none';
   document.getElementById('result-screen').style.display='block';
@@ -2856,6 +2893,7 @@ function showResults(){
   document.getElementById('result-title').textContent=title;
   document.getElementById('result-title').focus({ preventScroll:true });
   document.getElementById('result-msg').textContent=msg;
+  updateNextStep();
 
   // Progress bar final
   document.getElementById('progress-fill').style.width='100%';

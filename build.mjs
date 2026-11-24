@@ -22,6 +22,8 @@ const escapeAttr = (s) => escapeHtml(s).replace(/"/g, '&quot;');
 const langUrl = (lang) => ORIGIN + (lang === DEFAULT_LANG ? '/' : `/${lang}/`);
 
 const source = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+const schoolNotice = JSON.parse(fs.readFileSync(path.join(ROOT, 'school-notice.json'), 'utf8'));
+if (!schoolNotice.messages || typeof schoolNotice.messages !== 'object' || Array.isArray(schoolNotice.messages)) fail('school-notice.json: expected a messages object');
 
 function readDictionary(name) {
   const match = source.match(new RegExp(`const ${name} = (\\{[\\s\\S]*?\\n\\});`));
@@ -60,6 +62,12 @@ function buildPage(lang) {
 
   html = replaceOnce(html, /<meta charset="UTF-8">/, `<meta charset="UTF-8">\n${headScript(lang)}`, 'charset meta');
   html = replaceOnce(html, /<link rel="canonical" href="[^"]*">/, `<link rel="canonical" href="${langUrl(lang)}">\n${hreflangLinks}`, 'canonical link');
+  const notice = schoolNotice.messages[lang] ?? schoolNotice.messages[DEFAULT_LANG];
+  if (notice !== undefined && typeof notice !== 'string') fail('school notice must be text');
+  if (notice?.trim()) {
+    const noticeLanguage = schoolNotice.messages[lang] !== undefined ? lang : DEFAULT_LANG;
+    html = replaceOnce(html, /<div id="school-notice" hidden><\/div>/, () => `<div id="school-notice" lang="${noticeLanguage}">${escapeHtml(notice.trim())}</div>`, 'school notice');
+  }
   if (lang === DEFAULT_LANG) return html;
 
   html = replaceOnce(html, /<html lang="it">/, `<html lang="${lang}"${lang === 'ar' ? ' dir="rtl"' : ''}>`, '<html lang="it">');
