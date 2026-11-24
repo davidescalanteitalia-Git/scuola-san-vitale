@@ -265,7 +265,7 @@ a { color: inherit; text-decoration: none; }
 <nav class="topbar">
   <div class="page-wrap topbar-inner">
     <div class="topbar-brand">Scuola San Vitale — Materiale per imparare</div>
-    <a href="./" class="topbar-back">← Torna al sito</a>
+    <a href="./" class="topbar-back" data-ui="back">← Torna al sito</a>
   </div>
 </nav>
 
@@ -284,6 +284,7 @@ a { color: inherit; text-decoration: none; }
   </div>
 </header>
 
+<main>
 <!-- ── ABOUT ── -->
 <section class="section">
   <div class="page-wrap">
@@ -308,7 +309,7 @@ a { color: inherit; text-decoration: none; }
 <section class="section" style="padding-top:0">
   <div class="page-wrap">
     <div class="filter-row" role="group" aria-label="Filtra gli episodi per livello">
-      <button type="button" class="filter-chip active" data-filter="all">Tutti i livelli</button>
+      <button type="button" class="filter-chip active" data-filter="all" data-ui="filter">Tutti i livelli</button>
       <button type="button" class="filter-chip" data-filter="A1">A1</button>
       <button type="button" class="filter-chip" data-filter="A2">A2</button>
       <button type="button" class="filter-chip" data-filter="B1">B1</button>
@@ -391,11 +392,12 @@ a { color: inherit; text-decoration: none; }
       </div>
     </div>
 
+    <p data-ui="guide">Guarda la lezione e prova gli esercizi.</p>
     <div class="player-card">
       <div class="player-card__head">
         <div class="player-card__nav">
           <button type="button" class="nav-btn" id="prevEp" aria-label="Episodio precedente">←</button>
-          <p class="player-current">Stai guardando: <strong id="epLabel">Episodio 1 — Mi chiamo Li Li</strong></p>
+          <p class="player-current"><span data-ui="watching">Stai guardando:</span> <strong id="epLabel">Episodio 1 — Mi chiamo Li Li</strong></p>
           <button type="button" class="nav-btn" id="nextEp" aria-label="Episodio successivo">→</button>
         </div>
       </div>
@@ -406,6 +408,7 @@ a { color: inherit; text-decoration: none; }
       </div>
     </div>
 
+    <p><a id="lessonLink" data-ui="open" href="https://ciaoamici.rizzolieducation.it/storie_situazioni/ud1/index.html" target="_blank" rel="noopener">Apri la lezione</a></p>
     <p class="credit-box">
       Contenuti video e materiali didattici forniti da
       <a href="https://ciaoamici.rizzolieducation.it" target="_blank" rel="noopener">Ciao, amici! — Rizzoli Education</a>.
@@ -427,7 +430,29 @@ a { color: inherit; text-decoration: none; }
   </div>
 </section>
 
+</main>
+
 <script>
+const labels = {"it":["Tutti i livelli","Stai guardando:","Episodio precedente","Episodio successivo","Apri la lezione","Torna al sito","Guarda la lezione e prova gli esercizi.","Visti: {n} di {total}"],"es":["Todos los niveles","Est\u00e1s viendo:","Episodio anterior","Episodio siguiente","Abrir la lecci\u00f3n","Volver a la web","Mira la lecci\u00f3n y prueba los ejercicios.","Vistos: {n} de {total}"],"ar":["\u062c\u0645\u064a\u0639 \u0627\u0644\u0645\u0633\u062a\u0648\u064a\u0627\u062a","\u062a\u0634\u0627\u0647\u062f \u0627\u0644\u0622\u0646:","\u0627\u0644\u062d\u0644\u0642\u0629 \u0627\u0644\u0633\u0627\u0628\u0642\u0629","\u0627\u0644\u062d\u0644\u0642\u0629 \u0627\u0644\u062a\u0627\u0644\u064a\u0629","\u0627\u0641\u062a\u062d \u0627\u0644\u062f\u0631\u0633","\u0627\u0644\u0639\u0648\u062f\u0629 \u0625\u0644\u0649 \u0627\u0644\u0645\u0648\u0642\u0639","\u0634\u0627\u0647\u062f \u0627\u0644\u062f\u0631\u0633 \u062b\u0645 \u062c\u0631\u0651\u0628 \u0627\u0644\u062a\u0645\u0627\u0631\u064a\u0646.","\u062a\u0645\u062a \u0645\u0634\u0627\u0647\u062f\u0629 {n} \u0645\u0646 {total}"],"ro":["Toate nivelurile","Urm\u0103re\u0219ti acum:","Episodul anterior","Episodul urm\u0103tor","Deschide lec\u021bia","\u00cenapoi la site","Urm\u0103re\u0219te lec\u021bia \u0219i \u00eencearc\u0103 exerci\u021biile.","Vizionate: {n} din {total}"],"sq":["T\u00eb gjitha nivelet","Po shikon:","Episodi i m\u00ebparsh\u00ebm","Episodi tjet\u00ebr","Hap m\u00ebsimin","Kthehu te faqja","Shiko m\u00ebsimin dhe provo ushtrimet.","Par\u00eb: {n} nga {total}"],"zh":["\u6240\u6709\u7ea7\u522b","\u6b63\u5728\u89c2\u770b\uff1a","\u4e0a\u4e00\u96c6","\u4e0b\u4e00\u96c6","\u6253\u5f00\u8bfe\u7a0b","\u8fd4\u56de\u7f51\u7ad9","\u89c2\u770b\u8bfe\u7a0b\u5e76\u5c1d\u8bd5\u7ec3\u4e60\u3002","\u5df2\u89c2\u770b {n} / {total} \u96c6"],"tl":["Lahat ng antas","Pinapanood:","Nakaraang episode","Susunod na episode","Buksan ang aralin","Bumalik sa website","Panoorin ang aralin at subukan ang mga pagsasanay.","Napanood: {n} sa {total}"],"uk":["\u0423\u0441\u0456 \u0440\u0456\u0432\u043d\u0456","\u0412\u0438 \u0434\u0438\u0432\u0438\u0442\u0435\u0441\u044f:","\u041f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u0456\u0439 \u0435\u043f\u0456\u0437\u043e\u0434","\u041d\u0430\u0441\u0442\u0443\u043f\u043d\u0438\u0439 \u0435\u043f\u0456\u0437\u043e\u0434","\u0412\u0456\u0434\u043a\u0440\u0438\u0442\u0438 \u0443\u0440\u043e\u043a","\u041f\u043e\u0432\u0435\u0440\u043d\u0443\u0442\u0438\u0441\u044f \u043d\u0430 \u0441\u0430\u0439\u0442","\u041f\u0435\u0440\u0435\u0433\u043b\u044f\u043d\u044c\u0442\u0435 \u0443\u0440\u043e\u043a \u0456 \u0432\u0438\u043a\u043e\u043d\u0430\u0439\u0442\u0435 \u0432\u043f\u0440\u0430\u0432\u0438.","\u041f\u0435\u0440\u0435\u0433\u043b\u044f\u043d\u0443\u0442\u043e: {n} \u0456\u0437 {total}"],"fr":["Tous les niveaux","Vous regardez :","\u00c9pisode pr\u00e9c\u00e9dent","\u00c9pisode suivant","Ouvrir la le\u00e7on","Retour au site","Regardez la le\u00e7on et essayez les exercices.","Vus : {n} sur {total}"],"en":["All levels","Now watching:","Previous episode","Next episode","Open the lesson","Back to the website","Watch the lesson and try the exercises.","Watched: {n} of {total}"]};
+const labelKeys = ['filter', 'watching', 'prev', 'next', 'open', 'back', 'guide', 'progress'];
+let preferredLanguage = 'it';
+try {
+  const saved = localStorage.getItem('ssv_lang');
+  if (Object.hasOwn(labels, saved)) preferredLanguage = saved;
+} catch {}
+const ui = Object.fromEntries(labelKeys.map((key, index) => [key, labels[preferredLanguage][index]]));
+document.querySelectorAll('[data-ui]').forEach(element => {
+  element.textContent = ui[element.dataset.ui];
+  element.lang = preferredLanguage;
+  if (preferredLanguage === 'ar') element.dir = 'rtl';
+  if (element.dataset.ui === 'back') {
+    element.href = preferredLanguage === 'it' ? '/' : '/' + preferredLanguage + '/';
+  }
+});
+document.getElementById('prevEp').setAttribute('aria-label', ui.prev);
+document.getElementById('nextEp').setAttribute('aria-label', ui.next);
+document.getElementById('progressLabel').lang = preferredLanguage;
+
 const episodeTitles = {
   1:"Mi chiamo Li Li", 2:"Andiamo a scuola", 3:"Ecco la mia famiglia",
   4:"Dove abiti?", 5:"Ti piace la pizza?", 6:"La mia giornata",
@@ -450,7 +475,7 @@ function updateProgressUI() {
   const fill = document.getElementById('progressFill');
   const label = document.getElementById('progressLabel');
   if (fill) fill.style.width = pct + '%';
-  if (label) label.textContent = watched.size + ' di ' + TOTAL_EP + ' episodi già visti';
+  if (label) label.textContent = ui.progress.replace('{n}', watched.size).replace('{total}', TOTAL_EP);
   document.querySelectorAll('.ep-card').forEach(c => {
     c.classList.toggle('watched', watched.has(Number(c.dataset.ep)));
   });
@@ -461,8 +486,9 @@ function selectEpisode(n, opts) {
   n = Number(n);
   if (!episodeTitles[n]) return;
 
-  document.getElementById('videoPlayer').src =
-    'https://ciaoamici.rizzolieducation.it/storie_situazioni/ud' + n + '/index.html';
+  const lessonUrl = 'https://ciaoamici.rizzolieducation.it/storie_situazioni/ud' + n + '/index.html';
+  document.getElementById('videoPlayer').src = lessonUrl;
+  document.getElementById('lessonLink').href = lessonUrl;
   document.querySelectorAll('.ep-card').forEach(c => {
     const isActive = Number(c.dataset.ep) === n;
     c.classList.toggle('active', isActive);

@@ -21,4 +21,4 @@ RUN nginx -t
 EXPOSE 80
 
 HEALTHCHECK --interval=30s --timeout=3s \
-  CMD wget -qO- http://localhost/index.html || exit 1
+  CMD wget -qO- http://localhost/ || exit 1

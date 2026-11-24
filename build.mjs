@@ -50,13 +50,8 @@ const hreflangLinks = [
   `<link rel="alternate" hreflang="x-default" href="${langUrl(DEFAULT_LANG)}">`,
 ].join('\n');
 
-// Runs before anything renders. On the Italian home it sends a returning visitor
-// to the language they picked earlier; crawlers have no stored choice and stay.
 function headScript(lang) {
-  const redirect = lang === DEFAULT_LANG
-    ? `try{var l=localStorage.getItem('ssv_lang');if(l&&l!=='${DEFAULT_LANG}'&&${JSON.stringify(LANGS)}.indexOf(l)>-1&&location.pathname==='/')location.replace('/'+l+'/');}catch(e){}`
-    : '';
-  return `<script>window.SSV_PAGE_LANG='${lang}';${redirect}</script>`;
+  return `<script>window.SSV_PAGE_LANG='${lang}';</script>`;
 }
 
 function buildPage(lang) {
@@ -100,13 +95,12 @@ function buildPage(lang) {
 }
 
 function buildSitemap() {
-  const today = new Date().toISOString().slice(0, 10);
   const alternates = [
     ...LANGS.map((lang) => `    <xhtml:link rel="alternate" hreflang="${lang}" href="${langUrl(lang)}"/>`),
     `    <xhtml:link rel="alternate" hreflang="x-default" href="${langUrl(DEFAULT_LANG)}"/>`,
   ].join('\n');
-  const homes = LANGS.map((lang) => `  <url>\n    <loc>${langUrl(lang)}</loc>\n    <lastmod>${today}</lastmod>\n${alternates}\n  </url>`);
-  const others = ['test.html', 'materiale.html'].map((file) => `  <url>\n    <loc>${ORIGIN}/${file}</loc>\n    <lastmod>${today}</lastmod>\n  </url>`);
+  const homes = LANGS.map((lang) => `  <url>\n    <loc>${langUrl(lang)}</loc>\n${alternates}\n  </url>`);
+  const others = ['test.html', 'materiale.html'].map((file) => `  <url>\n    <loc>${ORIGIN}/${file}</loc>\n  </url>`);
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${[...homes, ...others].join('\n')}\n</urlset>\n`;
 }
 

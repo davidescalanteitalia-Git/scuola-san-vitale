@@ -945,7 +945,8 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 </header>
 
 <!-- ── SETUP SCREEN ────────────────────────────────────── -->
-<main id="setup-screen">
+<main>
+<div id="setup-screen">
   <div class="page-wrap">
     <section class="mode-section">
 
@@ -1017,7 +1018,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
       </div>
     </section>
   </div>
-</main>
+</div>
 
 <!-- ── QUIZ SCREEN ─────────────────────────────────────── -->
 <div id="quiz-screen">
@@ -1029,7 +1030,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
     <div class="progress-track">
       <div class="progress-fill" id="progress-fill" style="width:0%"></div>
     </div>
-    <div id="q-container"></div>
+    <div id="q-container" tabindex="-1"></div>
     <button class="btn-next" id="btn-next" onclick="nextQuestion()" data-i18n="btn_next">Prossima domanda →</button>
   </div>
 </div>
@@ -1039,7 +1040,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   <div class="page-wrap">
     <div class="result-card">
       <span class="result-emoji" id="result-emoji">🎉</span>
-      <h2 id="result-title">Ottimo lavoro!</h2>
+      <h2 id="result-title" tabindex="-1">Ottimo lavoro!</h2>
       <div class="score-big" id="score-big">8/10</div>
       <div class="score-label" id="score-pct">80%</div>
       <div class="stats-row">
@@ -1065,6 +1066,8 @@ a:focus-visible, button:focus-visible, input:focus-visible {
     <div class="review-section" id="review-section"></div>
   </div>
 </div>
+
+</main>
 
 <footer class="site-footer">
   Scuola di Italiano Caritas Como &nbsp;|&nbsp;
@@ -2533,6 +2536,7 @@ function renderQuestion(){
   const fb=document.createElement('div');fb.className='feedback';fb.id='feedback';fb.setAttribute('role','status');fb.setAttribute('aria-live','polite');
   panel.appendChild(fb);
   container.appendChild(card);
+  container.focus({ preventScroll:true });
 }
 
 /* ── BUILD: SCELTA MULTIPLA ───────────────────────────── */
@@ -2850,6 +2854,7 @@ function showResults(){
 
   document.getElementById('result-emoji').textContent=emoji;
   document.getElementById('result-title').textContent=title;
+  document.getElementById('result-title').focus({ preventScroll:true });
   document.getElementById('result-msg').textContent=msg;
 
   // Progress bar final
