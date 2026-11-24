@@ -951,13 +951,13 @@ a:focus-visible, button:focus-visible, input:focus-visible {
           <p data-i18n="mode_all_d">Combinazione di tutti i tipi di esercizi per una pratica completa</p>
         </div>
         <div class="mode-card selected" data-mode="scelta" tabindex="0" role="button" aria-pressed="true" onclick="selectMode(this)">
-          <img class="mode-card__photo" src="assets/quiz/086-un-libro.webp" width="640" height="360" loading="lazy" decoding="async" alt="Studenti che discutono un esercizio scritto">
+          <img class="mode-card__photo" src="assets/quiz/086-un-libro.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Tre persone studiano con un libro blu sul tavolo">
           <span class="mode-icon">🔤</span>
           <h3 data-i18n="mode_scelta_t">Scelta multipla</h3>
           <p data-i18n="mode_scelta_d">Scegli la risposta giusta tra quattro opzioni</p>
         </div>
         <div class="mode-card" data-mode="verofalso" tabindex="0" role="button" aria-pressed="false" onclick="selectMode(this)">
-          <img class="mode-card__photo" src="assets/quiz/048-pronuncia-ci-ce.webp" width="640" height="360" loading="lazy" decoding="async" alt="Insegnante che aiuta gli studenti a verificare una frase">
+          <img class="mode-card__photo" src="assets/quiz/048-pronuncia-ci-ce.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Un insegnante parla davanti agli studenti">
           <span class="mode-icon">✅</span>
           <h3 data-i18n="mode_verofalso_t">Vero o Falso</h3>
           <p data-i18n="mode_verofalso_d">Decidi se la frase è corretta o sbagliata</p>
@@ -975,7 +975,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
           <p data-i18n="mode_coniugazione_d">Coniuga i verbi nelle forme corrette</p>
         </div>
         <div class="mode-card" data-mode="ascolto" tabindex="0" role="button" aria-pressed="false" onclick="selectMode(this)">
-          <img class="mode-card__photo" src="assets/quiz/109-parlando.webp" width="640" height="360" loading="lazy" decoding="async" alt="Persone che si parlano e si ascoltano">
+          <img class="mode-card__photo" src="assets/quiz/109-parlando.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Due persone parlano durante una videochiamata">
           <span class="mode-icon">🎧</span>
           <h3 data-i18n="mode_ascolto_t">Ascolto</h3>
           <p data-i18n="mode_ascolto_d">Ascolta e rispondi alle domande in italiano</p>
@@ -1407,7 +1407,7 @@ const DB = [
  q:'In italiano, la lettera "c" davanti a "e" o "i" si pronuncia come "ch" in inglese ("church").',
  img:'assets/quiz/048-pronuncia-ci-ce.webp',
  imgCaption:'Pronuncia italiana',
- imgAlt:'Un insegnante spiega la lingua italiana davanti agli studenti',
+ imgAlt:'Un insegnante parla davanti agli studenti',
  correct:true,spiegazione:'Corretto! "Cena" si pronuncia "chena", "ciao" si pronuncia "chao".'},
 
 {type:'verofalso',level:'A1',cat:'numeri',
@@ -1476,8 +1476,8 @@ const DB = [
 {type:'verofalso',level:'B1',cat:'cultura',
  q:'La lingua italiana è parlata solo in Italia.',
  img:'assets/quiz/058-italiano-oltre-italia.webp',
- imgCaption:'La lingua italiana nel mondo',
- imgAlt:'Amici di origini diverse conversano insieme',
+ imgCaption:'Conversare in italiano',
+ imgAlt:'Un gruppo conversa intorno a un tavolo con un libro e un mappamondo',
  correct:false,spiegazione:'L\'italiano è parlato anche in Svizzera, San Marino, Vaticano, alcune zone della Croazia e della Slovenia, e da comunità di emigrati nel mondo.'},
 
 {type:'verofalso',level:'B1',cat:'storia',
@@ -1497,15 +1497,15 @@ const DB = [
 {type:'verofalso',level:'A1',cat:'geografia',
  q:'L\'Italia ha la forma di uno stivale.',
  img:'assets/quiz/061-forma-italia.webp',
- imgCaption:'La forma geografica d\'Italia',
- imgAlt:'Mappa illustrativa della penisola italiana, a forma di stivale',
+ imgCaption:'Geografia italiana',
+ imgAlt:'Sagoma illustrata della penisola italiana e delle isole maggiori',
  correct:true,spiegazione:'Corretto! La penisola italiana ha una caratteristica forma di stivale.'},
 
 {type:'verofalso',level:'A2',cat:'cibo',
  q:'La carbonara tradizionale contiene panna.',
  img:'assets/quiz/062-carbonara-tradizionale.webp',
- imgCaption:'Preparare una pasta italiana',
- imgAlt:'Un cuoco prepara la pasta; foto illustrativa, non ricetta della carbonara',
+ imgCaption:'In cucina',
+ imgAlt:'Un cuoco mescola gli spaghetti con le pinze',
  correct:false,spiegazione:'La carbonara tradizionale romana NON contiene panna, ma solo uova, guanciale, pecorino e pepe nero.'},
 
 {type:'verofalso',level:'A2',cat:'cibo',
@@ -1532,8 +1532,8 @@ const DB = [
 {type:'verofalso',level:'A1',cat:'famiglia',
  q:'In italiano, "genitori" significa "parents".',
  img:'assets/quiz/066-genitori-famiglia.webp',
- imgCaption:'La famiglia',
- imgAlt:'Un gruppo di persone adulte sorridenti insieme, immagine illustrativa',
+ imgCaption:'A casa',
+ imgAlt:'Due genitori aiutano la figlia con lo zaino',
  correct:true,spiegazione:'Corretto! "I genitori" = the parents. Singolare: "il genitore".'},
 
 {type:'verofalso',level:'A2',cat:'stagioni',
@@ -1546,8 +1546,8 @@ const DB = [
 {type:'verofalso',level:'A2',cat:'orario',
  q:'"Sono le tre e mezza" significa 3:30.',
  img:'assets/quiz/068-orologio-mezza.webp',
- imgCaption:'Leggere l\'orologio',
- imgAlt:'Un orologio analogico, fotografia illustrativa per un esercizio sull\'ora',
+ imgCaption:'Controllare l’ora',
+ imgAlt:'Una persona guarda un orologio a parete',
  correct:true,spiegazione:'Corretto! "Mezza" = 30 minuti. "E un quarto" = 15 minuti.'},
 
 {type:'verofalso',level:'B1',cat:'letteratura',
@@ -1639,15 +1639,15 @@ const DB = [
 {type:'scrittura',level:'A1',cat:'saluti',
  q:'Come si dice "Hello" informale in italiano?',
  img:'assets/quiz/081-ciao.webp',
- imgCaption:'Salutare in italiano',
- imgAlt:'Una donna sorridente conversa al telefono, immagine illustrativa di un saluto',
+ imgCaption:'Un incontro per strada',
+ imgAlt:'Due amici si salutano per strada',
  accept:['ciao'],hint:'Una parola di 4 lettere...'},
 
 {type:'scrittura',level:'A1',cat:'verbi',
  q:'Scrivi la forma corretta: "Io ___ (chiamarsi) Marco."',
  img:'assets/quiz/082-mi-chiamo.webp',
- imgCaption:'Presentarsi in italiano',
- imgAlt:'Quattro amici si incontrano e conversano in una piazza italiana',
+ imgCaption:'Un primo incontro',
+ imgAlt:'Due persone si presentano a un tavolino',
  accept:['mi chiamo'],hint:'Verbo riflessivo...'},
 
 {type:'scrittura',level:'A1',cat:'numeri',
@@ -1670,15 +1670,15 @@ const DB = [
 {type:'scrittura',level:'A1',cat:'articoli',
  q:'Qual è l\'articolo indeterminativo maschile singolare? (Es: ___ libro)',
  img:'assets/quiz/086-un-libro.webp',
- imgCaption:'Un libro e lo studio',
- imgAlt:'Un gruppo di studenti lavora insieme con libri e quaderni',
+ imgCaption:'Studiare insieme',
+ imgAlt:'Tre persone studiano con un libro blu sul tavolo',
  accept:['un'],hint:'Due lettere...'},
 
 {type:'scrittura',level:'A2',cat:'passato',
  q:'Coniuga "fare" al passato prossimo, prima persona singolare.',
  img:'assets/quiz/087-ho-fatto.webp',
- imgCaption:'Il verbo fare al passato',
- imgAlt:'Uno chef prepara un piatto in cucina',
+ imgCaption:'Il piatto pronto',
+ imgAlt:'Un cuoco aggiunge un ultimo ingrediente a un piatto',
  accept:['ho fatto'],hint:'"Fare" è un verbo irregolare...'},
 
 {type:'scrittura',level:'A2',cat:'passato',
@@ -1691,8 +1691,8 @@ const DB = [
 {type:'scrittura',level:'A2',cat:'plurale',
  q:'Qual è il plurale di "ragazzo"?',
  img:'assets/quiz/089-ragazzi.webp',
- imgCaption:'Il plurale di ragazzo',
- imgAlt:'Un ragazzo con la sua famiglia a tavola',
+ imgCaption:'Al parco',
+ imgAlt:'Tre ragazzi parlano seduti su una panchina',
  accept:['ragazzi'],hint:'Maschile in -o → plurale in -i'},
 
 {type:'scrittura',level:'A2',cat:'plurale',
@@ -1719,15 +1719,15 @@ const DB = [
 {type:'scrittura',level:'B1',cat:'congiuntivo',
  q:'Completa con il congiuntivo: "Penso che Marco ___ (essere) italiano."',
  img:'assets/quiz/093-sia-italiano.webp',
- imgCaption:'Parlare di nazionalità',
- imgAlt:'Un telefono con bandiera italiana sullo schermo',
+ imgCaption:'Una conversazione in aula',
+ imgAlt:'Due persone conversano accanto a una bandiera italiana',
  accept:['sia'],hint:'Congiuntivo presente di "essere"...'},
 
 {type:'scrittura',level:'B1',cat:'condizionale',
  q:'Forma il condizionale: "Se potessi, ___ (andare) in Italia."',
  img:'assets/quiz/094-andrei-italia.webp',
- imgCaption:'Viaggiare in Italia',
- imgAlt:'Una turista visita Milano vicino al Duomo',
+ imgCaption:'Pensare a un viaggio',
+ imgAlt:'Una persona osserva una cartolina del Duomo di Milano',
  accept:['andrei'],hint:'Condizionale presente di "andare"...'},
 
 {type:'scrittura',level:'B1',cat:'vocabolario',
@@ -1761,8 +1761,8 @@ const DB = [
 {type:'scrittura',level:'A2',cat:'imperativo',
  q:'Forma l\'imperativo formale (Lei) di "aspettare": "___, per favore!"',
  img:'assets/quiz/099-aspetti.webp',
- imgCaption:'Aspettare il trasporto',
- imgAlt:'Persone in attesa a una fermata di autobus',
+ imgCaption:'Alla fermata',
+ imgAlt:'Alcune persone aspettano alla fermata del bus',
  accept:['aspetti'],hint:'Imperativo formale, terza persona...'},
 
 {type:'scrittura',level:'B1',cat:'avverbi',
@@ -1775,8 +1775,8 @@ const DB = [
 {type:'scrittura',level:'A1',cat:'mesi',
  q:'In quale mese si festeggia il Natale?',
  img:'assets/quiz/101-natale-dicembre.webp',
- imgCaption:'Inverno e periodo natalizio',
- imgAlt:'Paesaggio invernale con abeti innevati, riferimento al mese di dicembre',
+ imgCaption:'Una scena d’inverno',
+ imgAlt:'Un albero di Natale illuminato vicino alla finestra',
  accept:['dicembre'],hint:'Il 25° giorno di questo mese...'},
 
 {type:'scrittura',level:'A2',cat:'orario',
@@ -1789,15 +1789,15 @@ const DB = [
 {type:'scrittura',level:'B1',cat:'grammatica',
  q:'Trasforma in passivo: "Marco mangia la pizza." → "La pizza ___ mangiata da Marco."',
  img:'assets/quiz/103-pizza-passiva.webp',
- imgCaption:'Una frase sulla pizza',
- imgAlt:'Pizza Margherita italiana con pomodoro mozzarella e basilico',
+ imgCaption:'A tavola',
+ imgAlt:'Una persona mangia una fetta di pizza',
  accept:['è','viene'],hint:'Usa il verbo "essere" o "venire"...'},
 
 {type:'scrittura',level:'A1',cat:'paese',
  q:'Come si chiama il paese dove si parla italiano? (la capitale è Roma)',
  img:'assets/quiz/104-paese-italia.webp',
- imgCaption:'L\'Italia',
- imgAlt:'Bandiera italiana verde bianca e rossa',
+ imgCaption:'Una bandiera in strada',
+ imgAlt:'Una bandiera a bande verticali verdi, bianche e rosse',
  accept:['italia','l\'italia'],hint:'Inizia con "I"...'},
 
 {type:'scrittura',level:'A2',cat:'verbi_modali',
@@ -1810,15 +1810,15 @@ const DB = [
 {type:'scrittura',level:'B1',cat:'comparativo',
  q:'Forma il comparativo: "Roma è ___ grande ___ Venezia." (more... than)',
  img:'assets/quiz/106-confronto-citta.webp',
- imgCaption:'Confrontare città italiane',
- imgAlt:'Due vedute urbane in Italia, immagine illustrativa generale; non è una veduta di Venezia',
+ imgCaption:'Confrontare due città',
+ imgAlt:'Il Colosseo di Roma accanto a un canale di Venezia',
  accept:['più grande di','più grande che'],hint:'"più ___ di/che"'},
 
 {type:'scrittura',level:'A1',cat:'possessivi',
  q:'Come si dice "my mother" in italiano?',
  img:'assets/quiz/107-mia-madre.webp',
- imgCaption:'La famiglia',
- imgAlt:'Madre e altri familiari riuniti a tavola',
+ imgCaption:'In famiglia',
+ imgAlt:'Una madre e sua figlia conversano a tavola',
  accept:['mia madre','la mia madre'],hint:'"Mio/Mia" = my'},
 
 {type:'scrittura',level:'A2',cat:'riflessivi',
@@ -1831,8 +1831,8 @@ const DB = [
 {type:'scrittura',level:'B1',cat:'gerundio',
  q:'Forma il gerundio di "parlare".',
  img:'assets/quiz/109-parlando.webp',
- imgCaption:'Parlare con altre persone',
- imgAlt:'Amici che si salutano durante una videochiamata',
+ imgCaption:'Una videochiamata',
+ imgAlt:'Due persone parlano durante una videochiamata',
  accept:['parlando'],hint:'-are → -ando'},
 
 {type:'scrittura',level:'B1',cat:'gerundio',
@@ -1851,7 +1851,7 @@ const DB = [
  verb:'ESSERE',tense:'Presente',
  img:'assets/quiz/111-verbo-essere.webp',
  imgCaption:'Presentarsi agli altri',
- imgAlt:'Due persone si presentano in aula',
+ imgAlt:'Due persone si presentano a un tavolino',
  pronoms:['io','tu','lui/lei'],
  correct:['sono','sei','è']},
 
