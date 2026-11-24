@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://scuolasanvitale.d4digitalstudio.it/test.html">
 <meta property="og:image" content="https://scuolasanvitale.d4digitalstudio.it/assets/og-image.jpg">
 <meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="400">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
 <script type="application/ld+json">
@@ -863,6 +863,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 
 /* FOTO DIDATTICHE */
 .q-layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(240px,.9fr);gap:24px;align-items:start;margin-top:18px}
+.q-layout.q-layout--text{display:block}
 .q-panel{min-width:0}
 .q-photo{margin:0;overflow:hidden;border-radius:18px;border:1px solid var(--border);background:var(--card-bg);box-shadow:0 10px 28px rgba(0,0,0,.15)}
 .q-photo img{display:block;width:100%;height:335px;object-fit:cover}
@@ -1629,8 +1630,8 @@ const DB = [
 {type:'verofalso',level:'B1',cat:'arte',
  q:'Leonardo da Vinci ha dipinto la "Gioconda" (Mona Lisa).',
  img:'assets/quiz/080-leonardo-gioconda.webp',
- imgCaption:'Arte italiana - immagine provvisoria',
- imgAlt:'La Torre di Pisa, immagine generica del patrimonio italiano da sostituire con una raffigurazione pertinente alla Gioconda',
+ imgCaption:'La Gioconda - illustrazione',
+ imgAlt:'Illustrazione del ritratto della Gioconda in una cornice',
  correct:true,spiegazione:'Corretto! La Gioconda fu dipinta da Leonardo tra il 1503 e il 1519. Ora si trova al museo del Louvre a Parigi.'},
 
 
@@ -1651,16 +1652,12 @@ const DB = [
 
 {type:'scrittura',level:'A1',cat:'numeri',
  q:'Scrivi in lettere il numero 7.',
- img:'assets/quiz/083-sette.webp',
- imgCaption:'Il numero sette',
- imgAlt:'Un orologio analogico mostra le cifre, compreso il numero sette',
+ showPhoto:false,
  accept:['sette'],hint:'Inizia con "s"...'},
 
 {type:'scrittura',level:'A1',cat:'numeri',
  q:'Scrivi in lettere il numero 12.',
- img:'assets/quiz/084-dodici.webp',
- imgCaption:'Il numero dodici',
- imgAlt:'Un orologio analogico mostra il numero dodici in alto',
+ showPhoto:false,
  accept:['dodici'],hint:'Inizia con "d"...'},
 
 {type:'scrittura',level:'A1',cat:'colori',
@@ -2096,9 +2093,7 @@ const DB = [
  tts:'Sono le otto e un quarto di mattina.',
  audio:'audio/ascolto_05.mp3',
  q:'Che ora è?',
- img:'assets/quiz/140-orario-otto-quarto.webp',
- imgCaption:'Ascoltare e riconoscere l\'ora',
- imgAlt:'Un orologio da polso sul tavolo; l\'ora nella foto non rappresenta necessariamente la frase ascoltata',
+ showPhoto:false,
  accept:['8:15','le otto e un quarto','otto e un quarto'],
  hint:'Un\'ora del mattino...'},
 
@@ -2509,13 +2504,19 @@ function renderQuestion(){
   card.innerHTML = '<div class="q-type-badge">'+(typeLabel[q.type]||q.type)+' · '+q.level+'</div>';
   const layout=document.createElement('div');layout.className='q-layout';
   const panel=document.createElement('div');panel.className='q-panel';
-  const data=getQuizPhoto(q);
-  const figure=document.createElement('figure');figure.className='q-photo';
-  const img=document.createElement('img');
-  img.src=data[0];img.alt=data[2];img.loading='eager';img.decoding='async';
-  img.onerror=function(){if(img.dataset.fallback)return;img.dataset.fallback='1';img.src='assets/corsi.webp';};
-  const caption=document.createElement('figcaption');caption.textContent='Immagine illustrativa · '+data[1];
-  figure.appendChild(img);figure.appendChild(caption);layout.appendChild(panel);layout.appendChild(figure);card.appendChild(layout);
+  layout.appendChild(panel);
+  if (q.showPhoto !== false) {
+    const data=getQuizPhoto(q);
+    const figure=document.createElement('figure');figure.className='q-photo';
+    const img=document.createElement('img');
+    img.src=data[0];img.alt=data[2];img.loading='eager';img.decoding='async';
+    img.onerror=function(){if(img.dataset.fallback)return;img.dataset.fallback='1';img.src='assets/corsi.webp';};
+    const caption=document.createElement('figcaption');caption.textContent='Immagine illustrativa · '+data[1];
+    figure.appendChild(img);figure.appendChild(caption);layout.appendChild(figure);
+  } else {
+    layout.classList.add('q-layout--text');
+  }
+  card.appendChild(layout);
   if(q.type==='scelta') buildScelta(panel,q);
   else if(q.type==='verofalso') buildVeroFalso(panel,q);
   else if(q.type==='scrittura') buildScrittura(panel,q);
