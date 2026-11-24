@@ -852,12 +852,10 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 
 /* Test di italiano: fotografia illustrativa e colori della bandiera */
 .hero {
-  background: linear-gradient(90deg,rgba(0,52,25,.94),rgba(0,81,39,.77),rgba(0,95,42,.72)),
-    url("assets/hero.webp") center 48% / cover no-repeat;
+  background: linear-gradient(90deg,#003419,#005127,#005f2a);
 }
 .topbar-brand { gap: 0; }
 @media (max-width:560px) {
-  .hero { background-position: center, 55% center; }
   .topbar-brand { font-size: .8rem; }
 }
 
@@ -891,6 +889,13 @@ a:focus-visible, button:focus-visible, input:focus-visible {
  .mode-grid {grid-template-columns:1fr;}
 
 }
+
+.hero-layout { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:28px; align-items:center; }
+.hero-photo { display:block; width:100%; height:auto; border-radius:14px; }
+@media (max-width:700px) {
+  .hero-layout { grid-template-columns:minmax(0,1fr); }
+  .hero-photo { max-width:420px; margin-inline:auto; }
+}
 </style>
 </head>
 <body>
@@ -922,7 +927,8 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 
 <!-- ── HERO ───────────────────────────────────────────── -->
 <header class="hero" id="home-screen">
-  <div class="page-wrap hero-inner">
+  <div class="page-wrap hero-inner hero-layout">
+    <div>
     <span class="hero-flag">🇮🇹</span>
     <h1><span data-i18n="hero_l1">Pratica il tuo</span><br><span data-i18n="hero_l2">Italiano</span></h1>
     <p data-i18n="hero_sub">Esercizi interattivi per migliorare le tue competenze linguistiche. Ogni sessione è unica e diversa.</p>
@@ -933,6 +939,8 @@ a:focus-visible, button:focus-visible, input:focus-visible {
       <span class="badge" data-i18n="badge_scelta">🔤 Scelta Multipla</span>
       <span class="badge" data-i18n="badge_coniugazione">🔄 Coniugazione</span>
     </div>
+    </div>
+    <img class="hero-photo" src="assets/hero.webp" width="1536" height="1024" alt="" fetchpriority="high">
   </div>
 </header>
 

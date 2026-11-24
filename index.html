@@ -345,12 +345,6 @@ ul { list-style: none; }
   overflow: hidden;
   background: var(--green-dark);
 }
-.hero__bg {
-  position: absolute; inset: 0;
-  background:
-    linear-gradient(135deg, rgba(0,107,53,.92) 0%, rgba(0,128,67,.78) 55%, rgba(206,43,55,.12) 100%),
-    url("assets/hero.webp") center 45% / cover no-repeat;
-}
 .hero__content {
   position: relative;
   z-index: 2;
@@ -741,11 +735,6 @@ ul { list-style: none; }
 .nav-toggle span { background: #fff; }
 .btn-cta { background: #ce2b37; color: #fff !important; box-shadow: 0 3px 12px rgba(0,0,0,.18); }
 .btn-cta:hover { background: #a61f2b; }
-.hero__bg {
-  background:
-    linear-gradient(90deg, rgba(0,63,31,.82) 0%, rgba(0,93,47,.58) 53%, rgba(0,0,0,.13) 100%),
-    url("assets/hero.webp") center 45% / cover no-repeat;
-}
 .hero__badge { color: #fff; background: rgba(0,0,0,.20); border-color: rgba(255,255,255,.8); }
 .hero__title em { color: #fff; text-decoration: underline; text-decoration-color: #ce2b37; text-underline-offset: 7px; }
 .btn-primary { background: #009246; color: #fff; }
@@ -772,9 +761,19 @@ ul { list-style: none; }
   .site-logo__name { font-size: 15px; }
   .site-logo__sub { font-size: 9px; }
   .site-header .btn-cta { padding: 9px 11px; font-size: 11px; }
-  .hero__bg { background-image: linear-gradient(90deg, rgba(0,63,31,.88), rgba(0,63,31,.48)), url("assets/hero-mobile.webp"); background-position: center; }
 }
 
+
+.hero__layout { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:32px; align-items:center; padding-block:44px; }
+.hero__layout .hero__content { padding-block:0; min-width:0; }
+.hero__photo { display:block; position:relative; z-index:1; }
+.hero__photo img { display:block; width:100%; height:auto; border-radius:16px; }
+@media (max-width:760px) {
+  .hero { min-height:0; }
+  .hero__layout { grid-template-columns:minmax(0,1fr); gap:24px; padding-block:36px; }
+  .hero__photo { width:100%; max-width:480px; margin-inline:auto; }
+}
+@media (max-width:560px) { .hero__photo { max-width:320px; } }
 </style>
 </head>
 <body>
@@ -839,7 +838,6 @@ ul { list-style: none; }
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero__bg"></div>
   <div class="hero__deco" aria-hidden="true">
     <svg class="hero__cross" viewBox="0 0 200 200" fill="none">
       <circle cx="100" cy="100" r="98" stroke="white" stroke-width="2"/>
@@ -847,7 +845,7 @@ ul { list-style: none; }
       <rect x="25" y="85" width="150" height="30" rx="6" fill="white"/>
     </svg>
   </div>
-  <div class="container">
+  <div class="container hero__layout">
     <div class="hero__content">
       <div class="hero__badge">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
@@ -874,6 +872,10 @@ ul { list-style: none; }
         </a>
       </div>
     </div>
+    <picture class="hero__photo">
+      <source media="(max-width: 560px)" srcset="assets/hero-mobile.webp" width="900" height="1350">
+      <img src="assets/hero.webp" width="1536" height="1024" alt="" fetchpriority="high">
+    </picture>
   </div>
 </section>
 
