@@ -866,30 +866,30 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .q-layout.q-layout--text{display:block}
 .q-panel{min-width:0}
 .q-photo{margin:0;overflow:hidden;border-radius:18px;border:1px solid var(--border);background:var(--card-bg);box-shadow:0 10px 28px rgba(0,0,0,.15)}
-.q-photo img{display:block;width:100%;height:335px;object-fit:cover}
+.q-photo img{display:block;width:100%;height:auto}
 .q-photo figcaption{padding:10px 14px;font-size:.75rem;color:var(--fg-muted)}
 .q-panel .q-text{margin-bottom:18px}
 .q-panel .option-btn{min-height:54px;width:100%}
 .q-panel .feedback{align-items:flex-start;line-height:1.55}
 .fb-expl{display:block;margin-top:7px;font-weight:400}
-@media(max-width:850px){.q-layout{grid-template-columns:1fr;gap:16px}.q-photo{grid-row:1}.q-panel{grid-row:2}.q-photo img{height:245px}}
-@media(max-width:480px){.q-card{padding:20px 16px}.q-photo img{height:195px}}
+@media(max-width:850px){.q-layout{grid-template-columns:1fr;gap:16px}.q-photo{grid-row:1}.q-panel{grid-row:2}}
+@media(max-width:480px){.q-card{padding:20px 16px}}
 
 /* Fotografie illustrative nelle opzioni di esercizio */
 .mode-card {overflow:hidden;}
 .mode-card__photo {
- display:block; width:100%; height:122px; object-fit:cover; object-position:center 45%;
+ display:block; width:100%; height:auto;
  border-radius:12px; margin-bottom:12px; border:1px solid var(--border);
 }
 .mode-card.selected .mode-card__photo { border-color: var(--italian-red); }
 @media (max-width:640px) {
  .mode-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
  .mode-card { padding:14px 12px 16px; }
- .mode-card__photo {height:105px;}
+
 }
 @media (max-width:360px) {
  .mode-grid {grid-template-columns:1fr;}
- .mode-card__photo {height:152px;}
+
 }
 </style>
 </head>
@@ -969,7 +969,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
           <p data-i18n="mode_scrittura_d">Scrivi la risposta corretta in italiano</p>
         </div>
         <div class="mode-card" data-mode="coniugazione" tabindex="0" role="button" aria-pressed="false" onclick="selectMode(this)">
-          <img class="mode-card__photo" src="assets/corsi.webp" width="640" height="360" loading="lazy" decoding="async" alt="Studio dei verbi e della grammatica con un insegnante">
+          <img class="mode-card__photo" src="assets/corsi.webp" width="1279" height="720" loading="lazy" decoding="async" alt="Studio dei verbi e della grammatica con un insegnante">
           <span class="mode-icon">🔄</span>
           <h3 data-i18n="mode_coniugazione_t">Coniugazione</h3>
           <p data-i18n="mode_coniugazione_d">Coniuga i verbi nelle forme corrette</p>
